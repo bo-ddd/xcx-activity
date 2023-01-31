@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/home/index",
     "pages/index/index",
     "pages/databaseGuide/databaseGuide",
-    "pages/home/index",
     "pages/mine/index",
     "pages/activity/index",
     "pages/activityDetails/index",
@@ -15,15 +15,21 @@
   "tabBar": {
     "list": [{
       "pagePath": "pages/home/index",
-      "text": "首页"
+      "text": "首页",
+      "iconPath": "./images/icon-home.png",
+      "selectedIconPath": "./images/icon-home select.png"
     },
      {
       "pagePath": "pages/activity/index",
-      "text": "活动"
+      "text": "活动",
+      "iconPath": "./images/icon-activety.png",
+      "selectedIconPath": "./images/icon-activity select.png"
     },
      {
       "pagePath": "pages/mine/index",
-      "text": "我的"
+      "text": "我的",
+      "iconPath": "./images/icon-mine.png",
+      "selectedIconPath": "./images/icon-mine select .png"
     }
 ]
   },
