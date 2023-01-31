@@ -25,15 +25,22 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/mine/index",
+                    "name": "",
                     "pathName": "pages/mine/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "",
-                    "pathName": "pages/mine/index",
+                    "name": "商家入驻",
+                    "pathName": "pages/merchantSettlement/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "首页",
+                    "pathName": "pages/home/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
