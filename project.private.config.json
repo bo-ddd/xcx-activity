@@ -25,13 +25,6 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/mine/index",
-                    "pathName": "pages/mine/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
                     "name": "",
                     "pathName": "pages/mine/index",
                     "query": "",
