@@ -11,45 +11,31 @@
                     "query": ""
                 },
                 {
-                    "name": "pages/getOpenId/index",
-                    "pathName": "pages/getOpenId/index",
+                    "name": "pages/home/index",
+                    "pathName": "pages/home/index",
                     "query": "",
+                    "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "pages/deployService/index",
-                    "pathName": "pages/deployService/index",
+                    "name": "pages/activity/index",
+                    "pathName": "pages/activity/index",
                     "query": "",
+                    "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "pages/selectRecord/index",
-                    "pathName": "pages/selectRecord/index",
+                    "name": "pages/mine/index",
+                    "pathName": "pages/mine/index",
                     "query": "",
+                    "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "pages/sumRecordResult/index",
-                    "pathName": "pages/sumRecordResult/index",
+                    "name": "",
+                    "pathName": "pages/mine/index",
                     "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "pages/updateRecord/index",
-                    "pathName": "pages/updateRecord/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "pages/updateRecordResult/index",
-                    "pathName": "pages/updateRecordResult/index",
-                    "query": "",
-                    "scene": null
-                },
-                {
-                    "name": "pages/updateRecordSuccess/index",
-                    "pathName": "pages/updateRecordSuccess/index",
-                    "query": "",
+                    "launchMode": "default",
                     "scene": null
                 }
             ]
