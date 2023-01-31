@@ -6,13 +6,34 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "db guide",
+                    "name": "db guide",
                     "pathName": "pages/databaseGuide/databaseGuide",
                     "query": ""
                 },
                 {
+                    "name": "pages/home/index",
+                    "pathName": "pages/home/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "pages/activity/index",
+                    "pathName": "pages/activity/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "pages/mine/index",
+                    "pathName": "pages/mine/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
                     "name": "",
-                    "pathName": "pages/index/index",
+                    "pathName": "pages/mine/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
