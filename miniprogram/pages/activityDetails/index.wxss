@@ -1,8 +1,7 @@
 /* pages/activityDetails/index.wxss */
-.main {
-  height: 100vh;
-  /* background-repeat: no-repeat;
-  background-size: cover; */
+.wrap-80r {
+  width: 590rpx;
+  margin: 0 auto;
 }
 
 .wrap-40r {
@@ -95,16 +94,20 @@
   font-size: 36rpx;
   font-weight: bold;
   border-radius: 30rpx;
+  display: flex;
+  justify-content: center;
 }
 
 .bar-progress {
   width: 482rpx;
   height: 60rpx;
   border: solid 1rpx black;
-  border-radius:240rpx;
+  border-radius: 240rpx;
+  margin: 0 auto;
 }
-.line-inner{
-  height:100%;
+
+.line-inner {
+  height: 100%;
   background-color: blue;
-  border-radius:240rpx;
+  border-radius: 240rpx;
 }
