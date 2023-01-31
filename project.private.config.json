@@ -6,7 +6,7 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "db guide",
+                    "name": "db guide",
                     "pathName": "pages/databaseGuide/databaseGuide",
                     "query": ""
                 },
