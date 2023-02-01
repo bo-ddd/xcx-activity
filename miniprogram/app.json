@@ -6,13 +6,21 @@
     "pages/mine/index",
     "pages/activity/index",
     "pages/activityDetails/index",
+    "pages/mineActivity/index",
     "pages/addActivities/index",
     "pages/updataActivities/index",                               
     "pages/merchantSettlement/index",
     "pages/examineList/index",
-    "pages/examineDetails/index"
+    "pages/examineDetails/index",
+    "pages/suggest/index",
+    "pages/launchActivities/index",
+    "pages/participateActivities/index",
+    "pages/activitRecord/index"
+    
   ],
   "tabBar": {
+    "color":"#8a8a8a",
+    "selectedColor":"#e64430",
     "list": [{
       "pagePath": "pages/home/index",
       "text": "首页",
@@ -34,10 +42,11 @@
 ]
   },
   "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "backgroundColor": "#ddd",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#e64430",
+    "navigationBarTitleText": "h",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
