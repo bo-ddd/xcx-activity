@@ -1,2 +1,41 @@
 <!--pages/merchantSettlement/index.wxml-->
-<text>pages/merchantSettlement/index.wxml</text>
+<view class="store-settlement">
+    <view class="title">
+        <text>商铺入驻信息</text>
+    </view>
+    <view class="merchant-name mt30 mb30 ml20">
+        <view class="label mt16 mb16 fs32 fwb">姓名</view>
+        <input class="ipt" type="text" placeholder="请输入您的姓名" />
+    </view>
+    <view class="merchant-sex mt30 mb30 ml20">
+        <view class="label mt16 mb16 fs32 fwb">性别</view>
+        <radio-group class="radio" bindchange="radioChange">
+            <label wx:for="{{radios}}" wx:key="{{item.value}}">
+                <view>
+                    <radio value="{{item.value}}" checked="true" />
+                    <text class="sex">{{item.name}}</text>
+                </view>
+            </label>
+        </radio-group>
+    </view>
+    <view class="merchant-phone mt30 mb30 ml20">
+        <view class="label mt16 mb16 fs32 fwb">手机号码</view>
+        <input type="text" placeholder="请输入您的手机号" />
+    </view>
+    <view class="store-name mt30 mb30 ml20">
+        <view class="label mt16 mb16 fs32 fwb">店铺名称</view>
+        <input type="text" placeholder="请输入店铺名称" />
+    </view>
+    <view class="store-name mt30 mb30 ml20">
+        <view class="label mt16 mb16 fs32 fwb">经营分类</view>
+        <!-- 下拉菜单 -->
+        <input type="text" placeholder="请输入店铺名称" />
+    </view>
+    <view class="upload-license mt30 mb30">
+        <view class="label mt16 mb16 ml20 fwb">上传执照</view>
+        <view class="license">
+            <image class="icon-license" src="../../images/icon-license.png" mode="" />
+        </view>
+    </view>
+    <button class="submit" type="primary">提交</button>
+</view>

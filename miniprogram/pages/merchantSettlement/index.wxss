@@ -1,1 +1,62 @@
 /* pages/merchantSettlement/index.wxss */
+.mt16 {
+    margin-top: 16rpx;
+}
+
+.mb16 {
+    margin-bottom: 16rpx;
+}
+
+.mt30 {
+    margin-top: 30rpx;
+}
+
+.mb30 {
+    margin-bottom: 30rpx;
+}
+
+.ml20 {
+    margin-left: 20rpx;
+}
+
+.fs32 {
+    font-size: 32rpx;
+}
+.fwb{
+    font-weight: bold;
+}
+
+.store-settlement {
+    height: 100vh;
+    /* background: -webkit-linear-gradient(top, #fb7628, #FACF94, white); */
+    display: flow-root;
+}
+
+.label::after {
+    content: '*';
+    color: red;
+    margin-left: 10rpx;
+}
+
+.title {
+    font-size: 54rpx;
+    text-align: center;
+    margin-top: 16rpx;
+}
+
+.merchant-sex .radio {
+    display: flex;
+    gap: 30rpx;
+}
+
+.upload-license {
+    /* text-align: center; */
+}
+
+.upload-license .license {
+    text-align: center;
+}
+
+.upload-license .icon-license {
+    height: 400rpx;
+}
