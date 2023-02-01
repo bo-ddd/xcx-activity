@@ -1,11 +1,18 @@
 // pages/home/index.js
 Page({
 
+    
     /**
      * 页面的初始数据
      */
     data: {
-
+      userInfo:{}
+    },
+    getUserInfo(res){
+      this.setData({
+        userInfo:res.detail.userInfo
+      })
+      console.log(res);
     },
 
     /**
