@@ -3,6 +3,15 @@
     width: 700rpx;
     margin: 0 auto;
 }
+.ml-20{
+  margin-left: 20rpx;
+}
+.mr-20{
+  margin-right: 20rpx;
+}
+.mt-30{
+  margin-top: 30rpx;
+}
 .sort{
   display: flex;
   justify-content: flex-end;
@@ -35,13 +44,13 @@
   background-color: unset;
 }
 .register-user image{
-  width: 150rpx;
-  height: 150rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
 }
 .icon-register-right image{
-  width: 40rpx;
-  height: 40rpx;
+  width: 30rpx;
+  height: 30rpx;
 }
 .integral-outer-layer{
   display: flex;
@@ -53,10 +62,6 @@
   background-size: 100% 100%;
   border-radius: 40rpx;
   color: #553D1C;
-  margin-top: 30rpx;
-}
-.integral{
-  margin-left: 20rpx;
 }
 .more{
   display: flex;
@@ -67,22 +72,18 @@
   width: 30rpx;
   height: 30rpx;
 }
-.container{
-  margin-top: 30rpx;
-}
+
 .notice-outer-layer{
   height: 60rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: #A9997D;
-
 }
 .notice{
   display: flex;
   align-items: center;
   min-width: 0;
-  margin-left: 20rpx;
 }
 .notice-content{
   white-space:nowrap;
@@ -90,9 +91,51 @@
   text-overflow: ellipsis;
 }
 .icon-notice{
-  width: 80rpx;
+  width: 100rpx;
+  height: 35rpx;
+}
+.icon-flash-sale{
+  width: 150rpx;
   height: 40rpx;
 }
-.icon-arrow{
-  margin: 0 20rpx;
+.flash-sale-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #959086;
+  font-size: 30rpx;
+}
+.flash-sale-logo{
+  width: 300rpx;
+  height: 350rpx;
+}
+.flash-sale-commodity{
+width: 300rpx;
+}
+.all-flash-purchases{
+  display: flex;
+}
+.flash-sale-title{
+  width: 100%;
+  white-space:nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* 滚动布局 */
+.scroll-view_H{
+  white-space: nowrap;
+}
+.scroll-view-item_H{
+  display: inline-block;
+  padding: 0 20rpx;
+}
+
+
+.time-remaining{
+  color: black;
+  border: 1px solid #ccc;
+  padding: 2rpx;
+}
+.flash-sale-time{
+  font-size: 25rpx;
 }
