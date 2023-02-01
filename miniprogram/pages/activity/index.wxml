@@ -1,2 +1,13 @@
 <!--pages/activity/index.wxml-->
-<text>pages/activity/index.wxml</text>
+<view class="main wrap-40r">
+  <view class="title">我的活动</view>
+  <view class="list mt-24r wrap-60r">
+    <view class="actvity mt-24r" wx:for="{{activityList}}" wx:key="id" bindtap="to" data-id="{{item.id}}">
+      <view class="name">{{item.title}}</view>
+      <view class="duration">
+        活动时间：<text class="time-start">{{item.startTime}}</text>-<text class="time-end">{{item.endTime}}</text>
+      </view>
+
+    </view>
+  </view>
+</view>

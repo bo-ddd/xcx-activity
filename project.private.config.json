@@ -6,7 +6,7 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "db guide",
+                    "name": "db guide",
                     "pathName": "pages/databaseGuide/databaseGuide",
                     "query": ""
                 },
@@ -39,9 +39,30 @@
                     "scene": null
                 },
                 {
-                    "name": "",
+                    "name": "商家入驻",
+                    "pathName": "pages/merchantSettlement/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "首页",
                     "pathName": "pages/home/index",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/index/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/activityDetails/index",
+                    "query": "id=1",
                     "launchMode": "default",
                     "scene": null
                 }
