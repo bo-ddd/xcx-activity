@@ -6,9 +6,62 @@ Page({
      */
     data: {
         radios: [
-            { value: '男', name: '男' },
-            { value: '女', name: '女'},
+            { value: '1', name: '男' },
+            { value: '0', name: '女' },
         ],
+        selectItem: {
+            DqOpenid: '',
+            select: false,
+            grade_name: '--请选择--',
+            grades: [
+                {
+                    id: 1,
+                    className: '电子产品'
+                },
+                {
+                    id: 2,
+                    className: '卫生用品'
+                },
+                {
+                    id: 3,
+                    className: '厨房用品'
+                },
+                {
+                    id: 4,
+                    className: '清洁洗护'
+                },
+                {
+                    id: 5,
+                    className: '美妆护肤'
+                },
+                {
+                    id: 6,
+                    className: '二次元'
+                },
+                {
+                    id: 7,
+                    className: '潮流女装'
+                },
+                {
+                    id: 8,
+                    className: '潮男穿搭'
+                },
+                {
+                    id: 9,
+                    className: '美食达人'
+                },
+            ]
+        },
+        form: {
+            merchantName: '',
+            merchantSex: '',
+            merchantPhone: '',
+            storeName: '',
+            storeClass: '',
+            uploadLicense: '',
+        }
+
+
     },
 
     /**
@@ -75,5 +128,46 @@ Page({
         this.setData({
             items
         })
-    }
+    },
+    // 点击下拉框 
+    bindShowMsg() {
+        this.setData({
+            select: true
+        })
+    },
+    // 已选下拉框 
+    mySelect(e) {
+        var name = e.currentTarget.dataset.name
+        this.setData({
+            ['selectItem.grade_name']: name,
+            select: false
+        })
+    },
+    // 提交表单
+    formSubmit: function (e) {
+        console.log(e);
+        let { merchantName,
+            merchantSex,
+            merchantPhone,
+            storeName,
+            uploadLicense } = e.detail.value;
+            let  storeClass  = e.currentTarget.dataset.id
+        if (!merchantName) {
+            // && !merchantSex && !merchantPhone && !storeName && !storeClass
+            wx.showToast({
+                title: '请填写完整信息',
+                icon: 'error',
+                duration: 1000
+            })
+            return;
+        }
+        this.setData({
+            merchantName,
+            merchantSex,
+            merchantPhone,
+            storeName,
+            storeClass
+        })
+    },
+
 })
