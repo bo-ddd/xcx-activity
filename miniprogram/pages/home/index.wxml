@@ -2,64 +2,92 @@
 <!-- 在用户第一次进来的时候选择自己的喜好 根据喜好推荐商品 -->
 <!-- 如果没有你该推荐哪些东西 -->
 <view class="outer-layer">
-
-<view class="sort">
-  <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/sort.png?sign=24d5002810349bed7515622b91f2113b&t=1675169637" mode=""/>
-</view>
-
-<view class="wrap register">
-<view class="register-user">
-    <image class="icon-register" wx:if="{{ userInfo.avatarUrl }}" src="{{ userInfo.avatarUrl }}" mode=""/>  
-    <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/0.png?sign=06583c237e17872f3d74f83bb5d38238&t=1675169424" wx:else mode=""/>
-
-    <view class="register-userinfo" wx:if="{{ userInfo.nickName }}">
-      {{ userInfo.nickName }}
-    </view>
-    <button class="register-userinfo" wx:else="" hover-class="none" type="fault" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录/注册</button>
-</view>
-
-<view class="icon-register-right">
-<image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=b0db52d33954320be8798cb95b613d4b&t=1675212693" mode=""/>
-</view>
-</view>
-
-<view class="wrap integral-outer-layer">
-  <view class="integral">
-    您当前剩余积分为：xxx
+<!-- 分类icon -->
+  <view class="sort">
+    <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/sort.png?sign=24d5002810349bed7515622b91f2113b&t=1675169637" mode="" />
   </view>
-  <view class="more">
-    <view>
-      查看更多
-    </view>
-    <image class="icon-arrow" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=36ea68fd68e573dc094a6bbeba8918d4&t=1675213469" mode=""/>
-  </view>
-</view>
+<!-- 个人信息和头像 -->
+  <view class="wrap register">
+    <view class="register-user">
+      <image class="icon-register ml-20" wx:if="{{ userInfo.avatarUrl }}" src="{{ userInfo.avatarUrl }}" mode="" />
+      <image class="ml-20" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/0.png?sign=06583c237e17872f3d74f83bb5d38238&t=1675169424" wx:else mode="" />
 
-<view class="container">
-  <view class="page-body">
-    <view class="page-section page-section-spacing swiper">
-      <swiper indicator-dots="{{indicatorDots}}"
-        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-        <block wx:for="{{background}}" wx:key="*this">
-          <swiper-item>
-            <view class="swiper-item {{item}}"></view>
-          </swiper-item>
-        </block>
-      </swiper>
+      <view class="register-userinfo" wx:if="{{ userInfo.nickName }}">
+        {{ userInfo.nickName }}
+      </view>
+      <button class="register-userinfo" wx:else="" hover-class="none" type="fault" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录/注册</button>
+    </view>
+
+    <view class="icon-register-right mr-20">
+      <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=b0db52d33954320be8798cb95b613d4b&t=1675212693" mode="" />
     </view>
   </view>
-</view>
-
-<view class="wrap notice-outer-layer">
-  <view class="notice">
-    <image class="icon-notice" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=809fe6131c2298c6b0d529efa8e6f147&t=1675221942" mode=""/>
-    <view class="notice-content">
-      精选澳牛，周末特惠! 2件减200积分，3件减
+<!-- 积分剩余 -->
+  <view class="wrap integral-outer-layer mt-30">
+    <view class="integral ml-20">
+      您当前剩余积分为：xxx
+    </view>
+    <view class="more">
+      <view>
+        查看更多
+      </view>
+      <image class="icon-arrow" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=36ea68fd68e573dc094a6bbeba8918d4&t=1675213469" mode="" />
     </view>
   </view>
-      <image class="icon-arrow" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=809fe6131c2298c6b0d529efa8e6f147&t=1675221942" mode=""/>
-</view>
+<!-- banner轮播图 -->
+  <view class="container mt-30">
+    <view class="page-body">
+      <view class="page-section page-section-spacing swiper">
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block wx:for="{{background}}" wx:key="*this">
+            <swiper-item>
+              <image src="{{item}}" mode="" />
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+  </view>
+<!-- 公告栏 -->
+  <view class="wrap notice-outer-layer mt-30">
+    <view class="notice ml-20">
+      <image class="icon-notice" src="../../images/icon-notice.png" mode="" />
+      <view class="notice-content ml-20">
+        精选澳牛，周末特惠! 2件减200积分，3件减
+      </view>
+    </view>
+    <image class="icon-arrow mr-20" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=809fe6131c2298c6b0d529efa8e6f147&t=1675221942" mode="" />
+  </view>
+<!-- 限时抢购 -->
+  <view class="wrap flash-sale mt-30">
+    <view class="flash-sale-header">
+      <image class="icon-flash-sale ml-20" src="../../images/icon-flash sale.png" mode="" />
+      <view class="">
+        更多
+        <image class="icon-arrow mr-20" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=d218a185ae8fe67584539761e4623eed&t=1675235086" mode="" />
+      </view>
+    </view>
 
-  
+    <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
+      <view wx:for="{{ flashSaleCommodity }}" wx:key="id" id="demo1" class="scroll-view-item_H">
+        <view class="flash-sale-commodity">
+          <image class="flash-sale-logo" src="{{ item.logo }}" mode="" />
+          <view class="flash-sale-title">
+            {{ item.title }}
+          </view>
+          <view class="flash-sale-time">
+            剩xxx天<text class="time-remaining">23</text>:<text class="time-remaining">57</text>:<text class="time-remaining">31</text>
+          </view>
+          <view class="flash-required-points">
+            {{ item.requiredPoints }}积分（抢购）
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+<!-- 热销商品 -->
+<view>
+
+</view>
 
 </view>
