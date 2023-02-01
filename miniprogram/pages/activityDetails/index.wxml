@@ -1,2 +1,35 @@
 <!--pages/activityDetails/index.wxml-->
-<text>pages/activityDetails/index.wxml</text>
+<view class="main">
+  <view class="wrap-40r">
+    <view class="title mt-24r">活动详情</view>
+    <view class="header wrap-50r mt-24r">
+      <view class="shop-exchange">
+        <image class="icon-shop" src="../../images/icon-shop.png" mode="" />
+        <view class="name">兑换商店</view>
+      </view>
+      <view class="banner">
+        <view class="poster"></view>
+      </view>
+      <view class="operation">
+        <view class="rule">
+          <image class="icon-rule" src="../../images/icon-rule.png" mode="" />
+          <view class="name">活动规则</view>
+        </view>
+        <view class="contact">
+          <image class="icon-contact" src="../../images/icon-contact.png" mode="" />
+          <view class="name">联系商家</view>
+        </view>
+        <view class="share" bindtap="share">
+          <image class="icon-share" src="../../images/icon-share.png" mode="" />
+          <view class="name">分享好友</view>
+        </view>
+      </view>
+    </view>
+    <view class="container mt-100r wrap-80r">
+    <view class="bar-progress">
+    <view class="line-inner" style="width:{{progressValue}};"></view>
+    </view>
+      <view class="btn-help mt-48r">助力</view>
+    </view>
+  </view>
+</view>

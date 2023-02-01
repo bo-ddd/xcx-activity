@@ -1,1 +1,113 @@
 /* pages/activityDetails/index.wxss */
+.wrap-80r {
+  width: 590rpx;
+  margin: 0 auto;
+}
+
+.wrap-40r {
+  width: 670rpx;
+  margin: 0 auto;
+}
+
+.wrap-50r {
+  width: 650rpx;
+  margin: 0 auto;
+}
+
+.mt-24r {
+  margin-top: 24rpx;
+}
+
+.mt-48r {
+  margin-top: 48rpx;
+}
+
+.mt-100r {
+  margin-top: 100rpx;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  height: 460rpx;
+  /* border:solid 1px black; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .shop-exchange,
+.header .rule,
+.header .contact,
+.header .share {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+  align-items: center;
+}
+
+.shop-exchange .name,
+.operation .name {
+  font-size: 20rpx;
+  color: #5e5d5d;
+}
+
+.icon-shop {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.icon-rule,
+.icon-contact,
+.icon-share {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.header .banner {
+  width: 480rpx;
+  /* border:solid 1px black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.header .poster {
+  height: 300rpx;
+  border: solid 1px black;
+}
+
+.header .operation {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+.container .btn-help {
+  padding: 20rpx 200rpx;
+  background-color: red;
+  color: white;
+  font-size: 36rpx;
+  font-weight: bold;
+  border-radius: 30rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.bar-progress {
+  width: 482rpx;
+  height: 60rpx;
+  border: solid 1rpx black;
+  border-radius: 240rpx;
+  margin: 0 auto;
+}
+
+.line-inner {
+  height: 100%;
+  background-color: blue;
+  border-radius: 240rpx;
+}

@@ -1,25 +1,18 @@
-// pages/activityDetails/index.js
+// pages/participateActivities/index.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-       progressValue:'50%',
-    },
 
-    share(){
-      console.log(123)
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-      wx.showShareMenu({
-        withShareTicket: true,
-        menus: ['shareAppMessage', 'shareTimeline']
-      })
+
     },
 
     /**

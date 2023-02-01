@@ -1,0 +1,31 @@
+/* pages/activity/index.wxss */
+.wrap-40r{
+  width:670rpx;
+  margin:0 auto;
+}
+.wrap-60r{
+  width:630rpx;
+  margin:0 auto;
+}
+.title{
+  font-size:32rpx;
+  font-weight: bold;
+}
+.actvity{
+  height:100px;
+  border:solid 1px black;
+  padding:20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.mt-24r{
+  margin-top:24rpx;
+}
+.name{
+  font-size:48rpx;
+}
+.duration{
+  font-size:24rpx;
+}
