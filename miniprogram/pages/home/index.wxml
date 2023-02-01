@@ -62,13 +62,13 @@
   <view class="wrap flash-sale mt-30">
     <view class="flash-sale-header">
       <image class="icon-flash-sale ml-20" src="../../images/icon-flash sale.png" mode="" />
-      <view>
+      <view class="">
         更多
         <image class="icon-arrow mr-20" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=d218a185ae8fe67584539761e4623eed&t=1675235086" mode="" />
       </view>
     </view>
 
-    <scroll-view class="scroll-view_H mt-30" scroll-x="true" bindscroll="scroll" style="width: 100%">
+    <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
       <view wx:for="{{ flashSaleCommodity }}" wx:key="id" id="demo1" class="scroll-view-item_H">
         <view class="flash-sale-commodity">
           <image class="flash-sale-logo" src="{{ item.logo }}" mode="" />
@@ -87,7 +87,7 @@
   </view>
 <!-- 热销商品 -->
 <view>
-  
+
 </view>
 
 </view>
