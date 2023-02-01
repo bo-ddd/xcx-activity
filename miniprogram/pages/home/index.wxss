@@ -21,11 +21,12 @@
   height: 48rpx;
   margin: 30rpx;
 }
-/* .outer-layer{
+.outer-layer{
     height: 100vh;
     background: url(https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/b3b9eb166f05d35b95b2d3c996625ea.png?sign=c59c3df924daa0cda35a3798fc832d8b&t=1675169341);
     background-size: 100% 100%;
-} */
+    overflow-y: scroll;
+}
 .register{
   display: flex;
   align-items: center;
@@ -79,6 +80,8 @@
   align-items: center;
   justify-content: space-between;
   color: #A9997D;
+  background-color: white;
+  border-radius: 50rpx;
 }
 .notice{
   display: flex;
@@ -104,13 +107,16 @@
   justify-content: space-between;
   color: #959086;
   font-size: 30rpx;
+  padding: 20rpx 0;
+  background-image: linear-gradient(#FFF2D9,#FFF4E6, #FEFEFC);
+  border-radius: 20rpx 20rpx 0 0;
 }
 .flash-sale-logo{
-  width: 300rpx;
-  height: 350rpx;
+  width: 250rpx;
+  height: 300rpx;
 }
 .flash-sale-commodity{
-width: 300rpx;
+width: 250rpx;
 }
 .all-flash-purchases{
   display: flex;
@@ -124,6 +130,7 @@ width: 300rpx;
 /* 滚动布局 */
 .scroll-view_H{
   white-space: nowrap;
+  background-color: white;
 }
 .scroll-view-item_H{
   display: inline-block;
