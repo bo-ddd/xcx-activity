@@ -5,9 +5,93 @@ Page({
      * 页面的初始数据
      */
     data: {
+        userInfo: '',
+        activityList: [{
+                id: 1,
+                icon: '../../images/icon-activity.png',
+                lable: '发起的活动',
+                 name:'launchActivities'
+            },
+            {
+                id: 2,
+                icon: '../../images/icon-activity.png',
+                lable: '参与的活动',
+                name:'participateActivities'
 
+            },
+            {
+                id: 3,
+                icon: '../../images/icon-activity.png',
+                lable: '参与记录',
+                name:'activitRecord'
+
+            },
+        ],
+        mineList: [{
+                id: 1,
+                icon: '../../images/icon-Settle.png',
+                lable: '商家入驻',
+                arrowIcon: '../../images/icon-arrow_list.png',
+                name:'merchantRules'
+
+            },
+            {
+                id: 2,
+                icon: '../../images/icon-order.png',
+                lable: '审核列表',
+                arrowIcon: '../../images/icon-arrow_list.png',
+                name:'examineList'
+
+            },
+            {
+                id: 3,
+                icon: '../../images/icon-opinion.png',
+                lable: '投诉建议',
+                arrowIcon: '../../images/icon-arrow_list.png',
+                name:'suggest'
+
+            },
+
+        ]
     },
 
+    async getUserInfo() {
+        let {
+            getUserProfile,
+            getSetting,
+            openSetting
+        } = getApp();
+
+        await getSetting().then(async res => {
+            console.log(res.authSetting['scope.userInfo']);
+            if (res.authSetting['scope.userInfo']) {
+                let {
+                    userInfo
+                } = await getUserProfile('用于登录')
+                this.setData({
+                    userInfo,
+                    hasUserInfo: true
+                })
+            } else {
+                await openSetting()
+            }
+        }).catch(async err => {
+            await openSetting()
+        })
+    },
+
+    to(e) {
+        console.log(e);
+            wx.navigateTo({
+                url: '/pages/'+e.currentTarget.dataset.name+'/index'
+            })
+        
+    },
+    activeTo(e) {
+        wx.navigateTo({
+            url: '/pages/'+e.currentTarget.dataset.name+'/index'
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */

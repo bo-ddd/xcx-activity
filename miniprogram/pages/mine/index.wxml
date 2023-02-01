@@ -1,2 +1,35 @@
 <!--pages/mine/index.wxml-->
-<text>pages/mine/indeml</text>
+<view class="mine">
+<view class="header mb-30">
+<view class="userInfo wrap">
+    <image src="{{userInfo.avatarUrl}}" mode="" class="avatar mr-50" wx:if='{{userInfo.avatarUrl}}' />
+    <image src="../../images/icon-avatar.png" mode="" class="avatar mr-20" wx:else />
+    <text class="user" wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</text>
+    <text class="user" bindtap="getUserInfo" wx:else>用户登录</text>
+</view>
+ <view class="activity-center wrap">
+    <text class="title">活动中心</text>
+    <view class="activity mt-30">
+       <view class="activity-item" wx:for="{{activityList}}"  wx:key="id" bindtap="activeTo"  data-name="{{item.name}}">
+          <image src="{{item.icon}}" mode="" class="icon-min"/>
+          <view class="fs-28">{{item.lable}}</view>
+       </view>
+    </view>
+ </view>
+</view>
+<view class="banner">
+ banner图
+</view>
+<view class="mine-list wrap mb-20">
+    <view class="item" wx:for="{{mineList}}" wx:key="id" bindtap="to"  data-name="{{item.name}}">
+    <view class="item-left">
+      <image src="{{item.icon}}" mode="" class="icon-min mr-20"/>
+      <text class="fs-35">{{item.lable}}</text>
+    </view>
+      <image src="{{item.arrowIcon}}" mode="" class="icon-arrow icon-medule"/>
+    </view>
+</view>
+<view class="introduce wrap">
+————大多数人都爱使用的兑奖app—————
+</view>
+</view>

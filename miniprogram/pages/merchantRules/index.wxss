@@ -1,0 +1,27 @@
+/* pages/merchantRules/index.wxss */
+.rule {
+    background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-merchantrule.png?sign=15ce07d04f3b29fce96d2c2c56317722&t=1675245361');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flow-root
+}
+
+.rule .title {
+    font-size: 54rpx;
+    text-align: center;
+    margin-top: 16rpx;
+}
+
+.rule .next {
+    width: 90%;
+    margin: 28rpx auto;
+}
+
+.rule .content {
+    border: 1rpx solid black;
+    width: 90%;
+    height: 800rpx;
+    margin: 0 36rpx;
+    margin-top: 400rpx;
+}

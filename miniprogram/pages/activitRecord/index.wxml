@@ -1,0 +1,18 @@
+<!--pages/activitRecord/index.wxml-->
+<view class="activit-record">
+    <view class="wrap">
+        <view class="record-list wrap mb-20">
+            <view class="list-item" wx:for="{{recordList}}" wx:key="id">
+                <view class="item-left">
+                    <image src="../../images/icon-smill.png" mode="" class="icon-smill" />
+                    <text class="fs-35 ml-20">{{item.lable}}</text>
+                </view>
+                <view class="fs-35">{{item.date}}</view>
+            </view>
+
+        </view>
+  <view class="explain fs-25">
+       感谢您的参与，最终解释权归商家所有
+  </view>
+    </view>
+</view>

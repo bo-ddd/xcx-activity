@@ -1,1 +1,148 @@
 /* pages/home/index.wxss */
+.wrap{
+    width: 700rpx;
+    margin: 0 auto;
+}
+.ml-20{
+  margin-left: 20rpx;
+}
+.mr-20{
+  margin-right: 20rpx;
+}
+.mt-30{
+  margin-top: 30rpx;
+}
+.sort{
+  display: flex;
+  justify-content: flex-end;
+}
+.sort image{
+  width: 48rpx;
+  height: 48rpx;
+  margin: 30rpx;
+}
+.outer-layer{
+    height: 100vh;
+    background: url(https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/b3b9eb166f05d35b95b2d3c996625ea.png?sign=c59c3df924daa0cda35a3798fc832d8b&t=1675169341);
+    background-size: 100% 100%;
+    overflow-y: scroll;
+}
+.register{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.register-user{
+  display: flex;
+  align-items: center;
+}
+.register-userinfo{
+  max-width: 200rpx;
+  display: flex;
+  font-size: 30rpx;
+  font-weight: 700;
+  padding: 0 0 0 40rpx;
+  background-color: unset;
+}
+.register-user image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.icon-register-right image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.integral-outer-layer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 30rpx ;
+  height: 80rpx;
+  background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-bck-card.png?sign=576a7a10b0d66e522ee0821421c1081b&t=1675212604') no-repeat;
+  background-size: 100% 100%;
+  border-radius: 40rpx;
+  color: #553D1C;
+}
+.more{
+  display: flex;
+  align-items: center;
+  margin-right: 20rpx;
+}
+.icon-arrow{
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.notice-outer-layer{
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #A9997D;
+  background-color: white;
+  border-radius: 50rpx;
+}
+.notice{
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+.notice-content{
+  white-space:nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.icon-notice{
+  width: 100rpx;
+  height: 35rpx;
+}
+.icon-flash-sale{
+  width: 150rpx;
+  height: 40rpx;
+}
+.flash-sale-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #959086;
+  font-size: 30rpx;
+  padding: 20rpx 0;
+  background-image: linear-gradient(#FFF2D9,#FFF4E6, #FEFEFC);
+  border-radius: 20rpx 20rpx 0 0;
+}
+.flash-sale-logo{
+  width: 250rpx;
+  height: 300rpx;
+}
+.flash-sale-commodity{
+width: 250rpx;
+}
+.all-flash-purchases{
+  display: flex;
+}
+.flash-sale-title{
+  width: 100%;
+  white-space:nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* 滚动布局 */
+.scroll-view_H{
+  white-space: nowrap;
+  background-color: white;
+}
+.scroll-view-item_H{
+  display: inline-block;
+  padding: 0 20rpx;
+}
+
+
+.time-remaining{
+  color: black;
+  border: 1px solid #ccc;
+  padding: 2rpx;
+}
+.flash-sale-time{
+  font-size: 25rpx;
+}

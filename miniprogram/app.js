@@ -15,5 +15,45 @@ App({
     }
 
     this.globalData = {};
+    this.getUserProfile=function(desc){
+        return new Promise((resolve)=>{
+            wx.getUserProfile({
+                desc, // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+               async success (res) {
+                  console.log(res.userInfo);
+                  resolve(res)
+                }
+              })
+        })
+    };
+    this.getSetting=function(){
+        return new Promise((resolve)=> {
+            wx.getSetting({
+               async success (res) {
+                  resolve(res)
+                  // res.authSetting = {
+                  //   "scope.userInfo": true,
+                  //   "scope.userLocation": true
+                  // }
+                }
+              })
+           
+        })
+    };
+    this.openSetting=function(){
+        return new Promise((resolve,reject)=>{
+            wx.openSetting({
+               async success (res) {
+                resolve(res)
+                  // res.authSetting = {
+                  //   "scope.userInfo": true,
+                  //   "scope.userLocation": true
+                  // }
+                }
+             
+              })
+
+        })
+    }
   }
 });

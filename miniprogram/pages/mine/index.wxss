@@ -1,1 +1,76 @@
 /* pages/mine/index.wxss */
+
+
+
+.mine{
+ padding: 20rpx 0;
+  background-color: rgb(241, 241, 241);
+  height:100vh;
+  box-sizing: border-box;
+}
+.userInfo{
+    display: flex;
+    align-items: center;
+  background-color: #fff;
+  padding: 30rpx;
+  box-sizing: border-box;
+  border-radius: 30rpx 30rpx 0 0;
+  border-bottom: 1px solid rgb(243, 243, 243);
+}
+.avatar{
+    width: 110rpx;
+    height: 110rpx;
+    border-radius: 50rpx;
+}
+.user{
+     font-size: 35rpx;
+     font-weight: bold;
+}
+.activity-center{
+    background-color: #fff;
+  padding: 15rpx 15rpx;
+  box-sizing: border-box;
+  border-radius:0 0 30rpx 30rpx;
+
+}
+.title{
+    font-size: 35rpx;
+    font-weight: bold;
+}
+.activity{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.activity-item{
+    display: flex;
+    flex-direction: column;
+    gap: 10rpx 0;
+    align-items: center;
+}
+.banner{
+    padding: 40rpx;
+}
+.mine-list{
+    box-sizing: border-box;
+    border-radius: 30rpx;
+    background-color: #fff;
+    padding: 20rpx 30rpx;
+}
+.item{
+    width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 25rpx;
+     border-bottom: 1px solid rgb(233, 231, 231);
+     box-sizing: border-box;
+}
+.item-left{
+    display: flex;
+    align-items: center;
+}
+.introduce{
+   color: rgb(196, 195, 195);
+   font-size: 30rpx;
+}
