@@ -24,7 +24,7 @@
   </view>
 <!-- 积分剩余 -->
   <view class="wrap integral-outer-layer mt-30">
-    <view class="integral ml-20">
+    <view class="ml-20">
       您当前剩余积分为：xxx
     </view>
     <view class="more">
@@ -72,14 +72,15 @@
       <view wx:for="{{ flashSaleCommodity }}" wx:key="id" id="demo1" class="scroll-view-item_H">
         <view class="flash-sale-commodity">
           <image class="flash-sale-logo" src="{{ item.logo }}" mode="" />
-          <view class="flash-sale-title">
+          <view class="flash-sale-title mt-10">
             {{ item.title }}
           </view>
-          <view class="flash-sale-time">
+          <view class="flash-sale-time mt-10">
             剩xxx天<text class="time-remaining">23</text>:<text class="time-remaining">57</text>:<text class="time-remaining">31</text>
           </view>
-          <view class="flash-required-points">
-            {{ item.requiredPoints }}积分（抢购）
+          <view class="flash-required-points mt-10">
+            <text >{{ item.requiredPoints }}<text class="integral"> 积分</text></text>
+            <text class="snap-purchase">抢购</text>
           </view>
         </view>
       </view>
@@ -87,7 +88,7 @@
   </view>
 <!-- 热销商品 -->
 <view>
-
+111
 </view>
 
 </view>

@@ -22,7 +22,7 @@ Page({
             {
                 id: 3,
                 icon: '../../images/icon-activity.png',
-                lable: '参与记录',
+                lable: '抽奖记录',
                 name:'activitRecord'
 
             },
@@ -46,9 +46,9 @@ Page({
             {
                 id: 3,
                 icon: '../../images/icon-opinion.png',
-                lable: '投诉建议',
+                lable: '个人信息',
                 arrowIcon: '../../images/icon-arrow_list.png',
-                name:'suggest'
+                name:'userInfo'
 
             },
 
@@ -90,6 +90,11 @@ Page({
     activeTo(e) {
         wx.navigateTo({
             url: '/pages/'+e.currentTarget.dataset.name+'/index'
+        })
+    },
+    toHomePage(){
+        wx.switchTab({
+          url: '/pages/home/index',
         })
     },
     /**

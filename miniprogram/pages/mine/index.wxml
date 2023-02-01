@@ -1,11 +1,15 @@
 <!--pages/mine/index.wxml-->
 <view class="mine">
-<view class="header mb-30">
+<view class="header">
+<view class="box wrap">   
 <view class="userInfo wrap">
     <image src="{{userInfo.avatarUrl}}" mode="" class="avatar mr-50" wx:if='{{userInfo.avatarUrl}}' />
     <image src="../../images/icon-avatar.png" mode="" class="avatar mr-20" wx:else />
     <text class="user" wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</text>
     <text class="user" bindtap="getUserInfo" wx:else>用户登录</text>
+</view>
+<image src="../../images/icon-msg.png" mode="" class="icon-msg"/>
+
 </view>
  <view class="activity-center wrap">
     <text class="title">活动中心</text>
@@ -17,8 +21,8 @@
     </view>
  </view>
 </view>
-<view class="banner">
- banner图
+<view class="banner wrap" bindtap="toHomePage">
+<image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230201082143.png?sign=34e86ab284477afcb6def3062ac94eb5&t=1675250005" mode="" class="banner-p"/>
 </view>
 <view class="mine-list wrap mb-20">
     <view class="item" wx:for="{{mineList}}" wx:key="id" bindtap="to"  data-name="{{item.name}}">
