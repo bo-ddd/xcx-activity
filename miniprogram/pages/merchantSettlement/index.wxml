@@ -4,11 +4,11 @@
         <text>商铺入驻信息</text>
     </view>
     <form bindsubmit="formSubmit">
-        <view class="merchant-name mt30 mb30 ml20">
+        <view class="merchant-name mt30 mb30 wrap">
             <view class="label mt16 mb16 fs32 fwb">姓名</view>
             <input class="ipt" type="text" name="merchantName" placeholder="请输入您的姓名" />
         </view>
-        <view class="merchant-sex mt30 mb30 ml20">
+        <view class="merchant-sex mt30 mb30 wrap">
             <view class="label mt16 mb16 fs32 fwb">性别</view>
             <radio-group class="radio" bindchange="radioChange" name="merchantSex">
                 <label wx:for="{{radios}}" wx:key="{{item.value}}">
@@ -19,15 +19,15 @@
                 </label>
             </radio-group>
         </view>
-        <view class="merchant-phone mt30 mb30 ml20">
+        <view class="merchant-phone mt30 mb30 wrap">
             <view class="label mt16 mb16 fs32 fwb">手机号码</view>
             <input type="number" name="merchantPhone" placeholder="请输入您的手机号" />
         </view>
-        <view class="store-name mt30 mb30 ml20">
+        <view class="store-name mt30 mb30 wrap">
             <view class="label mt16 mb16 fs32 fwb">店铺名称</view>
             <input type="text" name="storeName" placeholder="请输入店铺名称" />
         </view>
-        <view class="store-class mt30 mb30 ml20">
+        <view class="store-class mt30 mb30 wrap">
             <view class="label mt16 mb16 fs32 fwb">经营分类</view>
             <!-- 下拉菜单 -->
             <view class="select">
@@ -44,7 +44,7 @@
             </view>
         </view>
         <view class="upload-license mt30 mb30">
-            <view class="label mt16 mb16 ml20 fwb">上传执照</view>
+            <view class="label mt16 mb16 ml20 fwb wrap">上传执照</view>
             <view class="license">
                 <image class="icon-license" src="../../images/icon-license.png" mode="" />
             </view>
