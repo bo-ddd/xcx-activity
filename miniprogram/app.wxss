@@ -3,6 +3,9 @@
     width: 690rpx;
     margin: 0 auto;
 }
+.ml-20{
+    margin-left: 20rpx;
+}
 .mr-20{
     margin-right: 20rpx;
 }
@@ -23,6 +26,9 @@
 }
 .mt-30{
     margin-top: 30rpx;
+}
+.fs-20{
+    font-size: 20rpx;
 }
 .fs-25{
     font-size: 25rpx;

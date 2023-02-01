@@ -10,7 +10,7 @@
  <view class="activity-center wrap">
     <text class="title">活动中心</text>
     <view class="activity mt-30">
-       <view class="activity-item" wx:for="{{activityList}}"  wx:key="id" bindtap="activeTo" data-name="launchActivities">
+       <view class="activity-item" wx:for="{{activityList}}"  wx:key="id" bindtap="activeTo"  data-name="{{item.name}}">
           <image src="{{item.icon}}" mode="" class="icon-min"/>
           <view class="fs-28">{{item.lable}}</view>
        </view>
@@ -21,7 +21,7 @@
  banner图
 </view>
 <view class="mine-list wrap mb-20">
-    <view class="item" wx:for="{{mineList}}" wx:key="id" bindtap="to"  data-name="merchantSettlement">
+    <view class="item" wx:for="{{mineList}}" wx:key="id" bindtap="to"  data-name="{{item.name}}">
     <view class="item-left">
       <image src="{{item.icon}}" mode="" class="icon-min mr-20"/>
       <text class="fs-35">{{item.lable}}</text>

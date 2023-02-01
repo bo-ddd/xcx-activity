@@ -10,16 +10,21 @@ Page({
                 id: 1,
                 icon: '../../images/icon-activity.png',
                 lable: '发起的活动',
+                 name:'launchActivities'
             },
             {
                 id: 2,
                 icon: '../../images/icon-activity.png',
                 lable: '参与的活动',
+                name:'participateActivities'
+
             },
             {
                 id: 3,
                 icon: '../../images/icon-activity.png',
                 lable: '参与记录',
+                name:'activitRecord'
+
             },
         ],
         mineList: [{
@@ -27,18 +32,24 @@ Page({
                 icon: '../../images/icon-Settle.png',
                 lable: '商家入驻',
                 arrowIcon: '../../images/icon-arrow_list.png',
+                name:'merchantRules'
+
             },
             {
                 id: 2,
                 icon: '../../images/icon-order.png',
                 lable: '审核列表',
                 arrowIcon: '../../images/icon-arrow_list.png',
+                name:'examineList'
+
             },
             {
                 id: 3,
                 icon: '../../images/icon-opinion.png',
                 lable: '投诉建议',
                 arrowIcon: '../../images/icon-arrow_list.png',
+                name:'suggest'
+
             },
 
         ]
