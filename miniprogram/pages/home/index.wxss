@@ -1,1 +1,98 @@
 /* pages/home/index.wxss */
+.wrap{
+    width: 700rpx;
+    margin: 0 auto;
+}
+.sort{
+  display: flex;
+  justify-content: flex-end;
+}
+.sort image{
+  width: 48rpx;
+  height: 48rpx;
+  margin: 30rpx;
+}
+/* .outer-layer{
+    height: 100vh;
+    background: url(https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/b3b9eb166f05d35b95b2d3c996625ea.png?sign=c59c3df924daa0cda35a3798fc832d8b&t=1675169341);
+    background-size: 100% 100%;
+} */
+.register{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.register-user{
+  display: flex;
+  align-items: center;
+}
+.register-userinfo{
+  max-width: 200rpx;
+  display: flex;
+  font-size: 30rpx;
+  font-weight: 700;
+  padding: 0 0 0 40rpx;
+  background-color: unset;
+}
+.register-user image{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+}
+.icon-register-right image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.integral-outer-layer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 30rpx ;
+  height: 80rpx;
+  background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-bck-card.png?sign=576a7a10b0d66e522ee0821421c1081b&t=1675212604') no-repeat;
+  background-size: 100% 100%;
+  border-radius: 40rpx;
+  color: #553D1C;
+  margin-top: 30rpx;
+}
+.integral{
+  margin-left: 20rpx;
+}
+.more{
+  display: flex;
+  align-items: center;
+  margin-right: 20rpx;
+}
+.icon-arrow{
+  width: 30rpx;
+  height: 30rpx;
+}
+.container{
+  margin-top: 30rpx;
+}
+.notice-outer-layer{
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #A9997D;
+
+}
+.notice{
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  margin-left: 20rpx;
+}
+.notice-content{
+  white-space:nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.icon-notice{
+  width: 80rpx;
+  height: 40rpx;
+}
+.icon-arrow{
+  margin: 0 20rpx;
+}

@@ -1,1 +1,43 @@
 /**app.wxss**/
+.wrap{
+    width: 690rpx;
+    margin: 0 auto;
+}
+.mr-20{
+    margin-right: 20rpx;
+}
+.mr-50{
+    margin-right: 50rpx;
+}
+.mb-20{
+    margin-bottom: 20rpx;
+}
+.mb-30{
+    margin-bottom: 30rpx;
+}
+.mtb-30{
+    margin: 30rpx 0;
+}
+.prl-15{
+    padding: 0 15rpx;
+}
+.mt-30{
+    margin-top: 30rpx;
+}
+.fs-25{
+    font-size: 25rpx;
+}
+.fs-28{
+    font-size: 28rpx;
+}
+.fs-35{
+    font-size: 35rpx;
+}
+.icon-min{
+    width: 40rpx;
+    height: 40rpx;
+}
+.icon-medule{
+    width: 28rpx;
+    height: 30rpx;
+}

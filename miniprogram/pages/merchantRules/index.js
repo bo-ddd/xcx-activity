@@ -1,37 +1,11 @@
-// pages/launchActivities/index.js
+// pages/merchantRules/index.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-    activitList:[
-        {
-           id:1,
-           lable:'消消乐哈哈',
-           state:'进行中...'
-        },
-        {
-           id:2,
-           lable:'消消乐哈哈',
-           state:'进行中...'
-        },
-        {
-           id:3,
-           lable:'消消乐哈哈',
-           state:'进行中...'
-        },
-        {
-           id:4,
-           lable:'消消乐哈哈',
-           state:'进行中...'
-        },
-        {
-           id:5,
-           lable:'消消乐哈哈',
-           state:'进行中...'
-        },
-    ]
+
     },
 
     /**

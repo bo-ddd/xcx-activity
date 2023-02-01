@@ -5,84 +5,81 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userInfo:'',
-        activityList:[
-            {
-                id:1,
-                icon:'../../images/活动.png',
-                lable:'发起的活动',
+        userInfo: '',
+        activityList: [{
+                id: 1,
+                icon: '../../images/icon-activity.png',
+                lable: '发起的活动',
             },
             {
-                id:2,
-                icon:'../../images/活动.png',
-                lable:'参与的活动',
+                id: 2,
+                icon: '../../images/icon-activity.png',
+                lable: '参与的活动',
             },
             {
-                id:3,
-                icon:'../../images/活动.png',
-                lable:'活动记录',
+                id: 3,
+                icon: '../../images/icon-activity.png',
+                lable: '参与记录',
             },
         ],
-      mineList:[
-       {
-           id:1,
-           icon:'../../images/icon-Settle.png',
-           lable:'商家入驻',
-           arrowIcon:'../../images/icon-arrow_list.png',
-       },
-       {
-           id:2,
-           icon:'../../images/icon-order.png',
-           lable:'审核列表',
-           arrowIcon:'../../images/icon-arrow_list.png',
-       },
-       {
-           id:3,
-           icon:'../../images/icon-opinion.png',
-           lable:'投诉建议',
-           arrowIcon:'../../images/icon-arrow_list.png',
-       },
+        mineList: [{
+                id: 1,
+                icon: '../../images/icon-Settle.png',
+                lable: '商家入驻',
+                arrowIcon: '../../images/icon-arrow_list.png',
+            },
+            {
+                id: 2,
+                icon: '../../images/icon-order.png',
+                lable: '审核列表',
+                arrowIcon: '../../images/icon-arrow_list.png',
+            },
+            {
+                id: 3,
+                icon: '../../images/icon-opinion.png',
+                lable: '投诉建议',
+                arrowIcon: '../../images/icon-arrow_list.png',
+            },
 
-      ]
+        ]
     },
-   async getUserInfo(){
-        let app=getApp()
-        let {userInfo}=await app.getUserInfo('用于登录')
-        this.setData({
-            userInfo: userInfo,
-            hasUserInfo: true
-          })
+
+    async getUserInfo() {
+        let {
+            getUserProfile,
+            getSetting,
+            openSetting
+        } = getApp();
+
+        await getSetting().then(async res => {
+            console.log(res.authSetting['scope.userInfo']);
+            if (res.authSetting['scope.userInfo']) {
+                let {
+                    userInfo
+                } = await getUserProfile('用于登录')
+                this.setData({
+                    userInfo,
+                    hasUserInfo: true
+                })
+            } else {
+                await openSetting()
+            }
+        }).catch(async err => {
+            await openSetting()
+        })
     },
-    to(e){
-       if(e.currentTarget.dataset.id ==1){
-          wx.navigateTo({
-            url: '/pages/merchantSettlement/index',
-          })
-       }else if(e.currentTarget.dataset.id ==2){
-        wx.navigateTo({
-            url: '/pages/examineList/index',
-          })
-       }else if(e.currentTarget.dataset.id ==3){
-        wx.navigateTo({
-            url: '/pages/suggest/index',
-          })
-       }
-    },
-    activeTo(e){
+
+    to(e) {
         console.log(e);
-        if(e.currentTarget.dataset.id ==1){
             wx.navigateTo({
-              url: '/pages/launchActivities/index',
+                url: '/pages/'+e.currentTarget.dataset.name+'/index'
             })
-         }else if(e.currentTarget.dataset.id ==2){
-          wx.navigateTo({
-              url: '/pages/participateActivities/index',
-            })
-         }else if(e.currentTarget.dataset.id ==3){
-          wx.navigateTo({
-              url: '/pages/activitRecord/index',
-            })
-         }
+        
+    },
+    activeTo(e) {
+        wx.navigateTo({
+            url: '/pages/'+e.currentTarget.dataset.name+'/index'
+        })
     },
     /**
      * 生命周期函数--监听页面加载
