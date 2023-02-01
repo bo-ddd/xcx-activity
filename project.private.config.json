@@ -65,6 +65,13 @@
                     "query": "id=1",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "入驻须知",
+                    "pathName": "pages/merchantRules/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }
