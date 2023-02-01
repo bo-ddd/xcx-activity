@@ -5,7 +5,10 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        radios: [
+            { value: '男', name: '男' },
+            { value: '女', name: '女'},
+        ],
     },
 
     /**
@@ -62,5 +65,15 @@ Page({
      */
     onShareAppMessage() {
 
+    },
+    // 单选框
+    radioChange(e) {
+        const items = this.data.radios
+        for (let i = 0; i < 2; i++) {
+            items[i].checked = items[i].value === e.detail.value
+        }
+        this.setData({
+            items
+        })
     }
 })
