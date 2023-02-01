@@ -1,1 +1,46 @@
 /* pages/launchActivities/index.wxss */
+.launch-activities{
+   padding:15rpx 0;
+   height:100vh;
+   box-sizing: border-box;
+   background-color: rgb(238, 232, 232);
+   /* background-image: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/111.png?sign=86b093c1685035221c2e945403e059c5&t=1675236568'); */
+   background-size: 100%;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+.title{
+    font-size:45rpx;
+    font-weight:bold;
+}
+ .activity-list{
+     display: flex;
+     align-items: center;
+    font-family: Arial;
+    font-size: 18rpx;
+    line-height: 30rpx;
+    border-radius: 20rpx;
+    font-weight: bold;
+    color: rgba(22, 22, 22, 0.61);
+    padding: 40rpx;
+
+    box-shadow:
+          inset #cf0526 0 0 0 5rpx,
+      inset #f02849 0 0 0 1rpx,
+      inset #e25f70 0 0 0 10rpx,
+      inset #d67474 0 0 0 11rpx,
+      inset #eb8898 0 0 0 16rpx,
+      inset #eca1ab 0 0 0 17rpx,
+      inset #f1c1c5 0 0 0 21rpx,
+      inset #f0dbdf 0 0 0 22rpx
+ }
+ .activity-text{
+     /* border: 1px solid red; */
+     padding: 20rpx;
+     /* background-color: rgb(240, 149, 156); */
+     /* background-image: url('../../images/bg-activy.png'); */
+     border-radius: 20rpx;
+ }

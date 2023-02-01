@@ -1,2 +1,21 @@
 <!--pages/launchActivities/index.wxml-->
-<text>pages/launchActivities/index.wxml</text>
+<view class="launch-activities">
+    <view class="wrap">
+        <view class="header  mb-20">
+            <view class="title">发起的活动</view>
+            <image src="../../images/icon-add.png" mode="" class="add-icon icon-min" />
+        </view>
+        <view class="activity-list mb-30" wx:for="{{activitList}}" wx:key='id'>
+            <image src="../../images/icon-star.png" mode="" class="icon-min" />
+            <view class="activity-text">
+                <view class="fs-35 mb-20">{{item.lable}}</view>
+                <view class="fs-28">{{item.state}} </view>
+            </view>
+        </view>
+       
+
+
+
+    </view>
+
+</view>

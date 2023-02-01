@@ -15,7 +15,9 @@
     "pages/suggest/index",
     "pages/launchActivities/index",
     "pages/participateActivities/index",
-    "pages/activitRecord/index"
+    "pages/activitRecord/index",
+    "pages/merchantRules/index", 
+    "pages/auditStatus/index"
     
   ],
   "tabBar": {
