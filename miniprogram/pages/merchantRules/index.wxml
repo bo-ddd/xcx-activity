@@ -1,2 +1,9 @@
 <!--pages/merchantRules/index.wxml-->
-<text>pages/merchantRules/index.wxml</text>
+<view class="rule">
+    <view class="content">
+    
+    </view>
+    <view>
+        <button class="next" type="primary">我已知晓，立即入驻</button>
+    </view>
+</view>

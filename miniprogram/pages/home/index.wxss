@@ -12,6 +12,9 @@
 .mt-30{
   margin-top: 30rpx;
 }
+.mt-10{
+  margin-top: 10rpx;
+}
 .sort{
   display: flex;
   justify-content: flex-end;
@@ -114,6 +117,7 @@
 .flash-sale-logo{
   width: 250rpx;
   height: 300rpx;
+
 }
 .flash-sale-commodity{
 width: 250rpx;
@@ -131,13 +135,12 @@ width: 250rpx;
 .scroll-view_H{
   white-space: nowrap;
   background-color: white;
+  border-radius: 0 0 20rpx 20rpx;
 }
 .scroll-view-item_H{
   display: inline-block;
-  padding: 0 20rpx;
+  padding: 20rpx;
 }
-
-
 .time-remaining{
   color: black;
   border: 1px solid #ccc;
@@ -145,4 +148,19 @@ width: 250rpx;
 }
 .flash-sale-time{
   font-size: 25rpx;
+}
+.flash-required-points{
+  color: red;
+}
+.integral{
+  font-size: 22rpx;
+}
+.snap-purchase{
+  font-size: 24rpx;
+  color: white;
+  display: inline-block;
+  padding: 10rpx 20rpx;
+  border-radius: 50rpx;
+  float: right;
+  background-image: linear-gradient(to left, #E1C082, #C99A51);
 }
