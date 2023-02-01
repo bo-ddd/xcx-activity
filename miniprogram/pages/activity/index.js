@@ -5,14 +5,58 @@ Page({
      * 页面的初始数据
      */
     data: {
+      activityList:[
+        {
+          id:1,
+          title:'活动一',
+          startTime:'2023.01.20',
+          endTime:'2023.02.01'
+        },
+        {
+         id:2,
+         title:'活动二',
+         startTime:'2023.01.20',
+         endTime:'2023.02.01'
+       },
+       {
+         id:3,
+         title:'活动三',
+         startTime:'2023.01.20',
+         endTime:'2023.02.01'
+       },
+       {
+        id:4,
+        title:'活动四',
+        startTime:'2023.01.20',
+        endTime:'2023.02.01'
+      },
+      {
+        id:5,
+        title:'活动五',
+        startTime:'2023.01.20',
+        endTime:'2023.02.01'
+      },
+      {
+        id:6,
+        title:'活动六',
+        startTime:'2023.01.20',
+        endTime:'2023.02.01'
+      }
+      ]
 
+    },
+
+    to(e){
+      wx.navigateTo({
+        url: '/pages/activityDetails/index?id=' + e.currentTarget.dataset.id,
+      })
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+       
     },
 
     /**
