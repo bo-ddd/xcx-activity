@@ -1,21 +1,21 @@
 <!-- 首页积分推荐 分类的维度 -->
 <!-- 在用户第一次进来的时候选择自己的喜好 根据喜好推荐商品 -->
 <!-- 如果没有你该推荐哪些东西 -->
-<view class="big-box">
+<view class="outer-layer">
 
 <view class="sort">
   <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/sort.png?sign=24d5002810349bed7515622b91f2113b&t=1675169637" mode=""/>
 </view>
 
-<view class="wrap register-big-box">
+<view class="wrap register">
 <view class="register-user">
     <image class="icon-register" wx:if="{{ userInfo.avatarUrl }}" src="{{ userInfo.avatarUrl }}" mode=""/>  
     <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/0.png?sign=06583c237e17872f3d74f83bb5d38238&t=1675169424" wx:else mode=""/>
 
-    <view class="register-userinof" wx:if="{{ userInfo.nickName }}">
+    <view class="register-userinfo" wx:if="{{ userInfo.nickName }}">
       {{ userInfo.nickName }}
     </view>
-    <button class="register-userinof" wx:else="" hover-class="none" type="fault" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录/注册</button>
+    <button class="register-userinfo" wx:else="" hover-class="none" type="fault" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录/注册</button>
 </view>
 
 <view class="icon-register-right">
@@ -23,16 +23,43 @@
 </view>
 </view>
 
-<view class="wrap integral-box">
-  <view class="my-integral">
+<view class="wrap integral-outer-layer">
+  <view class="integral">
     您当前剩余积分为：xxx
   </view>
-  <view class="more-box">
+  <view class="more">
     <view>
       查看更多
     </view>
-    <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=36ea68fd68e573dc094a6bbeba8918d4&t=1675213469" mode=""/>
+    <image class="icon-arrow" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=36ea68fd68e573dc094a6bbeba8918d4&t=1675213469" mode=""/>
   </view>
 </view>
+
+<view class="container">
+  <view class="page-body">
+    <view class="page-section page-section-spacing swiper">
+      <swiper indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item {{item}}"></view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+</view>
+
+<view class="wrap notice-outer-layer">
+  <view class="notice">
+    <image class="icon-notice" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=809fe6131c2298c6b0d529efa8e6f147&t=1675221942" mode=""/>
+    <view class="notice-content">
+      精选澳牛，周末特惠! 2件减200积分，3件减
+    </view>
+  </view>
+      <image class="icon-arrow" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=809fe6131c2298c6b0d529efa8e6f147&t=1675221942" mode=""/>
+</view>
+
+  
 
 </view>
