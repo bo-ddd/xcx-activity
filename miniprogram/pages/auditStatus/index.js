@@ -62,5 +62,10 @@ Page({
      */
     onShareAppMessage() {
 
+    },
+    tomine(){
+        wx.switchTab({
+          url: '/pages/mine/index',
+        })
     }
 })
