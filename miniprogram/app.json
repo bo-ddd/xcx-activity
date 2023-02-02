@@ -12,12 +12,12 @@
     "pages/merchantSettlement/index",
     "pages/examineList/index",
     "pages/examineDetails/index",
-    "pages/suggest/index",
     "pages/launchActivities/index",
     "pages/participateActivities/index",
     "pages/activitRecord/index",
     "pages/merchantRules/index", 
-    "pages/auditStatus/index"
+    "pages/auditStatus/index",
+    "pages/userInfo/index"
     
   ],
   "tabBar": {

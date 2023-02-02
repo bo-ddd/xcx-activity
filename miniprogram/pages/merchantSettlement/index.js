@@ -160,6 +160,8 @@ Page({
                 duration: 1000
             })
             return;
+        } else{
+            this.toAuditStatus()
         }
         this.setData({
             merchantName,
@@ -169,5 +171,9 @@ Page({
             storeClass
         })
     },
-
+    toAuditStatus(){
+        wx.navigateTo({
+          url: "/pages/auditStatus/index",
+        })
+    }
 })

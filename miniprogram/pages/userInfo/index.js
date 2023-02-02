@@ -1,4 +1,4 @@
-// pages/suggest/index.js
+// pages/userInfo/index.js
 Page({
 
     /**

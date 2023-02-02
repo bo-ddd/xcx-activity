@@ -19,9 +19,12 @@
 }
 
 .rule .content {
+    background-color: white;
     border: 1rpx solid black;
     width: 90%;
     height: 800rpx;
     margin: 0 36rpx;
     margin-top: 400rpx;
+    overflow: hidden;
+    overflow: scroll;
 }
