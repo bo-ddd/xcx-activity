@@ -1,63 +1,63 @@
 <!--pages/activityDetails/index.wxml-->
 <view class="main" style="background-image: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-activity.png?sign=4a1fabf8e22d4ca02ef06811572e40da&t=1675232557');">
-  <view class="header wrap-10r mt-120r">
-    <view class="shop-exchange" bindtap="to" data-name="home">
-      <image class="icon-shop" src="../../images/icon-shop.png" mode="" />
-      <view class="name">兑换商店</view>
+    <view class="header wrap-10r mt-120r">
+        <view class="shop-exchange" bindtap="to" data-name="home">
+            <image class="icon-shop" src="../../images/icon-shop.png" mode="" />
+            <view class="name">兑换商店</view>
+        </view>
+        <view class="banner">
+            <view class="poster"></view>
+        </view>
+        <view class="operation">
+            <view class="rule" bindtap="openActivityRule">
+                <image class="icon-rule" src="../../images/icon-rule.png" mode="" />
+                <view class="name">活动规则</view>
+            </view>
+            <view class="contact" bindtap="toContact">
+                <image class="icon-contact" src="../../images/icon-contact.png" mode="" />
+                <view class="name">联系商家</view>
+            </view>
+            <button class="style-clear share" type="default" open-type="share" bindshare="onShareAppMessage">
+                <image class="icon-share" src="../../images/icon-share.png" mode="" />
+                <view class="name">分享好友</view>
+            </button>
+        </view>
     </view>
-    <view class="banner">
-      <view class="poster"></view>
+    <view class="container mt-5 wrap-80r">
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#E8E8E8" indicator-active-color="white">
+            <block wx:for="{{background}}" wx:key="*this">
+                <swiper-item>
+                    <image class="img-prize" src="{{item}}"></image>
+                </swiper-item>
+            </block>
+        </swiper>
     </view>
-    <view class="operation">
-      <view class="rule" bindtap="openActivityRule">
-        <image class="icon-rule" src="../../images/icon-rule.png" mode="" />
-        <view class="name">活动规则</view>
-      </view>
-      <view class="contact" bindtap="toContact">
-        <image class="icon-contact" src="../../images/icon-contact.png" mode="" />
-        <view class="name">联系商家</view>
-      </view>
-      <view class="share">
-        <image class="icon-share" src="../../images/icon-share.png" mode="" />
-        <view class="name">分享好友</view>
-      </view>
+    <view class="footer mt-5 wrap-80r">
+        <view class="bar-progress">
+            <view class="value">{{progressValue}}</view>
+            <view class="line-inner" style="width:{{progressValue}}; background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-progress.png?sign=ab56b2a00ccbf391f1fa5a69de45492f&t=1675229019'),no-repeat,center;"></view>
+        </view>
+        <view class="btn-help mt-5" bindtap="onhelp">助力</view>
     </view>
-  </view>
-  <view class="container mt-70r wrap-80r">
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#E8E8E8" indicator-active-color="white">
-      <block wx:for="{{background}}" wx:key="*this">
-        <swiper-item>
-          <image class="img-prize" src="{{item}}"></image>
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
-  <view class="footer wrap-80r">
-    <view class="bar-progress">
-      <view class="value">{{progressValue}}</view>
-      <view class="line-inner" style="width:{{progressValue}}; background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-progress.png?sign=ab56b2a00ccbf391f1fa5a69de45492f&t=1675229019'),no-repeat,center;"></view>
-    </view>
-    <view class="btn-help mt-48r" bindtap="onhelp">助力</view>
-  </view>
-  <!-- 遮罩层 -->
-  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
-  <!-- 弹出层 -->
-  <view class="pop-rule" wx:if="{{showModal}}">
-    <image class="title-rule" src="../../images/icon-rule_title.png" mode="" />
-    <view class="close-btn" bindtap="back">
-      <image class="icon-close" src="../../images/icon-rule_close.png" mode="" />
-    </view>
-    <view class="content">
-      <view class="text-rule mt-48r">
-        <view>1、点击"助力"按钮，即可以为商家助力;</view>
-        <view>2、每个账号只能为商家助力一次;</view>
-        <view>3、本次活动日期为：2023年1月20日至2023年2月5日，截止日期后助力无效;</view>
-        <view>4、若发现某账号助力异常，或经他人举报并确认存在刷票行为，主办方有权取消参与资格;</view>
-        <view>5、同一人不可变更账号重复参加，已经发现取消助力资格，已助力置为无效状态;</view>
-        <view>6、本活动最终解释权归xxxx网络有限公司所有。</view>
-      </view>
-    </view>
+    <!-- 遮罩层 -->
+    <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+    <!-- 弹出层 -->
+    <view class="pop-rule" wx:if="{{showModal}}">
+        <image class="title-rule" src="../../images/icon-rule_title.png" mode="" />
+        <view class="close-btn" bindtap="back">
+            <image class="icon-close" src="../../images/icon-rule_close.png" mode="" />
+        </view>
+        <view class="content">
+            <view class="text-rule mt-48r">
+                <view>1、点击"助力"按钮，即可以为商家助力;</view>
+                <view>2、每个账号只能为商家助力一次;</view>
+                <view>3、本次活动日期为：2023年1月20日至2023年2月5日，截止日期后助力无效;</view>
+                <view>4、若发现某账号助力异常，或经他人举报并确认存在刷票行为，主办方有权取消参与资格;</view>
+                <view>5、同一人不可变更账号重复参加，已经发现取消助力资格，已助力置为无效状态;</view>
+                <view>6、本活动最终解释权归xxxx网络有限公司所有。</view>
+            </view>
+        </view>
 
 
-  </view>
+    </view>
 </view>
