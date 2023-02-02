@@ -47,6 +47,13 @@ Page({
     ]
 
   },
+
+  to(e){
+    wx.navigateTo({
+      url: '/pages/'+e.currentTarget.dataset.name+'/index',
+    })
+  },
+
   getUserInfo(res){
     this.setData({
       userInfo:res.detail.userInfo
