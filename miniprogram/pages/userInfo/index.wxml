@@ -1,2 +1,29 @@
 <!--pages/userInfo/index.wxml-->
-<text>pages/userInfo/index.wxml</text>
+<view class="main wrap">
+    <radio-group>
+        <view class="card-userinfo mt-24r" wx:for="{{userInfoList}}" wx:key="id">
+            <view class="userinfo">
+                <text class="username">{{item.username}}</text>
+                <text class="phone">{{item.phone}}</text>
+                <text class="address">{{item.address}}</text>
+            </view>
+            <view class="bar-bottom">
+                <view class="address-default">
+                    <radio checked="{{item.checkedStatus}}"/>
+                    <text class="text-address">设置默认地址</text>
+                </view>
+                <view class="operation">
+                    <view class="edit" bindtap="to" data-name="updateAddress" data-id="{{item.id}}">
+                        <image class="icon-edit" src="../../images/icon-edit.png" />
+                        <text class="text-edit">编辑</text>
+                    </view>
+                    <view class="delete" bindtap="toDelete" data-id="{{item.id}}">
+                        <image class="icon-delete" src="../../images/icon-delete.png" />
+                        <text class="text-delete">删除</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </radio-group>
+    <view class="btn-add mt-48r" bindtap="to" data-name="addAddress">添加新地址</view>
+</view>

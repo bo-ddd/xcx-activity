@@ -74,15 +74,15 @@
                     "scene": null
                 },
                 {
-                    "name": "审核状态",
-                    "pathName": "pages/auditStatus/index",
+                    "name": "",
+                    "pathName": "pages/userInfo/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "审核列表",
-                    "pathName": "pages/examineList/index",
+                    "name": "",
+                    "pathName": "pages/addAddress/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
