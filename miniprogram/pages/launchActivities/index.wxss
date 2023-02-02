@@ -9,9 +9,53 @@
 }
 
 .swiper-item {
-    /* height: 100vh; */
     overflow: scroll;
+    height: 100%;
+    padding: 30rpx 0;
+    box-sizing:border-box;
 }
+.actvity{ 
+    height:250rpx;
+    border-radius: 20rpx;
+    background-size: cover;
+    display: flex;
+}
+.actvity .flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actvity .duration {
+    font-size: 20rpx;
+    color: white;
+}
+
+.actvity .entry {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.actvity .btn-entry {
+    border: solid 1rpx white;
+    display: inline-block;
+    padding: 4rpx 10rpx;
+    font-size: 20rpx;
+    border-radius: 20rpx;
+    color: white;
+}
+
+.update{
+    padding: 15rpx;
+    height: 30rpx;
+    color: #ffff;
+    font-weight: bold;
+    border: 1px solid #fff;
+    border-radius: 20rpx;
+}
+
+
+
 
 .tab {
     float: left;
@@ -20,8 +64,7 @@
     padding: 10rpx 0;
 }
 
-.topTabSwiper {
-    border-top: 1px solid #ccc;
+.top-tab_swiper {
     border-bottom: 1px solid #ccc;
     zoom: 1;
     font-size: 30rpx;
@@ -35,27 +78,21 @@
     height: 200rpx;
 }
 
-.topTabSwiper:after {
+.top-tab_swiper:after {
     content: "";
     clear: both;
     display: block;
 }
 
-.tabBorer {
+.tab-borer {
     border-bottom: 1px solid #f00;
     color: #f00;
     height: 40rpx;
     font-size: 30rpx;
 }
 
-.swiper {
-    width: 100%;
-}
-
-.swiper_con {
+.swiper-con {
     text-align: center;
-    /* height: 100vh; */
-    /* padding: 30rpx 0; */
     box-sizing: border-box;
 }
 
@@ -90,7 +127,7 @@
 .input {
     width: 400rpx;
     height: 60rpx;
-    border: 1px solid rgb(201, 200, 200);
+    border-bottom: 1px solid rgb(201, 200, 200);
 }
 
 .textarea {
@@ -124,8 +161,12 @@
     display: flex;
     align-items: center;
 }
+.setting-lable{
+   width: 150rpx;
+}
 .prize-ipt{
-    border: 1px solid rgb(223, 222, 222);
+    border-bottom: 1px solid rgb(201, 200, 200);
+
 }
 .prize-right{
     display: grid;

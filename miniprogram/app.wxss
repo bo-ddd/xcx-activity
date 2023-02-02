@@ -115,3 +115,6 @@
 .color-blue{
     color: rgb(1, 1, 202);
 }
+.color-ccc{
+    color: rgb(68, 68, 68)
+}

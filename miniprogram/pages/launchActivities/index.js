@@ -32,6 +32,21 @@ Page({
            state:'进行中...'
         },
     ],
+    activityLimitList: [{
+        id: 1,
+        imgUrl:'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
+        
+      },
+      {
+        id: 2,
+        imgUrl:'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
+      },
+      {
+        id: 3,
+        imgUrl:'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
+      },
+     
+    ],
     currentData : 0,
     },
     
