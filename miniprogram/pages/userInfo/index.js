@@ -1,4 +1,4 @@
-// pages/merchantRules/index.js
+// pages/userInfo/index.js
 Page({
 
     /**
@@ -62,11 +62,5 @@ Page({
      */
     onShareAppMessage() {
 
-    },
-    // 跳转到填写商家入驻信息页面
-    toMerchantSettlement(){
-        wx.navigateTo({
-          url: "/pages/merchantSettlement/index",
-        })
     }
 })

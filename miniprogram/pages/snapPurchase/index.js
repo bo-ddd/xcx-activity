@@ -1,11 +1,12 @@
-// pages/suggest/index.js
+// pages/snapPurchase/index.js
+const app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+      currentIndex: 0, //默认是活动项
     },
 
     /**
@@ -14,7 +15,18 @@ Page({
     onLoad(options) {
 
     },
-
+    pagechange: function (e) {
+        this.setData({
+          currentIndex: e.detail.current,
+        })
+    },
+    //点击tab时触发
+    titleClick: function (e) {
+      this.setData({
+        //拿到当前索引并动态改变
+        currentIndex: e.currentTarget.dataset.idx
+      })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
