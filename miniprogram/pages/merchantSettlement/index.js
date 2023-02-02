@@ -59,8 +59,13 @@ Page({
             storeName: '',
             storeClass: '',
             uploadLicense: '',
-        }
-
+        },
+        // 上传的图片
+        tempFilePath: '',
+        // 上传图片的云ID
+        cloudId: '',
+        // 上传图片的真实链接
+        fileId: '',
 
     },
 
@@ -151,7 +156,7 @@ Page({
             merchantPhone,
             storeName,
             uploadLicense } = e.detail.value;
-            let  storeClass  = e.currentTarget.dataset.id
+        let storeClass = e.currentTarget.dataset.id
         if (!merchantName) {
             // && !merchantSex && !merchantPhone && !storeName && !storeClass
             wx.showToast({
@@ -160,7 +165,7 @@ Page({
                 duration: 1000
             })
             return;
-        } else{
+        } else {
             this.toAuditStatus()
         }
         this.setData({
@@ -171,9 +176,53 @@ Page({
             storeClass
         })
     },
-    toAuditStatus(){
+    toAuditStatus() {
         wx.navigateTo({
-          url: "/pages/auditStatus/index",
+            url: "/pages/auditStatus/index",
+        })
+    },
+    upload() {
+        let _this = this
+        wx.chooseMedia({
+            count: 1,
+            sizeType: ['original', 'compressed'],
+            sourceType: ['album', 'camera'],
+            success(res) {
+                // tempFilePath可以作为 img 标签的 src 属性显示图片
+                let tempFilePaths = res.tempFiles[0].tempFilePath
+                let that = _this
+                wx.cloud.uploadFile({
+                    cloudPath: 'merchant/' + new Date().toLocaleString() + '.png',
+                    filePath: tempFilePaths,
+                    config: {
+                        env: 'zliu-dev-4gclbljp64cb5cd3'
+                    },
+                    success(res) {
+                        that.setData({
+                            cloudId: res.fileID
+                        })
+                        getTempFileURL()
+                    }
+                })
+            }
+        })
+    },
+    // 获取图片真实链接
+    getTempFileURL() {
+        let _this = this
+        wx.cloud.getTempFileURL({
+            fileList: [{
+                fileID: this.cloudId
+            }],
+            success(res) {
+                console.log(res.fileList[0].tempFileURL);
+                _this.setData({
+                    fileId: res.fileList[0].tempFileURL
+                })
+            }
         })
     }
+
+
+
 })
