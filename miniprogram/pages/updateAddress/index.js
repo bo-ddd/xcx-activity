@@ -1,22 +1,18 @@
-// pages/merchantRules/index.js
+// pages/updateAddress/index.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        isTrue: true
+
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        setTimeout(() => {
-            this.setData({
-                isTrue: false
-            })
-        }, 3000)
+
     },
 
     /**
@@ -66,11 +62,5 @@ Page({
      */
     onShareAppMessage() {
 
-    },
-    // 跳转到填写商家入驻信息页面
-    toMerchantSettlement() {
-        wx.navigateTo({
-            url: "/pages/merchantSettlement/index",
-        })
     }
 })

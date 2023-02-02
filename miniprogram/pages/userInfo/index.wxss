@@ -1,1 +1,62 @@
 /* pages/userInfo/index.wxss */
+
+.card-userinfo{
+   border:solid 1px #d1cfcf;
+   border-radius:20rpx;
+}
+.card-userinfo .userinfo{
+    display: flex;
+    flex-direction: column;
+    gap:10rpx;
+    padding:20rpx;
+    font-size:28rpx;
+    border-bottom: solid 1rpx #d1cfcf;
+}
+
+.bar-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size:24rpx;
+    padding:10rpx 20rpx;
+}
+.bar-bottom .address-default{
+    display: flex;
+    align-items: center;
+}
+.bar-bottom .address-default radio{
+    transform:scale(0.7);
+}
+
+radio .wx-radio-input.wx-radio-input-checked{
+    border-color:#F0302F !important;
+    background:#F0302F !important;
+}
+
+.bar-bottom .operation{
+    display: flex;
+    gap:40rpx;
+    align-items: center;
+    
+}
+.bar-bottom .edit,
+.bar-bottom .delete{
+    display: flex;
+    gap:10rpx;
+    align-items: center;
+    flex-shrink: 0;
+    padding:6rpx;
+}
+.icon-edit,
+.icon-delete{
+    width:32rpx;
+    height:32rpx;
+}
+.btn-add{
+    padding:14rpx;
+    box-sizing: border-box;
+    background-color: #f00;
+    text-align: center;
+    color:white;
+    border-radius:20rpx;
+}

@@ -1,9 +1,24 @@
 <!--pages/merchantRules/index.wxml-->
 <view class="rule">
-    <view class="content">
-    
+    <view class="content  wrap">
+        <text decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲乙双方经过友好协商，在公平、诚实、信任、平等合作、互利互惠的基础上，本着为加快中国教育现代化、信息化发展步伐，共同促进教育事业，为广大学校提供优秀的软件产品及完善的售后服务为宗旨，就乙方作为甲方正式授权的金*维2000图书系列软件产品的代理事宜，达成如下协议。\n</text>
+
+        <text>一、授权区域和销售任务\n</text>
+
+        <text decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、甲方授权乙方为长沙市金*维科技有限公司金*维2000图书系列软件产品 地区的(普通代理 / 核心代理 / 总代理)。\n</text>
+        <text decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、甲方授权乙方为长沙市金*维科技有限公司金*维2000图书系列软件产品 地区的(普通代理 / 核心代理 / 总代理)。\n</text>
+        <text decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、甲方授权乙方为长沙市金*维科技有限公司金*维2000图书系列软件产品 地区的(普通代理 / 核心代理 / 总代理)。\n</text>
+        <text decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二、代理期限\n</text>
+
+
+        甲方授权乙方的代理期限为壹年，自 年 月 日至 年 月 日。如双方对合作满意，可于本合同到期前三个月，协商继续合作事宜。经协商，双方同意继续合作时，必须另行签定代理合同，另行签定合同时本合同自动失效。
+        二、代理期限
+
+        甲方授权乙方的代理期限为壹年，自 年 月 日至 年 月 日。如双方对合作满意，可于本合同到期前三个月，协商继续合作事宜。经协商，双方同意继续合作时，必须另行签定代理合同，另行签定合同时本合同自动失效。二、代理期限
+
+        甲方授权乙方的代理期限为壹年，自 年 月 日至 年 月 日。如双方对合作满意，可于本合同到期前三个月，协商继续合作事宜。经协商，双方同意继续合作时，必须另行签定代理合同，另行签定合同时本合同自动失效。
     </view>
     <view>
-        <button class="next" type="primary">我已知晓，立即入驻</button>
+        <button class="next" disabled="{{ isTrue }}" type="primary" bindtap="toMerchantSettlement">我已知晓，立即入驻</button>
     </view>
 </view>

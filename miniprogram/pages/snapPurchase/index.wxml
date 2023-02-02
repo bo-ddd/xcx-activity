@@ -1,0 +1,40 @@
+<!--限时抢购页面-->
+<view class="snap-purchase-outer">
+  <image class="banner-flash-sale" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/banner-flash-sale.jpg?sign=b26b60edb90f8ca0d5b960bab0a4470d&t=1675307145" mode=""/>
+
+  <view class="wrap">
+    <view class='navBox'>
+        <view class='titleBox' bindtap='titleClick' data-idx='0'>
+            <text class="{{0 == currentIndex ? 'fontColorBox' : ''}}">已结束</text>
+            <hr class="{{0 == currentIndex ? 'lineBox' : 'notLineBox'}}" />
+        </view>
+        
+        <view class='titleBox' bindtap='titleClick' data-idx='1'>
+            <text class="{{1 == currentIndex ? 'fontColorBox1' : ''}}">已开始</text>
+            <hr class="{{1 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
+        </view>
+
+        <view class='titleBox' bindtap='titleClick' data-idx='2'>
+            <text class="{{2 == currentIndex ? 'fontColorBox2' : ''}}">未开始</text>
+            <hr class="{{2 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
+        </view>
+    </view>
+    <!-- 内容布局 -->
+    <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
+        <swiper-item class='swiperTtemBox'>
+            <view>
+              a
+            </view>
+        </swiper-item>
+
+        <swiper-item class='swiperTtemBox'>
+            <view>活动内容</view>
+        </swiper-item>
+
+        <swiper-item class='swiperTtemBox'>
+            <view>活动内容</view>
+        </swiper-item>
+        
+    </swiper>
+  </view>
+</view>

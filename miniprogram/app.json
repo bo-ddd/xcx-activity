@@ -17,8 +17,10 @@
     "pages/activitRecord/index",
     "pages/merchantRules/index", 
     "pages/auditStatus/index",
-    "pages/userInfo/index"
-    
+    "pages/userInfo/index",
+    "pages/snapPurchase/index",
+    "pages/addAddress/index",
+    "pages/updateAddress/index"
   ],
   "tabBar": {
     "color":"#8a8a8a",

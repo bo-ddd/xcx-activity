@@ -7,9 +7,9 @@ Page({
     progressValue: '30%',
     showModal: false,
     background: [
-      '/images/icon-prize_001.png',
-      '/images/icon-prize_002.png',
-      '/images/icon-prize_003.png',
+      'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-prize_01.png?sign=8d30ac3a7e9887eee3f747352e1f5605&t=1675308888',
+      'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-prize_02.png?sign=8520afe547739e071c45519fb671d765&t=1675308908',
+      'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-prize_03.png?sign=35288a6f5c7c1aa09a8ee2d1672fb097&t=1675308917',
     ],
     indicatorDots: true,
     vertical: false,
@@ -49,6 +49,10 @@ Page({
     wx.switchTab({
       url: '/pages/' + e.currentTarget.dataset.name + '/index',
     })
+  },
+  //分享功能;
+  onShareAppMessage(e) {
+    console.log(e)
   },
   /**
    * 生命周期函数--监听页面加载

@@ -1,17 +1,17 @@
 <!--pages/merchantSettlement/index.wxml-->
 <view class="store-settlement">
-    <view class="title">
+    <view class="title fs-54">
         <text>商铺入驻信息</text>
     </view>
     <form bindsubmit="formSubmit">
-        <view class="merchant-name mt30 mb30 ml20">
-            <view class="label mt16 mb16 fs32 fwb">姓名</view>
+        <view class="merchant-name mt-30 wrap">
+            <view class="label mt-16 mb-16">姓名</view>
             <input class="ipt" type="text" name="merchantName" placeholder="请输入您的姓名" />
         </view>
-        <view class="merchant-sex mt30 mb30 ml20">
-            <view class="label mt16 mb16 fs32 fwb">性别</view>
+        <view class="merchant-sex mt-30 wrap">
+            <view class="label mt-16 mb-16">性别</view>
             <radio-group class="radio" bindchange="radioChange" name="merchantSex">
-                <label wx:for="{{radios}}" wx:key="{{item.value}}">
+                <label wx:for="{{radios}}" wx:key="value">
                     <view>
                         <radio value="{{item.value}}" checked="true" />
                         <text class="sex">{{item.name}}</text>
@@ -19,16 +19,16 @@
                 </label>
             </radio-group>
         </view>
-        <view class="merchant-phone mt30 mb30 ml20">
-            <view class="label mt16 mb16 fs32 fwb">手机号码</view>
+        <view class="merchant-phone mt-30 wrap">
+            <view class="label mt-16 mb-16">手机号码</view>
             <input type="number" name="merchantPhone" placeholder="请输入您的手机号" />
         </view>
-        <view class="store-name mt30 mb30 ml20">
-            <view class="label mt16 mb16 fs32 fwb">店铺名称</view>
+        <view class="store-name mt-30 wrap">
+            <view class="label mt-16 mb-16">店铺名称</view>
             <input type="text" name="storeName" placeholder="请输入店铺名称" />
         </view>
-        <view class="store-class mt30 mb30 ml20">
-            <view class="label mt16 mb16 fs32 fwb">经营分类</view>
+        <view class="store-class mt-30 wrap">
+            <view class="label mt-16 mb-16">经营分类</view>
             <!-- 下拉菜单 -->
             <view class="select">
                 <view class='select-item' bindtap='bindShowMsg'>
@@ -43,12 +43,13 @@
                 </view>
             </view>
         </view>
-        <view class="upload-license mt30 mb30">
-            <view class="label mt16 mb16 ml20 fwb">上传执照</view>
-            <view class="license">
-                <image class="icon-license" src="../../images/icon-license.png" mode="" />
+        <view class="upload-license mt-30 wrap">
+            <view class="label mt-16 mb-16 ">上传执照</view>
+            <view class="license" bindtap="upload">
+                <image class="icon-license" wx:if="{{ fileId }}" src="{{ fileId }}" mode="" />
+                <text class="tip">营业执照</text>
             </view>
-            <button class="submit mt16" type="primary" formType="submit">提交</button>
+            <button class="submit mt-30" type="primary" formType="submit">提交</button>
         </view>
     </form>
 

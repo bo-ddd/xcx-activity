@@ -1,24 +1,32 @@
-// pages/merchantRules/index.js
+// pages/snapPurchase/index.js
+const app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        isTrue: true
+      currentIndex: 0, //默认是活动项
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        setTimeout(() => {
-            this.setData({
-                isTrue: false
-            })
-        }, 3000)
-    },
 
+    },
+    pagechange: function (e) {
+        this.setData({
+          currentIndex: e.detail.current,
+        })
+    },
+    //点击tab时触发
+    titleClick: function (e) {
+      this.setData({
+        //拿到当前索引并动态改变
+        currentIndex: e.currentTarget.dataset.idx
+      })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -66,11 +74,5 @@ Page({
      */
     onShareAppMessage() {
 
-    },
-    // 跳转到填写商家入驻信息页面
-    toMerchantSettlement() {
-        wx.navigateTo({
-            url: "/pages/merchantSettlement/index",
-        })
     }
 })
