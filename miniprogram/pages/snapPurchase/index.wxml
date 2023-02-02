@@ -1,5 +1,20 @@
 <!--限时抢购页面-->
 <view class="snap-purchase-outer">
+
+
+<image class="activity-rules" bindtap="eject" src="../../images/ruleImg_special.png" mode=""/>
+<!-- 弹窗蒙版 -->
+<view class="model" catchtouchmove='preventTouchMove' wx:if='{{showModal}}'></view>
+<view class="modalDlg" catchtouchmove='preventTouchMove' wx:if='{{showModal}}'>
+  <view class='windowRow'>
+    <text class='userTitle'> <text class="notice">*</text> 活动须知</text>
+    <view class='back' bindtap='back'>返回</view>
+  </view>
+  <view style="width:100%" class='wishName'>
+  规则
+  </view>
+</view>
+
   <image class="banner-flash-sale" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/banner-flash-sale.jpg?sign=b26b60edb90f8ca0d5b960bab0a4470d&t=1675307145" mode=""/>
 
   <view class="wrap">
@@ -22,19 +37,83 @@
     <!-- 内容布局 -->
     <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
         <swiper-item class='swiperTtemBox'>
-            <view>
-              a
+            <view class="end-activity-title mb-30">
+                已结束商品
+            </view>
+            
+            <view class="end-activity-detail"  wx:for="{{ endCommodity }}"  wx:if="{{ item.states==0}}" wx:key="uid">
+                <view>
+                    <image class="end-activity-logo" src="{{ item.logo }}" mode=""/>
+                </view>
+                <view class="end-activity ml-20">
+                    <view class="end-activity-describe">
+                        {{item.title}}
+                    </view>
+                    <view class="end-activity-price">
+                        ￥{{ item.presentPrice }}
+                    </view>
+                    <view class="end-activity-before">
+                        原价￥{{item.originalPrice}}
+                        <view class="end-activity-closed mr-20" wx:if="{{ item.states==0}}">
+                            已结束
+                        </view>
+                    </view>
+                </view>
             </view>
         </swiper-item>
 
         <swiper-item class='swiperTtemBox'>
-            <view>活动内容</view>
+            <view class="end-activity-title mb-30">
+                现已开抢
+            </view>
+            
+            <view class="end-activity-detail"  wx:for="{{ endCommodity }}"  wx:if="{{ item.states==1}}" wx:key="uid">
+                <view>
+                    <image class="end-activity-logo" src="{{ item.logo }}" mode=""/>
+                </view>
+                <view class="end-activity ml-20">
+                    <view class="end-activity-describe">
+                        {{item.title}}
+                    </view>
+                    <view class="end-activity-price">
+                        ￥{{ item.presentPrice }}
+                    </view>
+                    <view class="end-activity-before">
+                        原价￥{{item.originalPrice}}
+                        <view class="end-activity-closed mr-20" wx:if="{{ item.states==1}}">
+                            已开始
+                        </view>
+                    </view>
+                </view>
+            </view>
         </swiper-item>
 
         <swiper-item class='swiperTtemBox'>
-            <view>活动内容</view>
+            <view class="end-activity-title mb-30">
+                即将开抢
+            </view>
+            
+            <view class="end-activity-detail"  wx:for="{{ endCommodity }}"  wx:if="{{ item.states==2}}" wx:key="uid">
+                <view>
+                    <image class="end-activity-logo" src="{{ item.logo }}" mode=""/>
+                </view>
+                <view class="end-activity ml-20">
+                    <view class="end-activity-describe">
+                        {{item.title}}
+                    </view>
+                    <view class="end-activity-price">
+                        ￥{{ item.presentPrice }}
+                    </view>
+                    <view class="end-activity-before">
+                        原价￥{{item.originalPrice}}
+                        <view class="end-activity-closed mr-20" wx:if="{{ item.states==2}}">
+                            即将开抢
+                        </view>
+                    </view>
+                </view>
+            </view>
         </swiper-item>
-        
+
     </swiper>
   </view>
 </view>
