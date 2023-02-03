@@ -27,7 +27,7 @@
     <view class="ml-20">
       您当前剩余积分为：xxx
     </view>
-    <view class="more">
+    <view class="more" bindtap="to" data-name="snapPurchase">
       <view>
         查看更多
       </view>
@@ -156,7 +156,7 @@
 
   </view>
 
-  <view class="see-more-btn mtb-30">
+  <view class="see-more-btn mtb-30" bindtap="to" data-name="snapPurchase">
     <view class="see-more">
       查看更多热门商品
       <image class="icon-arrow" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=bb5219ef3625a8a349516b6e0b635aa9&t=1675303217" mode=""/>
