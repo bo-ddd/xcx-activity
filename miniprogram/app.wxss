@@ -38,6 +38,9 @@
 .mr-20 {
     margin-right: 20rpx;
 }
+.mr-30 {
+    margin-right: 30rpx;
+}
 
 .mr-50 {
     margin-right: 50rpx;
@@ -52,6 +55,9 @@
 
 .mb-30 {
     margin-bottom: 30rpx;
+}
+.mb-40 {
+    margin-bottom: 40rpx;
 }
 
 .mtb-30 {
@@ -105,4 +111,13 @@
 
 .fw-b {
     font-weight: bold;
+}
+.color-blue{
+    color: rgb(1, 1, 202);
+}
+.color-ccc{
+    color: rgb(68, 68, 68)
+}
+.color-cc{
+    color: rgb(192, 189, 189)
 }

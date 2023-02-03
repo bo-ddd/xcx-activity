@@ -1,2 +1,6 @@
 <!--pages/auditStatus/index.wxml-->
-<text>pages/auditStatus/index.wxml</text>
+<view class="auditStatus wrap">
+    <view class="title mtb-30">您的资料已提交，预计3个工作日审核完成</view>
+    <view class="tip mtb-30">资料正在审核中......</view>
+    <view class="btn" bindtap="tomine">我知道了</view>
+</view>
