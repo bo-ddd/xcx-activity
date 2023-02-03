@@ -6,7 +6,7 @@
     height: 100%;
 }
 .red-bg{
-    height: 400rpx;
+    height: 450rpx;
     background: linear-gradient(to right bottom, rgb(243, 211, 211), #e64430);
     
 }
@@ -19,7 +19,7 @@
 }
 .pople{
     width: 350rpx;
-    height: 250rpx;
+    height: 300rpx;
    
 }
 .cloud{

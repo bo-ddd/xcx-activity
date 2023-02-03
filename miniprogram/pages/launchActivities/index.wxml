@@ -8,7 +8,7 @@
         <swiper-item class="swiper-item">
             <view class='swiper-con wrap'>
                 <view class="actvity wrap-60r mt-30" wx:for="{{activityLimitList}}" wx:key="id" style="background-image:url({{item.imgUrl}})">
-                    <view class="update">
+                    <view class="update" bindtap="updataTo">
                         <text>编辑活动</text>
                     </view>
                 </view>
@@ -129,7 +129,7 @@
                     </view>
                 </view>
             </view>
-            <button type="warn" plain="true" class="btn">创建活动</button>
+            <button type="warn" plain="true" class="btn" bindtap="to">创建活动</button>
         </swiper-item>
     </swiper>
 </view>

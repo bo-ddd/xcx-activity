@@ -45,6 +45,7 @@
     color: white;
 }
 
+
 .update{
     padding: 15rpx;
     height: 30rpx;

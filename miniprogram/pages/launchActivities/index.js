@@ -76,9 +76,17 @@ Page({
           })
         }
       },
+     to(){
+         wx.navigateTo({
+           url: '/pages/launchActivities/index',
+         })
+     },
     
-    
-
+     updataTo(){
+        wx.navigateTo({
+            url: '/pages/updataActivities/index',
+          })
+     },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
