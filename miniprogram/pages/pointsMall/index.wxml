@@ -1,0 +1,101 @@
+<view>
+    
+    <view class="my-points">
+
+        <view class="my-points-title">
+            我的积分
+        </view>
+
+            <view class="points">129837</view>
+            <view class="current-points-text">
+                当前积分
+        </view>
+    </view>
+
+    <view class="wrap">
+    <view class='navBox'>
+        <view class='titleBox' bindtap='titleClick' data-idx='0'>
+            <text class="{{0 == currentIndex ? 'fontColorBox' : ''}}">全部</text>
+            <hr class="{{0 == currentIndex ? 'lineBox' : 'notLineBox'}}" />
+        </view>
+        
+        <view class='titleBox' bindtap='titleClick' data-idx='1'>
+            <text class="{{1 == currentIndex ? 'fontColorBox1' : ''}}">支出</text>
+            <hr class="{{1 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
+        </view>
+
+        <view class='titleBox' bindtap='titleClick' data-idx='2'>
+            <text class="{{2 == currentIndex ? 'fontColorBox2' : ''}}">收入</text>
+            <hr class="{{2 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
+        </view>
+    </view>
+    <!-- 内容布局 -->
+    <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
+        <swiper-item class='swiperTtemBox'>
+            
+            <view class="end-activity-detail"  wx:for="{{ pointsDetails }}" wx:key="uid">
+                
+                <view class="detailed">
+                    <view class="detailed-content">
+                        {{ item.details }}
+                        <view class="detailed-time">
+                            {{ item.detailedTime }}
+                        </view>
+                    </view>
+                </view>
+               
+               <view class="income" wx:if="{{ item.states==0 }}">
+                   +{{item.total}}
+               </view>
+               <view class="expenditure" wx:if="{{ item.states==1 }}">
+                   -{{item.total}}
+               </view>
+
+            </view>
+        </swiper-item>
+
+        <swiper-item class='swiperTtemBox'>
+            <view class="end-activity-detail"   wx:for="{{ pointsDetails }}" wx:if="{{ item.states==0 }}" wx:key="uid">
+                
+                <view class="detailed">
+                    <view class="detailed-content">
+                        {{ item.details }}
+                        <view class="detailed-time">
+                            {{ item.detailedTime }}
+                        </view>
+                    </view>
+                </view>
+               
+               <view class="expenditure" wx:if="{{ item.states==0 }}">
+                   -{{item.total}}
+               </view>
+
+            </view>
+        </swiper-item>
+
+        <swiper-item class='swiperTtemBox'>
+            <view class="end-activity-detail" wx:for="{{ pointsDetails }}" wx:if="{{ item.states==0 }}" wx:key="uid">
+                
+                <view class="detailed">
+                    <view class="detailed-content">
+                        {{ item.details }}
+                        <view class="detailed-time">
+                            {{ item.detailedTime }}
+                        </view>
+                    </view>
+                </view>
+                <!-- quantity -->
+               <view class="income" wx:if="{{ item.states==0 }}">
+                   +{{item.total}}
+               </view>
+               <view class="expenditure" wx:if="{{ item.states==1 }}">
+                   -{{item.total}}
+               </view>
+
+            </view>
+        </swiper-item>
+
+    </swiper>
+  </view>
+
+</view>

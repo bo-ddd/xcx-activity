@@ -9,7 +9,7 @@
     flex-direction: column;
     gap:10rpx;
     padding:20rpx;
-    font-size:28rpx;
+    font-size:26rpx;
     border-bottom: solid 1rpx #d1cfcf;
 }
 
@@ -59,4 +59,5 @@ radio .wx-radio-input.wx-radio-input-checked{
     text-align: center;
     color:white;
     border-radius:20rpx;
+    font-size:26rpx;
 }

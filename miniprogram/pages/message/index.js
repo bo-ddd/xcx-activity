@@ -1,4 +1,4 @@
-// pages/addActivities/index.js
+// pages/message/index.js
 Page({
 
     /**

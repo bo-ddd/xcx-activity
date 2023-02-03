@@ -1,0 +1,30 @@
+<!--pages/entryProcess/index.wxml-->
+<view class="entry-box">
+
+    <view class="entry">
+        <view class="red-bg">
+            <view class="settle">
+                <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/merchant/K%5BRE)O1ZGB%25%5DKABPQ%7B%252%7B%40R.png?sign=6c62ae26de64227751991a267cfd459c&t=1675391737" mode="" class="pople mt-24r" />
+                <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/merchant/yun.png?sign=f1c9fd093f8339f2ed0c81305b2bf16f&t=1675390193" mode="" class="cloud" />
+            </view>
+
+            <view class="entry-modul" wx:for="{{settleList}}" wx:key="id">
+                <view class="entry-modul_item">
+                    <image src="{{item.icon}}" mode="" class="icon-p mr-20" />
+                    <text>{{item.text}} </text>
+                </view>
+            </view>
+            <view class="btn">
+            <view class="next-btn mt-24r" bindtap="nextTo">下一步</view>
+            
+            </view>
+
+
+
+        </view>
+
+
+
+    </view>
+
+</view>

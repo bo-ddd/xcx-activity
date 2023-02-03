@@ -6,7 +6,6 @@ Page({
      */
     data: {
         showModal: false,
-        name:'张三',
         currentIndex: 0, //默认是活动项
         endCommodity:[
           {

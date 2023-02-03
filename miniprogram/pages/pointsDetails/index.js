@@ -1,4 +1,4 @@
-// pages/addAddress/index.js
+// pages/pointsDetails/index.js
 Page({
 
     /**
@@ -6,18 +6,6 @@ Page({
      */
     data: {
 
-    },
-    back(e) {
-
-        //返回上一级页面;
-        wx.navigateBack({
-            delta: 1
-        })
-        wx.showToast({
-            title: '保存成功',
-            icon: 'success',
-            duration: 1000
-        })
     },
 
     /**

@@ -1,0 +1,105 @@
+/* pages/pointsMall/index.wxss */
+.my-points{
+    width: 100%;
+    height: 20vh;
+    background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-points-details.png?sign=b087e90120a56ed997d6abb32a2e2d43&t=1675392953')no-repeat;
+    background-size: 100% 100%;
+}
+.my-points-title{
+    color: white;
+    font-size: 30rpx;
+    display: flex;
+    justify-content: center;
+    padding-top: 30rpx;
+}
+.points{
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 50rpx;
+    font-weight: 700;
+    margin-top: 50rpx;
+}
+.current-points-text{
+    color: white;
+    font-size: 20rpx;
+    display: flex;
+    justify-content: center;
+}
+.fontColorBox,
+.fontColorBox1 {
+    /* 文字默认颜色 */
+    color: black;
+}
+
+.navBox {
+    /* 顶部tab盒子样式 */
+    width: 100%;
+    height: 108rpx;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.titleBox {
+    /* 未选中文字的样式 */
+    color: rgb(168, 170, 175);
+    font-size: 25rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lineBox,
+.notLineBox {
+    /* 选中及未选中底线共同样式 */
+    width: 32rpx;
+    height: 8rpx;
+}
+
+.lineBox {
+    /* 选中底线样式 */
+    background: red;
+    margin-top: 16rpx;
+    border-radius: 4rpx;
+}
+
+.notLineBox {
+    /* 未选中底线样式 */
+    background: transparent;
+}
+
+.swiperTtemBox {
+    /* 底部内容样式 */
+    height: calc(100vh - 30vh);
+    overflow: scroll;
+    margin: 12rpx 0rpx;
+    font-size: 28rpx;
+}
+.end-activity-detail{
+    padding: 20rpx;
+    border-bottom: 1rpx solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.detailed-time{
+    font-size: 20rpx;
+    color: #969696;
+    margin-top: 20rpx;
+}
+.detailed-content{
+    font-size: rpx;
+}
+.income{
+    color: red;
+}
+.expenditure{
+    color: #969696;
+}
+
+
+
+
+
