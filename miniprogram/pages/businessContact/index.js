@@ -15,12 +15,12 @@ function initData(that) {
     msgList = [{
             speaker: 'server',
             contentType: 'text',
-            content: '欢迎来到英雄联盟，敌军还有30秒到达战场，请做好准备！'
+            content: '您好！有什么问题我可以帮您处理或解决吗？'
         },
         {
             speaker: 'customer',
             contentType: 'text',
-            content: '我怕是走错片场了...'
+            content: '您好！'
         }
     ]
     that.setData({
@@ -28,15 +28,6 @@ function initData(that) {
         inputVal
     })
 }
-
-/**
- * 计算msg总高度
- */
-// function calScrollHeight(that, keyHeight) {
-//   var query = wx.createSelectorQuery();
-//   query.select('.scrollMsg').boundingClientRect(function(rect) {
-//   }).exec();
-// }
 
 Page({
 
@@ -122,8 +113,6 @@ Page({
             msgList,
             inputVal
         });
-
-
     },
     chooseImage() {
         wx.chooseMedia({
@@ -133,8 +122,9 @@ Page({
             maxDuration: 30,
             camera: 'back',
             success(res) {
-              console.log(res.tempFiles.tempFilePath)
-              console.log(res.tempFiles.size)
+                //调接口发送图片;
+              console.log(res.tempFiles[0].tempFilePath)
+              console.log(res.tempFiles[0].size)
             }
           })
     },
