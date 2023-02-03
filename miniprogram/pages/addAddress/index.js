@@ -7,6 +7,18 @@ Page({
     data: {
 
     },
+    back(e) {
+
+        //返回上一级页面;
+        wx.navigateBack({
+            delta: 1
+        })
+        wx.showToast({
+            title: '保存成功',
+            icon: 'success',
+            duration: 1000
+        })
+    },
 
     /**
      * 生命周期函数--监听页面加载

@@ -31,21 +31,39 @@ Page({
         })
 
     },
+    //删除按钮功能;
     toDelete(e) {
-        //调用删除接口;
-        // e.currentTarget.dataset.id;
+        wx.showModal({
+            cancelColor: 'cancelColor',
+            title: '提示',
+            content: '您确定要删除吗？',
+            success(res) {
+                if (res.confirm) {
+                    console.log('用户点击确定')
+                    //调用删除接口;
+                    // e.currentTarget.dataset.id;
+                    wx.showToast({
+                        title: '已删除',
+                        icon: 'success',
+                        duration: 1000
+                    })
+                } else if (res.cancel) {
+                    console.log('用户点击取消')
+                }
+            }
+        })
     },
     to(e) {
         if (e.currentTarget.dataset.id) {
             wx.navigateTo({
-                url: '/pages/' + e.currentTarget.dataset.name + '/index?id='+e.currentTarget.dataset.id
+                url: '/pages/' + e.currentTarget.dataset.name + '/index?id=' + e.currentTarget.dataset.id
             })
         }
         wx.navigateTo({
             url: '/pages/' + e.currentTarget.dataset.name + '/index'
         })
     },
-    
+
     onLoad(options) {
 
     },
