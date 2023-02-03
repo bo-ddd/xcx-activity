@@ -5,16 +5,51 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+      settleList:[
+          {
+             id:1,
+             text:'商家入驻首页',
+             icon:'../../images/icon-fang.png'
+          },
+          {
+             id:2,
+             text:'商家入驻首页',
+             icon:'../../images/icon-rule (2).png'
+          },
+          {
+             id:3,
+             text:'商家入驻首页',
+             icon:'../../images/icon-upload (2).png'
+          },
+          {
+             id:4,
+             text:'商家入驻首页',
+             icon:'../../images/icon-examine.png'
+          },
+          
+      ]
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        this.showLoading()
     },
-
+    showLoading(){
+        wx.showLoading({
+            title: '加载中',
+          })
+          
+          setTimeout(function () {
+            wx.hideLoading()
+          }, 500)
+    },
+    nextTo(){
+        wx.navigateTo({
+          url: '/pages/merchantRules/index',
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
