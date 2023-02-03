@@ -1,1 +1,22 @@
 /* pages/addAddress/index.wxss */
+.info-address{
+    font-size:26rpx;
+}
+.info-address .flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20rpx 10rpx;
+    border-bottom:solid 1rpx #d1cfcf;
+}
+.info-address .text{
+    width:78%;
+}
+.btn-submit{
+    padding:14rpx;
+    box-sizing: border-box;
+    background-color: #f00;
+    text-align: center;
+    color:white;
+    border-radius:20rpx;
+}
