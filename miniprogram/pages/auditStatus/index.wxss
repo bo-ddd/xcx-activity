@@ -1,1 +1,29 @@
 /* pages/auditStatus/index.wxss */
+.auditStatus {
+    padding-top: 500rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    font-size: 36rpx;
+    color: rgb(131, 120, 120);
+    text-align: center;
+}
+
+.tip {
+    font-size: 28rpx;
+    color: rgb(209, 209, 209);
+    text-align: center;
+}
+
+.btn {
+    background-color: rgb(100, 174, 238);
+    color: white;
+    border-radius: 50rpx;
+    width: 300rpx;
+    height: 100rpx;
+    text-align: center;
+    line-height: 100rpx;
+}

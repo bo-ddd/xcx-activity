@@ -7,7 +7,7 @@
     "pages/activity/index",
     "pages/activityDetails/index",
     "pages/mineActivity/index",
-    "pages/addActivities/index",
+    
     "pages/updataActivities/index",                               
     "pages/merchantSettlement/index",
     "pages/examineList/index",
