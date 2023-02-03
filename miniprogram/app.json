@@ -21,6 +21,8 @@
     "pages/snapPurchase/index",
     "pages/addAddress/index",
     "pages/updateAddress/index",
+    "pages/businessContact/index",
+    "pages/message/index",
     "pages/pointsDetails/index",
     "pages/pointsMall/index",
     "pages/entryProcess/index"
@@ -28,6 +30,7 @@
   "tabBar": {
     "color":"#8a8a8a",
     "selectedColor":"#e64430",
+    "borderStyle": "white",
     "list": [{
       "pagePath": "pages/home/index",
       "text": "首页",
