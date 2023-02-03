@@ -118,3 +118,6 @@
 .color-ccc{
     color: rgb(68, 68, 68)
 }
+.color-cc{
+    color: rgb(192, 189, 189)
+}
