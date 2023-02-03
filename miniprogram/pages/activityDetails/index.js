@@ -24,10 +24,7 @@ Page({
       showModal: true
     })
   },
-  //联系商家;
-  toContact(){
-     console.log('联系商家')
-  },
+
   // 禁止屏幕滚动;
   preventTouchMove: function () {},
 
@@ -46,7 +43,7 @@ Page({
   },
   //兑换商店-跳转页面;
   to(e) {
-    wx.switchTab({
+    wx.navigateTo({
       url: '/pages/' + e.currentTarget.dataset.name + '/index',
     })
   },

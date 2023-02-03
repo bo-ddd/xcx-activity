@@ -5,7 +5,72 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        currentIndex: 0,
+        pointsDetails:[
+            {
+                id:1,
+                details:'签到',
+                detailedTime:new Date().getFullYear(),
+                total:'101',
+                states:0
+            },
+            {
+              id:2,
+              details:'签到',
+              detailedTime:new Date().getFullYear(),
+              total:'102',
+              states:0
+          },
+          {
+              id:3,
+              details:'签到',
+              detailedTime:new Date().getFullYear(),
+              total:'103',
+              states:0
+          },
+          {
+              id:4,
+              details:'签到',
+              detailedTime:new Date().getFullYear(),
+              total:'104',
+              states:1
+          },
+          {
+              id:5,
+              details:'签到',
+              detailedTime:new Date().getFullYear(),
+              total:'105',
+              states:1
+          },
+          {
+              id:6,
+              details:'签到',
+              detailedTime:new Date().getFullYear(),
+              total:'107',
+              states:1
+          },
+          {
+              id:7,
+              details:'签到',
+              detailedTime:new Date().getFullYear(),
+              total:'106',
+              states:1
+          },
+          {
+              id:8,
+              details:'签到',
+              detailedTime:new Date().getFullYear(),
+              total:'109',
+              states:0
+          },
+          {
+              id:9,
+              details:'签到',
+              detailedTime:new Date().getFullYear(),
+              total:'108',
+              states:1
+          },
+        ]
     },
 
     /**
@@ -13,6 +78,18 @@ Page({
      */
     onLoad(options) {
 
+    },
+    pagechange: function (e) {
+        this.setData({
+          currentIndex: e.detail.current,
+        })
+    },
+    //点击tab时触发
+    titleClick: function (e) {
+      this.setData({
+        //拿到当前索引并动态改变
+        currentIndex: e.currentTarget.dataset.idx
+      })
     },
 
     /**
