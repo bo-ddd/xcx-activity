@@ -32,8 +32,11 @@
 }
 
 /* 设置选中项的底部边框 */
+.nav .nav-item{
+    border-bottom: 4rpx solid white; 
+}
 .nav .nav-item.current {
-    border-bottom: 4rpx solid;
+    border-bottom-color: #f00;
 }
 
 /* 设置选中项的文字颜色和大小 */
