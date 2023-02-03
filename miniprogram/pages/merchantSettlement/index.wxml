@@ -48,7 +48,7 @@
       <view class="license" bindtap="upload">
         <image class="icon-license" wx:if="{{ fileId }}" src="{{ fileId }}" mode="" />
       </view>
-      <button class="submit mt-30" type="default" formType="submit">提交</button>
+      <button class="submit mt-30" type="warn" formType="submit">提交</button>
     </view>
   </form>
 
