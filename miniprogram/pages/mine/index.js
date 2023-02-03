@@ -32,7 +32,7 @@ Page({
                 icon: '../../images/icon-Settle.png',
                 lable: '商家入驻',
                 arrowIcon: '../../images/icon-arrow_list.png',
-                name:'merchantRules'
+                name:'entryProcess'
 
             },
             {

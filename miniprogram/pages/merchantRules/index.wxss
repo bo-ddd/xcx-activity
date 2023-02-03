@@ -22,4 +22,5 @@
     margin-top: 400rpx;
     overflow: hidden;
     overflow: scroll;
+    padding: 10rpx;
 }
