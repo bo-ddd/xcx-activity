@@ -4,16 +4,21 @@
 }
 
 .examine-detail {
+    padding: 20rpx 0;
     height: 100%;
-    background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-examinedetails.png?sign=f41db87337c31c8a545734565a7a2c7f&t=1675394348');
-    background-size: 100% 100%;
+    /* background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-examinedetails.png?sign=f41db87337c31c8a545734565a7a2c7f&t=1675394348'); */
+    /* background-size: 100% 100%;
     background-repeat: no-repeat;
-    display: flow-root;
+    display: flow-root; */
+    display: flex;
+    flex-direction: column;
+    /* gap: 20rpx 0; */
+    box-sizing: border-box;
 }
 
-.store-name {
+/* .store-name {
     margin-top: 200rpx;
-}
+} */
 
 .label {
     font-weight: bold;
