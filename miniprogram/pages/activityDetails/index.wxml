@@ -13,7 +13,7 @@
                 <image class="icon-rule" src="../../images/icon-rule.png" mode="" />
                 <view class="name">活动规则</view>
             </view>
-            <view class="contact" bindtap="toContact">
+            <view class="contact" bindtap="to" data-name="businessContact" >
                 <image class="icon-contact" src="../../images/icon-contact.png" mode="" />
                 <view class="name">联系商家</view>
             </view>
