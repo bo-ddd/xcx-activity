@@ -1,37 +1,40 @@
 /* pages/examineList/index.wxss */
+.box {
+    height: 100vh;
+}
+
 .examine-list {
-  background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-examinelist.png?sign=d7a08be88bb511fad8631ed7092d3929&t=1675337390');
-  background-size: cover;
-  height: 100vh;
-  width: 100%;
-  display: flow-root;
+    background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-examinelist.png?sign=458d5baa89a790a04897653a089f8f2b&t=1675408498');
+    background-size: cover;
+    height: 100%;
+    display: flow-root;
 }
 
 .item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgb(236, 205, 101);
-  border-radius: 20rpx;
-  height: 200rpx;
-  box-shadow: 5rpx 5rpx 10rpx 1rpx rgb(46, 45, 45);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(236, 205, 101);
+    border-radius: 20rpx;
+    height: 200rpx;
+    box-shadow: 5rpx 5rpx 10rpx 1rpx rgb(46, 45, 45);
 }
 
 .item-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
 }
 
 .item-right {
-  width: 200rpx;
-  border: 1px solid white;
-  color: white;
-  height: 60rpx;
-  width: 120rpx;
-  text-align: center;
-  line-height: 60rpx;
-  border-radius: 50rpx;
-  margin-right: 16rpx;
+    width: 200rpx;
+    border: 1px solid white;
+    color: white;
+    height: 60rpx;
+    width: 120rpx;
+    text-align: center;
+    line-height: 60rpx;
+    border-radius: 50rpx;
+    margin-right: 16rpx;
 }
