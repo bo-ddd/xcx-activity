@@ -1,26 +1,29 @@
 /* pages/merchantRules/index.wxss */
-.rule {
-    background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-merchantrule.png?sign=15ce07d04f3b29fce96d2c2c56317722&t=1675245361');
-    background-size: cover;
-    background-repeat: no-repeat;
+.box{
     height: 100vh;
-    display: flow-root
+}
+.rule {
+    background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-merchantrules.png?sign=855c231cc1fa12adfd1fd7145b73eaf5&t=1675408597');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: flow-root;
+    box-sizing: border-box;
+    
 }
 
 .rule .next {
     width: 90%;
-    margin: 28rpx auto;
+    margin-top: 100rpx;
 }
 
 .rule .content {
-    background-color: white;
-    border: 1rpx solid black;
+    /* border: 1rpx solid black; */
     border-radius: 10rpx;
-    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-    width: 90%;
-    height: 800rpx;
-    margin-top: 400rpx;
+    height: 710rpx;
+    width: 674rpx;
+    margin-top: 228rpx;
     overflow: hidden;
     overflow: scroll;
-    padding: 10rpx;
+    padding: 0 10rpx;
 }
