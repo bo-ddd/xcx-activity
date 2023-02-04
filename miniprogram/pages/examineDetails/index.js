@@ -12,7 +12,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options);
+        this.showLoading()
     },
 
     /**
@@ -62,5 +62,36 @@ Page({
      */
     onShareAppMessage() {
 
-    }
+    },
+    refuse() {
+        wx.showActionSheet({
+            itemList: ['活动规则不符合', '商家标题涉嫌违规，请及时更改'],
+            success(res) {
+                console.log(res.tapIndex)
+            },
+            fail(res) {
+                console.log(res.errMsg)
+            }
+        })
+    },
+    pass() {
+        wx.showModal({
+            title: '提示',
+            content: '是否确认通过',
+            success(res) {
+                wx.navigateTo({
+                    url: '/pages/examineList/index',
+                })
+            }
+        })
+    },
+    showLoading() {
+        wx.showLoading({
+            title: '加载中',
+        })
+
+        setTimeout(function () {
+            wx.hideLoading()
+        }, 500)
+    },
 })
