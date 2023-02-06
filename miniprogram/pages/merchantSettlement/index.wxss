@@ -45,7 +45,7 @@
     height: 400rpx;
     line-height: 700rpx;
     border: 5rpx dashed black;
-    background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-upload.png?sign=ab9264b310fd791222b4f48bb0e1b588&t=1675302439');
+    background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-choice.png?sign=647490245fea4f0f5c212c6844bd6c4b&t=1675417159');
     background-repeat: no-repeat;
     background-position: center;
 }

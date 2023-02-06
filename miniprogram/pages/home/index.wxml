@@ -94,65 +94,21 @@
   </view>
   
   <view class="best-sellers-list">
-    <view class="best-sellers-item mt-30">
-      <image class="best-sellers-logo" src="../../images/icon-best-sellers.jpg" mode=""/>
+    <view class="best-sellers-item mt-30" wx:for="{{ hotCommodities }}">
+      <image class="best-sellers-logo" src="{{ item.images }}" mode=""/>
       <view class="best-sellers-detail">
-        全家一周出游，28寸纯PC斜纹拉链拉杆箱123132312213312
+        {{ item.title }}
       </view>
       <view class="best-sellers-need ml-20 mb-20">
-        <text>2100<text class="integral"> 积分</text></text>
+        <text>{{ item.integral }}<text class="integral"> 积分</text></text>
       </view>
     </view>
 
-    <view class="best-sellers-item mt-30">
-      <image class="best-sellers-logo" src="../../images/icon-best-sellers.jpg" mode=""/>
-      <view class="best-sellers-detail">
-        全家一周出游，28寸纯PC斜纹拉链拉杆箱123132312213312
-      </view>
-      <view class="best-sellers-need ml-20 mb-20">
-        <text>2100<text class="integral"> 积分</text></text>
-      </view>
-    </view>
+    
 
-    <view class="best-sellers-item mt-30">
-      <image class="best-sellers-logo" src="../../images/icon-best-sellers.jpg" mode=""/>
-      <view class="best-sellers-detail">
-        全家一周出游，28寸纯PC斜纹拉链拉杆箱123132312213312
-      </view>
-      <view class="best-sellers-need ml-20 mb-20">
-        <text>2100<text class="integral"> 积分</text></text>
-      </view>
-    </view>
 
-    <view class="best-sellers-item mt-30">
-      <image class="best-sellers-logo" src="../../images/icon-best-sellers.jpg" mode=""/>
-      <view class="best-sellers-detail">
-        全家一周出游，28寸纯PC斜纹拉链拉杆箱123132312213312
-      </view>
-      <view class="best-sellers-need ml-20 mb-20">
-        <text>2100<text class="integral"> 积分</text></text>
-      </view>
-    </view>
+   
 
-    <view class="best-sellers-item mt-30">
-      <image class="best-sellers-logo" src="../../images/icon-best-sellers.jpg" mode=""/>
-      <view class="best-sellers-detail">
-        全家一周出游，28寸纯PC斜纹拉链拉杆箱123132312213312
-      </view>
-      <view class="best-sellers-need ml-20 mb-20">
-        <text>2100<text class="integral"> 积分</text></text>
-      </view>
-    </view>
-
-    <view class="best-sellers-item mt-30">
-      <image class="best-sellers-logo" src="../../images/icon-best-sellers.jpg" mode=""/>
-      <view class="best-sellers-detail">
-        全家一周出游，28寸纯PC斜纹拉链拉杆箱123132312213312
-      </view>
-      <view class="best-sellers-need ml-20 mb-20">
-        <text>2100<text class="integral"> 积分</text></text>
-      </view>
-    </view>
 
   </view>
 

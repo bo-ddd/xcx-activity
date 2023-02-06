@@ -1,37 +1,60 @@
 <!--pages/examineDetails/index.wxml-->
 <view class="box">
-
-    <view class="examine-detail">
-        <view class="store-name wrap">
-            <view class="label mt-16 mb-16">商铺名称:</view>
-            <view>wulala</view>
-        </view>
-        <view class="store-class wrap">
-            <view class="label mt-16 mb-16">经营分类:</view>
+    <view class="title fs-54">
+        活动详情
+    </view>
+    <view class="examine-detail wrap">
+        <view class="item store-name">
+            <text class="label">商家名称:</text>
             <text>wulala</text>
         </view>
-        <view class="activity-name wrap">
-            <view class="label">活动名称:</view>
-            <text>wulala</text>
+        <view class="item activity-name">
+            <text class="label ">活动标题:</text>
+            <text>零元购</text>
         </view>
-        <view class="activity-class wrap">
-            <view class="label mt-16 mb-16">活动类型:</view>
-            <text>wulala</text>
+        <view class="item activity-date">
+            <text class="label">活动时间:</text>
+            <text>2023.2.4-2023.2.6</text>
         </view>
-        <view class="activity-date wrap">
-            <view class="label mt-16 mb-16">活动时间:</view>
-            <text>wulala</text>
+        <view class="item activity-class">
+            <text class="label">活动类型:</text>
+            <text>周期活动</text>
         </view>
-        <view class="upload-license mt-30 wrap">
-            <view class="label mb-20">营业执照</view>
+        <view class="prize">
+            <!-- <image class="picture" src="" mode="" /> -->
+            <view class="prize-info">
+                <view class="item">
+                    <text class="label">奖品名称:</text>
+                    <text>iphone14</text>
+                </view>
+                <view class="item mt-16">
+                    <text class="label">奖品数量:</text>
+                    <text>一部</text>
+                </view>
+                <view class="item mt-16">
+                    <text class="label">助力人数:</text>
+                    <text>200人</text>
+                </view>
+            </view>
+        </view>
+        <view class="upload-license">
+            <view class="label mb-20">活动图片:</view>
             <view class="license" bindtap="upload">
                 <image class="icon-license" wx:if="{{ fileId }}" src="{{ fileId }}" mode="" />
             </view>
         </view>
-        <view class="btn">
-            <button class="no" type="warn">拒绝</button>
-            <button class="yes" type="primary">通过</button>
+        <view class="active-rule">
+            <view class="label mb-20">活动规则:</view>
+            <view class="rule">
+                啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦来来来
+            </view>
         </view>
-    </view>
 
+    </view>
+    <view class="btn">
+        <view bindtap="refuse" class="refuse mt-24r">拒绝</view>
+        <view bindtap="pass" class="pass mt-24r">通过</view>
+        <!-- <button bindtap="no" class="no" type="warn">拒绝</button> -->
+        <!-- <button class="yes" type="primary">通过</button> -->
+    </view>
 </view>

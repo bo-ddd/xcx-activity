@@ -1,2 +1,129 @@
 <!--pages/pointsDetails/index.wxml-->
-<text>pages/pointsDetails/index.wxml</text>
+<view class="points-mall">
+    <scroll-view class="scroll-wrapper" scroll-x scroll-with-animation="true" scroll-into-view="item{{currentTab < 4 ? 0 : currentTab - 3}}">
+	<view class="navigate-item" id="item{{index}}" wx:for="{{taskList}}" wx:key="index" data-index="{{index}}" bindtap="handleClick">
+		<view class="names {{currentTab === index ? 'active' : ''}}">{{item.name}}</view>
+		<view class="currtline {{currentTab === index ? 'active' : ''}}"></view>
+	</view>
+</scroll-view>
+
+<swiper class="wrap" indicator-dots="{{false}}" bindchange="handleSwiper" current="{{currentTab}}">
+	<block>
+			<swiper-item  wx:for="{{taskList}}" wx:key="idx" style="overflow: scroll; ">
+				<scroll-view class="swiper-item" scroll-y refresher-enabled refresher-background="#F6F7F8" refresher-triggered="{{isRefresh}}" enable-flex="true"  bindrefresherrefresh="refresherpulling" bindscrolltolower="handleTolower">
+
+                    <view class="commodity-item mt-30" bindtap="details" data-uid="{{ item.id }}">
+                        <image class="commodity-logo" src="../../images/iphone.png" mode=""/>
+                        <view class="commodity-content">
+                            <view class="commodity-describe">每日一份超值福利</view>
+                            <view class="exchange">已有69人兑换</view>
+                            <view class="price">
+                                <view class="commodity-price">
+                                <view class="integral-logo">
+                                    <image class="integral" src="../../images/icon-integral.png" mode=""/>
+                                </view>
+                                <view class="quantity">
+                                    0元
+                                </view>
+                            </view>
+                            <view class="discount">
+                                折扣
+                            </view>
+                            </view>
+                               
+                        </view>
+                    </view>
+
+                    <view class="commodity-item mt-30"  bindtap="details" data-uid="{{ item.id }}">
+                        <image class="commodity-logo" src="../../images/iphone.png" mode=""/>
+                        <view class="commodity-content">
+                            <view class="commodity-describe">每日一份超值福利</view>
+                            <view class="exchange">已有69人兑换</view>
+                            <view class="price">
+                                <view class="commodity-price">
+                                <view class="integral-logo">
+                                    <image class="integral" src="../../images/icon-integral.png" mode=""/>
+                                </view>
+                                <view class="quantity">
+                                    0元
+                                </view>
+                            </view>
+                            <view class="discount">
+                                折扣
+                            </view>
+                            </view>
+                               
+                        </view>
+                    </view>
+
+                    <view class="commodity-item mt-30">
+                        <image class="commodity-logo" src="../../images/iphone.png" mode=""/>
+                        <view class="commodity-content">
+                            <view class="commodity-describe">每日一份超值福利</view>
+                            <view class="exchange">已有69人兑换</view>
+                            <view class="price">
+                                <view class="commodity-price">
+                                <view class="integral-logo">
+                                    <image class="integral" src="../../images/icon-integral.png" mode=""/>
+                                </view>
+                                <view class="quantity">
+                                    0元
+                                </view>
+                            </view>
+                            <view class="discount">
+                                折扣
+                            </view>
+                            </view>
+                               
+                        </view>
+                    </view>
+
+                    <view class="commodity-item mt-30">
+                        <image class="commodity-logo" src="../../images/iphone.png" mode=""/>
+                        <view class="commodity-content">
+                            <view class="commodity-describe">每日一份超值福利</view>
+                            <view class="exchange">已有69人兑换</view>
+                            <view class="price">
+                                <view class="commodity-price">
+                                <view class="integral-logo">
+                                    <image class="integral" src="../../images/icon-integral.png" mode=""/>
+                                </view>
+                                <view class="quantity">
+                                    0元
+                                </view>
+                            </view>
+                            <view class="discount">
+                                折扣
+                            </view>
+                            </view>
+                               
+                        </view>
+                    </view>
+
+                    <view class="commodity-item mt-30">
+                        <image class="commodity-logo" src="../../images/iphone.png" mode=""/>
+                        <view class="commodity-content">
+                            <view class="commodity-describe">每日一份超值福利</view>
+                            <view class="exchange">已有69人兑换</view>
+                            <view class="price">
+                                <view class="commodity-price">
+                                <view class="integral-logo">
+                                    <image class="integral" src="../../images/icon-integral.png" mode=""/>
+                                </view>
+                                <view class="quantity">
+                                    0元
+                                </view>
+                            </view>
+                            <view class="discount">
+                                折扣
+                            </view>
+                            </view>
+                               
+                        </view>
+                    </view>
+
+				</scroll-view>
+			</swiper-item>
+	</block>
+</swiper>
+</view>

@@ -1,0 +1,4 @@
+/* pages/productDetails/index.wxss */
+.bg-details{
+    width: 100%;
+}
