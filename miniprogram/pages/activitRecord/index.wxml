@@ -2,14 +2,14 @@
 <view class="activit-record">
     <view class="wrap">
         <view class="record-list wrap mb-20">
-            <view class="list-item" wx:for="{{recordList}}" wx:key="id">
+            <view class="list-item" wx:for="{{recordList}}" wx:key="_id">
                 <view class="item-left">
                     <image src="../../images/icon-smill.png" mode="" class="icon-smill" />
-                    <text class="fs-35 ml-20">{{item.lable}}</text>
+                    <text class="fs-28">{{item.activityName}}</text>
                 </view>
-                <view class="fs-35">{{item.date}}</view>
+                <view class="fs-28">{{item.date}}</view>
+                <view class="btn fs-25">去领取</view>
             </view>
-
         </view>
   <view class="explain fs-25">
        感谢您的参与，最终解释权归商家所有

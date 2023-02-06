@@ -1,0 +1,41 @@
+<!--pages/productDetails/index.wxml-->
+<view class="detail-outer-layer">
+    <image class="bg-details" src="../../images/icon-best-sellers.jpg" mode=""/>
+
+    <view class="product-details">
+        <view class="commodity-price">
+            ￥9.9
+        </view>
+
+        <view class="trade-name">
+            电动牙刷
+        </view>
+
+        <view class="product-introduction">
+            采用国际先进水平的等离子空气消毒机，利用(SPIC)超能离子发生器，瞬间激发兆亿级正负离子，可以高效地杀菌，等离子体灭菌消毒效果极强，而且作用时间短，是紫外线所远远不及的。
+        </view>
+
+        <view class="address">
+            <view class="address-laber">
+                自提地址
+            </view>
+            <view class="information ml-40">
+                埃斯库的hi跨世纪都i啊建瓯市asdasdkjhasjkdhaksjdhakjsh
+                <view>
+                    朱鑫鹏 15937160395
+                </view>
+            </view>
+        </view>
+
+    </view>
+</view>
+
+<view class="footer">
+<view class="shopping-cart">
+    购物车
+</view>   
+
+<view class="buy">
+    购买
+</view> 
+</view>

@@ -44,6 +44,44 @@ Page({
         timeRemaining:new Date(),
         requiredPoints:2100
       },
+    ],
+    hotCommodities:[
+        {
+            id:1,
+            images:'../../images/icon-best-sellers.jpg',
+            title:'alkasjhdkjashjdklasjdo;k',
+            integral:1234
+        },
+        {
+            id:2,
+            images:'../../images/icon-best-sellers.jpg',
+            title:'alkasjhdkjashjdklasjdo;k',
+            integral:1234
+        },
+        {
+            id:3,
+            images:'../../images/icon-best-sellers.jpg',
+            title:'alkasjhdkjashjdklasjdo;k',
+            integral:1234
+        },
+        {
+            id:4,
+            images:'../../images/icon-best-sellers.jpg',
+            title:'alkasjhdkjashjdklasjdo;k',
+            integral:1234
+        },
+        {
+            id:5,
+            images:'../../images/icon-best-sellers.jpg',
+            title:'alkasjhdkjashjdklasjdo;k',
+            integral:1234
+        },
+        {
+            id:6,
+            images:'../../images/icon-best-sellers.jpg',
+            title:'alkasjhdkjashjdklasjdo;k',
+            integral:1234
+        },
     ]
 
   },

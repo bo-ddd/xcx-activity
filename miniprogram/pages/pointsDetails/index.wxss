@@ -1,1 +1,102 @@
 /* pages/pointsDetails/index.wxss */
+.scroll-wrapper {
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    background: #FFF;
+    height: 90rpx;
+    padding: 0 32rpx;
+    box-sizing: border-box;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+  }
+  
+  .navigate-item {
+    display: inline-block;
+    text-align: center;
+    height: 90rpx;
+    line-height: 90rpx;
+    margin: 0 16rpx;
+  }
+  
+  .names {
+    font-size: 28rpx;
+    color: #3c3c3c;
+  }
+  
+  .names.active {
+    color: #E64430;
+    font-weight: bold;
+    font-size: 34rpx;
+  }
+  
+  .currtline {
+    margin: -8rpx auto 0 auto;
+    width: 100rpx;
+    height: 8rpx;
+    border-radius: 4rpx;
+  }
+  
+  .currtline.active {
+    background: #E64430;
+    transition: all .3s;
+  }
+  
+  swiper {
+    min-height: calc(100vh - 100rpx);
+  }
+  
+  .commodity-item{
+      width: 320rpx;
+      height: 500rpx;
+      background-color: white;
+      border-radius: 20rpx;
+  }
+  .commodity-content{
+      padding: 20rpx;
+  }
+  .commodity-logo{
+      width: 320rpx;
+      height: 300rpx;
+      border-radius: 20rpx 20rpx 0 0;
+  }
+  .commodity-price{
+    display: flex;
+    align-items: center;
+  }
+  .integral{
+      width: 50rpx;
+      height: 50rpx;
+  }
+  .commodity-describe{
+      font-weight: 700;
+  }
+  .exchange{
+      font-size: 22rpx;
+      margin: 10rpx 0;
+  }
+  .quantity{
+      color: red;
+  }
+.price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30rpx;
+}
+.swiper-item{
+    height: calc(100vh - 100rpx);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10rpx;
+    justify-content: space-between;
+    overflow: scroll;
+}
+  
+
+.points-mall{
+    background-color: #EFEFEF;
+  }

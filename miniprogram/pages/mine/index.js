@@ -51,7 +51,14 @@ Page({
                 name:'userInfo'
 
             },
+            {
+                id: 4,
+                icon: '../../images/icon-suggest.png',
+                lable: '反馈建议',
+                arrowIcon: '../../images/icon-arrow_list.png',
+                name:'opinion'
 
+            },
         ]
     },
 

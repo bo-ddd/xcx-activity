@@ -1,0 +1,35 @@
+<!--pages/addReceiver/index.wxml-->
+<view class="main wrap pt-20r">
+    <view class="form">
+        <view class="info-basic">
+            <view class="username flex ptb-20r">
+                <view class="title">提货人</view>
+                <input class="text" type="text" bindinput="bindUsernameInput" placeholder="请输入姓名(必填)" maxlength="16" />
+                <!-- <image class="img-clean" src="../../images/icon-rule_close.png"></image> -->
+            </view>
+            <view class="phone flex ptb-20r">
+                <view class="title">手机号</view>
+                <input class="text" type="text" bindinput="bindPhoneInput" placeholder="请输入手机号(必填)" maxlength="11" />
+            </view>
+        </view>
+        <view class="info-optional mt-24r">
+            <view class="label">
+                <view class="title">标签</view>
+                <view class="content">
+                    <input class="text" type="text" value="{{labelInputValue}}" placeholder="请输入标签，最多10个字" maxlength="10" bindinput="bindLabelInput" />
+                    <view class="type-label">
+                        <view class="text-label {{labelInputValue==item.text? 'selectedColor':'unselectedColor'}}" bindtap="selectLabel" data-text="{{item.text}}" wx:for="{{labelList}}" wx:key="id">{{item.text}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="set">
+                <view class="text">
+                    <text class="top">设为默认提货人</text>
+                    <text class="bottom fs-26">每次下单会默认会使用该提货人</text>
+                </view>
+                <switch class="switch" checked="{{switchChecked}}" bindchange="switchChange" color="#f00"></switch>
+            </view>
+        </view>
+    </view>
+    <view class="btn-submit mt-24r" bindtap="submit">保存</view>
+</view>
