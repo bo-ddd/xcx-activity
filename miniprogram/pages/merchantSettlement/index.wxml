@@ -1,56 +1,58 @@
 <!--pages/merchantSettlement/index.wxml-->
 <view class="box">
-    <view class="store-settlement">
-        <view class="title fs-54">
-            <image class="img" src="../../images/icon-merchantsettlement.png" mode="" />
-        </view>
-        <form bindsubmit="formSubmit">
-            <view class="merchant-name mt-30 wrap">
-                <view class="label mb-16">姓名</view>
-                <input class="ipt" type="text" name="merchantName" placeholder="请输入您的姓名" />
+    <view class="info">
+        <view class="store-settlement">
+            <view class="title fs-54">
+                <image class="img" src="../../images/icon-merchantsettlement.png" mode="" />
             </view>
-            <view class="merchant-sex mt-30 wrap">
-                <view class="label mt-16 mb-16">性别</view>
-                <radio-group class="radio" bindchange="radioChange" name="merchantSex">
-                    <label wx:for="{{radios}}" wx:key="value">
-                        <view>
-                            <radio value="{{item.value}}" checked="true" />
-                            <text class="sex">{{item.name}}</text>
-                        </view>
-                    </label>
-                </radio-group>
-            </view>
-            <view class="merchant-phone mt-30 wrap">
-                <view class="label mt-16 mb-16">手机号码</view>
-                <input type="number" name="merchantPhone" placeholder="请输入您的手机号" />
-            </view>
-            <view class="store-name mt-30 wrap">
-                <view class="label mt-16 mb-16">店铺名称</view>
-                <input type="text" name="storeName" placeholder="请输入店铺名称" />
-            </view>
-            <view class="store-class mt-30 wrap">
-                <view class="label mt-16 mb-16">经营分类</view>
-                <!-- 下拉菜单 -->
-                <view class="select">
-                    <view class='select-item' bindtap='bindShowMsg'>
-                        <text>{{selectItem.grade_name}}</text>
-                        <image class="arrow-bottom" src='../../images/icon-arrow_bottom.png' style="{{select?'transform:rotateZ(180deg)':''}}"></image>
-                        <!-- 下拉需要显示的列表 -->
-                        <view class="items" wx:if="{{select}}">
-                            <view wx:for="{{selectItem.grades}}" wx:key="id">
-                                <view class="item" catchtap="mySelect" data-storeclass="{{ item.id }}" data-name="{{item.className}}">{{item.className}}</view>
+            <form bindsubmit="formSubmit">
+                <view class="merchant-name wrap">
+                    <view class="label">姓名</view>
+                    <input class="ipt" type="text" name="merchantName" placeholder="请输入您的姓名" />
+                </view>
+                <view class="merchant-sex mt-30 wrap">
+                    <view class="label mb-16">性别</view>
+                    <radio-group class="radio" bindchange="radioChange" name="merchantSex">
+                        <label wx:for="{{radios}}" wx:key="value">
+                            <view>
+                                <radio value="{{item.value}}" checked="true" />
+                                <text class="sex">{{item.name}}</text>
+                            </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="merchant-phone wrap">
+                    <view class="label mt-16 mb-16">手机号码</view>
+                    <input type="number" name="merchantPhone" placeholder="请输入您的手机号" />
+                </view>
+                <view class="store-name wrap">
+                    <view class="label mt-16 mb-16">店铺名称</view>
+                    <input type="text" name="storeName" placeholder="请输入店铺名称" />
+                </view>
+                <view class="store-class wrap">
+                    <view class="label mt-16 mb-16">经营分类</view>
+                    <!-- 下拉菜单 -->
+                    <view class="select">
+                        <view class='select-item' bindtap='bindShowMsg'>
+                            <text>{{selectItem.grade_name}}</text>
+                            <image class="arrow-bottom" src='../../images/icon-arrow_bottom.png' style="{{select?'transform:rotateZ(180deg)':''}}"></image>
+                            <!-- 下拉需要显示的列表 -->
+                            <view class="items" wx:if="{{select}}">
+                                <view wx:for="{{selectItem.grades}}" wx:key="id">
+                                    <view class="item" catchtap="mySelect" data-storeclass="{{ item.id }}" data-name="{{item.className}}">{{item.className}}</view>
+                                </view>
                             </view>
                         </view>
                     </view>
                 </view>
-            </view>
-            <view class="upload-license mt-30 wrap">
-                <view class="label mt-16 mb-16 ">上传营业执照</view>
-                <view class="license" bindtap="upload">
-                    <image class="icon-license" wx:if="{{ fileId }}" src="{{ fileId }}" data-license="{{ fileId }}" mode="" />
+                <view class="upload-license wrap">
+                    <view class="label mb-16 ">上传营业执照</view>
+                    <view class="license" bindtap="upload">
+                        <image class="icon-license" wx:if="{{ fileId }}" src="{{ fileId }}" data-license="{{ fileId }}" mode="" />
+                    </view>
+                    <button class="submit mt-16" type="primary" formType="submit">提交</button>
                 </view>
-                <button class="submit mt-30" type="primary" formType="submit">提交</button>
-            </view>
-        </form>
+            </form>
+        </view>
     </view>
 </view>

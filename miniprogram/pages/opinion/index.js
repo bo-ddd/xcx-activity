@@ -5,16 +5,35 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        textareaValue: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        this.showLoading();
 
     },
+    showLoading() {
+        wx.showLoading({
+            title: '加载中',
+        })
 
+        setTimeout(function () {
+            wx.hideLoading()
+        }, 500)
+    },
+    getTextarea(e) {
+        //    console.log(e.detail.value);
+        this.setData({
+            textareaValue: e.detail.value
+        })
+        console.log(this.data.textareaValue); //文本框的值
+    },
+    getSuggest() {
+        // 调接口 传给后端
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

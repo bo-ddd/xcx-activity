@@ -28,17 +28,16 @@
                             <image src="../../images/icon-red.png" mode="" class="icon-min" />
                             <view class="lable">活动图片：</view>
                         </view>
-                        <view class="poster">
+                        <view class="poster" bindtap="upload">
                             <image src="../../images/icon-add_activit.png" mode="" class="poster-icon" />
                             <view class="color-cc"> 请上传活动图片，图片支持jpg、gif、png格式</view>
                         </view>
-                        <!-- <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" /> -->
                     </view>
                     <view class="page-lable">
                         <image src="../../images/icon-red.png" mode="" class="icon-min" />
 
                         <view class="lable">商家名称：</view>
-                        <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" />
+                        <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" name=""/>
                     </view>
                     <view class="page-lable">
                         <image src="../../images/icon-red.png" mode="" class="icon-min" />
