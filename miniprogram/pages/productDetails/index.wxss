@@ -1,4 +1,49 @@
 /* pages/productDetails/index.wxss */
-.bg-details{
+.detail-outer-layer {
+    background-color: #EFEFEF;
+    /* height: 100vh; */
+}
+
+.bg-details {
     width: 100%;
+    height: 40vh;
+}
+
+.product-details {
+    border-radius: 50rpx 50rpx 0 0;
+    background-color: white;
+    padding: 0 60rpx;
+}
+
+.commodity-price {
+    font-size: 50rpx;
+    font-weight: 700;
+    color: #E64430;
+}
+
+.trade-name {
+    font-size: 40rpx;
+    font-weight: 700;
+}
+
+.product-introduction {
+    font-size: 24rpx;
+    color: #969696;
+}
+
+.address-laber {
+    width: 140rpx;
+    font-weight: 700;
+}
+
+.information {
+    font-size: 24rpx;
+    color: #969696;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap
+}
+
+.address {
+    display: flex;
 }
