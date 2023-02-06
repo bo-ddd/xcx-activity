@@ -1,0 +1,19 @@
+<!--pages/receiverList/index.wxml-->
+<view class="main wrap pt-20r">
+    <radio-group class="list-info" bindchange="bandleChange">
+        <view class="card-info" wx:for="{{receiverList}}" wx:key="id">
+            <radio class="radio" color="red" checked="{{item.checkedStatus}}">
+                <view class="userinfo ml-20r">
+                    <text>{{item.username}}</text>
+                    <text>{{item.phone}}</text>
+                </view>
+            </radio>
+            <view class="btn-edit">
+                编辑
+            </view>
+        </view>
+    </radio-group>
+    <view class="btn-add mt-24r" bindtap="to" data-name="addReceiver">
+        添加收货人
+    </view>
+</view>

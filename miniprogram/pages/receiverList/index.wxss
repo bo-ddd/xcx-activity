@@ -1,0 +1,52 @@
+/* pages/receiverList/index.wxss */
+.pt-20r {
+    padding-top: 20rpx;
+}
+.ml-20r{
+    margin-left: 20rpx;
+}
+page {
+    background-color: #F5F6F8;
+}
+
+.list-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20rpx;
+}
+
+.card-info {
+    padding: 20rpx 20rpx 20rpx 0;
+    background-color: white;
+    border-radius:20rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-info .radio{
+    transform: scale(80%);
+}
+
+.card-info .userinfo {
+    display: flex;
+    flex-direction: column;
+    gap: 10rpx;
+    font-size: 36rpx;
+}
+
+.card-info .btn-edit{
+    font-size:26rpx;
+    color: #868688;
+}
+
+.main .btn-add{
+    padding:20rpx;
+    box-sizing: border-box;
+    background-color: #f00;
+    text-align: center;
+    color:white;
+    border-radius:20rpx;
+    font-size:28rpx;
+}
+
