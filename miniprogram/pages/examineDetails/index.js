@@ -63,17 +63,16 @@ Page({
     onShareAppMessage() {
 
     },
+    // 审核不通过
     refuse() {
         wx.showActionSheet({
             itemList: ['活动规则不符合', '商家标题涉嫌违规，请及时更改'],
             success(res) {
                 console.log(res.tapIndex)
-            },
-            fail(res) {
-                console.log(res.errMsg)
             }
         })
     },
+    // 审核通过
     pass() {
         wx.showModal({
             title: '提示',
@@ -85,6 +84,7 @@ Page({
             }
         })
     },
+    // 页面未完成前的加载框
     showLoading() {
         wx.showLoading({
             title: '加载中',
