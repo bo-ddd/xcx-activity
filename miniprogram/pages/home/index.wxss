@@ -13,7 +13,7 @@
 }
 .outer-layer{
     height: 100vh;
-    background: url(https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/b3b9eb166f05d35b95b2d3c996625ea.png?sign=c59c3df924daa0cda35a3798fc832d8b&t=1675169341);
+    background: url(https://img1.baidu.com/it/u=3585557138,620773340&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=749);
     background-size: 100% 100%;
     overflow-y: scroll;
 }
@@ -49,8 +49,7 @@
   justify-content: space-between;
   font-size: 30rpx ;
   height: 80rpx;
-  background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-bck-card.png?sign=576a7a10b0d66e522ee0821421c1081b&t=1675212604') no-repeat;
-  background-size: 100% 100%;
+  background-image: linear-gradient(to left, #EA4242,#EB5352 );
   border-radius: 40rpx;
   color: #553D1C;
 }
@@ -151,6 +150,10 @@ width: 250rpx;
   float: right;
   background-image: linear-gradient(to left, #E1C082, #C99A51);
 }
+.banner-images{
+    width: 100%;
+}
+
 .best-sellers-title{
   font-size: 40rpx;
   font-weight: 700;

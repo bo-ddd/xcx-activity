@@ -3,29 +3,32 @@
     height: 100vh;
 }
 
+.merchantRules {
+    height: 100%;
+}
+
 .rule {
     background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-merchantRules.png?sign=aadb26ab60830b22a8b6e2659c17c36c&t=1675671708');
-    background-size: 100% 100%;
+    background-size: cover;
     background-repeat: no-repeat;
-    height: 100%;
     display: flow-root;
     box-sizing: border-box;
-
+    height: 100%;
+    padding-top: 350rpx;
 }
 
 .rule .next {
     width: 90%;
-    margin-top: 100rpx;
+    margin-top: 60rpx;
 }
 
 .rule .content {
     background: rgb(235, 211, 165);
     box-shadow: 0 0 20rpx rgb(235, 211, 165);
     border-radius: 10rpx;
-    height: 840rpx;
+    height: 700rpx;
     width: 674rpx;
-    margin-top: 300rpx;
     overflow: hidden;
     overflow: scroll;
-    padding: 0 10rpx;
+    padding: 5rpx 10rpx;
 }

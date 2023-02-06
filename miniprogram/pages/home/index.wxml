@@ -41,7 +41,7 @@
         <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
           <block wx:for="{{background}}" wx:key="*this">
             <swiper-item>
-              <image src="{{item}}" mode="" />
+              <image class="banner-images" src="{{item}}" mode="" />
             </swiper-item>
           </block>
         </swiper>
@@ -94,7 +94,7 @@
   </view>
   
   <view class="best-sellers-list">
-    <view class="best-sellers-item mt-30" wx:for="{{ hotCommodities }}">
+    <view class="best-sellers-item mt-30" wx:for="{{ hotCommodities }}" wx:key="id">
       <image class="best-sellers-logo" src="{{ item.images }}" mode=""/>
       <view class="best-sellers-detail">
         {{ item.title }}
@@ -105,11 +105,6 @@
     </view>
 
     
-
-
-   
-
-
   </view>
 
   <view class="see-more-btn mtb-30" bindtap="to" data-name="pointsDetails">
