@@ -10,7 +10,7 @@
                     <text class="distance">距您504米</text>
                     <text>新乡市卫辉市卫州路1号卫辉市人民政府信访局卫州路28号门面房</text>
                 </view>
-                <radio class="radio" color="#f00"></radio>
+                <radio class="radio" color="#f00" checked="true"></radio>
             </view>
         </view>
     </radio-group>
