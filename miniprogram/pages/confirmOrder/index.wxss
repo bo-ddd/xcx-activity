@@ -1,0 +1,142 @@
+/* pages/confirmOrder/index.wxss */
+.fs-26 {
+    font-size: 26rpx;
+}
+
+.fw {
+    font-weight: bold;
+}
+
+page {
+    background-color: #F5F6F8;
+    padding-top: 10rpx;
+}
+
+.main .info-receiver {
+    background-color: white;
+    padding: 0 20rpx 20rpx 20rpx;
+    border-radius: 20rpx;
+}
+
+.main .icon-arrow {
+    width: 25rpx;
+    height: 25rpx;
+}
+
+.info-receiver .name-receiver {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-receiver .btn-switch {
+    display: flex;
+    gap: 10rpx;
+    align-items: center;
+}
+
+.info-receiver .name-receiver {
+    padding: 20rpx 0;
+    border-bottom: solid 1rpx #d1cfcf;
+}
+
+.info-receiver .address-receiver {
+    padding: 20rpx 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-receiver .image-shop {
+    width: 200rpx;
+    height: 131rpx;
+    border-radius: 10rpx;
+}
+
+.info-receiver .card-shop {
+    display: flex;
+    gap: 10rpx;
+    align-items: center;
+}
+
+.info-receiver .address-shop {
+    width: 300rpx;
+    font-size: 22rpx;
+    color: #8d8b8b;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-receiver .address-shop .distance {
+    color: #cc0d0d;
+}
+
+.main .tip {
+    background-color: #FFF5F4;
+    color: #cc0d0d;
+    font-size: 24rpx;
+    padding: 10rpx;
+    border-radius: 20rpx;
+}
+
+.main .info-goods {
+    background-color: white;
+    border-radius: 20rpx;
+    padding: 0 20rpx 20rpx 20rpx;
+
+}
+
+.info-goods .top {
+    padding: 20rpx 0;
+    border-bottom: solid 1rpx #d1cfcf;
+}
+
+.info-goods .detail-goods {
+    display: flex;
+
+}
+
+.info-goods .img-goods {
+    width: 250rpx;
+    height: 168rpx;
+    border-radius: 10rpx;
+}
+
+.info-goods .detail-goods {
+    display: flex;
+    gap: 10rpx;
+}
+
+.info-goods .detail {
+    display: flex;
+    flex-direction: column;
+    gap: 20rpx;
+}
+
+.info-goods .amount {
+    font-size: 22rpx;
+    color: #8d8b8b;
+}
+.remarks-order{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding:20rpx;
+    border-radius:20rpx;
+}
+.remarks-order .btn-remarks{
+    display: flex;
+    gap:10rpx;
+    align-items: center;
+}
+
+.submit{
+    padding:10rpx 20rpx;
+    text-align: center;
+    border-radius:20rpx;
+    color:white;
+    font-size:26rpx;
+    background-color: #f00;
+}
+

@@ -1,3 +1,5 @@
 {
-    "usingComponents": {}
+    "usingComponents": {},
+    "navigationBarTitleText": "发起的活动",
+    "navigationBarTextStyle": "white"
 }

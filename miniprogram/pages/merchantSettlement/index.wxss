@@ -2,12 +2,11 @@
 
 
 .store-settlement {
-  height: 100vh;
-  display: flow-root;
-  /* background: linear-gradient(to bottom,rgb(238,74,0), rgb(219, 217, 87),rgb(238,74,0)); */
-  background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-merchantsettlement.png?sign=4d09f53e36fa887b8198835faece1a69&t=1675339586');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+    height: 100vh;
+    display: flow-root;
+    background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-merchantsettlement.png?sign=4f43c146aaad0cc8c3cb21ef5691a8ef&t=1675408735');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 /* .label::after {
@@ -17,91 +16,91 @@
 } */
 
 .label {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: white;
+    font-size: 32rpx;
+    font-weight: bold;
+    color: white;
 }
 
 .sex {
-  color: white;
+    color: white;
 }
 
 .title {
-  text-align: center;
-  margin-top: 16rpx;
-  font-weight: bolder;
-  color: white;
+    text-align: center;
+    margin-top: 16rpx;
+    font-weight: bolder;
+    color: white;
 }
 
 .merchant-sex .radio {
-  display: flex;
-  gap: 30rpx;
+    display: flex;
+    gap: 30rpx;
 }
 
 
 .upload-license .license {
-  text-align: center;
-  margin: 0 auto;
-  width: 600rpx;
-  height: 400rpx;
-  line-height: 700rpx;
-  border: 5rpx dashed black;
-  background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-upload.png?sign=ab9264b310fd791222b4f48bb0e1b588&t=1675302439');
-  background-repeat: no-repeat;
-  background-position: center;
+    text-align: center;
+    margin: 0 auto;
+    width: 600rpx;
+    height: 400rpx;
+    line-height: 700rpx;
+    border: 5rpx dashed black;
+    background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-choice.png?sign=647490245fea4f0f5c212c6844bd6c4b&t=1675417159');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .upload-license .icon-license {
-  height: 400rpx;
-  width: 600rpx;
+    height: 400rpx;
+    width: 600rpx;
 }
 
 
 .select {
-  width: 60%;
-  height: 50rpx;
-  display: flex;
-  justify-content: space-between;
+    width: 60%;
+    height: 50rpx;
+    display: flex;
+    justify-content: space-between;
 }
 
 .select .select-item {
-  align-items: center;
-  justify-content: space-between;
-  width: 50%;
-  position: relative;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+    position: relative;
 }
 
 .arrow-bottom {
-  width: 30rpx;
-  height: 30rpx;
-  position: absolute;
-  right: -50rpx;
-  top: 10rpx;
-  transition: 0.5s;
+    width: 30rpx;
+    height: 30rpx;
+    position: absolute;
+    right: -50rpx;
+    top: 10rpx;
+    transition: 0.5s;
 }
 
 .select-item .items {
-  width: 100%;
-  max-height: 200rpx;
-  background-color: white;
-  animation: myclassify 1s;
-  overflow-x: scroll;
+    width: 100%;
+    max-height: 200rpx;
+    background-color: white;
+    animation: myclassify 1s;
+    overflow-x: scroll;
 }
 
 .select-item .item {
-  width: 100%;
-  height: 60rpx;
-  line-height: 60rpx;
-  border-bottom: 1px solid #ccc;
+    width: 100%;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-bottom: 1px solid #ccc;
 }
 
 /* 下拉过度效果 */
 @keyframes myclassify {
-  from {
-    height: 0rpx;
-  }
+    from {
+        height: 0rpx;
+    }
 
-  to {
-    height: 210rpx;
-  }
+    to {
+        height: 210rpx;
+    }
 }

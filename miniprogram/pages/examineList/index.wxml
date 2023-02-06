@@ -1,22 +1,24 @@
 <!--pages/examineList/index.wxml-->
-<view class="examine-list">
-  <view class="item mt-16 wrap" wx:for="{{ items }}" wx:key="id">
-    <view class="item-left">
-      <view class="stor-name ml-20">
-        <text>活动商铺：</text>
-        <text>{{ item.storeName }}</text>
-      </view>
-      <view class="active-class ml-20">
-        <text> 活动类型：</text>
-        <text>{{ item.activeClass }}</text>
-      </view>
-      <view class="stor-class ml-20">
-        <text> 商铺类型：</text>
-        <text>{{ item.storClass }}</text>
-      </view>
+<view class="box">
+    <view class="examine-list">
+        <view class="item mt-16 wrap" wx:for="{{ items }}" wx:key="id" bindtap="to" data-id="{{ item.id }}">
+            <view class="item-left">
+                <view class="stor-name ml-20">
+                    <text>活动商铺：</text>
+                    <text>{{ item.storeName }}</text>
+                </view>
+                <view class="active-class ml-20">
+                    <text> 活动类型：</text>
+                    <text>{{ item.activeClass }}</text>
+                </view>
+                <view class="stor-class ml-20">
+                    <text> 商铺类型：</text>
+                    <text>{{ item.storClass }}</text>
+                </view>
+            </view>
+            <view class="item-right">
+                <view class="btn">审核</view>
+            </view>
+        </view>
     </view>
-    <view class="item-right">
-      <view class="btn">审核</view>
-    </view>
-  </view>
 </view>

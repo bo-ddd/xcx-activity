@@ -1,0 +1,63 @@
+<!--pages/confirmOrder/index.wxml-->
+<view class="main wrap">
+    <view class="info-receiver">
+        <view class="name-receiver">
+            <view class="info fw fs-28">
+                <text>提货人：</text>
+                <text class="name">马格烜</text>
+                <text class="phone ml-20">18234506649</text>
+            </view>
+            <view class="btn-switch" bindtap="to" data-name="receiverList">
+                <text class="fs-26">更换</text>
+                <image class="icon-arrow" src="../../images/icon-arrow_right.png" />
+            </view>
+        </view>
+        <view class="address-receiver">
+            <view class="info-address">
+                <view class="address">
+                    <view class="info fw fs-28">
+                        <text>自提点：</text>
+                        <text>友惠便利店</text>
+                    </view>
+                    <view class="card-shop mt-16">
+                        <image class="image-shop" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/img-shop.png?sign=3da10d0f7851f46ff3cdd16db0f18ca9&t=1675415980" mode="" />
+                        <view class="address-shop">
+                            <text class="distance">距您504米</text>
+                            <text>新乡市卫辉市卫州路1号卫辉市人民政府信访局卫州路28号门面房</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="btn-switch" bindtap="to" data-name="nearbyStoresList">
+                <text class="fs-26">切换</text>
+                <image class="icon-arrow" src="../../images/icon-arrow_right.png" />
+            </view>
+        </view>
+        <view class="tip">请按照提示时间前往自提点取货，如有问题可联系商家解决</view>
+    </view>
+    <view class="info-goods mt-24r">
+        <view class="top fw fs-28">
+            明天
+            <text>16:00</text>
+            可取货
+        </view>
+        <view class="detail-goods mt-24r">
+            <image class="img-goods" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/img-goods.png?sign=a7e0f8f03dde190ba4d456fe13e7a730&t=1675420298" />
+            <view class="detail">
+                <text class="title fs-26">黑森林巧克力慕斯蛋糕220g/盒</text>
+                <text class="amount">数量：<text>1</text></text>
+                <text class=""></text>
+            </view>
+        </view>
+    </view>
+    <view class="remarks-order mt-24r">
+        <text class="fs-28">订单备注</text>
+        <view class="btn-remarks" bindtap="to" data-name="orderRemarks">
+            <text class="fs-26">请输入</text>
+            <image class="icon-arrow" src="../../images/icon-arrow_right.png" />
+        </view>
+    </view>
+    <view class="submit mt-24r" bindtap="submit">
+        <view class="btn-submit">确认订单</view>
+    </view>
+</view>
