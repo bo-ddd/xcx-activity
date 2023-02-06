@@ -20,8 +20,8 @@
 .list-item{
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding: 15rpx 0;
+    justify-content: space-between;
+    padding: 15rpx 10rpx;
     border-bottom: 1px solid rgb(223, 222, 222);
 }
 .item-left{
@@ -32,6 +32,7 @@
 .icon-smill{
     width: 60rpx;
     height: 60rpx;
+    object-fit: cover;
 }
 .explain{
    color: rgb(211, 210, 210);
@@ -39,4 +40,12 @@
    position: absolute;
    bottom: 44rpx;
    left: 25%
+}
+.btn{
+    display: inline-block;
+    background: linear-gradient(to right bottom, rgb(243, 179, 179), #e75a47) ;
+    color: #fff;
+    border-radius: 20rpx;
+    padding: 10rpx;
+
 }

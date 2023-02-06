@@ -110,6 +110,20 @@
                 },
                 {
                     "name": "",
+                    "pathName": "pages/receiverList/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/addReceiver/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
                     "pathName": "pages/productDetails/index",
                     "query": "",
                     "launchMode": "default",

@@ -43,10 +43,10 @@
   border-radius:0 0 30rpx 30rpx;
 
 }
-.title{
+/* .title{
     font-size: 35rpx;
     font-weight: bold;
-}
+} */
 .activity{
     display: flex;
     align-items: center;
@@ -65,7 +65,7 @@
     box-sizing: border-box;
     border-radius: 30rpx;
     background-color: #fff;
-    padding: 20rpx 30rpx;
+    padding: 0 30rpx;
 }
 .item{
     width: 100%;

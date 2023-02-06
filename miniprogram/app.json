@@ -26,6 +26,11 @@
     "pages/pointsMall/index",
     "pages/entryProcess/index",
     "pages/confirmOrder/index",
+    "pages/orderRemarks/index",
+    "pages/nearbyStoresList/index",
+    "pages/receiverList/index",
+    "pages/addReceiver/index",
+    "pages/opinion/index",
     "pages/productDetails/index"
   ],
   "tabBar": {

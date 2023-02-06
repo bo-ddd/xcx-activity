@@ -12,7 +12,7 @@
 
 </view>
  <view class="activity-center wrap">
-    <text class="title">活动中心</text>
+    <!-- <text class="title">活动中心</text> -->
     <view class="activity mt-30">
        <view class="activity-item" wx:for="{{activityList}}"  wx:key="id" bindtap="activeTo"  data-name="{{item.name}}">
           <image src="{{item.icon}}" mode="" class="icon-min"/>

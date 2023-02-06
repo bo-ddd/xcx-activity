@@ -57,7 +57,7 @@
             <image class="icon-arrow" src="../../images/icon-arrow_right.png" />
         </view>
     </view>
-    <view class="submit mt-24r" bindtap="submit">
+    <view class="submit mt-24r" bindtap="submit" data-name="">
         <view class="btn-submit">确认订单</view>
     </view>
 </view>

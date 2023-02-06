@@ -5,7 +5,16 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        dateDay: '2023-01-01',
+        prizeSettingList:[
+            {
+                id:1,
+                prizeMapIcon:'../../images/icon-add_p.png',
+                prizeName:'奖品名称',
+                prizeNum:'奖品数量',
+                prizePeople:'助力人数'
+            },
+        ]
     },
 
     /**
@@ -14,7 +23,12 @@ Page({
     onLoad(options) {
 
     },
-
+    dateChangeDay(e) {
+        console.log('值为', e.detail.value);
+        // this.setData(
+        //     dateDay,e.detail.value
+        // );
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

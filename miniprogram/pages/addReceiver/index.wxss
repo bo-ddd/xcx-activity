@@ -1,0 +1,109 @@
+/* pages/addReceiver/index.wxss */
+.pt-20r {
+    padding-top: 20rpx;
+}
+
+.ptb-20r {
+    padding: 20rpx 0;
+}
+.fs-26{
+    font-size:26rpx;
+}
+
+page {
+    background-color: #F5F6F8;
+}
+
+.form {
+    font-size: 28rpx;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 40rpx;
+
+}
+
+.form .username {
+    border-bottom: solid 1rpx #d1cfcf;
+}
+
+.form .info-basic {
+    background-color: white;
+    padding: 0 20rpx;
+    border-radius: 20rpx;
+}
+
+.form .info-optional {
+    background-color: white;
+    border-radius: 20rpx;
+    padding: 0 20rpx;
+}
+.form .title{
+    flex-shrink: 0;
+    font-size: 30rpx;
+}
+.info-optional .label {
+    display: flex;
+    align-items: center;
+    gap: 64rpx;
+    padding:20rpx 0;
+    border-bottom:solid 1rpx #d1cfcf;
+}
+
+.info-optional .label .content{
+    display: flex;
+    flex-direction: column;
+    gap:20rpx;
+}
+.info-optional .label .type-label{
+    display: flex;
+    gap:20rpx;
+    align-items: center;
+    color: #6e6d6e;
+}
+.info-optional .label .text-label{
+    padding:4rpx 10rpx;
+    text-align: center;
+    border-radius:10rpx;
+    font-size:26rpx;
+}
+
+.info-optional .set{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20rpx 0;
+}
+.info-optional .text{
+   display: flex;
+   flex-direction: column;
+   gap:6rpx;
+}
+.info-optional .text .bottom{
+    color: #8a8b8d;
+}
+.info-optional .switch {
+    /* transform: scale(70%); */
+    zoom: 0.7;
+}
+.btn-submit{
+    padding:14rpx;
+    box-sizing: border-box;
+    background-color: #f00;
+    text-align: center;
+    color:white;
+    border-radius:20rpx;
+}
+.selectedColor{
+    background-color: #f00;
+    color:white;
+}
+.unselectedColor{
+    background-color: #F6F6F6;
+}
+/* .img-clean{
+    width:32rpx;
+    height:32rpx;
+} */
