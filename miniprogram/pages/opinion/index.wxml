@@ -1,6 +1,15 @@
 <!--pages/opinion/index.wxml-->
 <view class="suggest">
-     
-
+    <view class="header wrap">
+       <view class="title fs-28"> 欢迎和我们交流，您的每条建议我们都会重视</view>
+        <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/9%7DCB2EED(X%250J(F3A%5BKCQZ8.png?sign=9aecff014df4ac47fcd6965a389444e0&t=1675667635" mode="" class="suggest-icon"/>
+    </view>
+    <view class="textarea wrap">
+  <textarea bindblur="getTextarea" placeholder="请留下您宝贵的意见或建议，帮助我们进步" placeholder-style="color:#ccc" class="textarea-text"></textarea>
+    
+    </view>
+   <cview>
+    <view class="btn wrap" bindtap="getSuggest">确认反馈</view>
+   </cview>
  
 </view>

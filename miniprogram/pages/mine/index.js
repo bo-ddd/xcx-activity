@@ -104,6 +104,12 @@ Page({
           url: '/pages/home/index',
         })
     },
+    //点击消息图跳转消息页
+    messagePage(){
+        wx.navigateTo({
+            url: '/pages/message/index'
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
