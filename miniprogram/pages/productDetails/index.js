@@ -12,9 +12,20 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        this.ab()
     },
-
+// 云函数
+    ab(){
+    wx.cloud.callFunction({
+        name:'commodity',
+        data:{
+            type:'getProductDetails',
+        },
+        success(res){
+            console.log(res.result);
+        }
+    })
+  },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
