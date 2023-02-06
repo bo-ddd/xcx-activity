@@ -8,10 +8,13 @@ Page({
 
   data: {
     userInfo:{},
+    background: ['/images/icon-avatar.png', '/images/icon-home select.png', '/images/icon-mine select .png'],
     indicatorDots: true,
+    vertical: false,
     autoplay: true,
     interval: 2000,
     duration: 500,
+    toView: 'green',
     flashSaleCommodity:[
       {
         id:1,
@@ -46,38 +49,38 @@ Page({
         {
             id:1,
             images:'../../images/icon-best-sellers.jpg',
-            title:'全家一周出游，28寸纯PC斜纹拉链拉杆箱123132312213312',
-            integral:20056
+            title:'alkasjhdkjashjdklasjdo;k',
+            integral:1234
         },
         {
             id:2,
             images:'../../images/icon-best-sellers.jpg',
-            title:'全家一周出游，28寸纯PC斜纹拉链拉杆箱123132312213312',
-            integral:20056
+            title:'alkasjhdkjashjdklasjdo;k',
+            integral:1234
         },
         {
             id:3,
             images:'../../images/icon-best-sellers.jpg',
-            title:'全家一周出游，28寸纯PC斜纹拉链拉杆箱123132312213312',
-            integral:2003
+            title:'alkasjhdkjashjdklasjdo;k',
+            integral:1234
         },
         {
             id:4,
             images:'../../images/icon-best-sellers.jpg',
-            title:'全家一周出游，28寸纯PC斜纹拉链拉杆箱123132312213312',
-            integral:2002
+            title:'alkasjhdkjashjdklasjdo;k',
+            integral:1234
         },
         {
             id:5,
             images:'../../images/icon-best-sellers.jpg',
-            title:'全家一周出游，28寸纯PC斜纹拉链拉杆箱123132312213312',
-            integral:2100
+            title:'alkasjhdkjashjdklasjdo;k',
+            integral:1234
         },
         {
             id:6,
             images:'../../images/icon-best-sellers.jpg',
-            title:'全家一周出游，28寸纯PC斜纹拉链拉杆箱123132312213312',
-            integral:2010
+            title:'alkasjhdkjashjdklasjdo;k',
+            integral:1234
         },
     ]
 

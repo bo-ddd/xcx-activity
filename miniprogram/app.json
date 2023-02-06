@@ -25,7 +25,8 @@
     "pages/pointsDetails/index",
     "pages/pointsMall/index",
     "pages/entryProcess/index",
-    "pages/confirmOrder/index"
+    "pages/confirmOrder/index",
+    "pages/productDetails/index"
   ],
   "tabBar": {
     "color":"#8a8a8a",

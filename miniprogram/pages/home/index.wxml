@@ -104,6 +104,12 @@
       </view>
     </view>
 
+    
+
+
+   
+
+
   </view>
 
   <view class="see-more-btn mtb-30" bindtap="to" data-name="pointsDetails">
