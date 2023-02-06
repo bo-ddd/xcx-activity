@@ -46,18 +46,17 @@
             <view class="detail">
                 <text class="title fs-26">黑森林巧克力慕斯蛋糕220g/盒</text>
                 <text class="amount">数量：<text>1</text></text>
-                <text class=""></text>
             </view>
         </view>
     </view>
     <view class="remarks-order mt-24r">
-        <text class="fs-28">订单备注</text>
+        <text class="fs-28">商品备注</text>
         <view class="btn-remarks" bindtap="to" data-name="orderRemarks">
             <text class="fs-26">请输入</text>
             <image class="icon-arrow" src="../../images/icon-arrow_right.png" />
         </view>
     </view>
     <view class="submit mt-24r" bindtap="submit" data-name="">
-        <view class="btn-submit">确认订单</view>
+        <view class="btn-submit">点击生成自提码</view>
     </view>
 </view>

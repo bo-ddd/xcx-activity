@@ -31,7 +31,8 @@
     "pages/receiverList/index",
     "pages/addReceiver/index",
     "pages/opinion/index",
-    "pages/productDetails/index"
+    "pages/productDetails/index",
+    "pages/currentStoresList/index"
   ],
   "tabBar": {
     "color":"#8a8a8a",

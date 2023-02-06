@@ -7,15 +7,15 @@
             ￥9.9
         </view>
 
-        <view class="trade-name">
+        <view class="trade-name mt-30">
             电动牙刷
         </view>
 
-        <view class="product-introduction">
+        <view class="product-introduction mt-30">
             采用国际先进水平的等离子空气消毒机，利用(SPIC)超能离子发生器，瞬间激发兆亿级正负离子，可以高效地杀菌，等离子体灭菌消毒效果极强，而且作用时间短，是紫外线所远远不及的。
         </view>
 
-        <view class="address">
+        <view class="address mt-30">
             <view class="address-laber">
                 自提地址
             </view>
@@ -31,11 +31,8 @@
 </view>
 
 <view class="footer">
-<view class="shopping-cart">
-    购物车
-</view>   
 
 <view class="buy">
-    购买
+        提交订单
 </view> 
 </view>

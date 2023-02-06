@@ -1,2 +1,20 @@
 <!--pages/nearbyStoresList/index.wxml-->
-<text>pages/nearbyStoresList/index.wxml</text>
+<view class="main">
+    <view class="nav">
+        <view class="position">
+            <text>选择城市</text>
+            <image class="img-arrow_bottom" src="../../images/icon-arrow_bottom.png" mode="" />
+        </view>
+        <view class="select">
+            <view class="input">
+                <image class="icon-select" src="../../images/icon-select.png"></image>
+                <input class="input-select" value="{{selectInputValue}}" type="text" placeholder="请输入地址或自提点名称" bindinput="bindSelectInput" bindfocus="focusEvent" bindblur="blurEvent" />
+            </view>
+            <view class="cancel {{focusStatus?'show':'hidden'}}">取消</view>
+        </view>
+
+    </view>
+    <view class="location"></view>
+    <view class="title"></view>
+    <view class="list-address"></view>
+</view>
