@@ -16,7 +16,15 @@
         </view>
 
         <view class="address">
-            自提地址
+            <view class="address-laber">
+                自提地址
+            </view>
+            <view class="information ml-40">
+                埃斯库的hi跨世纪都i啊建瓯市asdasdkjhasjkdhaksjdhakjsh
+                <view>
+                    朱鑫鹏 15937160395
+                </view>
+            </view>
         </view>
 
     </view>

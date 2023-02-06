@@ -1,6 +1,5 @@
 <!--pages/merchantRules/index.wxml-->
 <view class="box">
-
     <view class="rule">
         <view class="content  wrap">
             <text decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲乙双方经过友好协商，在公平、诚实、信任、平等合作、互利互惠的基础上，本着为加快中国教育现代化、信息化发展步伐，共同促进教育事业，为广大学校提供优秀的软件产品及完善的售后服务为宗旨，就乙方作为甲方正式授权的金*维2000图书系列软件产品的代理事宜，达成如下协议。\n</text>

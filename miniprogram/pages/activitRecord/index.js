@@ -5,42 +5,32 @@ Page({
      * 页面的初始数据
      */
     data: {
-        recordList:[
-            {
-                id:1,
-                lable:'消消乐哈哈',
-                date:'2023.1.2'
-             },
-            {
-                id:2,
-                lable:'消消乐哈哈',
-                date:'2023.1.2'
-             },
-            {
-                id:3,
-                lable:'消消乐哈哈',
-                date:'2023.1.2'
-             },
-            {
-                id:3,
-                lable:'消消乐哈哈',
-                date:'2023.1.2'
-             },
-            {
-                id:3,
-                lable:'消消乐哈哈',
-                date:'2023.1.2'
-             },
+        recordList:[]
 
-        ]
     },
-
+    
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.showLoading()
+        this.showLoading();
+        this.getActivityRecordList();
     },
+
+    getActivityRecordList(){
+        wx.cloud.callFunction({
+            name:'user',
+            data:{
+                type:'getMyActivityRecordList'
+            }
+        }).then(res=>{
+            this.setData({
+                recordList :res.result.data.data
+            })
+            console.log(this.data.recordList);
+        })
+    },
+
     //前几秒白屏
     showLoading(){
         wx.showLoading({

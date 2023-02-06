@@ -29,16 +29,30 @@
             <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" />
         </view>
         <view class="page-lable">
-            <image src="../../images/icon-red.png" mode="" class="icon-min" />
+                        <image src="../../images/icon-red.png" mode="" class="icon-min" />
 
-            <view class="lable">开始日期：</view>
-            <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" />
-        </view>
-        <view class="page-lable">
-            <image src="../../images/icon-red.png" mode="" class="icon-min" />
-            <view class="lable">结束日期：</view>
-            <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" />
-        </view>
+                        <view class="lable">开始日期：</view>
+                        <view class="section date-section" hover-class="section-active">
+                            <picker mode="date" value="{{dateDay}}" bind:change="dateChangeDay" fields="day">
+                                <view>
+                                    <text class="chooseItem">请选择：</text>{{dateDay}}
+                                </view>
+                            </picker>
+                        </view>
+                        <!-- <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" /> -->
+                    </view>
+                    <view class="page-lable">
+                        <image src="../../images/icon-red.png" mode="" class="icon-min" />
+                        <view class="lable">结束日期：</view>
+                        <view class="section date-section" hover-class="section-active">
+                            <picker mode="date" value="{{dateDay}}" bind:change="dateChangeDay" fields="day">
+                                <view>
+                                    <text class="chooseItem">请选择：</text>{{dateDay}}
+                                </view>
+                            </picker>
+                        </view>
+                        <!-- <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" /> -->
+                    </view>
 
         <view class="page-lable">
             <image src="../../images/icon-red.png" mode="" class="icon-min" />
@@ -68,48 +82,27 @@
                 <image src="../../images/icon-add_activit.png" mode="" class="icon-addprizes" />
             </view>
 
-            <view class="prize-setting wrap mb-40">
-                <view class="mr-30">
-                    <image src="../../images/icon-add_p.png" mode="" class="add-p" />
-                    <view class="color-blue"> 更换图片
-                    </view>
-                </view>
-                <view class="prize-right">
-                    <view class="setting">
-                        <view class="setting-lable">奖品名称： </view>
-                        <input type="text" class="prize-ipt" />
-                    </view>
-                    <view class="setting">
-                        <view class="setting-lable">奖品数量： </view>
-                        <input type="text" class="prize-ipt" />
-                    </view>
-                    <view class="setting">
-                        <view class="setting-lable">助力人数： </view>
-                        <input type="text" class="prize-ipt" />
-                    </view>
-                </view>
-            </view>
-            <view class="prize-setting wrap mb-30">
-                <view class="mr-30">
-                    <image src="../../images/icon-add_p.png" mode="" class="add-p" />
-                    <view class="color-blue"> 更换图片
-                    </view>
-                </view>
-                <view class="prize-right">
-                    <view class="setting">
-                        <view class="setting-lable">奖品名称： </view>
-                        <input type="text" class="prize-ipt" />
-                    </view>
-                    <view class="setting">
-                        <view class="setting-lable">奖品数量： </view>
-                        <input type="text" class="prize-ipt" />
-                    </view>
-                    <view class="setting">
-                        <view class="setting-lable">助力人数： </view>
-                        <input type="text" class="prize-ipt" />
-                    </view>
-                </view>
-            </view>
+            <view class="prize-setting wrap mb-40" wx:for="{{prizeSettingList}}" wx:key="id">
+                            <view class="mr-30">
+                                <image src="{{item.prizeMapIcon}}" mode="" class="add-p" />
+                                <view class="color-blue"> 更换图片
+                                </view>
+                            </view>
+                            <view class="prize-right">
+                                <view class="setting">
+                                    <view class="setting-lable">{{item.prizeName}} </view>
+                                    <input type="text" class="prize-ipt" />
+                                </view>
+                                <view class="setting">
+                                    <view class="setting-lable">{{item.prizeNum}} </view>
+                                    <input type="text" class="prize-ipt" />
+                                </view>
+                                <view class="setting">
+                                    <view class="setting-lable">{{item.prizePeople}} </view>
+                                    <input type="text" class="prize-ipt" />
+                                </view>
+                            </view>
+                        </view>
         </view>
     </view>
 </view>
