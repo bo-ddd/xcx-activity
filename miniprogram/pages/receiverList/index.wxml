@@ -1,6 +1,6 @@
 <!--pages/receiverList/index.wxml-->
 <view class="main wrap pt-20r">
-    <radio-group class="list-info" bindchange="bandleChange">
+    <radio-group class="list-info" bindchange="handleChange">
         <view class="card-info" wx:for="{{receiverList}}" wx:key="id">
             <radio class="radio" color="red" checked="{{item.checkedStatus}}">
                 <view class="userinfo ml-20r">
@@ -8,7 +8,7 @@
                     <text>{{item.phone}}</text>
                 </view>
             </radio>
-            <view class="btn-edit">
+            <view class="btn-edit" bindtap="to" data-name="addReceiver">
                 编辑
             </view>
         </view>

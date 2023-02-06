@@ -1,3 +1,5 @@
 {
-    "usingComponents": {}
+    "usingComponents": {},
+    "navigationBarTitleText": "切换自提点",
+    "navigationBarTextStyle": "white"
 }

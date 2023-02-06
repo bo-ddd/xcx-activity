@@ -5,7 +5,26 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        selectInputValue: '',
+        focusStatus: false
+    },
+    //获取搜索框的值;
+    bindSelectInput(e) {
+        this.setData({
+            selectInputValue: e.detail.value
+        })
+    },
+    //聚焦事件;
+    focusEvent() {
+        this.setData({
+            focusStatus: true
+        })
+    },
+    //失去焦点事件;
+    blurEvent() {
+        this.setData({
+            focusStatus: false
+        })
     },
 
     /**

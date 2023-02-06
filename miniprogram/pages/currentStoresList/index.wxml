@@ -1,0 +1,18 @@
+<!--pages/currentStoresList/index.wxml-->
+<view class="main">
+    <view class="title wrap">当前自提点</view>
+    <radio-group class="radio-group wrap" bindchange="handleChange">
+        <view class="info-address" checked="">
+            <view class="card-shop">
+                <image class="image-shop" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/img-shop.png?sign=3da10d0f7851f46ff3cdd16db0f18ca9&t=1675415980" mode="" />
+                <view class="address-shop">
+                    <text class="name-shop fw fs-28">友惠便利店</text>
+                    <text class="distance">距您504米</text>
+                    <text>新乡市卫辉市卫州路1号卫辉市人民政府信访局卫州路28号门面房</text>
+                </view>
+                <radio class="radio" color="#f00"></radio>
+            </view>
+        </view>
+    </radio-group>
+    <view class="selectBtn mt-24r wrap" bindtap="to" data-name="nearbyStoresList">选择其他自提点</view>
+</view>

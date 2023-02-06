@@ -48,6 +48,21 @@ Page({
             switchChecked: e.detail.value
         })
     },
+    cleanUsernameInput() {
+        this.setData({
+            usernameInputValue: ''
+        })
+    },
+    cleanPhoneInput() {
+        this.setData({
+            phoneInputValue: ''
+        })
+    },
+    cleanLabelInput() {
+        this.setData({
+            labelInputValue: ''
+        })
+    },
 
     submit() {
         let {
@@ -70,9 +85,9 @@ Page({
             //调接口，提交表单;
 
             //成功之后的事件;
-            // wx.navigateBack({
-            //     delta: 1
-            // })
+            wx.navigateBack({
+                delta: 1
+            })
             wx.showToast({
                 title: '保存成功',
                 icon: 'success',
