@@ -1,7 +1,7 @@
 <!--pages/examineList/index.wxml-->
 <view class="box">
     <view class="examine-list">
-        <view class="item mt-16 wrap" wx:for="{{ items }}" wx:key="id" bindtap="to" data-id="{{ item.id }}">
+        <view class="item mt-16 wrap" wx:for="{{ items }}" wx:key="id" data-id="{{ item.id }}">
             <view class="item-left">
                 <view class="stor-name ml-20">
                     <text>活动商铺：</text>
@@ -17,7 +17,7 @@
                 </view>
             </view>
             <view class="item-right">
-                <view class="btn">审核</view>
+                <view class="btn" bindtap="to">审核</view>
             </view>
         </view>
     </view>

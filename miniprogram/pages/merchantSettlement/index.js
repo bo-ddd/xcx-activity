@@ -57,9 +57,10 @@ Page({
             merchantSex: '',
             merchantPhone: '',
             storeName: '',
-            storeClass: '',
             license: ''
         },
+        // 选择的经验类别
+        storeclass: '',
         // 上传的图片
         tempFilePath: '',
         // 上传图片的云ID
@@ -142,23 +143,20 @@ Page({
     },
     // 已选下拉框 
     mySelect(e) {
+        console.log(e);
         this.setData({
             ['selectItem.grade_name']: e.currentTarget.dataset.name,
-            ['form.storeClass']: e.currentTarget.dataset.storeClass,
+            storeclass: e.currentTarget.dataset.storeclass,
             select: false
         })
     },
     // 提交表单
     formSubmit: function (e) {
-        // console.log(e);
-        // let { merchantName,
-        //     merchantSex,
-        //     merchantPhone,
-        //     storeName,
-        //     license
-        // } = e.detail.value;
-        this.form = e.detail.value;
-        if (!this.form.merchantName || !this.form.merchantSex || !this.form.merchantPhone || !this.form.storeName) {
+        console.log(e);
+        this.setData({
+            form : e.detail.value
+        })
+        if (!this.data.form.merchantName) {
             wx.showToast({
                 title: '请填写完整信息',
                 icon: 'error',
@@ -167,6 +165,7 @@ Page({
             return;
         } else {
             //   this.toAuditStatus()
+
             this.addMerchant()
         }
 
@@ -184,6 +183,7 @@ Page({
             sourceType: ['album', 'camera'],
             success(res) {
                 // tempFilePath可以作为 img 标签的 src 属性显示图片
+                console.log(res);
                 let tempFilePaths = res.tempFiles[0].tempFilePath
                 let that = _this
                 wx.cloud.uploadFile({
@@ -191,19 +191,21 @@ Page({
                     filePath: tempFilePaths,
                     config: {
                         env: 'zliu-dev-4gclbljp64cb5cd3'
-                    },
+                    }, //不可以这么写，这样写会造成线上环境出现重大问题
                     success(res) {
-                        console.log(res.fileID);
-                        wx.cloud.callFunction({
-                            name: 'getTempFileURL',
-                            data: {
-                                fileId: res.fileID
-                            }
-                        }).then(res => {
-                            that.setData({
-                                fileId: res.result[0].tempFileURL
-                            })
+                        that.setData({
+                            fileId: res.fileID
                         })
+                        // wx.cloud.callFunction({
+                        //     name: 'getTempFileURL',
+                        //     data: {
+                        //         fileId: res.fileID
+                        //     }
+                        // }).then(res => {
+                        //     that.setData({
+                        //         fileId: res.result[0].tempFileURL
+                        //     })
+                        // })
                     }
                 })
             }
@@ -215,12 +217,12 @@ Page({
             name: 'merchantInfo',
             data: {
                 type: 'addMerchantInfo',
-                merchantName: this.form.merchantName,
-                merchantPhone: this.form.merchantPhone,
-                merchantSex: this.form.merchantSex,
-                storeName: this.form.storeName,
-                // storeClass:this.form.storeClass,
-                // license: this.fileId
+                merchantName: this.data.form.merchantName,
+                merchantPhone: this.data.form.merchantPhone,
+                merchantSex: this.data.form.merchantSex,
+                storeName: this.data.form.storeName,
+                storeClass: this.data.storeclass,
+                license: this.data.fileId
             }, success(res) {
                 console.log(res);
             }, error(err) {

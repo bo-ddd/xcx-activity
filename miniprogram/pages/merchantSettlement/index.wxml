@@ -37,8 +37,8 @@
                         <image class="arrow-bottom" src='../../images/icon-arrow_bottom.png' style="{{select?'transform:rotateZ(180deg)':''}}"></image>
                         <!-- 下拉需要显示的列表 -->
                         <view class="items" wx:if="{{select}}">
-                            <view wx:for="{{selectItem.grades}}" wx:key="unique">
-                                <view class="item" catchtap="mySelect" data-storeClass="{{ item.id }}" data-name="{{item.className}}">{{item.className}}</view>
+                            <view wx:for="{{selectItem.grades}}" wx:key="id">
+                                <view class="item" catchtap="mySelect" data-storeclass="{{ item.id }}" data-name="{{item.className}}">{{item.className}}</view>
                             </view>
                         </view>
                     </view>
