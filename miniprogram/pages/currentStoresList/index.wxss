@@ -1,0 +1,74 @@
+/* pages/currentStoresList/index.wxss */
+.fw {
+    font-weight: bold;
+}
+
+.pt-20r {
+    padding-top: 20rpx;
+}
+
+page {
+    background-color: #F5F6F8;
+}
+
+.radio-group {
+    background-color: white;
+    border-radius: 20rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.main .title {
+    font-size: 28rpx;
+    font-weight: bold;
+    padding: 20rpx 0;
+}
+
+.info-address {
+    padding: 10rpx 20rpx;
+}
+
+.info-address .name-shop {
+    color: black;
+}
+
+.info-address .image-shop {
+    width: 200rpx;
+    height: 131rpx;
+    border-radius: 10rpx;
+}
+
+.info-address .card-shop {
+    padding: 20rpx;
+    display: flex;
+    gap: 10rpx;
+    justify-content: flex-start;
+    border: solid 1rpx #f00;
+    border-radius: 20rpx;
+}
+
+.info-address .card-shop .radio {
+    zoom: 0.7;
+}
+
+.info-address .address-shop {
+    font-size: 22rpx;
+    color: #8d8b8b;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-address .address-shop .distance {
+    color: #cc0d0d;
+}
+
+.selectBtn {
+    padding: 14rpx;
+    box-sizing: border-box;
+    background-color: #f00;
+    text-align: center;
+    color: white;
+    border-radius: 20rpx;
+    font-size: 28rpx;
+}
