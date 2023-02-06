@@ -8,7 +8,7 @@
                     <text>{{item.phone}}</text>
                 </view>
             </radio>
-            <view class="btn-edit">
+            <view class="btn-edit" bindtap="to" data-name="addReceiver">
                 编辑
             </view>
         </view>

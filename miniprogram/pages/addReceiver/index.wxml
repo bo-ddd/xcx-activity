@@ -2,21 +2,29 @@
 <view class="main wrap pt-20r">
     <view class="form">
         <view class="info-basic">
-            <view class="username flex ptb-20r">
-                <view class="title">提货人</view>
-                <input class="text" type="text" bindinput="bindUsernameInput" placeholder="请输入姓名(必填)" maxlength="16" />
-                <!-- <image class="img-clean" src="../../images/icon-rule_close.png"></image> -->
+            <view class="username ptb-20r">
+                <view class=" flex">
+                    <view class="title">提货人</view>
+                    <input class="text" type="text" value="{{usernameInputValue}}" bindinput="bindUsernameInput" placeholder="请输入姓名(必填)" maxlength="16" />
+                </view>
+                <image class="img-clean mr-30 {{usernameInputValue?'show':'hidden'}}" bindtap="cleanUsernameInput" src="../../images/icon-error.png" />
             </view>
-            <view class="phone flex ptb-20r">
-                <view class="title">手机号</view>
-                <input class="text" type="text" bindinput="bindPhoneInput" placeholder="请输入手机号(必填)" maxlength="11" />
+            <view class="phone ptb-20r">
+                <view class="flex">
+                    <view class="title">手机号</view>
+                    <input class="text" type="text" value="{{phoneInputValue}}" bindinput="bindPhoneInput" placeholder="请输入手机号(必填)" maxlength="11" />
+                </view>
+                <image class="img-clean mr-30 {{phoneInputValue?'show':'hidden'}}" bindtap="cleanPhoneInput" src="../../images/icon-error.png" />
             </view>
         </view>
         <view class="info-optional mt-24r">
             <view class="label">
                 <view class="title">标签</view>
                 <view class="content">
-                    <input class="text" type="text" value="{{labelInputValue}}" placeholder="请输入标签，最多10个字" maxlength="10" bindinput="bindLabelInput" />
+                    <view class="top-flex">
+                        <input class="text" type="text" value="{{labelInputValue}}" placeholder="请输入标签，最多10个字" maxlength="10" bindinput="bindLabelInput" />
+                        <image class="img-clean mr-30 {{labelInputValue?'show':'hidden'}}" bindtap="cleanLabelInput" src="../../images/icon-error.png" />
+                    </view>
                     <view class="type-label">
                         <view class="text-label {{labelInputValue==item.text? 'selectedColor':'unselectedColor'}}" bindtap="selectLabel" data-text="{{item.text}}" wx:for="{{labelList}}" wx:key="id">{{item.text}}</view>
                     </view>

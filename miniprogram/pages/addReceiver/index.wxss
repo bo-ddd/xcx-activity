@@ -6,8 +6,9 @@
 .ptb-20r {
     padding: 20rpx 0;
 }
-.fs-26{
-    font-size:26rpx;
+
+.fs-26 {
+    font-size: 26rpx;
 }
 
 page {
@@ -26,7 +27,16 @@ page {
 }
 
 .form .username {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: solid 1rpx #d1cfcf;
+}
+
+.form .phone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .form .info-basic {
@@ -40,70 +50,97 @@ page {
     border-radius: 20rpx;
     padding: 0 20rpx;
 }
-.form .title{
+
+.form .title {
     flex-shrink: 0;
     font-size: 30rpx;
 }
+
+.form .top-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .info-optional .label {
     display: flex;
     align-items: center;
     gap: 64rpx;
-    padding:20rpx 0;
-    border-bottom:solid 1rpx #d1cfcf;
+    padding: 20rpx 0;
+    border-bottom: solid 1rpx #d1cfcf;
 }
 
-.info-optional .label .content{
+.info-optional .label .content {
+    width:100%;
     display: flex;
     flex-direction: column;
-    gap:20rpx;
+    gap: 20rpx;
 }
-.info-optional .label .type-label{
+
+.info-optional .label .type-label {
     display: flex;
-    gap:20rpx;
+    gap: 20rpx;
     align-items: center;
     color: #6e6d6e;
 }
-.info-optional .label .text-label{
-    padding:4rpx 10rpx;
+
+.info-optional .label .text-label {
+    padding: 4rpx 10rpx;
     text-align: center;
-    border-radius:10rpx;
-    font-size:26rpx;
+    border-radius: 10rpx;
+    font-size: 26rpx;
 }
 
-.info-optional .set{
+.info-optional .set {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:20rpx 0;
+    padding: 20rpx 0;
 }
-.info-optional .text{
-   display: flex;
-   flex-direction: column;
-   gap:6rpx;
+
+.info-optional .text {
+    display: flex;
+    flex-direction: column;
+    gap: 6rpx;
 }
-.info-optional .text .bottom{
+
+.info-optional .text .bottom {
     color: #8a8b8d;
 }
+
 .info-optional .switch {
-    /* transform: scale(70%); */
     zoom: 0.7;
 }
-.btn-submit{
-    padding:14rpx;
+
+.btn-submit {
+    padding: 14rpx;
     box-sizing: border-box;
     background-color: #f00;
     text-align: center;
-    color:white;
-    border-radius:20rpx;
+    color: white;
+    border-radius: 20rpx;
 }
-.selectedColor{
+
+.selectedColor {
     background-color: #f00;
-    color:white;
+    color: white;
 }
-.unselectedColor{
+
+.unselectedColor {
     background-color: #F6F6F6;
 }
-/* .img-clean{
-    width:32rpx;
-    height:32rpx;
-} */
+
+.img-clean {
+    width: 32rpx;
+    height: 32rpx;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.show {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
