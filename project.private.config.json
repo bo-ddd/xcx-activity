@@ -151,8 +151,13 @@
                     "scene": null
                 },
                 {
+<<<<<<< HEAD
                     "name": "pages/login/index",
                     "pathName": "pages/login/index",
+=======
+                    "name": "",
+                    "pathName": "pages/switchAddress/index",
+>>>>>>> dbaeb98fe0f931c07d586d0c165394ad626e301f
                     "query": "",
                     "launchMode": "default",
                     "scene": null

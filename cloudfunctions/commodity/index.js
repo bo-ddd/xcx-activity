@@ -1,4 +1,4 @@
-const getProductDetails = require('../commodity/getProductDetails/index');
+const getProductDetails = require('./getProductDetails/index');
 
 // 云函数入口函数
 exports.main = async (event, context) => {
