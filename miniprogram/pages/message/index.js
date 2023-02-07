@@ -13,7 +13,7 @@ Page({
              },
              {
                 id:2,
-                text:'官方消息',
+                text:'系统消息',
                 icon:'../../images/icon-msg1.png'
              },
              {
@@ -21,11 +21,11 @@ Page({
                 text:'官方消息',
                 icon:'../../images/icon-set-bai.png'
              },
-             {
-                id:4,
-                text:'官方消息',
-                icon:'../../images/icon-msg1.png'
-             },
+            //  {
+            //     id:4,
+            //     text:'官方消息',
+            //     icon:'../../images/icon-msg1.png'
+            //  },
          ],
          msgList:[
              {

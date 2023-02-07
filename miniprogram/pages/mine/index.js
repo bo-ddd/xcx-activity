@@ -115,6 +115,7 @@ Page({
      */
     onLoad(options) {
 
+         this.getUserInfo()
     },
 
     /**

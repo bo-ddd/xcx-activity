@@ -1,0 +1,17 @@
+<!--pages/login/index.wxml-->
+<view class="login ">
+    <view class="box wrap">
+        <view class="avatar-box wrap">
+            <image src="../../images/icon-contact.png" mode="" class="avatar mr-20" />
+        </view>
+        <view class="userInfo wrap">
+            <view class="text"> 欢迎登录</view>
+            <view class="desc fs-25">获得你的公开信息（昵称、头像等）</view>
+        </view>
+        <view class="btn wrap"  bindtap="getUserInfo">
+            <image src="../../images/icon-wx.png" mode="" class="icon-min mr-10" />
+            <view type="default">微信授权登录</view>
+        </view>
+    </view>
+
+</view>

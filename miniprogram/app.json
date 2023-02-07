@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/index",
     "pages/home/index",
     "pages/index/index",
     "pages/databaseGuide/databaseGuide",
@@ -33,6 +34,7 @@
     "pages/opinion/index",
     "pages/productDetails/index",
     "pages/currentStoresList/index"
+ 
   ],
   "tabBar": {
     "color":"#8a8a8a",
