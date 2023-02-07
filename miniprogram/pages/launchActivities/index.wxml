@@ -1,129 +1,34 @@
 <!--pages/launchActivities/index.wxml-->
 <view class="launch-activities">
     <view class='top-tab_swiper'>
-        <view class='tab  {{currentData == 0 ? "tab-borer" : ""}}' data-current="0" bindtap='checkCurrent'>发起的活动</view>
-        <view class='tab  {{currentData == 1 ? "tab-borer" : ""}}' data-current="1" bindtap='checkCurrent'>创建活动</view>
+        <view class='tab  {{currentData == 0 ? "tab-borer" : ""}}' data-current="0" bindtap='checkCurrent'>待开奖</view>
+        <view class='tab  {{currentData == 1 ? "tab-borer" : ""}}' data-current="1" bindtap='checkCurrent'>已结束</view>
+        <view class='tab  {{currentData == 2 ? "tab-borer" : ""}}' data-current="2" bindtap='checkCurrent'>未开始</view>
     </view>
     <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
         <swiper-item class="swiper-item">
             <view class='swiper-con wrap'>
                 <view class="actvity wrap-60r" wx:for="{{activityLimitList}}" wx:key="id">
                  <image src="{{item.imgUrl}}" mode="" class="activity-bg"/>
-                    <view class="activity-text" bindtap="updataTo">
-                       <view class="activity-title fs-35 mb-20">{{item.title}}</view>
-                        <view class="update-btn fs-35">编辑活动</view>
-                    </view>
+                        <view class="update-btn fs-35" bindtap="updataTo">编辑活动</view>
                 </view>
             </view>
         </swiper-item>
         <swiper-item class="swiper-item">
-
             <view class='swiper-con wrap'>
-                <view class="gift-box mb-20">
-                    <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/ce1ae10792c11cf289c5e57bfca0add.png?sign=5c0c2e073041fbf9add158c83042cfbd&t=1675323381" mode="" class="gift" />
-                </view>
-                <view class="add fs-28">
-                    <view class="">
-                        <view class="page-poster">
-                            <image src="../../images/icon-red.png" mode="" class="icon-min" />
-                            <view class="lable">活动图片：</view>
-                        </view>
-                        <view class="poster">
-                            <image src="../../images/icon-add_activit.png" mode="" class="poster-icon" />
-                            <view class="color-cc"> 请上传活动图片，图片支持jpg、gif、png格式</view>
-                        </view>
-                        <!-- <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" /> -->
-                    </view>
-                    <view class="page-lable">
-                        <image src="../../images/icon-red.png" mode="" class="icon-min" />
-
-                        <view class="lable">商家名称：</view>
-                        <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" />
-                    </view>
-                    <view class="page-lable">
-                        <image src="../../images/icon-red.png" mode="" class="icon-min" />
-
-                        <view class="lable">活动标题：</view>
-                        <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" />
-                    </view>
-                    <view class="page-lable">
-                        <image src="../../images/icon-red.png" mode="" class="icon-min" />
-
-                        <view class="lable">开始日期：</view>
-                        <view class="section date-section" hover-class="section-active">
-                            <picker mode="date" value="{{dateStartDay}}" bind:change="dateChangestart" fields="day">
-                                <view>
-                                    <text class="chooseItem">请选择：</text>{{dateStartDay}}
-                                </view>
-                            </picker>
-                        </view>
-                    </view>
-                    <view class="page-lable">
-                        <image src="../../images/icon-red.png" mode="" class="icon-min" />
-                        <view class="lable">结束日期：</view>
-                        <view class="section date-section" hover-class="section-active">
-                            <picker mode="date" value="{{dateEndDay}}" bind:change="dateChangeEnd" fields="day">
-                                <view>
-                                    <text class="chooseItem">请选择：</text>{{dateEndDay}}
-                                </view>
-                            </picker>
-                        </view>
-                    </view>
-
-                    <view class="page-lable">
-                        <image src="../../images/icon-red.png" mode="" class="icon-min" />
-
-                        <view class="lable">活动类型：</view>
-                        <radio-group name="radio" class="radio color-ccc">
-                            <label>
-                                <radio value="radio1" style="transform: scale(0.7);" />周期活动
-                            </label>
-                            <label>
-                                <radio value="radio2" style="transform: scale(0.7);" />日常活动
-                            </label>
-                        </radio-group>
-                    </view>
-
-                    <view class="page-lable-rule">
-                        <image src="../../images/icon-red.png" mode="" class="icon-min" />
-                        <view class="lable">活动规则：</view>
-                        <textarea placeholder="请输入规则" name="remark" class="textarea"></textarea>
-                    </view>
-                    <view class="page-prize wrap">
-                        <view class="prize mb-20">
-                            <view class="prize-lable">
-                                <image src="../../images/icon-red.png" mode="" class="icon-min" />
-                                <view class="lable mb-20">奖品设置：</view>
-                            </view>
-                            <image src="../../images/icon-add_activit.png" mode="" class="icon-addprizes" />
-                        </view>
-
-                        <view class="prize-setting wrap mb-40" wx:for="{{prizeSettingList}}" wx:key="id">
-                            <view class="mr-30">
-                                <image src="{{item.prizeMapIcon}}" mode="" class="add-p" />
-                                <view class="color-blue"> 更换图片
-                                </view>
-                            </view>
-                            <view class="prize-right">
-                                <view class="setting">
-                                    <view class="setting-lable">{{item.prizeName}} </view>
-                                    <input type="text" class="prize-ipt" />
-                                </view>
-                                <view class="setting">
-                                    <view class="setting-lable">{{item.prizeNum}} </view>
-                                    <input type="text" class="prize-ipt" />
-                                </view>
-                                <view class="setting">
-                                    <view class="setting-lable">{{item.prizePeople}} </view>
-                                    <input type="text" class="prize-ipt" />
-                                </view>
-                            </view>
-                        </view>
-
-                    </view>
+                <view class="actvity wrap-60r" wx:for="{{activityLimitList}}" wx:key="id">
+                 <image src="{{item.imgUrl}}" mode="" class="activity-bg"/>
+                        <view class="update-btn fs-35" bindtap="updataTo">编辑活动</view>
                 </view>
             </view>
-            <button type="warn" plain="true" class="btn" bindtap="to">创建活动</button>
+        </swiper-item>
+        <swiper-item class="swiper-item">
+            <view class='swiper-con wrap'>
+                <view class="actvity wrap-60r" wx:for="{{activityLimitList}}" wx:key="id">
+                 <image src="{{item.imgUrl}}" mode="" class="activity-bg"/>
+                        <view class="update-btn fs-35" bindtap="updataTo">编辑活动</view>
+                </view>
+            </view>
         </swiper-item>
     </swiper>
 </view>

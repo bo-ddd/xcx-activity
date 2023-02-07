@@ -22,7 +22,7 @@ Page({
             type:'getProductDetails',
         },
         success(res){
-            console.log(res.result);
+            console.log(res);
         }
     })
   },

@@ -38,10 +38,12 @@ Page({
         console.log(e.currentTarget.dataset.uid);
     },
      handleClick(e) {
+     console.log(e);
     let currentTab = e.currentTarget.dataset.index
     this.setData({
-      currentTab
+        currentTab
     })
+   
   },
   handleSwiper(e) {
     let {

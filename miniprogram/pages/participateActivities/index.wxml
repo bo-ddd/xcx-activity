@@ -1,2 +1,35 @@
 <!--pages/participateActivities/index.wxml-->
-<text>pages/participateActivities/index.wxml</text>
+<view class="launch-activities">
+    <view class='top-tab_swiper'>
+        <view class='tab  {{currentData == 0 ? "tab-borer" : ""}}' data-current="0" bindtap='checkCurrent'>待开奖</view>
+        <view class='tab  {{currentData == 1 ? "tab-borer" : ""}}' data-current="1" bindtap='checkCurrent'>已结束</view>
+        <view class='tab  {{currentData == 2 ? "tab-borer" : ""}}' data-current="2" bindtap='checkCurrent'>未开始</view>
+    </view>
+    <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
+        <swiper-item class="swiper-item">
+            <view class='swiper-con wrap'>
+                <view class="actvity wrap-60r" wx:for="{{endActivityList}}" wx:key="id">
+                 <image src="{{item.imgUrl}}" mode="" class="activity-bg"/>
+                        <view class="update-btn fs-35"  bindtap="updataTo">查看详情</view>
+                </view>
+            </view>
+        </swiper-item>
+        <swiper-item class="swiper-item">
+            <view class='swiper-con wrap'>
+                <view class="actvity wrap-60r" wx:for="{{endActivityList}}" wx:key="id">
+                 <image src="{{item.imgUrl}}" mode="" class="activity-bg"/>
+                        <view class="update-btn fs-35"  bindtap="updataTo">查看详情</view>
+                </view>
+            </view>
+        </swiper-item>
+        <swiper-item class="swiper-item">
+            <view class='swiper-con wrap'>
+                <view class="actvity wrap-60r" wx:for="{{endActivityList}}" wx:key="id">
+                 <image src="{{item.imgUrl}}" mode="" class="activity-bg"/>
+                        <view class="update-btn fs-35"  bindtap="updataTo">查看详情</view>
+                </view>
+            </view>
+        </swiper-item>
+      
+    </swiper>
+</view>

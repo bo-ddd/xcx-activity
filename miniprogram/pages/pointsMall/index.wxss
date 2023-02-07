@@ -29,7 +29,7 @@
 .fontColorBox,
 .fontColorBox1 {
     /* 文字默认颜色 */
-    color: black;
+    color: rgb(197, 32, 32);
 }
 
 .navBox {
@@ -61,7 +61,6 @@
 .lineBox {
     /* 选中底线样式 */
     background: red;
-    margin-top: 16rpx;
     border-radius: 4rpx;
 }
 

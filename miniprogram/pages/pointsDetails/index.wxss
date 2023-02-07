@@ -85,7 +85,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 30rpx;
+    margin-top: 15rpx;
 }
 .swiper-item{
     height: calc(100vh - 100rpx);

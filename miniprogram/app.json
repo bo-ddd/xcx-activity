@@ -1,9 +1,12 @@
 {
+   
   "pages": [
+      "pages/createActivity/index",
+    "pages/mine/index",
+    "pages/login/index",
     "pages/home/index",
     "pages/index/index",
     "pages/databaseGuide/databaseGuide",
-    "pages/mine/index",
     "pages/activity/index",
     "pages/activityDetails/index",
     "pages/mineActivity/index",
@@ -32,7 +35,9 @@
     "pages/addReceiver/index",
     "pages/opinion/index",
     "pages/productDetails/index",
-    "pages/currentStoresList/index"
+    "pages/currentStoresList/index",
+    "pages/switchAddress/index",
+    "pages/selectCity/index"
   ],
   "tabBar": {
     "color":"#8a8a8a",

@@ -1,2 +1,29 @@
 <!--pages/message/index.wxml-->
-<text>pages/message/index.wxml</text>
+<view class="message wrap">
+    <view class="header mb-50">
+        <view wx:for="{{headerMsgList}}" wx:key="id" class="item">
+            <view class="img-box">
+                <image src="{{item.icon}}" mode="" class="icon-img" />
+            </view>
+            <view>{{item.text}}</view>
+        </view>
+    </view>
+    <view class="msg-list" wx:for="{{msgList}}">
+        <view class="list-item">
+        <view>
+            <image src="{{item.avatar}}" mode="" class="avatar mr-30" />
+        
+        </view>
+            <view class="item-box">
+                <view class="item-r">
+                    <view class="list-title">{{item.title}}</view>
+                    <view class="color-hui">{{item.date}}</view>
+
+                </view>
+                <view class="fs-28 color-hui">{{item.desc}}</view>
+            </view>
+        </view>
+
+    </view>
+
+</view>

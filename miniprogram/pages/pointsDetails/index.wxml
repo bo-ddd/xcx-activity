@@ -89,7 +89,7 @@
                                     <image class="integral" src="../../images/icon-integral.png" mode=""/>
                                 </view>
                                 <view class="quantity">
-                                    0元
+                                    0元 
                                 </view>
                             </view>
                             <view class="discount">

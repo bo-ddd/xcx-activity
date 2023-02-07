@@ -28,7 +28,7 @@
                     </view>
                 </view>
             </view>
-            <view class="btn-switch" bindtap="to" data-name="nearbyStoresList">
+            <view class="btn-switch" bindtap="to" data-name="currentStoresList">
                 <text class="fs-26">切换</text>
                 <image class="icon-arrow" src="../../images/icon-arrow_right.png" />
             </view>
