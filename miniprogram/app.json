@@ -1,12 +1,15 @@
 {
+   
   "pages": [
+    "pages/mine/index",
     "pages/login/index",
     "pages/home/index",
     "pages/index/index",
     "pages/databaseGuide/databaseGuide",
-    "pages/mine/index",
+   
     "pages/activity/index",
     "pages/activityDetails/index",
+    "pages/createActivity/index",
     "pages/mineActivity/index",
     "pages/updataActivities/index",                               
     "pages/merchantSettlement/index",

@@ -6,26 +6,35 @@ Page({
      */
     data: {
         userInfo: '',
-        activityList: [{
+        activityList: [
+            {
                 id: 1,
+                icon: '../../images/icon-activity.png',
+                lable: '创建活动',
+                name:'createActivity'
+
+            },
+            {
+                id: 2,
                 icon: '../../images/icon-activity.png',
                 lable: '发起的活动',
                  name:'launchActivities'
             },
             {
-                id: 2,
+                id: 3,
                 icon: '../../images/icon-activity.png',
                 lable: '参与的活动',
                 name:'participateActivities'
 
             },
             {
-                id: 3,
+                id: 4,
                 icon: '../../images/icon-activity.png',
                 lable: '抽奖记录',
                 name:'activitRecord'
 
             },
+          
         ],
         mineList: [{
                 id: 1,
@@ -114,8 +123,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
-         this.getUserInfo()
+        // this.getUserInfo()
     },
 
     /**

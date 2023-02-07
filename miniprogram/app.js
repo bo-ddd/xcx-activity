@@ -18,7 +18,9 @@ App({
         this.globalData = {
             socketStatus: 'closed',
         };
+        this.getUserInfo = function () {
 
+        };
         this.getUserProfile = function (desc) {
             return new Promise((resolve) => {
                 wx.getUserProfile({

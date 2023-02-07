@@ -14,13 +14,12 @@ Page({
     onLoad(options) {
 
     },
-      async getUserInfo() {
+    async getUserInfo() {
         let {
             getUserProfile,
             getSetting,
             openSetting
         } = getApp();
-
         await getSetting().then(async res => {
             console.log(res.authSetting['scope.userInfo']);
             if (res.authSetting['scope.userInfo']) {
@@ -33,7 +32,7 @@ Page({
                 })
                 console.log(userInfo);
                 wx.switchTab({
-                  url: '/pages/home/index',
+                    url: '/pages/home/index',
                 })
             } else {
                 await openSetting()

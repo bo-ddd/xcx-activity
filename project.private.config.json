@@ -1,7 +1,5 @@
 {
-    "setting": {
-        "compileHotReLoad": true
-    },
+    "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
     "condition": {
         "miniprogram": {
             "list": [
@@ -11,160 +9,13 @@
                     "query": ""
                 },
                 {
-                    "name": "pages/home/index",
-                    "pathName": "pages/home/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "pages/activity/index",
-                    "pathName": "pages/activity/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "pages/mine/index",
-                    "pathName": "pages/mine/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/mine/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "商家入驻",
-                    "pathName": "pages/merchantSettlement/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "首页",
-                    "pathName": "pages/home/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/index/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/activityDetails/index",
-                    "query": "id=1",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "入驻须知",
-                    "pathName": "pages/merchantRules/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/userInfo/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/addAddress/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/businessContact/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/mine/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/confirmOrder/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/receiverList/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/addReceiver/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/productDetails/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/nearbyStoresList/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/currentStoresList/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "",
-                    "pathName": "pages/currentStoresList/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-<<<<<<< HEAD
-                    "name": "pages/login/index",
-                    "pathName": "pages/login/index",
-=======
-                    "name": "",
-                    "pathName": "pages/switchAddress/index",
->>>>>>> dbaeb98fe0f931c07d586d0c165394ad626e301f
+                    "name": "pages/createActivity/index",
+                    "pathName": "pages/createActivity/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 }
             ]
         }
-    },
-    "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
-    "projectname": "xcx-activit"
+    }
 }
