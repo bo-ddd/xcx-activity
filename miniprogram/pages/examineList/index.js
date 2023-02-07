@@ -5,6 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        currentIndex: 0, //tab默认项
         items: [
             {
                 id: 1,
@@ -37,8 +38,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        this.showLoading()
     },
+    
 
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -93,4 +95,32 @@ Page({
             url: '/pages/examineDetails/index?id=' + e.currentTarget.dataset.id,
         })
     },
+    // 页面加载中
+    showLoading() {
+        wx.showLoading({
+            title: '加载中',
+        })
+        setTimeout(function () {
+            wx.hideLoading()
+        }, 500)
+    },
+    // tab切换
+    pagechange(e) {
+        // 通过touch判断，改变tab的下标值
+        if ("touch" === e.detail.source) {
+          let currentPageIndex = this.data.currentIndex;
+          currentPageIndex = (currentPageIndex + 1) % 2;
+          // 拿到当前索引并动态改变
+          this.setData({
+            currentIndex: currentPageIndex,
+          })
+        }
+      },
+      titleClick: function (e) {
+        this.setData({
+          //拿到当前索引并动态改变
+          currentIndex: e.currentTarget.dataset.idx
+        })
+      }
+
 })

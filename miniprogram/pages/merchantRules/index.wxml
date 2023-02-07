@@ -1,25 +1,46 @@
 <!--pages/merchantRules/index.wxml-->
 <view class="box">
     <view class="merchantRules">
-
         <view class="rule">
             <view class="content  wrap">
-                <text decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;甲乙双方经过友好协商，在公平、诚实、信任、平等合作、互利互惠的基础上，本着为加快中国教育现代化、信息化发展步伐，共同促进教育事业，为广大学校提供优秀的软件产品及完善的售后服务为宗旨，就乙方作为甲方正式授权的金*维2000图书系列软件产品的代理事宜，达成如下协议。\n</text>
+                <view class="passage">以下下甲方为 'wulala' 平台 </view>
+                <view class="passage">以下下乙方为入住此平台商铺 </view>
+                <view class="passage">为了促进彼此业务快速发展，共享客户资源，互利共赢。甲乙双方本着公平、公正、合理互惠互利的原则，经甲乙双方友好协商，特签署如下协议 </view>
 
-                <text>一、授权区域和销售任务\n</text>
+                <view class="mt-16 title">一、合作模式 </view>
 
-                <text decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、甲方授权乙方为长沙市金*维科技有限公司金*维2000图书系列软件产品 地区的(普通代理 / 核心代理 / 总代理)。\n</text>
-                <text decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、甲方授权乙方为长沙市金*维科技有限公司金*维2000图书系列软件产品 地区的(普通代理 / 核心代理 / 总代理)。\n</text>
-                <text decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、甲方授权乙方为长沙市金*维科技有限公司金*维2000图书系列软件产品 地区的(普通代理 / 核心代理 / 总代理)。\n</text>
-                <text decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二、代理期限\n</text>
+                <view class="passage">1、平台推广</view>
+                <view class="passage">1.1甲方通过自身的平台，帮助乙方品牌宣传及推广。</view>
 
-
-                甲方授权乙方的代理期限为壹年，自 年 月 日至 年 月 日。如双方对合作满意，可于本合同到期前三个月，协商继续合作事宜。经协商，双方同意继续合作时，必须另行签定代理合同，另行签定合同时本合同自动失效。
-                二、代理期限
-
-                甲方授权乙方的代理期限为壹年，自 年 月 日至 年 月 日。如双方对合作满意，可于本合同到期前三个月，协商继续合作事宜。经协商，双方同意继续合作时，必须另行签定代理合同，另行签定合同时本合同自动失效。二、代理期限
-
-                甲方授权乙方的代理期限为壹年，自 年 月 日至 年 月 日。如双方对合作满意，可于本合同到期前三个月，协商继续合作事宜。经协商，双方同意继续合作时，必须另行签定代理合同，另行签定合同时本合同自动失效。
+                <view class="passage">1.2口碑：通过甲方线上产品的详情介绍，乙方线下的讲解，可以形成线上线下良好的口碑和信誉。 </view>
+                <view class="passage">1.3活动：在一些促销，节日活动中，甲乙双方整合资源，由乙方线上申请后，由甲方同意后开启一些活动，以达到商家宣传和平台增流。 </view>
+                <view class="mt-16 title">二、双方权利与义务 </view>
+                <view class="passage">2.1甲乙双方有权利对一切有关自身的事宜做出咨询、沟通。 </view>
+                <view class="passage">2.2甲乙双方有权利优先得到另一方推荐来的客户（用户）资源。 </view>
+                <view class="passage">2.3甲乙双方有权利在确定好的时间、地点进行双方客户（用户）的总汇。 </view>
+                <view class="passage">2.4未尽事宜，可另商讨及规范补充。 </view>
+                <view class="mt-16 title">三、不可抗因素 </view>
+                <view class="passage">3.1任何一方遇到不可抗力而全部或部分不能履行本协议或超出本协议，双方互不承担法律责任。 </view>
+                <view class="passage">3.2本条所称‘不可抗力’系指不能预见，不能避免和不能克服的客观事件，包括但不限于自然灾害，如：洪水、地震等；如：计算机网络瘫痪，战争，罢工等。 </view>
+                <view class="passage">3.3在不可抗力影响消除后的合理事件内，一方或双方应当继续履行协议，协议期限因此而顺延。 </view>
+                <view class="passage">3.4因不可抗力产生的损失，双方各自承担。 </view>
+                <view class="mt-16 title">四、违约责任 </view>
+                <view class="passage">4.1协议双方同意，本协议任何一方违反各自在本协议中所保证、承诺或者其他条款，均构成违约，如因一方的违约行为造成另一方损失的，违约方应负赔偿责任。 </view>
+                <view class="passage">4.2对非本协议双方过错产生的损失，双方应按照公平公正的原则分担并相互协助向有过错一方请求赔偿。 </view>
+                <view class="mt-16 title">五、免责条款 </view>
+                <view class="passage">5.1由于目前的技术活成本无法解决的问题或者由于不可抗力而不能履行协议时，由双方共同商议确定。 </view>
+                <view class="mt-16 title">六、争议解决 </view>
+                <view class="passage">6.1本协议履行过程中如发生争议，应通过友好协商的方式予以解决，经友好协商不能解决的，任何一方可向甲方所在地仲裁委员会提出仲裁申请。 </view>
+                <view class="mt-16 title">七、协议终止 </view>
+                <view class="passage">7.1有下列情形之一的，甲方有权终止乙方部分或全部服务并解除本协议：
+                    <view class="passage">（1）乙方在合作期间内存在不正当竞争行为，扰乱甲方平台交易秩序的。</view>
+                    <view class="passage">（2）乙方发布违法或虚假信息或广告造成甲方损失的。</view>
+                    <view class="passage">（3）乙方因违法被取缔或自行停业的。</view>
+                </view>
+                <view class="passage">7.2有下列情形之一的，乙方有权终止与甲方的协议：
+                    <view class="passage">（1）甲方发布违法或虚假信息造成乙方损失的。</view>
+                    <view class="passage">（2）甲方因违法被取缔或自行停业的。</view>
+                </view>
             </view>
             <view>
                 <button class="next" disabled="{{ isTrue }}" type="primary" bindtap="toMerchantSettlement">我已知晓，立即入驻</button>

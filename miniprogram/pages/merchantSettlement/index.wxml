@@ -10,8 +10,8 @@
                     <view class="label">姓名</view>
                     <input class="ipt" type="text" name="merchantName" placeholder="请输入您的姓名" />
                 </view>
-                <view class="merchant-sex mt-30 wrap">
-                    <view class="label mb-16">性别</view>
+                <view class="merchant-sex wrap">
+                    <view class="label mt-16 mb-16">性别</view>
                     <radio-group class="radio" bindchange="radioChange" name="merchantSex">
                         <label wx:for="{{radios}}" wx:key="value">
                             <view>
@@ -46,7 +46,7 @@
                     </view>
                 </view>
                 <view class="upload-license wrap">
-                    <view class="label mb-16 ">上传营业执照</view>
+                    <view class="label mt-16 mb-16 ">上传营业执照</view>
                     <view class="license" bindtap="upload">
                         <image class="icon-license" wx:if="{{ fileId }}" src="{{ fileId }}" data-license="{{ fileId }}" mode="" />
                     </view>

@@ -16,6 +16,7 @@ exports.main = async (event, context) => {
         }
     })
     return {
+        event,
         status: 1,
         msg: 'success',
         data:null
