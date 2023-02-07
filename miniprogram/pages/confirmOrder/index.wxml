@@ -52,7 +52,7 @@
     <view class="remarks-order mt-24r">
         <text class="fs-28">商品备注</text>
         <view class="btn-remarks" bindtap="to" data-name="orderRemarks">
-            <text class="fs-26">请输入</text>
+            <text class="remarks fs-26">{{remarks||'请输入'}}</text>
             <image class="icon-arrow" src="../../images/icon-arrow_right.png" />
         </view>
     </view>

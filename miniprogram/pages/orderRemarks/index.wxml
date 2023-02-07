@@ -1,2 +1,7 @@
 <!--pages/orderRemarks/index.wxml-->
-<text>pages/orderRemarks/index.wxml</text>
+<view class="main pt-10r">
+    <view class="remarks wrap">
+        <textarea bindinput="bindTextareaValue" placeholder="请填写备注，最多50个字" maxlength="50" placeholder-class="fs-28"></textarea>
+    </view>
+    <view class="submit mt-24r wrap" bindtap="submit">完成</view>
+</view>
