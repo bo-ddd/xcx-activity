@@ -2,12 +2,9 @@
 <!-- 在用户第一次进来的时候选择自己的喜好 根据喜好推荐商品 -->
 <!-- 如果没有你该推荐哪些东西 -->
 <view class="outer-layer">
-<!-- 分类icon -->
-  <view class="sort">
-    <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/sort.png?sign=24d5002810349bed7515622b91f2113b&t=1675169637" mode="" />
-  </view>
+
 <!-- 个人信息和头像 -->
-  <view class="wrap register">
+  <view class="wrap register mt-30">
     <view class="register-user">
       <image class="icon-register ml-20" wx:if="{{ userInfo.avatarUrl }}" src="{{ userInfo.avatarUrl }}" mode="" />
       <image class="ml-20" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/0.png?sign=06583c237e17872f3d74f83bb5d38238&t=1675169424" wx:else mode="" />
@@ -62,9 +59,11 @@
   <view class="wrap flash-sale mt-30">
     <view class="flash-sale-header">
       <image class="icon-flash-sale ml-20" src="../../images/icon-flash sale.png" mode="" />
-      <view bindtap="to" data-name="snapPurchase">
-        更多
-        <image class="icon-arrow mr-20" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=d218a185ae8fe67584539761e4623eed&t=1675235086" mode="" />
+      <view class="more" bindtap="to" data-name="snapPurchase">
+        <view>
+            更多
+        </view>
+            <image class="icon-arrow" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-arrow_info.png?sign=d218a185ae8fe67584539761e4623eed&t=1675235086" mode="" />
       </view>
     </view>
 
@@ -78,7 +77,7 @@
           <view class="flash-sale-time mt-10">
             剩xxx天<text class="time-remaining">23</text>:<text class="time-remaining">57</text>:<text class="time-remaining">31</text>
           </view>
-          <view class="flash-required-points mt-10">
+          <view class="flash-required-points mt-20">
             <text >{{ item.requiredPoints }}<text class="integral"> 积分</text></text>
             <text class="snap-purchase">抢购</text>
           </view>
