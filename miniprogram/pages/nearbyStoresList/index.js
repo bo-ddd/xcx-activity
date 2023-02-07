@@ -6,8 +6,55 @@ Page({
      */
     data: {
         selectInputValue: '',
-        focusStatus: false
+        focusStatus: false,
+        nearbyStoresList: [{
+                id: 1,
+                name: '友惠便利店',
+                distance: '504',
+                address: '新乡市卫辉市卫州路1号卫辉市人民政府信访局卫州路28号门面房'
+            },
+            {
+                id: 2,
+                name: '云山酒行',
+                distance: '504',
+                address: '新乡市卫辉市友谊路与劳动路交叉路口往南约100米枚举公馆一楼'
+            },
+            {
+                id: 3,
+                name: '云山酒行',
+                distance: '504',
+                address: '新乡市卫辉市友谊路与劳动路交叉路口往南约100米枚举公馆一楼'
+            },
+            {
+                id: 4,
+                name: '云山酒行',
+                distance: '504',
+                address: '新乡市卫辉市友谊路与劳动路交叉路口往南约100米枚举公馆一楼'
+            },
+            {
+                id: 5,
+                name: '云山酒行',
+                distance: '504',
+                address: '新乡市卫辉市友谊路与劳动路交叉路口往南约100米枚举公馆一楼'
+            },
+            {
+                id: 6,
+                name: '云山酒行',
+                distance: '504',
+                address: '新乡市卫辉市友谊路与劳动路交叉路口往南约100米枚举公馆一楼'
+            }
+        ]
     },
+    to(e) {
+        wx.navigateTo({
+            url: '/pages/' + e.currentTarget.dataset.name + '/index',
+        })
+    },
+    //选择自提点;
+    selectAddress(e) {
+        console.log(e.currentTarget.dataset.id)
+    },
+
     //获取搜索框的值;
     bindSelectInput(e) {
         this.setData({
