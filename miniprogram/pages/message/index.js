@@ -5,7 +5,51 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+         headerMsgList:[
+             {
+                id:1,
+                text:'官方消息',
+                icon:'../../images/icon-set-bai.png'
+             },
+             {
+                id:2,
+                text:'官方消息',
+                icon:'../../images/icon-msg1.png'
+             },
+             {
+                id:3,
+                text:'官方消息',
+                icon:'../../images/icon-set-bai.png'
+             },
+             {
+                id:4,
+                text:'官方消息',
+                icon:'../../images/icon-msg1.png'
+             },
+         ],
+         msgList:[
+             {
+                id:1,
+                title:'官方精选',
+                desc:'精品品质商家合集，致敬最美的你',
+                date:'1-3',
+                avatar:'../../images/icon-avatar1.png'
+             },
+             {
+                id:2,
+                title:'婚礼会馆',
+                desc:'让您做最美的新娘',
+                date:'12-4',
+                avatar:'../../images/avatar-girl.png'
+             },
+             {
+                id:3,
+                title:'官方精选',
+                desc:'精品品质商家合集，致敬最美的你',
+                date:'12-2',
+                avatar:'../../images/icon-avatar1.png'
+             },
+         ]
     },
 
     /**

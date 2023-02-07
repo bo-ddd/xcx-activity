@@ -4,8 +4,8 @@
     <view class="entry">
         <view class="red-bg">
             <view class="settle">
-                <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/merchant/K%5BRE)O1ZGB%25%5DKABPQ%7B%252%7B%40R.png?sign=6c62ae26de64227751991a267cfd459c&t=1675391737" mode="" class="pople mt-24r" />
-                <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/merchant/yun.png?sign=f1c9fd093f8339f2ed0c81305b2bf16f&t=1675390193" mode="" class="cloud" />
+                <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/K%5BRE)O1ZGB%25%5DKABPQ%7B%252%7B%40R.png?sign=fd4f970c5a44f39605706240dd112466&t=1675684772" mode="" class="pople mt-24r" />
+                <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/yun.png?sign=8c7f7fc460bc893996d408fe6ae6afdd&t=1675684805" mode="" class="cloud" />
             </view>
 
             <view class="entry-modul" wx:for="{{settleList}}" wx:key="id">
