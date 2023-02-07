@@ -10,7 +10,7 @@
 }
 .header{
     border-radius: 20rpx;
-    background: linear-gradient(to right bottom, rgb(238, 217, 217), #e64430) ;
+    background: linear-gradient(to right bottom, rgb(238, 217, 217), #e73c26) ;
      display: flex;
      justify-content: center;
      align-items: center;
@@ -43,6 +43,6 @@
     font-weight: bold;
 
     box-sizing: border-box;
-    background: linear-gradient(to right bottom, rgb(243, 211, 211), #e64430) ;
+    background: linear-gradient(to right bottom, rgb(243, 211, 211), #e73c26) ;
 
 }
