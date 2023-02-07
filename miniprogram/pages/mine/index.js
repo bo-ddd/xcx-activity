@@ -77,7 +77,6 @@ Page({
             getSetting,
             openSetting
         } = getApp();
-
         await getSetting().then(async res => {
             console.log(res.authSetting['scope.userInfo']);
             if (res.authSetting['scope.userInfo']) {

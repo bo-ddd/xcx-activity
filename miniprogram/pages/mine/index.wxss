@@ -29,7 +29,7 @@
     border-radius: 50rpx;
 }
 .icon-msg{
-    width: 60rpx;
+    width: 65rpx;
     height: 45rpx;
 }
 .user{

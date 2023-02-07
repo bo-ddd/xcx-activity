@@ -1,15 +1,14 @@
 {
    
   "pages": [
+      "pages/createActivity/index",
     "pages/mine/index",
     "pages/login/index",
     "pages/home/index",
     "pages/index/index",
     "pages/databaseGuide/databaseGuide",
-   
     "pages/activity/index",
     "pages/activityDetails/index",
-    "pages/createActivity/index",
     "pages/mineActivity/index",
     "pages/updataActivities/index",                               
     "pages/merchantSettlement/index",
@@ -37,6 +36,7 @@
     "pages/opinion/index",
     "pages/productDetails/index",
     "pages/currentStoresList/index",
+    "pages/switchAddress/index",
     "pages/selectCity/index"
   ],
   "tabBar": {

@@ -20,7 +20,8 @@
             <image src="../../images/icon-red.png" mode="" class="icon-min" />
 
             <view class="lable">商家名称：</view>
-            <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" name=""/>
+            <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" name="" 
+             bindinput="inputname" value="{{nameValue}}"/>
         </view>
         <view class="page-lable">
             <image src="../../images/icon-red.png" mode="" class="icon-min" />
