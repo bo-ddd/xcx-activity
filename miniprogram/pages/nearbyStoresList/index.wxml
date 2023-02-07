@@ -1,7 +1,7 @@
 <!--pages/nearbyStoresList/index.wxml-->
 <view class="main">
     <view class="nav">
-        <view class="position">
+        <view class="position" bindtap="to" data-name="selectCity">
             <text>选择城市</text>
             <image class="img-arrow_bottom" src="../../images/icon-arrow_bottom.png" mode="" />
         </view>
@@ -12,9 +12,31 @@
             </view>
             <view class="cancel {{focusStatus?'show':'hidden'}}">取消</view>
         </view>
-
     </view>
-    <view class="location"></view>
-    <view class="title"></view>
-    <view class="list-address"></view>
+    <view class="scroll">
+        <view class="location mt-24r">
+            <view class="info-location">
+                <image class="img-location" src="../../images/icon-position.png" />
+                <text class="text-location">卫辉市城管局</text>
+            </view>
+            <view class="btn-location" bindtap="to" data-name="switchAddress">
+                <view>切换地址</view>
+                <image class="img-arrow" src="../../images/icon-arrow_right.png" mode="" />
+            </view>
+        </view>
+        <view class="title mt-24r">
+            附近自提点
+        </view>
+        <view class="list-address">
+            <view class="card-shop mt-24r" wx:for="{{nearbyStoresList}}" wx:key="id">
+                <image class="image-shop" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/img-shop.png?sign=3da10d0f7851f46ff3cdd16db0f18ca9&t=1675415980" mode="" />
+                <view class="address-shop">
+                    <text class="name-shop fw fs-28">{{item.name}}</text>
+                    <text class="distance">距您<text>{{item.distance}}</text>米</text>
+                    <text>{{item.address}}</text>
+                </view>
+                <view class="select-btn" bindtap="selectAddress" data-id="{{item.id}}">选这个</view>
+            </view>
+        </view>
+    </view>
 </view>

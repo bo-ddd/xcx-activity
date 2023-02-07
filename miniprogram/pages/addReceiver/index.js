@@ -48,19 +48,10 @@ Page({
             switchChecked: e.detail.value
         })
     },
-    cleanUsernameInput() {
+    cleanInput(e) {
+        let name = e.currentTarget.dataset.name;
         this.setData({
-            usernameInputValue: ''
-        })
-    },
-    cleanPhoneInput() {
-        this.setData({
-            phoneInputValue: ''
-        })
-    },
-    cleanLabelInput() {
-        this.setData({
-            labelInputValue: ''
+            [`${name}`]: ''
         })
     },
 
