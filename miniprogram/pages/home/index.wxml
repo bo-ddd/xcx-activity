@@ -12,7 +12,7 @@
       <view class="register-userinfo" wx:if="{{ userInfo.nickName }}">
         {{ userInfo.nickName }}
       </view>
-      <button class="register-userinfo" wx:else="" hover-class="none" type="fault" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录/注册</button>
+      <button class="register-userinfo" wx:else="" hover-class="none" type="fault" bindtap="getUserInfo">登录/注册</button>
     </view>
 
     <view class="icon-register-right mr-20">

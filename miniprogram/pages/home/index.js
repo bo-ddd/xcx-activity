@@ -91,12 +91,33 @@ Page({
       url: '/pages/'+e.currentTarget.dataset.name+'/index',
     })
   },
+ 
 
-  getUserInfo(res){
-    this.setData({
-      userInfo:res.detail.userInfo
+  async getUserInfo() {
+    let {
+        getUserProfile,
+        getSetting,
+        openSetting
+    } = getApp();
+
+    await getSetting().then(async res => {
+        console.log(res.authSetting['scope.userInfo']);
+        if (res.authSetting['scope.userInfo']) {
+            let {
+                userInfo
+            } = await getUserProfile('用于登录')
+            this.setData({
+                userInfo,
+                hasUserInfo: true
+            })
+        } else {
+            await openSetting()
+        }
+    }).catch(async err => {
+        await openSetting()
     })
-  },
+},
+
   scrollToTop() {
     this.setAction({
       scrollTop: 0
