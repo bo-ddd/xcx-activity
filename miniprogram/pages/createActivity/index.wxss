@@ -1,12 +1,4 @@
-/* pages/launchActivities/index.wxss */
-.launch-activities {
-    height: 100vh;
-}
-
-.swiper {
-    height: 100%;
-}
-
+/* pages/createActivity/index.wxss */
 .swiper-item {
     overflow: scroll;
     height: 100%;
@@ -95,7 +87,7 @@
 
 .tab {
     float: left;
-    width: 33.3333%;
+    width: 49.3333%;
     text-align: center;
     padding: 10rpx 0;
 }

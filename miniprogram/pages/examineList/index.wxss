@@ -3,12 +3,73 @@
     height: 100vh;
 }
 
+.navBox {
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    height: 80rpx;
+    width: 100%;
+    align-items: center;
+}
+.fontColorBox-left,
+.fontColorBox-right {
+    /* 文字默认颜色 */
+    color: #f00;
+}
+.titleBox-left {
+    /* 未选中文字的样式 */
+    color: black;
+    font-size: 30rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding-top: 16rpx;
+    box-sizing: border-box;
+}
+.titleBox-right {
+    color: black;
+    font-size: 30rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding-top: 16rpx;
+    box-sizing: border-box;
+}
+.lineBox,.notLineBox{
+    /* 选中及未选中底线共同样式 */
+    width: 300rpx;
+    height: 4rpx;
+}
+.lineBox {
+    /* 选中底线样式 */
+    background: #f00;
+    border-radius: 4rpx;
+}
+.notLineBox {
+    /* 未选中底线样式 */
+    background: transparent;
+}
+.swiperTtemBox{
+    height: calc(100vh - 80rpx);
+    
+}
+.swiperTtemBox-item{
+    overflow: hidden;
+    overflow: scroll;
+    padding-bottom: 30rpx;
+    box-sizing: border-box;
+}
+
 .examine-list {
     background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-examinelist.png?sign=458d5baa89a790a04897653a089f8f2b&t=1675408498');
     background-size: cover;
     height: 100%;
     display: flow-root;
-    padding-top: 30rpx;
+    /* padding-top: 30rpx; */
     box-sizing: border-box;
     overflow: hidden;
     overflow: scroll;

@@ -14,13 +14,12 @@ Page({
     onLoad(options) {
 
     },
-      async getUserInfo() {
+    async getUserInfo() {
         let {
             getUserProfile,
             getSetting,
             openSetting
         } = getApp();
-
         await getSetting().then(async res => {
             console.log(res.authSetting['scope.userInfo']);
             if (res.authSetting['scope.userInfo']) {
@@ -32,8 +31,8 @@ Page({
                     hasUserInfo: true
                 })
                 console.log(userInfo);
-                wx.switchTab({
-                  url: '/pages/home/index',
+                wx.switchTab({  
+                    url: '/pages/home/index',
                 })
             } else {
                 await openSetting()
@@ -55,7 +54,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+ 
     },
 
     /**
@@ -92,4 +91,4 @@ Page({
     onShareAppMessage() {
 
     }
-})
+}) 
