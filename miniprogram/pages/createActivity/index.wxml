@@ -21,13 +21,14 @@
 
             <view class="lable">商家名称：</view>
             <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" name="" 
-             bindinput="inputname" value="{{nameValue}}"/>
+             bindinput="inputName" value="{{nameValue}}"/>
         </view>
         <view class="page-lable">
             <image src="../../images/icon-red.png" mode="" class="icon-min" />
 
             <view class="lable">活动标题：</view>
-            <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" />
+            <input class="input" name="input" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" 
+             bindinput="inputTitle" value="{{titleValue}}"/>
         </view>
         <view class="page-lable">
             <image src="../../images/icon-red.png" mode="" class="icon-min" />
@@ -57,7 +58,7 @@
             <image src="../../images/icon-red.png" mode="" class="icon-min" />
 
             <view class="lable">活动类型：</view>
-            <radio-group name="radio" class="radio color-ccc">
+            <radio-group name="radio" class="radio color-ccc" bindchange="handleChange">
                 <label>
                     <radio value="radio1" style="transform: scale(0.7);" />周期活动
                 </label>
@@ -70,7 +71,7 @@
         <view class="page-lable-rule">
             <image src="../../images/icon-red.png" mode="" class="icon-min" />
             <view class="lable">活动规则：</view>
-            <textarea placeholder="请输入规则" name="remark" class="textarea"></textarea>
+            <textarea placeholder="请输入规则" name="remark" class="textarea"  bindinput="inputTextarea" value="{{textareaValue}}"></textarea>
         </view>
         <view class="page-prize wrap">
             <view class="prize mb-20">
@@ -88,17 +89,17 @@
                     </view>
                 </view>
                 <view class="prize-right">
-                    <view class="setting">
+                    <view class="setting" >
                         <view class="setting-lable">{{item.prizeName}} </view>
-                        <input type="text" class="prize-ipt" />
+                        <input type="text" class="prize-ipt"  bindinput="getPrizeName" value="{{prizeName}}"/>
                     </view>
                     <view class="setting">
                         <view class="setting-lable">{{item.prizeNum}} </view>
-                        <input type="text" class="prize-ipt" />
+                        <input type="text" class="prize-ipt"  bindinput="getPrizeNum" value="{{prizeNum}}"/>
                     </view>
                     <view class="setting">
                         <view class="setting-lable">{{item.prizePeople}} </view>
-                        <input type="text" class="prize-ipt" />
+                        <input type="text" class="prize-ipt"  bindinput="getPeopleNum" value="{{peopleNum}}"/>
                     </view>
                 </view>
             </view>

@@ -55,8 +55,7 @@ Page({
             },
         ],
         currentData: 0,
-        dateStartDay: '2023-01-01',
-        dateEndDay: '2023-01-01',
+       
         prizeSettingList: [{
             id: 1,
             prizeMapIcon: '../../images/icon-add_p.png',
@@ -104,22 +103,7 @@ Page({
             url: '/pages/updataActivities/index',
         })
     },
-    //开始时间
-    dateChangestart(e) {
-        console.log('值为', e.detail.value);
-        this.setData({
-            dateStartDay: e.detail.value
-
-        });
-    },
-    //结束时间
-    dateChangeEnd(e) {
-        console.log('jieshu', e.detail.value);
-        this.setData({
-            dateEndDay: e.detail.value
-
-        });
-    },
+  
     upload(){
         let _this = this;
         //唤起图片权限

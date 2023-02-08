@@ -1,13 +1,13 @@
 {
    
   "pages": [
+      "pages/home/index",
+      "pages/mine/index",
+      "pages/login/index",
+      "pages/index/index",
+      "pages/databaseGuide/databaseGuide",
+      "pages/activity/index",
       "pages/createActivity/index",
-    "pages/mine/index",
-    "pages/login/index",
-    "pages/home/index",
-    "pages/index/index",
-    "pages/databaseGuide/databaseGuide",
-    "pages/activity/index",
     "pages/activityDetails/index",
     "pages/mineActivity/index",
     "pages/updataActivities/index",                               
