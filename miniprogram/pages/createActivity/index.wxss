@@ -73,17 +73,20 @@
 
 .poster {
     border: 1px dashed #ccc;
-    height: 450rpx;
+    height: 420rpx;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    background-image: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-choice.png?sign=647490245fea4f0f5c212c6844bd6c4b&t=1675417159');
+     background-repeat: no-repeat;
+     background-position: center;
 }
 
-.poster-icon {
+/* .poster-icon {
     width: 100rpx;
     height: 100rpx;
-}
+} */
 
 .tab {
     float: left;
