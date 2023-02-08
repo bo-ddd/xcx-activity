@@ -29,6 +29,10 @@
                     <view class="label mt-16 mb-16">店铺名称</view>
                     <input type="text" name="storeName" placeholder="请输入店铺名称" />
                 </view>
+                <view class="store-address wrap">
+                    <view class="label mt-16 mb-16">店铺地址</view>
+                    <input type="text" name="storeaddress" placeholder="请输入店铺地址" />
+                </view>
                 <view class="store-class wrap">
                     <view class="label mt-16 mb-16">经营分类</view>
                     <!-- 下拉菜单 -->

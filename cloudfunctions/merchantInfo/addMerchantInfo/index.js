@@ -12,6 +12,7 @@ exports.main = async (event, context) => {
             merchantSex: event.merchantSex,
             storeName: event.storeName,
             storeClass: event.storeClass,
+            storeAddress: event.storeAddress,
             license: event.license
         }
     })
