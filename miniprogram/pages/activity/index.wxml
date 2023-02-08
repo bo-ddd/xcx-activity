@@ -13,7 +13,7 @@
                     </view>
                     <view class="entry">
                         <view class="btn-entry" bindtap="to" data-id="{{item.id}}">
-                            查看详情
+                            {{entryText}}
                         </view>
                     </view>
                 </view>
@@ -27,7 +27,7 @@
                     </view>
                     <view class="entry">
                         <view class="btn-entry" bindtap="to" data-id="{{item.id}}">
-                            查看详情
+                            {{entryText}}
                         </view>
                     </view>
                 </view>

@@ -7,6 +7,7 @@ Page({
   data: {
     activityTypes: ['周期活动', '日常活动'],
     current: 0,
+    entryText:'查看详情',
     activityLimitList: [{
         id: 1,
         imgUrl:'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
@@ -74,7 +75,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    //判断当前登录状态,显示不同的按钮文本;
+       //在全局中拿到用户登录信息;
+       //如果没有登录显示，查看详情；
+       //如果登录了，判断是否参与活动，参与->显示已参与 未参与->显示查看详情；
+       
+    
   },
 
   /**
