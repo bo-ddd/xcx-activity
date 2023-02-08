@@ -33,6 +33,16 @@ Page({
     },
     getSuggest() {
         // 调接口 传给后端
+        wx.cloud.callFunction({
+            name:'issueOpinion',
+            data:{
+                text:this.data.textareaValue
+            },success(res){
+                console.log(res);
+            },error(err){
+                console.log(err);
+            }
+        })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

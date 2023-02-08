@@ -5,7 +5,26 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        remarks: ''
+    },
+    bindTextareaValue(e) {
+        this.setData({
+            remarks: e.detail.value
+        })
+    },
+    submit() {
+        //调接口，提交表单;
+        var pages = getCurrentPages();
+        if (pages.length >= 2) {
+            var prePage = pages[pages.length - 2];
+            prePage.setData({
+                remarks:this.data.remarks
+            });
+        };
+        //成功之后的事件;
+        wx.navigateBack({
+            delta: 1
+        })
     },
 
     /**

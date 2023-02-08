@@ -1,11 +1,13 @@
 {
+   
   "pages": [
-    "pages/login/index",
-    "pages/home/index",
-    "pages/index/index",
-    "pages/databaseGuide/databaseGuide",
-    "pages/mine/index",
-    "pages/activity/index",
+      "pages/home/index",
+      "pages/mine/index",
+      "pages/login/index",
+      "pages/index/index",
+      "pages/databaseGuide/databaseGuide",
+      "pages/activity/index",
+      "pages/createActivity/index",
     "pages/activityDetails/index",
     "pages/mineActivity/index",
     "pages/updataActivities/index",                               
@@ -34,8 +36,9 @@
     "pages/opinion/index",
     "pages/productDetails/index",
     "pages/currentStoresList/index",
-    "pages/selectCity/index",
-    "pages/merchantInfo/index"
+    "pages/merchantInfo/index",
+    "pages/switchAddress/index",
+    "pages/selectCity/index"
   ],
   "tabBar": {
     "color":"#8a8a8a",
@@ -70,5 +73,14 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "requiredPrivateInfos": [
+      "chooseLocation",
+      "getLocation"
+  ]
 }

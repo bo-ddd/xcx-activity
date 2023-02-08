@@ -2,7 +2,7 @@
 <view class="main">
     <view class="nav">
         <view class="position" bindtap="to" data-name="selectCity">
-            <text>选择城市</text>
+            <text>{{location||'选择城市'}}</text>
             <image class="img-arrow_bottom" src="../../images/icon-arrow_bottom.png" mode="" />
         </view>
         <view class="select">
@@ -17,9 +17,9 @@
         <view class="location mt-24r">
             <view class="info-location">
                 <image class="img-location" src="../../images/icon-position.png" />
-                <text class="text-location">卫辉市城管局</text>
+                <text class="text-location">{{locationName||'卫辉市人民政府'}}</text>
             </view>
-            <view class="btn-location" bindtap="to" data-name="switchAddress">
+            <view class="btn-location" bindtap="moveToLocation">
                 <view>切换地址</view>
                 <image class="img-arrow" src="../../images/icon-arrow_right.png" mode="" />
             </view>

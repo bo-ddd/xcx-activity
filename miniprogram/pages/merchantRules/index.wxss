@@ -32,3 +32,11 @@
     overflow: scroll;
     padding: 5rpx 10rpx;
 }
+.title{
+    font-size: 38rpx;
+    font-weight: bold;
+}
+.passage {
+    text-indent: 60rpx;
+    text-align: left;
+}

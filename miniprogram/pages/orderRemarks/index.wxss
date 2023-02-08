@@ -1,1 +1,23 @@
 /* pages/orderRemarks/index.wxss */
+.pt-10r {
+    padding-top: 10rpx;
+}
+
+.remarks {
+    height: 150rpx;
+    border: solid 1rpx #b1aeae;
+    border-radius: 20rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.submit {
+    padding: 14rpx;
+    box-sizing: border-box;
+    background-color: #f00;
+    text-align: center;
+    color: white;
+    border-radius: 20rpx;
+    font-size: 28rpx;
+}
