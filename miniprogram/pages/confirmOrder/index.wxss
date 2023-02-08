@@ -117,26 +117,35 @@ page {
     font-size: 22rpx;
     color: #8d8b8b;
 }
-.remarks-order{
+
+.remarks-order {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: white;
-    padding:20rpx;
-    border-radius:20rpx;
+    padding: 20rpx;
+    border-radius: 20rpx;
 }
-.remarks-order .btn-remarks{
+
+.remarks-order .btn-remarks {
     display: flex;
-    gap:10rpx;
+    gap: 10rpx;
     align-items: center;
 }
 
-.submit{
-    padding:20rpx;
-    text-align: center;
-    border-radius:20rpx;
-    color:white;
-    font-size:26rpx;
-    background-color: #f00;
+.remarks {
+    width: 200rpx;
+    text-align: end;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
+.submit {
+    padding: 20rpx;
+    text-align: center;
+    border-radius: 20rpx;
+    color: white;
+    font-size: 26rpx;
+    background-color: #f00;
+}

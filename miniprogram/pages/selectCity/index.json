@@ -1,3 +1,7 @@
 {
-    "usingComponents": {}
+    "usingComponents": {
+        "SelectCitiesView": "../../components/selectCity/selectCity"
+    },
+    "navigationBarTitleText": "切换城市",
+    "navigationBarTextStyle": "white"
 }

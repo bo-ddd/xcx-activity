@@ -54,13 +54,13 @@ Page({
         },
         form: {
             merchantName: '',
-            merchantSex: '',
+            merchantSex:0,
             merchantPhone: '',
             storeName: '',
             license: ''
         },
         // 选择的经验类别
-        storeclass: '',
+        storeclass:0,
         // 上传的图片
         tempFilePath: '',
         // 上传图片的云ID
@@ -219,7 +219,7 @@ Page({
                 type: 'addMerchantInfo',
                 merchantName: this.data.form.merchantName,
                 merchantPhone: this.data.form.merchantPhone,
-                merchantSex: this.data.form.merchantSex,
+                merchantSex: parseInt(this.data.form.merchantSex),
                 storeName: this.data.form.storeName,
                 storeClass: this.data.storeclass,
                 license: this.data.fileId

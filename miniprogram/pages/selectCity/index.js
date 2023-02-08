@@ -1,18 +1,32 @@
 // pages/selectCity/index.js
+var cities = require('../../common/city.js');
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        allCities: []
+    },
+    onCitySelect: function (e) {
+        console.log('城市选择', e);
+        var pages = getCurrentPages();
+        if (pages.length >= 2) {
+            var prePage = pages[pages.length - 2];
+            prePage.setData({
+                location: e.detail.city
+            });
+        };
+        wx.navigateBack();
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        this.setData({
+            allCities: cities
+        });
     },
 
     /**

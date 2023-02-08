@@ -7,6 +7,10 @@ Page({
     data: {
         selectInputValue: '',
         focusStatus: false,
+        latitude: 0, //首次加载维度
+        longitude: 0, //首次加载的经度
+        locationName: "", //选点的位置
+        location:"",
         nearbyStoresList: [{
                 id: 1,
                 name: '友惠便利店',
@@ -48,6 +52,19 @@ Page({
     to(e) {
         wx.navigateTo({
             url: '/pages/' + e.currentTarget.dataset.name + '/index',
+        })
+    },
+    moveToLocation() {
+        let that = this;
+        wx.chooseLocation({
+            success: function (res) {
+                that.setData({
+                    locationName: res.name
+                })
+            },
+            fail: function (err) {
+                console.log(err);
+            }
         })
     },
     //选择自提点;
