@@ -6,5 +6,9 @@ cloud.init({
 
 const db = cloud.database();
 exports.main = async (event, context) => {
-    return await db.collection('goods').get()
+    return await db.collection('opinion').get({
+      success:function(res){
+        console.log(res);
+      }
+    })
 }

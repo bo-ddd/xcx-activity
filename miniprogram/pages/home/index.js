@@ -15,74 +15,37 @@ Page({
     interval: 2000,
     duration: 500,
     toView: 'green',
-    flashSaleCommodity:[
-      {
-        id:1,
-        logo:'../../images/iphone.png',
-        title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
-        timeRemaining:new Date(),
-        requiredPoints:2100
-      },
-      {
-        id:2,
-        logo:'../../images/iphone.png',
-        title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
-        timeRemaining:new Date(),
-        requiredPoints:2100
-      },
-      {
-        id:3,
-        logo:'../../images/iphone.png',
-        title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
-        timeRemaining:new Date(),
-        requiredPoints:2100
-      },
-      {
-        id:4,
-        logo:'../../images/iphone.png',
-        title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
-        timeRemaining:new Date(),
-        requiredPoints:2100
-      },
-    ],
-    hotCommodities:[
-        {
-            id:1,
-            images:'../../images/icon-best-sellers.jpg',
-            title:'alkasjhdkjashjdklasjdo;k',
-            integral:1234
-        },
-        {
-            id:2,
-            images:'../../images/icon-best-sellers.jpg',
-            title:'alkasjhdkjashjdklasjdo;k',
-            integral:1234
-        },
-        {
-            id:3,
-            images:'../../images/icon-best-sellers.jpg',
-            title:'alkasjhdkjashjdklasjdo;k',
-            integral:1234
-        },
-        {
-            id:4,
-            images:'../../images/icon-best-sellers.jpg',
-            title:'alkasjhdkjashjdklasjdo;k',
-            integral:1234
-        },
-        {
-            id:5,
-            images:'../../images/icon-best-sellers.jpg',
-            title:'alkasjhdkjashjdklasjdo;k',
-            integral:1234
-        },
-        {
-            id:6,
-            images:'../../images/icon-best-sellers.jpg',
-            title:'alkasjhdkjashjdklasjdo;k',
-            integral:1234
-        },
-    ]
+    // flashSaleCommodity:[
+    //   {
+    //     id:1,
+    //     logo:'../../images/iphone.png',
+    //     title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
+    //     timeRemaining:new Date(),
+    //     requiredPoints:2100
+    //   },
+    //   {
+    //     id:2,
+    //     logo:'../../images/iphone.png',
+    //     title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
+    //     timeRemaining:new Date(),
+    //     requiredPoints:2100
+    //   },
+    //   {
+    //     id:3,
+    //     logo:'../../images/iphone.png',
+    //     title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
+    //     timeRemaining:new Date(),
+    //     requiredPoints:2100
+    //   },
+    //   {
+    //     id:4,
+    //     logo:'../../images/iphone.png',
+    //     title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
+    //     timeRemaining:new Date(),
+    //     requiredPoints:2100
+    //   },
+    // ],
+    hotCommodities:[]
 
   },
 
@@ -91,32 +54,47 @@ Page({
       url: '/pages/'+e.currentTarget.dataset.name+'/index',
     })
   },
- 
 
-  async getUserInfo() {
-    let {
-        getUserProfile,
-        getSetting,
-        openSetting
-    } = getApp();
-
-    await getSetting().then(async res => {
-        console.log(res.authSetting['scope.userInfo']);
-        if (res.authSetting['scope.userInfo']) {
-            let {
-                userInfo
-            } = await getUserProfile('用于登录')
-            this.setData({
-                userInfo,
-                hasUserInfo: true
-            })
-        } else {
-            await openSetting()
-        }
-    }).catch(async err => {
-        await openSetting()
+  getUserInfo(e){
+    let _that = this
+    wx.getUserInfo({
+      desc: 'desc',
+      success(e){
+        _that.setData({
+            userInfo:e.userInfo
+        })
+      }
     })
-},
+   
+  },
+
+  // async navTab(e){
+  //   wx.navigateTo({
+  //     url: '/pages/productDetails/index?id='+e.currentTarget.dataset.id,
+  //   })
+  // },
+
+  onLoad(e){
+    let _that = this
+    wx.cloud.callFunction({
+      name:'goods',
+      data:{
+        type:'goodsList',
+      },  
+     success:function(res){
+      console.log(res.result.data);
+      _that.setData({
+        hotCommodities:res.result.data
+      })
+      }
+    })
+  },
+
+
+
+
+
+
 
   scrollToTop() {
     this.setAction({

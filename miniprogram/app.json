@@ -34,7 +34,8 @@
     "pages/opinion/index",
     "pages/productDetails/index",
     "pages/currentStoresList/index",
-    "pages/selectCity/index"
+    "pages/selectCity/index",
+    "pages/merchantInfo/index"
   ],
   "tabBar": {
     "color":"#8a8a8a",
