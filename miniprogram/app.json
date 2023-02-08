@@ -36,6 +36,7 @@
     "pages/opinion/index",
     "pages/productDetails/index",
     "pages/currentStoresList/index",
+    "pages/merchantInfo/index",
     "pages/switchAddress/index",
     "pages/selectCity/index"
   ],

@@ -57,6 +57,7 @@ Page({
             merchantSex:0,
             merchantPhone: '',
             storeName: '',
+            storeaddress:'',
             license: ''
         },
         // 选择的经验类别
@@ -221,6 +222,7 @@ Page({
                 merchantPhone: this.data.form.merchantPhone,
                 merchantSex: parseInt(this.data.form.merchantSex),
                 storeName: this.data.form.storeName,
+                storeAddress:this.data.form.storeaddress,
                 storeClass: this.data.storeclass,
                 license: this.data.fileId
             }, success(res) {
