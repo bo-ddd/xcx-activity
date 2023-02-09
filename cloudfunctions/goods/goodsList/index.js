@@ -6,5 +6,4 @@ cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 exports.main = async (event, context) => {
   let db = cloud.database()
   return await db.collection('goodsList').get()
-
 }
