@@ -155,10 +155,20 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    gap: 20rpx;
     border: solid 8rpx #6BABFF;
     border-radius: 20rpx;
     background-color: #FBEEA4;
+    position: relative;
+}
+.footer .mask-prize{
+    width: 400rpx;
+    height: 400rpx;
+    position: fixed;
+    top: 0;
+    left: 44rpx;
+    background: #000;
+    z-index: 9000;
+    opacity: 0.5;
 }
 
 .footer .title-prize {
