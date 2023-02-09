@@ -5,12 +5,12 @@ Page({
      * 页面的初始数据
      */
     data: {
+      
         form:{
             shopname:'',
             activitytitle:'',
-           
         },
-
+  
         activitList: [{
                 id: 1,
                 lable: '消消乐哈哈',
@@ -100,7 +100,7 @@ Page({
     //跳转编辑活动
     updataTo() {
         wx.navigateTo({
-            url: '/pages/updataActivities/index',
+            url: '/pages/createActivity/index',
         })
     },
   

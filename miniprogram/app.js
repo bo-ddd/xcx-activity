@@ -17,16 +17,20 @@ App({
 
         this.globalData = {
             socketStatus: 'closed',
+            userInfo:''
         };
         this.getUserInfo = function () {
 
         };
+        let _this=this
         this.getUserProfile = function (desc) {
             return new Promise((resolve) => {
                 wx.getUserProfile({
                     desc, // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
                     async success(res) {
-                        console.log(res.userInfo);
+                        // console.log(res.userInfo);
+                        _this.globalData.userInfo=res.userInfo
+                        // console.log( _this.globalData.userInfo);
                         resolve(res)
                     }
                 })

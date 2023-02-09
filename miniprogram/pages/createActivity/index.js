@@ -5,23 +5,43 @@ Page({
      * 页面的初始数据
      */
     data: {
-        disabled:true,
+        isCreate: false,
+        isUpdate: false,
         chosen: '',
-        form:{
+        form: {
             nameValue: '',
             titleValue: '',
             dateStartDay: '2023-01-01',
             dateEndDay: '2023-01-01',
-            radio: '',
-            radio1:'',
             textareaValue: "",
             prizeName: '',
             prizeNum: '',
-            peopleNum:'',
+            peopleNum: '',
+            activityType: 1,
+            activityForm:1,
         },
-        fileId:'',
-        flId:'',
-        // fileId:'',
+        items: [{
+                value: 1,
+                name: '抽奖活动',
+                checked: 'true'
+            },
+            {
+                value: 2,
+                name: '助力活动'
+            },
+        ],
+        items1: [{
+                value: 1,
+                name: '周期活动',
+                checked: 'true'
+            },
+            {
+                value: 2,
+                name: '长期活动'
+            },
+        ],
+        fileId: '',
+        flId: '',
         prizeSettingList: [{
             id: 1,
             prizeMapIcon: '../../images/icon-add_p.png',
@@ -30,44 +50,67 @@ Page({
             prizePeople: '助力人数'
         }, ]
     },
-    formSubmit(e){
-        console.log(e);
+    createActivityBtn() {
         this.setData({
-            form : e.detail.value
+            isCreate: true
         })
-        if (!this.data.form) {
-            wx.showToast({
-                title: '请填写完整信息',
-                icon: 'error',
-                duration: 2000
-            })
-            return;
-        } else {
-            this.createActivity()
+        console.log(this.data.isCreate);
+        this.createActivity()
+    },
+    //校验
+    validateForm() {
+        let form = this.data.form;
+        for (let key in form) {
+            if (!form[key] || !this.data.fileId || !this.data.flId) {
+                wx.showToast({
+                    title: '请填写完整信息',
+                    icon: 'error',
+                    duration: 2000
+                })
+                return
+            }
         }
     },
-    formReset(e) {
-        console.log('form发生了reset事件，携带数据为：', e.detail.value)
+    formSubmit(e) {
+        console.log(e.detail.value);
         this.setData({
-          chosen: ''
+            form: e.detail.value
         })
-      },
-        //开始时间
+        this.validateForm()
+        this.createActivity()
+    },
+    //活动形式
+    // getActivityType(e){
+    //     this.setData({
+    //         ['form.activityType']:e.detail.value
+    //         })
+    //         console.log( this.data.form.activityType);
+    // },
+    //活动类型
+    // getActivityForm(e) {
+    //     this.setData({
+    //     ['form.activityForm']:e.detail.value
+    //     })
+    //     console.log( this.data.form.activityForm);
+      
+    // },
+    //开始时间
     dateChangestart(e) {
         console.log('值为', e.detail.value);
         this.setData({
-            dateStartDay: e.detail.value
+            ['form.dateStartDay']: e.detail.value
         });
+        console.log(this.data.form.dateStartDay)
     },
     //结束时间
     dateChangeEnd(e) {
-        console.log('jieshu', e.detail.value);
+        console.log('结束时间', e.detail.value);
         this.setData({
-         dateEndDay: e.detail.value
+            ['form.dateEndDay']: e.detail.value
         });
     },
     //点击上传活动图
-    upload() {
+     upload() {
         let _this = this;
         //唤起图片权限
         wx.chooseMedia({
@@ -76,9 +119,8 @@ Page({
             sourceType: ['album', 'camera'],
             success(res) {
                 // tempFilePath可以作为 img 标签的 src 属性显示图片
-                // console.log(res);
                 _this.setData({
-                    fileId :res.tempFiles[0].tempFilePath
+                    fileId: res.tempFiles[0].tempFilePath
                 })
                 console.log(_this.data.fileId);
 
@@ -97,29 +139,26 @@ Page({
                 console.log(res);
                 _this.setData({
                     // tempFilePath可以作为 img 标签的 src 属性显示图片
-                    flId :res.tempFiles[0].tempFilePath
+                    flId: res.tempFiles[0].tempFilePath
                 })
             }
         })
     },
-    showToast() {
-        
-    },
-   
+
+
     //创建活动
-    createActivity(){
-        if(!this.data.fileId){
-            
-        }
-        let _this=this
+    createActivity() {
+
+        let _this = this
         wx.cloud.callFunction({
-            name:'activity',
-            data:{
-                type:'createActivity',
+            name: 'activity',
+            data: {
+                type: 'createActivity',
                 ...this.data.form,
-                fileId:this.data.fileId,
-                flId:this.data.flId,
-            },success(res){
+                fileId: this.data.fileId,
+                flId: this.data.flId,
+            },
+            success(res) {
                 //上传图片
                 wx.cloud.uploadFile({
                     cloudPath: 'merchant/' + new Date().toLocaleString() + '.png',
@@ -130,7 +169,7 @@ Page({
                     success(res) {
                         wx.navigateTo({
                             url: '/pages/launchActivities/index',
-                            success(){
+                            success() {
                                 wx.showToast({
                                     title: '成功',
                                     icon: 'success',
@@ -140,22 +179,20 @@ Page({
                         })
                     }
                 })
-               
-           
-            },error(err){
+            },
+            error(err) {
                 console.log(err);
             }
         })
     },
     //新增活动模块
-    createModul(){
-    console.log(222);
+    createModul() {
+        console.log(222);
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
     },
 
     /**
@@ -169,7 +206,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+ 
     },
 
     /**
