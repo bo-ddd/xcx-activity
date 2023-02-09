@@ -41,9 +41,9 @@ Page({
             },
         ],
         fileId: '',
-        flId: '',
+        prizeUrl: '',
         prizeSettingList: [{
-            id: 1,
+            id: 1, 
             prizeMapIcon: '../../images/icon-add_p.png',
             prizeName: '奖品名称',
             prizeNum: '奖品数量',
@@ -118,14 +118,23 @@ Page({
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
             success(res) {
-                // tempFilePath可以作为 img 标签的 src 属性显示图片
-                _this.setData({
-                    fileId: res.tempFiles[0].tempFilePath
+                const filePath = res.tempFiles[0].tempFilePath;
+                console.log(filePath);
+                // 调用云函数，把图片存到服务器中；
+                  //上传图片
+                  wx.cloud.uploadFile({
+                    cloudPath: 'activity/' + new Date().toLocaleString() + '.png',
+                    filePath:filePath,
+                    success(res) { 
+                         console.log(res);
+                        _this.setData({
+                            fileId: res.fileID
+                        })
+                    }
                 })
-                console.log(_this.data.fileId);
-
             }
         })
+
     },
     //奖品图
     PrizeMap() {
@@ -137,18 +146,29 @@ Page({
             sourceType: ['album', 'camera'],
             success(res) {
                 console.log(res);
-                _this.setData({
-                    // tempFilePath可以作为 img 标签的 src 属性显示图片
-                    flId: res.tempFiles[0].tempFilePath
+                //本地地址
+                const prizeUrl = res.tempFiles[0].tempFilePath;
+                console.log(prizeUrl);
+                // 调用云函数，把图片存到服务器中；
+                  //上传图片
+                  wx.cloud.uploadFile({
+                    cloudPath: 'activity/' + new Date().toLocaleString() + '.png',
+                   filePath: prizeUrl,
+                    success(res) { 
+                        console.log(res);
+                        _this.setData({
+                            prizeUrl: res.fileID
+                        })
+                    }
                 })
             }
         })
+
     },
 
 
     //创建活动
     createActivity() {
-
         let _this = this
         wx.cloud.callFunction({
             name: 'activity',
@@ -156,33 +176,20 @@ Page({
                 type: 'createActivity',
                 ...this.data.form,
                 fileId: this.data.fileId,
-                flId: this.data.flId,
+                prizeUrl: this.data.prizeUrl,
             },
             success(res) {
-                //上传图片
-                wx.cloud.uploadFile({
-                    cloudPath: 'merchant/' + new Date().toLocaleString() + '.png',
-                    filePath: _this.data.fileId,
-                    config: {
-                        env: 'zliu-dev-4gclbljp64cb5cd3'
-                    }, //不可以这么写，这样写会造成线上环境出现重大问题
-                    success(res) {
-                        wx.navigateTo({
-                            url: '/pages/launchActivities/index',
-                            success() {
-                                wx.showToast({
-                                    title: '成功',
-                                    icon: 'success',
-                                    duration: 2000
-                                })
-                            }
+                wx.navigateTo({
+                    url: '/pages/launchActivities/index',
+                    success() {
+                        wx.showToast({
+                            title: '成功',
+                            icon: 'success',
+                            duration: 2000
                         })
                     }
                 })
             },
-            error(err) {
-                console.log(err);
-            }
         })
     },
     //新增活动模块
