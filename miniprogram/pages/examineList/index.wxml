@@ -13,7 +13,7 @@
         </view>
         <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
             <swiper-item class='swiperTtemBox-item'>
-                <view class="item mt-30 wrap" wx:for="{{ items }}" wx:key="id" data-id="{{ item.id }}" bindtap="to">
+                <view class="item mt-30 wrap" wx:for="{{ items }}" wx:key="id" data-id="{{ item.id }}" bindtap="toActiveDetail">
                     <view class="item-left">
                         <view class="stor-name ml-20">
                             <text>活动商铺：</text>
@@ -34,7 +34,7 @@
                 </view>
             </swiper-item>
             <swiper-item class='swiperTtemBox-item'>
-                <view class="item mt-30 wrap" wx:for="{{ items }}" wx:key="id" data-id="{{ item.id }}" bindtap="to">
+                <view class="item mt-30 wrap" wx:for="{{ items }}" wx:key="id" data-id="{{ item.id }}" bindtap="toMerchantDetail">
                     <view class="item-left">
                         <view class="stor-name ml-20">
                             <text>商铺名称：</text>

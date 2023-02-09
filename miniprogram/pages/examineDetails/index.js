@@ -13,6 +13,12 @@ Page({
      */
     onLoad(options) {
         console.log(options);
+        wx.cloud.callFunction({
+            name:'activity',
+            data:{
+                type:'getActivityDetail'
+            }
+        })
         this.showLoading()
     },
 
