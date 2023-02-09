@@ -8,11 +8,11 @@
             <form bindsubmit="formSubmit">
                 <view class="merchant-name wrap">
                     <view class="label">姓名</view>
-                    <input class="ipt" type="text" name="merchantName" placeholder="请输入您的姓名" />
+                    <input class="ipt" type="text" name="merchantname" placeholder="请输入您的姓名" />
                 </view>
                 <view class="merchant-sex wrap">
                     <view class="label mt-16 mb-16">性别</view>
-                    <radio-group class="radio" bindchange="radioChange" name="merchantSex">
+                    <radio-group class="radio" bindchange="radioChange" name="merchantsex">
                         <label wx:for="{{radios}}" wx:key="value">
                             <view>
                                 <radio value="{{item.value}}" checked="true" />
@@ -23,11 +23,11 @@
                 </view>
                 <view class="merchant-phone wrap">
                     <view class="label mt-16 mb-16">手机号码</view>
-                    <input type="number" name="merchantPhone" placeholder="请输入您的手机号" />
+                    <input type="number" name="merchantphone" placeholder="请输入您的手机号" />
                 </view>
                 <view class="store-name wrap">
                     <view class="label mt-16 mb-16">店铺名称</view>
-                    <input type="text" name="storeName" placeholder="请输入店铺名称" />
+                    <input type="text" name="storename" placeholder="请输入店铺名称" />
                 </view>
                 <view class="store-address wrap">
                     <view class="label mt-16 mb-16">店铺地址</view>
