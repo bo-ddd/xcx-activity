@@ -5,17 +5,43 @@ Page({
      * 页面的初始数据
      */
     data: {
-        form:{
+        isCreate: false,
+        isUpdate: false,
+        chosen: '',
+        form: {
             nameValue: '',
             titleValue: '',
             dateStartDay: '2023-01-01',
             dateEndDay: '2023-01-01',
-            radioValue: '',
             textareaValue: "",
             prizeName: '',
             prizeNum: '',
-            peopleNum:'',
+            peopleNum: '',
+            activityType: 1,
+            activityForm:1,
         },
+        items: [{
+                value: 1,
+                name: '抽奖活动',
+                checked: 'true'
+            },
+            {
+                value: 2,
+                name: '助力活动'
+            },
+        ],
+        items1: [{
+                value: 1,
+                name: '周期活动',
+                checked: 'true'
+            },
+            {
+                value: 2,
+                name: '长期活动'
+            },
+        ],
+        fileId: '',
+        flId: '',
         prizeSettingList: [{
             id: 1,
             prizeMapIcon: '../../images/icon-add_p.png',
@@ -24,8 +50,67 @@ Page({
             prizePeople: '助力人数'
         }, ]
     },
+    createActivityBtn() {
+        this.setData({
+            isCreate: true
+        })
+        console.log(this.data.isCreate);
+        this.createActivity()
+    },
+    //校验
+    validateForm() {
+        let form = this.data.form;
+        for (let key in form) {
+            if (!form[key] || !this.data.fileId || !this.data.flId) {
+                wx.showToast({
+                    title: '请填写完整信息',
+                    icon: 'error',
+                    duration: 2000
+                })
+                return
+            }
+        }
+    },
+    formSubmit(e) {
+        console.log(e.detail.value);
+        this.setData({
+            form: e.detail.value
+        })
+        this.validateForm()
+        this.createActivity()
+    },
+    //活动形式
+    // getActivityType(e){
+    //     this.setData({
+    //         ['form.activityType']:e.detail.value
+    //         })
+    //         console.log( this.data.form.activityType);
+    // },
+    //活动类型
+    // getActivityForm(e) {
+    //     this.setData({
+    //     ['form.activityForm']:e.detail.value
+    //     })
+    //     console.log( this.data.form.activityForm);
+      
+    // },
+    //开始时间
+    dateChangestart(e) {
+        console.log('值为', e.detail.value);
+        this.setData({
+            ['form.dateStartDay']: e.detail.value
+        });
+        console.log(this.data.form.dateStartDay)
+    },
+    //结束时间
+    dateChangeEnd(e) {
+        console.log('结束时间', e.detail.value);
+        this.setData({
+            ['form.dateEndDay']: e.detail.value
+        });
+    },
     //点击上传活动图
-    upload() {
+     upload() {
         let _this = this;
         //唤起图片权限
         wx.chooseMedia({
@@ -34,97 +119,80 @@ Page({
             sourceType: ['album', 'camera'],
             success(res) {
                 // tempFilePath可以作为 img 标签的 src 属性显示图片
+                _this.setData({
+                    fileId: res.tempFiles[0].tempFilePath
+                })
+                console.log(_this.data.fileId);
+
+            }
+        })
+    },
+    //奖品图
+    PrizeMap() {
+        let _this = this;
+        //唤起图片权限
+        wx.chooseMedia({
+            count: 1,
+            sizeType: ['original', 'compressed'],
+            sourceType: ['album', 'camera'],
+            success(res) {
                 console.log(res);
-                let tempFilePaths = res.tempFiles[0].tempFilePath
-                let that = _this
-                wx.cloud.uploadFile({
-                    cloudPath: 'merchant/' + new Date().toLocaleString() + '.png',
-                    filePath: tempFilePaths,
-                    config: {
-                        env: 'zliu-dev-4gclbljp64cb5cd3'
-                    }, //不可以这么写，这样写会造成线上环境出现重大问题
-                    success(res) {
-                        that.setData({
-                            fileId: res.fileID
-                        })
-                        // wx.cloud.callFunction({
-                        //     name: 'getTempFileURL',
-                        //     data: {
-                        //         fileId: res.fileID
-                        //     }
-                        // }).then(res => {
-                        //     that.setData({
-                        //         fileId: res.result[0].tempFileURL
-                        //     })
-                        // })
-                    }
+                _this.setData({
+                    // tempFilePath可以作为 img 标签的 src 属性显示图片
+                    flId: res.tempFiles[0].tempFilePath
                 })
             }
         })
     },
-    inputName(e) {
-        this.setData({
-            nameValue: e.detail.value
-        })
-        console.log(this.data.nameValue);
-    },
-    inputTitle(e) {
-        this.setData({
-            titleValue: e.detail.value
-        })
-        console.log(this.data.titleValue);
-    },
-    //开始时间
-    dateChangestart(e) {
-        console.log('值为', e.detail.value);
-        this.setData({
-            dateStartDay: e.detail.value
 
-        });
-    },
-    //结束时间
-    dateChangeEnd(e) {
-        console.log('jieshu', e.detail.value);
-        this.setData({
-            dateEndDay: e.detail.value
-        });
-    },
-    handleChange(e) {
-        this.setData({
-            radioValue: e.detail.value
-        });
-        console.log(e.detail.value);
-    },
-    inputTextarea(e) {
-        this.setData({
-            textareaValue: e.detail.value
-        });
-        console.log(e.detail.value);
-    },
-    getPrizeName(e) {
-        this.setData({
-            textareaValue: e.detail.value
-        });
-        console.log(e);
-    },
-    getPrizeNum(e) {
-        this.setData({
-            textareaValue: e.detail.value
-        });
-        console.log(e);
-    },
-    getPeopleNum(e) {
-        this.setData({
-            textareaValue: e.detail.value
-        });
-        console.log(e);
-    },
 
+    //创建活动
+    createActivity() {
+
+        let _this = this
+        wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'createActivity',
+                ...this.data.form,
+                fileId: this.data.fileId,
+                flId: this.data.flId,
+            },
+            success(res) {
+                //上传图片
+                wx.cloud.uploadFile({
+                    cloudPath: 'merchant/' + new Date().toLocaleString() + '.png',
+                    filePath: _this.data.fileId,
+                    config: {
+                        env: 'zliu-dev-4gclbljp64cb5cd3'
+                    }, //不可以这么写，这样写会造成线上环境出现重大问题
+                    success(res) {
+                        wx.navigateTo({
+                            url: '/pages/launchActivities/index',
+                            success() {
+                                wx.showToast({
+                                    title: '成功',
+                                    icon: 'success',
+                                    duration: 2000
+                                })
+                            }
+                        })
+                    }
+                })
+            },
+            error(err) {
+                console.log(err);
+            }
+        })
+    },
+    //新增活动模块
+    createModul() {
+        console.log(222);
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
     },
 
     /**
@@ -138,7 +206,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+ 
     },
 
     /**

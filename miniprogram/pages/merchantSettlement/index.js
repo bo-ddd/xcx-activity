@@ -53,10 +53,10 @@ Page({
             ]
         },
         form: {
-            merchantName: '',
-            merchantSex:0,
-            merchantPhone: '',
-            storeName: '',
+            merchantname: '',
+            merchantsex:0,
+            merchantphone: '',
+            storename: '',
             storeaddress:'',
             license: ''
         },
@@ -157,7 +157,7 @@ Page({
         this.setData({
             form : e.detail.value
         })
-        if (!this.data.form.merchantName) {
+        if (!this.data.form.merchantname) {
             wx.showToast({
                 title: '请填写完整信息',
                 icon: 'error',
@@ -218,10 +218,10 @@ Page({
             name: 'merchantInfo',
             data: {
                 type: 'addMerchantInfo',
-                merchantName: this.data.form.merchantName,
-                merchantPhone: this.data.form.merchantPhone,
-                merchantSex: parseInt(this.data.form.merchantSex),
-                storeName: this.data.form.storeName,
+                merchantName: this.data.form.merchantname,
+                merchantPhone: this.data.form.merchantphone,
+                merchantSex: parseInt(this.data.form.merchantsex),
+                storeName: this.data.form.storename,
                 storeAddress:this.data.form.storeaddress,
                 storeClass: this.data.storeclass,
                 license: this.data.fileId

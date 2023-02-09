@@ -1,2 +1,40 @@
 <!--pages/merchantInfo/index.wxml-->
-<text>pages/merchantInfo/index.wxml</text>
+<view class="box">
+    <view class="title fs-54">
+        商家信息
+    </view>
+    <view class="merchant-info wrap">
+        <view class="list">
+            <view class="list-item mt-16">
+                <text>商家姓名</text>
+                <text>wpp</text>
+            </view>
+            <view class="list-item mt-16">
+                <text>商家性别</text>
+                <text>男</text>
+            </view>
+            <view class="list-item mt-16">
+                <text>店铺名称</text>
+                <text>王胖胖的小吃店</text>
+            </view>
+            <view class="list-item mt-16">
+                <text>店铺类型</text>
+                <text>美食</text>
+            </view>
+            <view class="list-item mt-16">
+                <text>店铺地址</text>
+                <text>美食</text>
+            </view>
+        </view>
+        <view class="license-box">
+            <view class="label mt-16 mb-16 ">营业执照</view>
+            <view class="license" bindtap="upload">
+                <image class="icon-license" wx:if="{{ fileId }}" src="{{ fileId }}" data-license="{{ fileId }}" mode="" />
+            </view>
+        </view>
+    </view>
+    <view class="btn">
+        <view bindtap="refuse" class="refuse">拒绝</view>
+        <view bindtap="pass" class="pass">通过</view>
+    </view>
+</view>

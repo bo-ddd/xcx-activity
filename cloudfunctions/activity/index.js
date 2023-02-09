@@ -1,6 +1,7 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 const createActivity = require('./createActivity')
+const updateActivity = require('./updateActivity')
 
 cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 
@@ -19,6 +20,12 @@ exports.main = async (event, context) => {
             // res.data = {
             //     openid: wxContext.OPENID
             // }
+            return res;
+        case 'updateActivity':
+            res.data = await updateActivity.main(event, context);
+            return res;
+        case 'updateActivity':
+            res.data = await updateActivity.main(event, context);
             return res;
         default:
             res.status = 0;

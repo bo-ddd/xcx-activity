@@ -90,9 +90,16 @@ Page({
     onShareAppMessage() {
 
     },
-    async to(e) {
+    // 跳转活动详情
+    async toActiveDetail(e) {
         await wx.navigateTo({
             url: '/pages/examineDetails/index?id=' + e.currentTarget.dataset.id,
+        })
+    },
+    // 跳转商家信息详情
+    async toMerchantDetail(e) {
+        await wx.navigateTo({
+            url: '/pages/merchantInfo/index?id=' + e.currentTarget.dataset.id,
         })
     },
     // 页面加载中
