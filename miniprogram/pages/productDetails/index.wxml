@@ -1,18 +1,18 @@
 <!--pages/productDetails/index.wxml-->
-<view class="detail-outer-layer">
-    <image class="bg-details" src="../../images/icon-best-sellers.jpg" mode=""/>
+<view class="detail-outer-layer" wx:if="{{ item._id == id }}" wx:for="{{ productDetails }}" wx:key="_id">
+    <image class="bg-details" src="{{ item.images }}" mode=""/>
 
     <view class="product-details">
         <view class="commodity-price">
-            ￥9.9
+            ￥{{ item.integral }}
         </view>
-
+        
         <view class="trade-name mt-30">
-            电动牙刷
+            {{ item.title }}
         </view>
-
+ 
         <view class="product-introduction mt-30">
-            采用国际先进水平的等离子空气消毒机，利用(SPIC)超能离子发生器，瞬间激发兆亿级正负离子，可以高效地杀菌，等离子体灭菌消毒效果极强，而且作用时间短，是紫外线所远远不及的。
+           {{ item.content }}
         </view>
 
         <view class="address mt-30">
