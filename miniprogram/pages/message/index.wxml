@@ -2,7 +2,7 @@
 <view class="message wrap">
     <view class="header mb-50">
         <view wx:for="{{headerMsgList}}" wx:key="id" class="item">
-            <view class="img-box">
+            <view class="img-box mb-16">
                 <image src="{{item.icon}}" mode="" class="icon-img" />
             </view>
             <view>{{item.text}}</view>
