@@ -31,6 +31,10 @@
     margin: 0 auto;
 }
 
+.mt-20r {
+    margin-top: 20rpx;
+}
+
 .mt-24r {
     margin-top: 24rpx;
 }
@@ -47,22 +51,24 @@
     margin-top: 70rpx;
 }
 
-.mt-100r {
-    margin-top: 100rpx;
+.mt-5 {
+    margin-top: 5%;
 }
 
-.mt-120r {
-    margin-top: 120rpx;
+.main {
+    background: url(https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/bg-activity.png?sign=3f3863fe462c4b6f791a00c877522eaa&t=1675842156) no-repeat center;
+    background-size: 100%;
 }
 
-.mt-5{
-    margin-top:5%;
+.main .img-top {
+    width: 750rpx;
+    height: 103rpx;
 }
 
 .header {
-    height: 500rpx;
     display: flex;
     justify-content: space-between;
+    align-self: start;
 }
 
 .header .shop-exchange,
@@ -73,6 +79,7 @@
     flex-direction: column;
     gap: 6rpx;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .header .style-clear {
@@ -101,39 +108,113 @@
 }
 
 .header .banner {
-    width: 480rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.header .poster {
-    height: 300rpx;
+    width: 608rpx;
+    height: 323rpx;
 }
 
 .header .operation {
     display: flex;
     flex-direction: column;
     gap: 30rpx;
+    flex-shrink: 0;
 }
 
 .container {
-    width: 600rpx;
-    height: 300rpx;
-    border-radius: 20rpx;
-    overflow: hidden;
+    width: 540rpx;
+    margin: 0 auto;
 }
 
-.container .img-prize {
-    width: 600rpx;
-    height: 300rpx;
+.container .img-ad {
+    width: 540rpx;
+    height: 68rpx;
+}
+
+.footer .tip-activity {
+    padding:20rpx 0;
+}
+
+.footer .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.footer .icon-switch_left,
+.footer .icon-switch_right {
+    flex-shrink: 0;
+    width: 100rpx;
+    height: 65rpx;
+}
+
+.footer .prize {
+    width: 400rpx;
+    height: 400rpx;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: solid 8rpx #6BABFF;
+    border-radius: 20rpx;
+    background-color: #FBEEA4;
+    position: relative;
+}
+.footer .mask-prize{
+    width: 400rpx;
+    height: 400rpx;
+    position: fixed;
+    top: 0;
+    left: 44rpx;
+    background: #000;
+    z-index: 9000;
+    opacity: 0.5;
+}
+
+.footer .title-prize {
+    font-size: 28rpx;
+    font-weight: bold;
+}
+
+.footer .img-prize {
+    width: 300rpx;
+    height: 238rpx;
+}
+
+.footer .progress {
+    width: 400rpx;
+    margin: 0 auto;
+    position: relative;
+}
+
+.footer .round-left,
+.footer .round-right {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    z-index: 2;
+    display: flex;
+    background-color: #f08d8d;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.footer .round-left {
+    position: absolute;
+    left: -40rpx;
+    top: -10rpx;
+}
+
+.footer .round-right {
+    position: absolute;
+    right: -40rpx;
+    top: -10rpx;
 }
 
 .footer .bar-progress {
-    width: 480rpx;
+    width: 400rpx;
     height: 60rpx;
-    border-radius: 240rpx;
-    margin: 0 auto;
     position: relative;
     overflow: hidden;
     font-weight: bold;
@@ -141,9 +222,21 @@
     background-color: #333333;
 }
 
+.footer .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer .swiper{
+    width:600rpx;
+    height:600rpx;
+}
+
+
 .bar-progress .line-inner {
     height: 100%;
-    border-radius: 240rpx;
+    border-radius: 0 240rpx 240rpx 0;
+    background: url(https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-progress.png?sign=ab56b2a00ccbf391f1fa5a69de45492f&t=1675229019) no-repeat center;
     background-size: cover;
 }
 

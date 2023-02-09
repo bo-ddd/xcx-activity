@@ -1,19 +1,18 @@
 <!--pages/activityDetails/index.wxml-->
-<view class="main" style="background-image: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-activity.png?sign=4a1fabf8e22d4ca02ef06811572e40da&t=1675232557');">
-    <view class="header wrap-10r mt-120r">
+<view class="main">
+    <image class="img-top" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity_top.png?sign=ac235ae9dad379e10e7ac75c83629f0f&t=1675842384" mode="" />
+    <view class="header wrap-10r">
         <view class="shop-exchange" bindtap="to" data-name="home">
             <image class="icon-shop" src="../../images/icon-shop.png" mode="" />
             <view class="name">兑换商店</view>
         </view>
-        <view class="banner">
-            <view class="poster"></view>
-        </view>
+        <image class="banner" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/banner_activity.png?sign=80d421ca83e125e828bff792e6ea0aa1&t=1675842223" mode="" />
         <view class="operation">
             <view class="rule" bindtap="openActivityRule">
                 <image class="icon-rule" src="../../images/icon-rule.png" mode="" />
                 <view class="name">活动规则</view>
             </view>
-            <view class="contact" bindtap="to" data-name="businessContact" >
+            <view class="contact" bindtap="to" data-name="businessContact">
                 <image class="icon-contact" src="../../images/icon-contact.png" mode="" />
                 <view class="name">联系商家</view>
             </view>
@@ -23,19 +22,37 @@
             </button>
         </view>
     </view>
-    <view class="container mt-5 wrap-80r">
-        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="#E8E8E8" indicator-active-color="white">
-            <block wx:for="{{background}}" wx:key="*this">
-                <swiper-item>
-                    <image class="img-prize" src="{{item}}"></image>
-                </swiper-item>
-            </block>
-        </swiper>
+    <view class="container mt-24r">
+        <image class="img-ad" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/image-ad.png?sign=d561a682349db72fb1ae780b7c8a881a&t=1675842267" mode="" />
     </view>
-    <view class="footer mt-5 wrap-80r">
-        <view class="bar-progress">
-            <view class="value">{{progressValue}}</view>
-            <view class="line-inner" style="width:{{progressValue}}; background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/bg-progress.png?sign=ab56b2a00ccbf391f1fa5a69de45492f&t=1675229019'),no-repeat,center;"></view>
+    <view class="footer mt-24r wrap">
+        <view class="flex">
+            <image class="icon-switch_left" bindtap="switchPrev" src="../../images/icon-switch_01.png" mode="" />
+            <swiper class="swiper" current="{{currentStage}}" duration="{{duration}}">
+                <block wx:for="{{activityStageList}}" wx:key="id">
+                    <swiper-item>
+                        <view class="center">
+                            <view class="prize">
+                                <view class="mask-prize" wx:if="{{ongoingStage!=index}}"></view>
+                                <text class="title-prize">{{ongoingStage==index? '本阶段奖品':ongoingStage>index? '已开奖':'待解锁阶段'}}</text>
+                                <image class="img-prize" src="{{item.imgUrl}}"></image>
+                            </view>
+                            <view class="tip-activity mt-24r">{{ongoingStage==index? '距离升级奖品只差一点点呦！':ongoingStage>index? '当前阶段已结束':'完成上一阶段后升级奖励'}}</view>
+                            <view class="mt-20r">
+                                <view class="progress">
+                                    <view class="round-left">{{item.startNumber}}</view>
+                                    <view class="bar-progress">
+                                        <view class="value">{{ongoingStage==index? progressValue:ongoingStage>index? '100%':'0%'}}</view>
+                                        <view class="line-inner" style="width:{{ongoingStage==index? progressValue:ongoingStage>index? '100%':'0%'}};"></view>
+                                    </view>
+                                    <view class="round-right">{{item.endNumber}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </swiper-item>
+                </block>
+            </swiper>
+            <image class="icon-switch_right" src="../../images/icon-switch_02.png" mode="" bindtap="switchNext" />
         </view>
         <view class="btn-help mt-5" bindtap="onhelp">助力</view>
     </view>
