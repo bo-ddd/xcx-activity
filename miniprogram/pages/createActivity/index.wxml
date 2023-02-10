@@ -18,8 +18,8 @@
             <view class="page-lable">
                 <image src="../../images/icon-red.png" mode="" class="icon-min"/>
     
-                <view class="lable">商家名称：</view>
-                <input class="input" name="nameValue" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" />
+                <view class="lable">商铺名称：</view>
+                <input class="input" name="storeName" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" />
             </view>
             <view class="page-lable">
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />

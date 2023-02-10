@@ -1,9 +1,9 @@
 <!--pages/participateActivities/index.wxml-->
 <view class="launch-activities">
     <view class='top-tab_swiper'>
-        <view class='tab  {{currentData == 0 ? "tab-borer" : ""}}' data-current="0" bindtap='checkCurrent'>待开奖</view>
-        <view class='tab  {{currentData == 1 ? "tab-borer" : ""}}' data-current="1" bindtap='checkCurrent'>已结束</view>
-        <view class='tab  {{currentData == 2 ? "tab-borer" : ""}}' data-current="2" bindtap='checkCurrent'>未开始</view>
+        <view class='tab  {{currentData == 0 ? "tab-borer" : ""}}' data-current="0" bindtap='checkCurrent'>未开始</view>
+        <view class='tab  {{currentData == 1 ? "tab-borer" : ""}}' data-current="1" bindtap='checkCurrent'>待开奖</view>
+        <view class='tab  {{currentData == 2 ? "tab-borer" : ""}}' data-current="2" bindtap='checkCurrent'>已结束</view>
     </view>
     <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
         <swiper-item class="swiper-item">

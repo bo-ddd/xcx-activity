@@ -17,37 +17,37 @@ data: {
     interval: 2000,
     duration: 500,
     toView: 'green',
-    hotCommodities:{}
-    // flashSaleCommodity:[
-    //   {
-    //     id:1,
-    //     logo:'../../images/iphone.png',
-    //     title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
-    //     timeRemaining:new Date(),
-    //     requiredPoints:2100
-    //   },
-    //   {
-    //     id:2,
-    //     logo:'../../images/iphone.png',
-    //     title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
-    //     timeRemaining:new Date(),
-    //     requiredPoints:2100
-    //   },
-    //   {
-    //     id:3,
-    //     logo:'../../images/iphone.png',
-    //     title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
-    //     timeRemaining:new Date(),
-    //     requiredPoints:2100
-    //   },
-    //   {
-    //     id:4,
-    //     logo:'../../images/iphone.png',
-    //     title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
-    //     timeRemaining:new Date(),
-    //     requiredPoints:2100
-    //   },
-    // ],
+    hotCommodities:{},
+    flashSaleCommodity:[
+      {
+        id:1,
+        logo:'../../images/iphone.png',
+        title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
+        timeRemaining:new Date(),
+        requiredPoints:2100
+      },
+      {
+        id:2,
+        logo:'../../images/iphone.png',
+        title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
+        timeRemaining:new Date(),
+        requiredPoints:2100
+      },
+      {
+        id:3,
+        logo:'../../images/iphone.png',
+        title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
+        timeRemaining:new Date(),
+        requiredPoints:2100
+      },
+      {
+        id:4,
+        logo:'../../images/iphone.png',
+        title:'泰国制造asdassssssasasdasdasssssssssssssssssssss',
+        timeRemaining:new Date(),
+        requiredPoints:2100
+      },
+    ],
 
   },
 
@@ -57,21 +57,21 @@ data: {
     })
   },
   onShow(){
-    // let userInfo = getApp().globalData.userInfo
-    //         console.log(userInfo);
-    //         // 如果后台userInfo信息存在，可赋值直接进入登录页面，无需再次登录获取
-    //         // 获取用户globalData信息
-    //         if (userInfo != '' && userInfo != null) {
-    //             this.setData({
-    //                 userInfo: userInfo,
-    //                 hasUserInfo: true,
-    //                 canIUseGetUserProfile: true
-    //             })
-    //         }else{
-    //             wx.navigateTo({
-    //                 url: '/pages/login/index',
-    //             })
-    //         }
+    let userInfo = getApp().globalData.userInfo
+            console.log(userInfo);
+            // 如果后台userInfo信息存在，可赋值直接进入登录页面，无需再次登录获取
+            // 获取用户globalData信息
+            if (userInfo != '' && userInfo != null) {
+                this.setData({
+                    userInfo: userInfo,
+                    hasUserInfo: true,
+                    canIUseGetUserProfile: true
+                })
+            }else{
+                wx.navigateTo({
+                    url: '/pages/login/index',
+                })
+            }
   },
 
 //   getUserInfo(e){
@@ -94,6 +94,19 @@ data: {
   },
 
   onLoad(e){
+    this.getHotGoods()
+    // this.getUserInfo()
+  },
+
+//   getUserInfo(){
+//     wx.cloud.callFunction({
+
+//     })
+//   },
+
+
+
+  getHotGoods(){
     let _that = this
     wx.cloud.callFunction({
       name:'goods',
@@ -103,8 +116,11 @@ data: {
      success:function(res){
             let arr = [];
             res.result.data.forEach(item=>{
-              if(item.type == 0){
-               arr.push(item.goodsList)
+                if(item.type == 0){
+                item.goodsList.forEach(options=>{
+                    // console.log(options);
+                    arr.push(options)
+                })
               }
             })
             _that.setData({
@@ -112,7 +128,7 @@ data: {
               })
       }
     })
-  },
+  }
 
 //   scrollToTop() {
 //     this.setAction({

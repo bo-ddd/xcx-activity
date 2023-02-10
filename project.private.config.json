@@ -23,13 +23,6 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/mine/index",
-                    "pathName": "pages/mine/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
                     "name": "",
                     "pathName": "pages/mine/index",
                     "query": "",
@@ -191,13 +184,15 @@
                     "scene": null
                 },
                 {
-<<<<<<< HEAD
-                    "name": "活动审核详情",
-                    "pathName": "pages/examineDetails/index",
-=======
                     "name": "pages/hobby/index",
                     "pathName": "pages/hobby/index",
->>>>>>> 82dc48da77c766559802192aa72d36d052a674b5
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "pages/launchActivities/index",
+                    "pathName": "pages/launchActivities/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
