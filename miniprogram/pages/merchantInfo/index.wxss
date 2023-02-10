@@ -1,4 +1,8 @@
 /* pages/merchantInfo/index.wxss */
+.box{
+    height: 100%;
+    padding-bottom: 20rpx;
+}
 .title{
     position: relative;
     height: 400rpx;
@@ -21,7 +25,7 @@
     padding: 20rpx;
     position: relative;
     top: -100rpx;
-    height: 820rpx;
+    /* height: 800rpx; */
     overflow: hidden;
     overflow: scroll;
 }
@@ -33,6 +37,10 @@
     background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-choice.png?sign=647490245fea4f0f5c212c6844bd6c4b&t=1675417159');
     background-repeat: no-repeat;
     background-position: center;
+}
+.icon-license{
+    width: 600rpx;
+    height: 400rpx;
 }
 .list-item{
     display: flex;
