@@ -5,7 +5,11 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        activityDetail: [],
+        activityForm: ['抽奖活动', '助力活动'],
+        activityType: ['周期活动', '日常活动'],
+        activityFormId: 0,
+        activityTypeId: 0
     },
 
     /**
@@ -13,10 +17,19 @@ Page({
      */
     onLoad(options) {
         console.log(options);
+        let _this = this
         wx.cloud.callFunction({
-            name:'activity',
-            data:{
-                type:'getActivityDetail'
+            name: 'activity',
+            data: {
+                type: 'getActivityDetail',
+                _id: options.id
+            }, success(res) {
+                console.log(res);
+                _this.setData({
+                    activityDetail: res.result.data.data,
+                    activityFormId: Number(res.result.data.data[0].activityForm),
+                    activityTypeId: Number(res.result.data.data[0].activityType)
+                })
             }
         })
         this.showLoading()
@@ -85,9 +98,12 @@ Page({
             title: '提示',
             content: '是否确认通过',
             success(res) {
-                wx.navigateTo({
-                    url: '/pages/examineList/index',
-                })
+                if (res.confirm == true) {
+                    
+                } 
+                // wx.navigateTo({
+                //     url: '/pages/examineList/index',
+                // })
             }
         })
     },

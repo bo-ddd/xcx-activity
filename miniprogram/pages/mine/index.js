@@ -97,18 +97,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let app = getApp()
-        if (app.globalData.userInfo) {
-            console.log(app.globalData.userInfo);
-            this.setData({
-                userInfo: app.globalData.userInfo
-            })
-            console.log(this.data.userInfo);
-        } else {
-            wx.navigateTo({
-                url: '/pages/login/index',
-            })
-        }
+      
     },
 
     /**
@@ -123,21 +112,21 @@ Page({
      */
     //判断用户是否登录
     onShow() {
-        let userInfo = getApp().globalData.userInfo
-        console.log(userInfo);
-        // 如果后台userInfo信息存在，可赋值直接进入登录页面，无需再次登录获取
-        // 获取用户globalData信息
-        if (userInfo != '' && userInfo != null) {
-            this.setData({
-                userInfo: userInfo,
-                hasUserInfo: true,
-                canIUseGetUserProfile: true
-            })
-        }else{
-            wx.navigateTo({
-                url: '/pages/login/index',
-            })
-        }
+        // let userInfo = getApp().globalData.userInfo
+        // console.log(userInfo);
+        // // 如果后台userInfo信息存在，可赋值直接进入登录页面，无需再次登录获取
+        // // 获取用户globalData信息
+        // if (userInfo != '' && userInfo != null) {
+        //     this.setData({
+        //         userInfo: userInfo,
+        //         hasUserInfo: true,
+        //         canIUseGetUserProfile: true
+        //     })
+        // }else{
+        //     wx.navigateTo({
+        //         url: '/pages/login/index',
+        //     })
+        // }
     },
 
     /**

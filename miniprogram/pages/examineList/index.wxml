@@ -13,19 +13,19 @@
         </view>
         <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
             <swiper-item class='swiperTtemBox-item'>
-                <view class="item mt-30 wrap" wx:for="{{ items }}" wx:key="id" data-id="{{ item.id }}" bindtap="toActiveDetail">
+                <view class="item mt-30 wrap" wx:for="{{ activityList }}" wx:key="_id" data-_id="{{ item._id }}" bindtap="toActiveDetail">
                     <view class="item-left">
                         <view class="stor-name ml-20">
                             <text>活动商铺：</text>
-                            <text>{{ item.storeName }}</text>
+                            <text>{{ item.nameValue  }}</text>
                         </view>
                         <view class="active-class ml-20">
                             <text> 活动类型：</text>
-                            <text>{{ item.activeClass }}</text>
+                            <text>{{ item.titleValue }}</text>
                         </view>
                         <view class="stor-class ml-20">
-                            <text> 商铺类型：</text>
-                            <text>{{ item.storClass }}</text>
+                            <text> 活动奖品：</text>
+                            <text>{{ item.prizeName }}</text>
                         </view>
                     </view>
                     <view class="item-right">
@@ -34,7 +34,7 @@
                 </view>
             </swiper-item>
             <swiper-item class='swiperTtemBox-item'>
-                <view class="item mt-30 wrap" wx:for="{{ items }}" wx:key="id" data-id="{{ item.id }}" bindtap="toMerchantDetail">
+                <view class="item mt-30 wrap" wx:for="{{ merchantList }}" wx:key="_id" data-_id="{{ item._id }}" bindtap="toMerchantDetail">
                     <view class="item-left">
                         <view class="stor-name ml-20">
                             <text>商铺名称：</text>
@@ -42,11 +42,11 @@
                         </view>
                         <view class="stor-class ml-20">
                             <text> 商铺类型：</text>
-                            <text>{{ item.storClass }}</text>
-                        </view>
+                            <text>{{ grades[item.storeClass] }}</text>
+                        </view> 
                         <view class="stor-class ml-20">
                             <text> 联系电话：</text>
-                            <text>15115555555</text>
+                            <text>{{ item.merchantPhone }}</text>
                         </view>
                     </view>
                     <view class="item-right">

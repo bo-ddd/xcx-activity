@@ -191,8 +191,8 @@
                     "scene": null
                 },
                 {
-                    "name": "",
-                    "pathName": "pages/pointsDetails/index",
+                    "name": "pages/hobby/index",
+                    "pathName": "pages/hobby/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
