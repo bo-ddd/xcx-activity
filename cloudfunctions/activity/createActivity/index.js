@@ -14,7 +14,7 @@ exports.main = async (event, context) => {
           data: {
             fileId:event.fileId, 
             prizeUrl:event.prizeUrl,
-            localActivities:event.localActivities,
+            tempFileURL:event.tempFileURL,
             storeName: event.storeName,
             titleValue: event.titleValue,
             activityStartTime: event.dateStartDay,
