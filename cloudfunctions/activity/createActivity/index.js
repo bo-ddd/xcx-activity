@@ -17,7 +17,7 @@ exports.main = async (event, context) => {
           // data 字段表示需新增的 JSON 数据
           data: {
             fileId:event.fileId, 
-            flId:event.flId,
+            prizeUrl:event.prizeUrl,
             nameValue: event.nameValue,
             titleValue: event.titleValue,
             dateStartDay: event.dateStartDay,
