@@ -1,1 +1,60 @@
 /* pages/hobby/index.wxss */
+.box {
+    height: 100vh;
+}
+
+.hobby {
+    padding-top: 30rpx;
+}
+
+.title {
+    text-align: center;
+}
+
+.tip {
+    color: #ccc;
+}
+.hobby-class{
+    height: 800rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    line-height: 50rpx;
+}
+.hobby-item{
+    border: 1rpx solid black;
+    height: 100rpx;
+}
+
+.btn{
+    height: 50rpx;
+    width: 80%;
+    font-size: 24rpx;
+    padding: 12rpx 19rpx;
+    border: 1px solid #dcdcdc;
+    background: #F8F8F8;
+    border-radius: 10rpx;
+    display: inline-block;
+    color: #666666;
+    text-align: center;
+}
+
+.btn-selected{
+    border: 1px solid #FF7C80;
+    color: #F73C41;
+    background: #FFFFFF;
+}
+.confirm{
+    text-align: center;
+}
+.pass {
+    width: 80%;
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    padding: 15rpx 30rpx;
+    border-radius: 30rpx;
+    text-align: center;
+    background: linear-gradient(to right bottom, rgb(243, 211, 211), #e45e4c);
+}

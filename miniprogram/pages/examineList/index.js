@@ -18,18 +18,18 @@ Page({
         let _this = this
         this.showLoading()
         // 获取活动列表
-        wx.cloud.callFunction({
-            name: 'activity',
-            data: {
-                type: 'getActivityList'
-            },
-            success(res) {
-                // console.log(res);
-                _this.setData({
-                    activityList: res.result.data.list.data
-                })
-            }
-        })
+        // wx.cloud.callFunction({
+        //     name: 'activity',
+        //     data: {
+        //         type: 'getActivityList'
+        //     },
+        //     success(res) {
+        //         console.log(res);
+        //         _this.setData({
+        //             activityList: res.result.data.list.data
+        //         })
+        //     }
+        // })
         // 获取商铺列表
         wx.cloud.callFunction({
             name: 'merchantInfo',
