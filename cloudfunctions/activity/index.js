@@ -1,7 +1,10 @@
 // 云函数入口文件
-const cloud = require('wx-server-sdk')
+const cloud = require('wx-server-sdk');
 const createActivity = require('./createActivity');
 const getList = require('./getList');
+const getActivityList = require('./getActivityList')
+const getActivityDetail = require('./getActivityDetail')
+const updateActivity = require('./updateActivity')
 
 cloud.init({
     env: cloud.DYNAMIC_CURRENT_ENV
@@ -25,11 +28,20 @@ exports.main = async (event, context) => {
         case 'getList':
             res.data = await getList.main(event, context);
             break;
+        case 'updateActivity':
+            res.data = await updateActivity.main(event, context);
+            break;
+        case 'getActivityList':
+            res.data = await getActivityList.main(event, context);
+            break;
+        case 'getActivityDetail':
+            res.data = await getActivityDetail.main(event, context);
+            break;
         default:
             res.status = 0;
             res.msg = '接口不存在';
             res.data = null;
             break;
     }
-         return res;
+    return res;
 }

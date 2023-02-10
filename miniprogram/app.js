@@ -9,7 +9,7 @@ App({
                 //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
                 //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
                 //   如不填则使用默认环境（第一个创建的环境）
-                // env: 'my-env-id',
+                env: 'zliu-dev-4gclbljp64cb5cd3',
                 traceUser: true,
             });
 
@@ -17,16 +17,20 @@ App({
 
         this.globalData = {
             socketStatus: 'closed',
+            userInfo:''
         };
         this.getUserInfo = function () {
 
         };
+        let _this=this
         this.getUserProfile = function (desc) {
             return new Promise((resolve) => {
                 wx.getUserProfile({
                     desc, // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
                     async success(res) {
-                        console.log(res.userInfo);
+                        // console.log(res.userInfo);
+                        _this.globalData.userInfo=res.userInfo
+                        console.log( _this.globalData.userInfo);
                         resolve(res)
                     }
                 })

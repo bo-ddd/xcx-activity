@@ -23,13 +23,6 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/mine/index",
-                    "pathName": "pages/mine/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
                     "name": "",
                     "pathName": "pages/mine/index",
                     "query": "",
@@ -165,6 +158,41 @@
                 {
                     "name": "",
                     "pathName": "pages/orderRemarks/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "pages/updataActivities/index",
+                    "pathName": "pages/updataActivities/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "商家审核信息",
+                    "pathName": "pages/merchantInfo/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "审核列表",
+                    "pathName": "pages/examineList/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "pages/hobby/index",
+                    "pathName": "pages/hobby/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "pages/launchActivities/index",
+                    "pathName": "pages/launchActivities/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

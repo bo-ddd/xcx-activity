@@ -6,42 +6,41 @@ Page({
      */
     data: {
         userInfo: '',
-        activityList: [
-            {
+        activityList: [{
                 id: 1,
                 icon: '../../images/icon-activity.png',
                 lable: '创建活动',
-                name:'createActivity'
+                name: 'createActivity'
 
             },
             {
                 id: 2,
                 icon: '../../images/icon-activity.png',
                 lable: '发起的活动',
-                 name:'launchActivities'
+                name: 'launchActivities'
             },
             {
                 id: 3,
                 icon: '../../images/icon-activity.png',
                 lable: '参与的活动',
-                name:'participateActivities'
+                name: 'participateActivities'
 
             },
             {
                 id: 4,
                 icon: '../../images/icon-activity.png',
                 lable: '抽奖记录',
-                name:'activitRecord'
+                name: 'activitRecord'
 
             },
-          
+
         ],
         mineList: [{
                 id: 1,
                 icon: '../../images/icon-Settle.png',
                 lable: '商家入驻',
                 arrowIcon: '../../images/icon-arrow_list.png',
-                name:'entryProcess'
+                name: 'entryProcess'
 
             },
             {
@@ -49,15 +48,23 @@ Page({
                 icon: '../../images/icon-order.png',
                 lable: '审核列表',
                 arrowIcon: '../../images/icon-arrow_list.png',
-                name:'examineList'
+                name: 'examineList'
 
             },
+            // {
+            //     id: 3,
+            //     icon: '../../images/icon-opinion.png',
+            //     lable: '个人信息',
+            //     arrowIcon: '../../images/icon-arrow_list.png',
+            //     name: 'userInfo'
+
+            // },
             {
                 id: 3,
-                icon: '../../images/icon-opinion.png',
-                lable: '个人信息',
+                icon: '../../images/icon-integral1.png',
+                lable: '积分明细',
                 arrowIcon: '../../images/icon-arrow_list.png',
-                name:'userInfo'
+                name: 'pointsMall'
 
             },
             {
@@ -65,55 +72,31 @@ Page({
                 icon: '../../images/icon-suggest.png',
                 lable: '反馈建议',
                 arrowIcon: '../../images/icon-arrow_list.png',
-                name:'opinion'
+                name: 'opinion'
 
             },
         ]
     },
 
-    async getUserInfo() {
-        let {
-            getUserProfile,
-            getSetting,
-            openSetting
-        } = getApp();
-        await getSetting().then(async res => {
-            console.log(res.authSetting['scope.userInfo']);
-            if (res.authSetting['scope.userInfo']) {
-                let {
-                    userInfo
-                } = await getUserProfile('用于登录')
-                this.setData({
-                    userInfo,
-                    hasUserInfo: true
-                })
-            } else {
-                await openSetting()
-            }
-        }).catch(async err => {
-            await openSetting()
-        })
-    },
-
     to(e) {
         console.log(e);
-            wx.navigateTo({
-                url: '/pages/'+e.currentTarget.dataset.name+'/index'
-            })
-        
+        wx.navigateTo({
+            url: '/pages/' + e.currentTarget.dataset.name + '/index'
+        })
+
     },
     activeTo(e) {
         wx.navigateTo({
-            url: '/pages/'+e.currentTarget.dataset.name+'/index'
+            url: '/pages/' + e.currentTarget.dataset.name + '/index'
         })
     },
-    toHomePage(){
+    toHomePage() {
         wx.switchTab({
-          url: '/pages/home/index',
+            url: '/pages/home/index',
         })
     },
     //点击消息图跳转消息页
-    messagePage(){
+    messagePage() {
         wx.navigateTo({
             url: '/pages/message/index'
         })
@@ -122,7 +105,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        // this.getUserInfo()
+      
     },
 
     /**
@@ -135,8 +118,23 @@ Page({
     /**
      * 生命周期函数--监听页面显示
      */
+    //判断用户是否登录
     onShow() {
-
+        let userInfo = getApp().globalData.userInfo
+        console.log(userInfo);
+        // 如果后台userInfo信息存在，可赋值直接进入登录页面，无需再次登录获取
+        // 获取用户globalData信息
+        if (userInfo != '' && userInfo != null) {
+            this.setData({
+                userInfo: userInfo,
+                hasUserInfo: true,
+                canIUseGetUserProfile: true
+            })
+        }else{
+            wx.navigateTo({
+                url: '/pages/login/index',
+            })
+        }
     },
 
     /**

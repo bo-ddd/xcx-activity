@@ -1,27 +1,57 @@
 // pages/createActivity/index.js
 Page({
-
     /**
      * 页面的初始数据
      */
     data: {
-        disabled:true,
+        opendId: '',
+        isCreate: false,
+        isUpdate: false,
         chosen: '',
-        form:{
-            nameValue: '',
+        form: {
+            storeName: '',
             titleValue: '',
-            dateStartDay: '2023-01-01',
-            dateEndDay: '2023-01-01',
-            radio: '',
-            radio1:'',
+            activityStartTime: '2023-01-01',
+            activityEndTime: '2023-01-01',
             textareaValue: "",
             prizeName: '',
             prizeNum: '',
-            peopleNum:'',
+            peopleNum: '',
+            activityType: 1,
+            activityForm: 1,
         },
-        fileId:'',
-        flId:'',
-        // fileId:'',
+        items: [{
+                value: 1,
+                name: '抽奖活动',
+                checked: 'true'
+            },
+            {
+                value: 2,
+                name: '助力活动'
+            },
+        ],
+        items1: [{
+                value: 1,
+                name: '周期活动',
+                checked: 'true'
+            },
+            {
+                value: 2,
+                name: '长期活动'
+            },
+        ],
+        fileId: '',
+        tempFileURL: '',
+        prizeUrl: '',
+        item: {
+
+            id: 1,
+            prizeMapIcon: '../../images/icon-add_p.png',
+            prizeName: '奖品名称',
+            prizeNum: '奖品数量',
+            prizePeople: '助力人数'
+
+        },
         prizeSettingList: [{
             id: 1,
             prizeMapIcon: '../../images/icon-add_p.png',
@@ -29,42 +59,6 @@ Page({
             prizeNum: '奖品数量',
             prizePeople: '助力人数'
         }, ]
-    },
-    formSubmit(e){
-        console.log(e);
-        this.setData({
-            form : e.detail.value
-        })
-        if (!this.data.form) {
-            wx.showToast({
-                title: '请填写完整信息',
-                icon: 'error',
-                duration: 2000
-            })
-            return;
-        } else {
-            this.createActivity()
-        }
-    },
-    formReset(e) {
-        console.log('form发生了reset事件，携带数据为：', e.detail.value)
-        this.setData({
-          chosen: ''
-        })
-      },
-        //开始时间
-    dateChangestart(e) {
-        console.log('值为', e.detail.value);
-        this.setData({
-            dateStartDay: e.detail.value
-        });
-    },
-    //结束时间
-    dateChangeEnd(e) {
-        console.log('jieshu', e.detail.value);
-        this.setData({
-         dateEndDay: e.detail.value
-        });
     },
     //点击上传活动图
     upload() {
@@ -75,15 +69,41 @@ Page({
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
             success(res) {
-                // tempFilePath可以作为 img 标签的 src 属性显示图片
-                // console.log(res);
-                _this.setData({
-                    fileId :res.tempFiles[0].tempFilePath
-                })
-                console.log(_this.data.fileId);
+                const filePath = res.tempFiles[0].tempFilePath;
+                // _this.setData({
+                //     localActivities:filePath
+                // })
+                // 调用云函数，把图片存到服务器中；
+                //上传图片
+                wx.cloud.uploadFile({
+                    cloudPath: 'activity/' + new Date().toLocaleString() + '.png',
+                    filePath: filePath,
+                }).then( async res => {
+                    let fileId = res.fileID;
+                    let tempFileURL = await _this.getTempFileURL(fileId);
+                    _this.setData({
+                        fileId,
+                        tempFileURL
+                    })
 
+                })
             }
         })
+    },
+    //开始时间
+    dateChangestart(e) {
+        console.log('值为', e.detail.value);
+        this.setData({
+            ['form.activityStartTime']: e.detail.value
+        });
+        console.log(this.data.form.activityStartTime)
+    },
+    //结束时间
+    dateChangeEnd(e) {
+        console.log('结束时间', e.detail.value);
+        this.setData({
+            ['form.activityEndTime']: e.detail.value
+        });
     },
     //奖品图
     PrizeMap() {
@@ -94,68 +114,145 @@ Page({
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
             success(res) {
-                console.log(res);
-                _this.setData({
-                    // tempFilePath可以作为 img 标签的 src 属性显示图片
-                    flId :res.tempFiles[0].tempFilePath
-                })
-            }
-        })
-    },
-    showToast() {
-        
-    },
-   
-    //创建活动
-    createActivity(){
-        if(!this.data.fileId){
-            
-        }
-        let _this=this
-        wx.cloud.callFunction({
-            name:'activity',
-            data:{
-                type:'createActivity',
-                ...this.data.form,
-                fileId:this.data.fileId,
-                flId:this.data.flId,
-            },success(res){
+                //本地地址
+                const prizeUrl1 = res.tempFiles[0].tempFilePath;
+                console.log(prizeUrl1);
+                // 调用云函数，把图片存到服务器中；
                 //上传图片
                 wx.cloud.uploadFile({
-                    cloudPath: 'merchant/' + new Date().toLocaleString() + '.png',
-                    filePath: _this.data.fileId,
-                    config: {
-                        env: 'zliu-dev-4gclbljp64cb5cd3'
-                    }, //不可以这么写，这样写会造成线上环境出现重大问题
+                    cloudPath: 'activity/' + new Date().toLocaleString() + '.png',
+                    filePath: prizeUrl1,
                     success(res) {
-                        wx.navigateTo({
-                            url: '/pages/launchActivities/index',
-                            success(){
-                                wx.showToast({
-                                    title: '成功',
-                                    icon: 'success',
-                                    duration: 2000
-                                })
-                            }
+                        _this.setData({
+                            prizeUrl: res.fileID
                         })
                     }
                 })
-               
-           
-            },error(err){
-                console.log(err);
             }
+        })
+
+    },
+    //校验
+    validateForm() {
+        let form = this.data.form;
+        if (!this.data.fileId || !this.data.prizeUrl) {
+            wx.showToast({
+                title: '请填写完整信息',
+                icon: 'error',
+                duration: 2000
+            })
+            return
+        } else {
+            for (let key in form) {
+                if (!form[key]) {
+                    wx.showToast({
+                        title: '请填写完整信息',
+                        icon: 'error',
+                        duration: 2000
+                    })
+                    return
+                }
+            }
+        }
+        this.createActivity()
+
+    },
+    //点击确定创建
+    formSubmit(e) {
+        console.log(e.detail.value);
+        this.setData({
+            form: e.detail.value
+        })
+        this.validateForm()
+    },
+
+
+    //创建活动
+    createActivity() {
+        let fileId = this.data.fileId;
+        let prizeUrl = this.data.prizeUrl;
+        wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'createActivity',
+                storeName: this.data.form.storeName,
+                titleValue: this.data.form.titleValue,
+                activityStartTime: this.data.form.activityStartTime,
+                activityEndTime: this.data.form.activityEndTime,
+                textareaValue: this.data.form.textareaValue,
+                prizeName: this.data.form.prizeName,
+                prizeNum: this.data.form.prizeNum,
+                peopleNum: this.data.form.peopleNum,
+                activityType: parseInt(this.data.form.activityType),
+                activityForm: parseInt(this.data.form.activityForm),
+                fileId,
+                tempFileURL:this.data.tempFileURL,
+                prizeUrl,
+                examineType: 0,
+                activityStatus: 0
+            },
+            success(res) {
+                console.log('创建完成')
+                console.log(res);
+                wx.navigateTo({
+                    url: '/pages/launchActivities/index',
+                    success() {
+                        wx.showToast({
+                            title: '成功',
+                            icon: 'success',
+                            duration: 2000
+                        })
+                    }
+                })
+            },
         })
     },
     //新增活动模块
-    createModul(){
-    console.log(222);
+    createModul() {
+        this.data.prizeSettingList.push(this.data.item)
+        this.setData({
+            prizeSettingList: this.data.prizeSettingList
+        })
+        // console.log(222);
+    },
+    //获取商铺名称
+    getStoreName() {
+        wx.cloud.callFunction({
+            name: 'merchantInfo',
+            data: {
+                type: 'getMerchantInfo',
+            }
+        }).then(res => {
+            this.setData({
+                ['form.storeName']: res.result.data[0].merchantName
+            })
+            console.log(this.data.form.storeName)
+        })
+    },
+
+    async getTempFileURL(fileId){
+        let tempFileURL = "";
+        await wx.cloud.callFunction({
+            name: 'getTempFileURL',
+            data: {
+                fileId
+            }
+        }).then(res => {
+            console.log('------------------------------------');
+            console.log(res)
+            tempFileURL = res.result[0].tempFileURL
+        })
+        return tempFileURL
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        // this.getOpendId()
+        this.getStoreName()
 
+        //  let userInfo = getApp().globalData.userInfo
+        //    console.log(userInfo);                     
     },
 
     /**

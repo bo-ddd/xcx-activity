@@ -1,7 +1,7 @@
 /* pages/merchantSettlement/index.wxss */
 .box {
-    height: 100vh;
-    display: flow-root;
+    height: 100%;
+    padding-bottom: 20rpx;
 }
 
 .store-settlement {

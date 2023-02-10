@@ -8,9 +8,8 @@ Page({
         form:{
             shopname:'',
             activitytitle:'',
-           
         },
-
+  
         activitList: [{
                 id: 1,
                 lable: '消消乐哈哈',
@@ -70,7 +69,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+ console.log(options);
     },
     bindchange: function (e) {
         const that = this;
@@ -100,48 +99,10 @@ Page({
     //跳转编辑活动
     updataTo() {
         wx.navigateTo({
-            url: '/pages/updataActivities/index',
+            url: '/pages/createActivity/index',
         })
     },
   
-    upload(){
-        let _this = this;
-        //唤起图片权限
-        wx.chooseMedia({
-            count: 1,
-            sizeType: ['original', 'compressed'],
-            sourceType: ['album', 'camera'],
-            success(res) {
-                // tempFilePath可以作为 img 标签的 src 属性显示图片
-                console.log(res);
-                let tempFilePaths = res.tempFiles[0].tempFilePath
-                let that = _this
-                wx.cloud.uploadFile({
-                    cloudPath: 'merchant/' + new Date().toLocaleString() + '.png',
-                    filePath: tempFilePaths,
-                    config: {
-                        env: 'zliu-dev-4gclbljp64cb5cd3'
-                    }, //不可以这么写，这样写会造成线上环境出现重大问题
-                    success(res) {
-                        that.setData({
-                            fileId: res.fileID
-                        })
-                        // wx.cloud.callFunction({
-                        //     name: 'getTempFileURL',
-                        //     data: {
-                        //         fileId: res.fileID
-                        //     }
-                        // }).then(res => {
-                        //     that.setData({
-                        //         fileId: res.result[0].tempFileURL
-                        //     })
-                        // })
-                    }
-                })
-            }
-        })
-    },
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
