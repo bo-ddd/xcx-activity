@@ -8,7 +8,7 @@ Page({
         isUpdate: false,
         chosen: '',
         form: {
-            nameValue: '',
+            storeName: '',
             titleValue: '',
             dateStartDay: '2023-01-01',
             dateEndDay: '2023-01-01',
@@ -41,6 +41,7 @@ Page({
         ],
         fileId: '',
         prizeUrl: '',
+        localActivities:'',
         prizeSettingList: [{
             id: 1,
             prizeMapIcon: '../../images/icon-add_p.png',
@@ -60,13 +61,16 @@ Page({
             success(res) {
                 const filePath = res.tempFiles[0].tempFilePath;
                 console.log(filePath);
+                _this.setData({
+                    localActivities:filePath
+                })
                 // 调用云函数，把图片存到服务器中；
                 //上传图片
                 wx.cloud.uploadFile({
                     cloudPath: 'activity/' + new Date().toLocaleString() + '.png',
                     filePath: filePath,
                     success(res) {
-                        console.log(res);
+                        // console.log(res);
                         _this.setData({
                             fileId: res.fileID
                         })
@@ -143,20 +147,6 @@ Page({
         }
         this.createActivity()
 
-        // for (let key in form) {
-        //     if (!form[key] || ) {
-
-        //         wx.showToast({
-        //             title: '请填写完整信息',
-        //             icon: 'error',
-        //             duration: 2000
-        //         })
-
-        //          return
-        //     }
-        // this.createActivity()
-        // }
-
     },
     //点击确定创建
     formSubmit(e) {
@@ -165,7 +155,6 @@ Page({
             form: e.detail.value
         })
         this.validateForm()
-        // this.createActivity()
     },
 
 
@@ -179,10 +168,12 @@ Page({
                 type: 'createActivity',
                 ...this.data.form,
                 fileId,
-                prizeUrl
+                prizeUrl,
+                localActivities:this.data.localActivities
             },
             success(res) {
                 console.log('创建完成')
+                console.log(res);
                 wx.navigateTo({
                     url: '/pages/launchActivities/index',
                     success() {
@@ -203,7 +194,16 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options) {},
+    onLoad(options) {
+        wx.cloud.callFunction({
+            name:'quickstartFunctions',
+            data:{
+                type:'getOpenId',
+            }
+        })
+        //  let userInfo = getApp().globalData.userInfo
+        //    console.log(userInfo);
+    },
 
     /**
      * 生命周期函数--监听页面初次渲染完成

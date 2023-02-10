@@ -9,5 +9,9 @@ const db = cloud.database();
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-    
+    const wxContext = cloud.getWXContext();
+    // 查询用户信息（activityRecord）
+    return await db.collection("userInfo").where({
+        openId:wxContext.OPENID
+         }).get();
 }

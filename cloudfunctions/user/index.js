@@ -1,6 +1,7 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 const getMyActivityRecordList = require('./getMyActivityRecordList')
+const setUserInfo = require('./setUserInfo')
 
 cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 
@@ -16,6 +17,15 @@ exports.main = async (event, context) => {
     switch(type){
         case 'getMyActivityRecordList':
             res.data = await getMyActivityRecordList.main(event, context); 
+            // res.data = {
+            //     openid: wxContext.OPENID
+            // }
+            return res;
+        case 'getUserInfo':
+            res.data = await getMyActivityRecordList.main(event, context); 
+            return res;
+        case 'setUserInfo':
+            res.data = await setUserInfo.main(event, context); 
             // res.data = {
             //     openid: wxContext.OPENID
             // }

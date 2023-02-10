@@ -5,14 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad(options) {
-
+      userInfo:''
     },
     async getUserInfo() {
         let {
@@ -30,16 +23,44 @@ Page({
                     userInfo,
                     hasUserInfo: true
                 })
-                console.log(userInfo);
-                    wx.navigateBack({
-                        delta: 1
-                      })
+                this.setData({
+                    userInfo:userInfo
+                })
+                console.log(this.data.userInfo);
+                // this.judgeUserINfo()
+                wx.navigateBack({
+                    delta: 1
+                  })
+                   
             } else {
                 await openSetting()
             }
         }).catch(async err => {
             await openSetting()
         })
+    },
+    judgeUserINfo(){
+       if(this.data.userInfo){
+        wx.cloud.callFunction({
+            name: 'user',
+            data: {
+                type: 'setUserInfo',
+            },
+            success(res) {
+                wx.navigateBack({
+                    delta: 1
+                  })
+                console.log('创建完成')
+               
+            },
+        })
+       }
+    },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad(options) {
+        
     },
 
 

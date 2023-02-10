@@ -23,13 +23,6 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/mine/index",
-                    "pathName": "pages/mine/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
                     "name": "",
                     "pathName": "pages/mine/index",
                     "query": "",
@@ -193,6 +186,13 @@
                 {
                     "name": "pages/hobby/index",
                     "pathName": "pages/hobby/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "pages/launchActivities/index",
+                    "pathName": "pages/launchActivities/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
