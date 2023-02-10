@@ -4,6 +4,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        opendId:'',
         isCreate: false,
         isUpdate: false,
         chosen: '',
@@ -103,7 +104,6 @@ Page({
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
             success(res) {
-                console.log(res);
                 //本地地址
                 const prizeUrl1 = res.tempFiles[0].tempFilePath;
                 console.log(prizeUrl1);
@@ -113,7 +113,6 @@ Page({
                     cloudPath: 'activity/' + new Date().toLocaleString() + '.png',
                     filePath: prizeUrl1,
                     success(res) {
-                        console.log(res);
                         _this.setData({
                             prizeUrl: res.fileID
                         })
@@ -191,18 +190,42 @@ Page({
     createModul() {
         console.log(222);
     },
+    //获取opendId
+    // getOpendId(){
+    //     let _this=this;
+    //     wx.cloud.callFunction({
+    //         name:'quickstartFunctions',
+    //         data:{
+    //             type:'getOpenId',
+    //         },success(res){
+    //             _this.setData({
+    //                 opendId:res.result.openid
+    //             })
+    //             console.log(_this.data.opendId); //opendId
+    //         }
+    //     })
+    // },
+    //获取商铺名称
+    getStoreName(){
+        console.log(1);
+        let _this=this;
+        wx.cloud.callFunction({
+            name:'user',
+            data:{
+                type:'getUserInfo',
+            },success(res){
+                console.log(res); 
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        wx.cloud.callFunction({
-            name:'quickstartFunctions',
-            data:{
-                type:'getOpenId',
-            }
-        })
+        this.getStoreName()
+      
         //  let userInfo = getApp().globalData.userInfo
-        //    console.log(userInfo);
+        //    console.log(userInfo);                     
     },
 
     /**
