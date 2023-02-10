@@ -9,13 +9,7 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     // 查询活动记录表（activityRecord）
     try {
-        await db.collection('merchantInfo').where({
-            _openid: wxContext.OPENID
-        }).get()
-        return {
-          success: true,
-          event
-        };
+     
       } catch (e) {
         // 这里catch到的是该collection已经存在，从业务逻辑上来说是运行成功的，所以catch返回success给前端，避免工具在前端抛出异常
         return {

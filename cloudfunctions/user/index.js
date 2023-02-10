@@ -22,7 +22,7 @@ exports.main = async (event, context) => {
             // }
             return res;
         case 'getUserInfo':
-            res.data = await getMyActivityRecordList.main(event, context); 
+            res.data = await getUserInfo.main(event, context); 
             return res;
       
         default:
@@ -30,7 +30,6 @@ exports.main = async (event, context) => {
             res.msg =  '接口不存在';
             res.data = null;
             break;
-            case 'getUserInfo':
-               return await getUserInfo.main(event, context); 
+            
     }
 }

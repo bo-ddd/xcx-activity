@@ -11,8 +11,8 @@ Page({
         form: {
             storeName: '',
             titleValue: '',
-            dateStartDay: '2023-01-01',
-            dateEndDay: '2023-01-01',
+            activityStartTime: '2023-01-01',
+            activityEndTime: '2023-01-01',
             textareaValue: "",
             prizeName: '',
             prizeNum: '',
@@ -43,6 +43,15 @@ Page({
         fileId: '',
         prizeUrl: '',
         localActivities:'',
+        item:{
+            
+                id: 1,
+                prizeMapIcon: '../../images/icon-add_p.png',
+                prizeName: '奖品名称',
+                prizeNum: '奖品数量',
+                prizePeople: '助力人数'
+            
+        },
         prizeSettingList: [{
             id: 1,
             prizeMapIcon: '../../images/icon-add_p.png',
@@ -84,15 +93,15 @@ Page({
     dateChangestart(e) {
         console.log('值为', e.detail.value);
         this.setData({
-            ['form.dateStartDay']: e.detail.value
+            ['form.activityStartTime']: e.detail.value
         });
-        console.log(this.data.form.dateStartDay)
+        console.log(this.data.form.activityStartTime)
     },
     //结束时间
     dateChangeEnd(e) {
         console.log('结束时间', e.detail.value);
         this.setData({
-            ['form.dateEndDay']: e.detail.value
+            ['form.activityEndTime']: e.detail.value
         });
     },
     //奖品图
@@ -165,10 +174,21 @@ Page({
             name: 'activity',
             data: {
                 type: 'createActivity',
-                ...this.data.form,
+                storeName:this.data.form.storeName,
+                titleValue:this.data.form.titleValue,
+                activityStartTime: this.data.form.activityStartTime,
+                activityEndTime: this.data.form.activityEndTime,
+                textareaValue: this.data.form.textareaValue,
+                prizeName: this.data.form.prizeName,
+                prizeNum: this.data.form.prizeNum,
+                peopleNum: this.data.form.peopleNum,
+                activityType:parseInt(this.data.form.activityType) ,
+                activityForm:parseInt(this.data.form.activityForm),
                 fileId,
                 prizeUrl,
-                localActivities:this.data.localActivities
+                localActivities:this.data.localActivities,
+                examineType:0,
+                activityStatus:0 
             },
             success(res) {
                 console.log('创建完成')
@@ -188,40 +208,31 @@ Page({
     },
     //新增活动模块
     createModul() {
-        console.log(222);
+        this.data.prizeSettingList.push(this.data.item)
+        this.setData({
+            prizeSettingList: this.data.prizeSettingList
+        })
+        // console.log(222);
     },
-    //获取opendId
-    // getOpendId(){
-    //     let _this=this;
-    //     wx.cloud.callFunction({
-    //         name:'quickstartFunctions',
-    //         data:{
-    //             type:'getOpenId',
-    //         },success(res){
-    //             _this.setData({
-    //                 opendId:res.result.openid
-    //             })
-    //             console.log(_this.data.opendId); //opendId
-    //         }
-    //     })
-    // },
     //获取商铺名称
     getStoreName(){
-        console.log(1);
-        let _this=this;
         wx.cloud.callFunction({
-            name:'user',
+            name:'merchantInfo',
             data:{
-                type:'getUserInfo',
-            },success(res){
-                console.log(res); 
+                type:'getMerchantInfo',
             }
+        }).then(res=>{                                                                                                                                                                                                                                                                                                                                                                 
+            this.setData({
+                ['form.storeName']:res.result.data[0].merchantName
+            })
+            console.log(this.data.form.storeName)
         })
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        // this.getOpendId()
         this.getStoreName()
       
         //  let userInfo = getApp().globalData.userInfo

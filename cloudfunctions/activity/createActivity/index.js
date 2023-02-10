@@ -1,5 +1,5 @@
 // 云函数入口文件
-const cloud = require('wx-server-sdk')
+const cloud = require('wx-server-sdk');
 
 cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 const db = cloud.database();
@@ -17,17 +17,20 @@ exports.main = async (event, context) => {
             localActivities:event.localActivities,
             storeName: event.storeName,
             titleValue: event.titleValue,
-            dateStartDay: event.dateStartDay,
-            dateEndDay: event.dateEndDay,
+            activityStartTime: event.dateStartDay,
+            activityEndTime: event.dateEndDay,
             activityType: event.activityType,
             activityForm:event.activityForm,
             textareaValue: event.textareaValue,
             prizeName: event.prizeName,
             prizeNum:event.prizeNum,
             peopleNum:event.peopleNum,
-            openId:wxContext.OPENID
+            openId:wxContext.OPENID,
+            examineType:0,
+            activityStatus:0
           }
         });
+        console.log(event);
         return {
           success: true,
           event
