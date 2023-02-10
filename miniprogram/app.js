@@ -30,7 +30,7 @@ App({
                     async success(res) {
                         // console.log(res.userInfo);
                         _this.globalData.userInfo=res.userInfo
-                        // console.log( _this.globalData.userInfo);
+                        console.log( _this.globalData.userInfo);
                         resolve(res)
                     }
                 })
