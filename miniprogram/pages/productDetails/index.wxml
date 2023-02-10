@@ -1,5 +1,8 @@
 <!--pages/productDetails/index.wxml-->
-<view class="detail-outer-layer" wx:if="{{ item._id == id }}" wx:for="{{ productDetails }}" wx:key="_id">
+<view class="detail-outer-layer" wx:for="{{ productDetails }}" >
+<view  wx:if="{{ item._id == id }}" wx:key="_id"> 
+    
+
     <image class="bg-details" src="{{ item.images }}" mode=""/>
 
     <view class="product-details">
@@ -28,6 +31,7 @@
         </view>
 
     </view>
+</view>
 </view>
 
 <view class="footer">

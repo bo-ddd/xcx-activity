@@ -13,13 +13,13 @@
 </scroll-view>
 
 
-<swiper wx:for="{{ goodsList }}" wx:key="idx" class="wrap" indicator-dots="{{false}}" bindchange="handleSwiper" current="{{currentTab}}">
+<swiper class="wrap" indicator-dots="{{false}}" bindchange="handleSwiper" current="{{currentTab}}">
 	<block>
-			<swiper-item wx:if="{{ item.Type == 0 }}" style="overflow: scroll; ">
-				<scroll-view  class="swiper-item" scroll-y refresher-enabled refresher-background="#F6F7F8" refresher-triggered="{{isRefresh}}" enable-flex="true"  bindrefresherrefresh="refresherpulling" bindscrolltolower="handleTolower">
+			<swiper-item wx:for="{{ goodsList }}" wx:key="idx" style="overflow: scroll; ">
+				<scroll-view wx:if="{{ item.type == currentTab}}" class="swiper-item" scroll-y refresher-enabled refresher-background="#F6F7F8" refresher-triggered="{{isRefresh}}" enable-flex="true"  bindrefresherrefresh="refresherpulling" bindscrolltolower="handleTolower">
 
 
-                    <view class="commodity-item mt-30"  >
+                    <view class="commodity-item mt-30" wx:for="{{ item.goodsList }}" wx:key="uid" wx:for-item="myItem">
                         <image class="commodity-logo" src="../../images/iphone.png" mode=""/>
                         <view class="commodity-content">
                             <view class="commodity-describe">{{ myItem.title }}</view>

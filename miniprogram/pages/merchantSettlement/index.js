@@ -13,44 +13,7 @@ Page({
             DqOpenid: '',
             select: false,
             grade_name: '--请选择--',
-            grades: [
-                {
-                    id: 1,
-                    className: '电子产品'
-                },
-                {
-                    id: 2,
-                    className: '卫生用品'
-                },
-                {
-                    id: 3,
-                    className: '厨房用品'
-                },
-                {
-                    id: 4,
-                    className: '清洁洗护'
-                },
-                {
-                    id: 5,
-                    className: '美妆护肤'
-                },
-                {
-                    id: 6,
-                    className: '二次元'
-                },
-                {
-                    id: 7,
-                    className: '潮流女装'
-                },
-                {
-                    id: 8,
-                    className: '潮男穿搭'
-                },
-                {
-                    id: 9,
-                    className: '美食达人'
-                },
-            ]
+            grades:['电子产品','卫生用品','厨房用品','清洁洗护','美妆护肤','二次元','潮流女装','潮男穿搭','美食达人'],
         },
         form: {
             merchantname: '',
@@ -184,7 +147,6 @@ Page({
             sourceType: ['album', 'camera'],
             success(res) {
                 // tempFilePath可以作为 img 标签的 src 属性显示图片
-                console.log(res);
                 let tempFilePaths = res.tempFiles[0].tempFilePath
                 let that = _this
                 wx.cloud.uploadFile({
@@ -195,7 +157,7 @@ Page({
                     }, //不可以这么写，这样写会造成线上环境出现重大问题
                     success(res) {
                         that.setData({
-                            fileId: res.fileID
+                            fileId: res.fileID 
                         })
                         // wx.cloud.callFunction({
                         //     name: 'getTempFileURL',

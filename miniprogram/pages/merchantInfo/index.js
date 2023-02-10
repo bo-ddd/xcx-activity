@@ -5,14 +5,28 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        merchantDetail:[],
+        grades:['电子产品','卫生用品','厨房用品','清洁洗护','美妆护肤','二次元','潮流女装','潮男穿搭','美食达人'],
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        console.log(options);
+        let _this = this
+        wx.cloud.callFunction({
+            name: 'merchantInfo',
+            data: {
+                type: 'getMerchantDetail',
+                _id: options.id
+            }, success(res) {
+                console.log(res.result.data);
+                _this.setData({
+                    merchantDetail:res.result.data
+                })
+            }
+        })
     },
 
     /**
