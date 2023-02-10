@@ -14,7 +14,6 @@
                
                 <view class="poster" bindtap="upload">
                     <image src="{{fileId}}" mode="" class="poster-icon" wx:if="{{fileId}}"/>
-                    <!-- <view class="color-cc"> 请上传活动图片，图片支持jpg、gif、png格式</view> -->
                 </view>
             <view class="page-lable">
                 <image src="../../images/icon-red.png" mode="" class="icon-min"/>
@@ -35,7 +34,8 @@
                 <view class="section date-section" hover-class="section-active">
                     <picker mode="date" bind:change="dateChangestart" fields="day" name="dateStartDay">
                         <view>
-                            <text class="chooseItem">请选择：</text>{{dateStartDay}}
+                            <text class="chooseItem">请选择：</text>
+                            <text>{{ form.dateStartDay }}</text>
                         </view>
                     </picker>
                 </view>
@@ -46,7 +46,7 @@
                 <view class="section date-section" hover-class="section-active">
                     <picker mode="date" bind:change="dateChangeEnd" fields="day" name="dateEndDay">
                         <view>
-                            <text class="chooseItem">请选择：</text>{{dateEndDay}}
+                            <text class="chooseItem">请选择：</text>{{form.dateEndDay}}
                         </view>
                     </picker>
                 </view>
@@ -56,26 +56,22 @@
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />
     
                 <view class="lable">活动类型：</view>
-                <radio-group name="radio" class="radio color-ccc">
-                    <label>
-                        <radio value="type1" style="transform: scale(0.7);" />周期活动
+                <radio-group name="activityType" class="radio color-ccc">
+                    <label wx:for="{{items1}}" wx:key="value">
+                        <radio value="{{item.value}}" style="transform: scale(0.7);" checked="{{item.checked}}"/>{{item.name}}
                     </label>
-                    <label>
-                        <radio value="type2" style="transform: scale(0.7);" />日常活动
-                    </label>
+                  
                 </radio-group>
             </view>
             <view class="page-lable">
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />
     
                 <view class="lable">活动形式：</view>
-                <radio-group name="radio1" class="radio color-ccc">
-                    <label>
-                        <radio value="form1" style="transform: scale(0.7);" />助力活动
+                <radio-group name="activityForm" class="radio color-ccc" >
+                    <label wx:for="{{items}}" wx:key="value">
+                        <radio value="{{item.value}}" style="transform: scale(0.7);" checked="{{item.checked}}"/>{{item.name}}
                     </label>
-                    <label>
-                        <radio value="form2" style="transform: scale(0.7);" />抽奖活动
-                    </label>
+                  
                 </radio-group>
             </view>
     
@@ -95,7 +91,7 @@
     
                 <view class="prize-setting wrap mb-40" wx:for="{{prizeSettingList}}" wx:key="id">
                     <view class="mr-30" bindtap="PrizeMap">
-                        <image src="{{flId}}" mode="" class="add-p" wx:if="{{flId}}"/>
+                        <image src="{{prizeUrl}}" mode="" class="add-p" wx:if="{{prizeUrl}}"/>
                         <image src="{{item.prizeMapIcon}}" mode="" class="add-p" wx:else/>
                         <view class="color-blue"> 更换图片
                         </view>
@@ -118,7 +114,7 @@
     
             </view>
         </view>
-        <button type="warn" plain="true" class="btn" formType="submit">创建活动</button>
+        <button type="warn" plain="true" class="btn" formType="submit" >创建活动</button>
     </form>
 </view>
 </view>

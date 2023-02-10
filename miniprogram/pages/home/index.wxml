@@ -84,15 +84,15 @@
 <view class="best-sellers wrap mt-30">
 
   <view class="best-sellers-title">
-    热 销 商 品
+    热 销 <text class="spot">·</text> 商 品
   </view>
   
-  <view class="best-sellers-list">
-    <view class="best-sellers-item mt-30" wx:for="{{ hotCommodities }}" wx:key="id" data-id="{{ item.id }}" bindtap="navTab">
+  <view class="best-sellers-list" >
+    <view class="best-sellers-item mt-30" wx:for="{{ hotCommodities }}" wx:key="id" bindtap="navTab" data-_id="{{ item._id }}" >
       <image class="best-sellers-logo" src="{{ item.images }}" mode=""/>
       <view class="best-sellers-detail">
-        {{ item.title }}
-      </view>                                      
+        {{ item.title }} 
+      </view>
       <view class="best-sellers-need ml-20 mb-20">
         <text>{{ item.integral }}<text class="integral"> 积分</text></text>   
       </view>

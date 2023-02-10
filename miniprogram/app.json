@@ -4,6 +4,7 @@
       "pages/home/index",
       "pages/mine/index",
       "pages/login/index",
+      "pages/hobby/index",
       "pages/index/index",
       "pages/databaseGuide/databaseGuide",
       "pages/activity/index",

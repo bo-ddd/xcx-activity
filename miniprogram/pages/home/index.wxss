@@ -158,6 +158,10 @@ width: 250rpx;
   font-weight: 700;
   display: flex;
   justify-content: center;
+  color: white;
+}
+.spot{
+    margin: 0 10rpx;
 }
 .best-sellers-list{
  display: flex;

@@ -1,34 +1,18 @@
-// pages/productDetails/index.js
+// pages/hobby/index.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        productDetails:[],
-        id : ''
+
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options);
-        this.setData({
-            id : options._id
-        })
-       let _that = this
-       wx.cloud.callFunction({
-           name:'goods',
-           data:{
-               type:'goodsList'
-           },success:function(res){
-            _that.setData({
-                productDetails : res.result.data,
-            })
-            console.log(res);
-           }
-       })
+
     },
 
     /**

@@ -8,30 +8,30 @@ Page({
     data: {
         isRefresh: false,
         currentTab: 0,
-        taskList: [
-            {
-            id:1,
-          name: '热门推荐',
-        }, {
-            id:2,
-          name: '家有萌宠',
-        }, {
-            id:3,
-          name: '数码科技',
-        }, {
-            id:4,
-          name: '潮流女装',
-        },{
-            id:5,
-          name: '美妆达人',
-        },
-    ]
+        goodsList : [],
+        taskList: [],
     },
-
+ 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+      let _this = this
+      wx.cloud.callFunction({
+        name:'goods',
+        data:{
+          type:'goodsList'
+        },success(res){
+          console.log(res);
+          _this.setData({
+              goodsList : res.result.data
+          })
+        //   res.result.data.forEach(item=>{
+        //     _this.data.taskList.push(item.goodsList)
+        //   })
+        //   console.log(_this.data.taskList);
+        }
+      })
 
     },
     details(e){

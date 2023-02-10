@@ -31,9 +31,9 @@ Page({
                     hasUserInfo: true
                 })
                 console.log(userInfo);
-                wx.switchTab({  
-                    url: '/pages/home/index',
-                })
+                    wx.navigateBack({
+                        delta: 1
+                      })
             } else {
                 await openSetting()
             }
