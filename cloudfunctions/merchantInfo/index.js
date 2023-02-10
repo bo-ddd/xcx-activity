@@ -3,6 +3,7 @@ const cloud = require('wx-server-sdk')
 const addMerchantInfo = require('./addMerchantInfo')
 const getMerchantList = require('./getMerchantList')
 const getMerchantDetail = require('./getMerchantDetail')
+const upDataMerchantInfo = require('./upDataMerchantInfo')
 cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 
 // 云函数入口函数
@@ -14,5 +15,7 @@ exports.main = async (event, context) => {
             return await getMerchantList.main(event, context);
         case 'getMerchantDetail':
             return await getMerchantDetail.main(event, context);
+        case 'upDataMerchantInfo':
+            return await upDataMerchantInfo.main(event, context);
     }
 }

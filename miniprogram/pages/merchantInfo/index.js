@@ -5,8 +5,9 @@ Page({
      * 页面的初始数据
      */
     data: {
-        merchantDetail:[],
-        grades:['电子产品','卫生用品','厨房用品','清洁洗护','美妆护肤','二次元','潮流女装','潮男穿搭','美食达人'],
+        merchantDetail: [],
+        grades: ['电子产品', '卫生用品', '厨房用品', '清洁洗护', '美妆护肤', '二次元', '潮流女装', '潮男穿搭', '美食达人'],
+        merchantId: '',
     },
 
     /**
@@ -14,6 +15,9 @@ Page({
      */
     onLoad(options) {
         console.log(options);
+        this.setData({
+            merchantId: options.id
+        })
         let _this = this
         wx.cloud.callFunction({
             name: 'merchantInfo',
@@ -23,7 +27,7 @@ Page({
             }, success(res) {
                 console.log(res.result.data);
                 _this.setData({
-                    merchantDetail:res.result.data
+                    merchantDetail: res.result.data
                 })
             }
         })
@@ -76,5 +80,36 @@ Page({
      */
     onShareAppMessage() {
 
-    }
+    },
+    // 审核不通过
+    refuse() {
+        wx.showActionSheet({
+            itemList: ['活动规则不符合', '商家标题涉嫌违规，请及时更改'],
+            success(res) {
+                console.log(res.tapIndex)
+            }
+        })
+    },
+    // 审核通过
+    pass() {
+        let _this = this
+        wx.showModal({
+            title: '提示',
+            content: '是否确认通过',
+            success(res) {
+                if (res.confirm == true) {
+                    wx.cloud.callFunction({
+                        name: 'merchantInfo',
+                        data:{
+                            type:'upDataMerchantInfo',
+                            merchantId:_this.data.merchantId
+                        }
+                    })
+                }
+                // wx.navigateTo({
+                //     url: '/pages/examineList/index',
+                // })
+            }
+        })
+    },
 })

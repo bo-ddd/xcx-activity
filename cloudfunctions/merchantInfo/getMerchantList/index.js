@@ -8,7 +8,9 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     // 查询活动记录表（activityRecord）
     try {
-       let list = await db.collection('merchantInfo').get();
+       let list = await db.collection('merchantInfo').where({
+        examineType:0
+       }).get();
         return {
           success: true,
           event,
