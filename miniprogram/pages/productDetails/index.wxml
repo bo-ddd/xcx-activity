@@ -1,6 +1,6 @@
 <!--pages/productDetails/index.wxml-->
-<view class="detail-outer-layer" wx:for="{{ productDetails }}" >
-<view  wx:if="{{ item._id == id }}" wx:key="_id"> 
+<view class="detail-outer-layer">
+<view> 
     
 
     <image class="bg-details" src="{{ item.images }}" mode=""/>
@@ -8,7 +8,7 @@
     <view class="product-details">
         <view class="commodity-price">
             ￥{{ item.integral }}
-        </view>
+        </view> 
         
         <view class="trade-name mt-30">
             {{ item.title }}
