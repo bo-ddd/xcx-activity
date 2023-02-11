@@ -19,7 +19,7 @@
                 <image src="../../images/icon-red.png" mode="" class="icon-min"/>
     
                 <view class="lable">商铺名称：</view>
-                <input class="input" name="storeName" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" />
+                <input class="input" name="storeName" value="{{form.storeName}}" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" disabled/>
             </view>
             <view class="page-lable">
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />
@@ -32,10 +32,10 @@
     
                 <view class="lable">开始日期：</view>
                 <view class="section date-section" hover-class="section-active">
-                    <picker mode="date" bind:change="dateChangestart" fields="day" name="dateStartDay">
+                    <picker mode="date" bind:change="dateChangestart" fields="day" name="activityStartTime">
                         <view>
                             <text class="chooseItem">请选择：</text>
-                            <text>{{ form.dateStartDay }}</text>
+                            <text>{{ form.activityStartTime }}</text>
                         </view>
                     </picker>
                 </view>
@@ -44,9 +44,9 @@
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />
                 <view class="lable">结束日期：</view>
                 <view class="section date-section" hover-class="section-active">
-                    <picker mode="date" bind:change="dateChangeEnd" fields="day" name="dateEndDay">
+                    <picker mode="date" bind:change="dateChangeEnd" fields="day" name="activityEndTime">
                         <view>
-                            <text class="chooseItem">请选择：</text>{{form.dateEndDay}}
+                            <text class="chooseItem">请选择：</text>{{form.activityEndTime}}
                         </view>
                     </picker>
                 </view>

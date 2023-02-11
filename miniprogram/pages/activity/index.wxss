@@ -1,22 +1,4 @@
 /* pages/activity/index.wxss */
-.wrap-40r {
-    width: 670rpx;
-    margin: 0 auto;
-}
-
-.wrap-60r {
-    width: 630rpx;
-    margin: 0 auto;
-}
-
-.mt-24r {
-    margin-top: 24rpx;
-}
-
-.mt-100r {
-    margin-top: 100rpx;
-}
-
 .nav {
     color: #353535;
     z-index: 999999;
@@ -35,6 +17,7 @@
 .nav .nav-item{
     border-bottom: 4rpx solid white; 
 }
+
 .nav .nav-item.current {
     border-bottom-color: #f00;
 }
@@ -74,9 +57,8 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    overflow: hidden;
 }
-
-
 
 .actvity .flex-row {
     display: flex;

@@ -51,12 +51,20 @@ Page({
                 name: 'examineList'
 
             },
+            // {
+            //     id: 3,
+            //     icon: '../../images/icon-opinion.png',
+            //     lable: '个人信息',
+            //     arrowIcon: '../../images/icon-arrow_list.png',
+            //     name: 'userInfo'
+
+            // },
             {
                 id: 3,
-                icon: '../../images/icon-opinion.png',
-                lable: '个人信息',
+                icon: '../../images/icon-integral1.png',
+                lable: '积分明细',
                 arrowIcon: '../../images/icon-arrow_list.png',
-                name: 'userInfo'
+                name: 'pointsMall'
 
             },
             {
