@@ -9,31 +9,51 @@ Page({
             id: 1,
             selected: false,
             title: '电子产品'
-          }, {
+        }, {
             id: 2,
             selected: false,
-              title: '卫生用品'
-          }, {
+            title: '卫生用品'
+        }, {
             id: 3,
             selected: false,
-              title: '厨房用品'
-          }, {
+            title: '厨房用品'
+        }, {
             id: 4,
             selected: false,
-              title: '潮流服饰'
-          }, {
+            title: '潮流服饰'
+        }, {
             id: 5,
             selected: false,
-              title: '二次元'
-          }, {
+            title: '二次元'
+        }, {
             id: 6,
             selected: false,
-              title: '美食达人'
-          }, {
+            title: '美食达人'
+        }, {
             id: 7,
             selected: false,
             title: '其他'
-          }]
+        }, {
+            id: 8,
+            selected: false,
+            title: '其他'
+        }, {
+            id:9,
+            selected: false,
+            title: '其他'
+        }, {
+            id: 10,
+            selected: false,
+            title: '其他'
+        }, {
+            id: 11,
+            selected: false,
+            title: '其他'
+        }, {
+            id: 12,
+            selected: false,
+            title: '其他'
+        }]
     },
 
     /**
@@ -91,10 +111,11 @@ Page({
     onShareAppMessage() {
 
     },
+    // 多选框
     checkboxChange(e) {
         let string = "riderCommentList[" + e.target.dataset.index + "].selected"
         this.setData({
-          [string]: !this.data.riderCommentList[e.target.dataset.index].selected
+            [string]: !this.data.riderCommentList[e.target.dataset.index].selected
         })
         let detailValue = this.data.riderCommentList.filter(item => item.selected).map(item => item.id)
         console.log(detailValue);

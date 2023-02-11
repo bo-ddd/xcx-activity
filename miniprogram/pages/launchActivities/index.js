@@ -5,36 +5,36 @@ Page({
      * 页面的初始数据
      */
     data: {
-        form:{
-            shopname:'',
-            activitytitle:'',
+        form: {
+            shopname: '',
+            activitytitle: '',
         },
-  
+
         activitList: [{
-                id: 1,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
-            {
-                id: 2,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
-            {
-                id: 3,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
-            {
-                id: 4,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
-            {
-                id: 5,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
+            id: 1,
+            lable: '消消乐哈哈',
+            state: '进行中...'
+        },
+        {
+            id: 2,
+            lable: '消消乐哈哈',
+            state: '进行中...'
+        },
+        {
+            id: 3,
+            lable: '消消乐哈哈',
+            state: '进行中...'
+        },
+        {
+            id: 4,
+            lable: '消消乐哈哈',
+            state: '进行中...'
+        },
+        {
+            id: 5,
+            lable: '消消乐哈哈',
+            state: '进行中...'
+        },
         ],
         activityLimitList: [
             {
@@ -54,14 +54,14 @@ Page({
             },
         ],
         currentData: 0,
-       
+
         prizeSettingList: [{
             id: 1,
             prizeMapIcon: '../../images/icon-add_p.png',
             prizeName: '奖品名称',
             prizeNum: '奖品数量',
             prizePeople: '助力人数'
-        }, ]
+        },]
     },
 
 
@@ -69,7 +69,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
- console.log(options);
+        console.log(options);
     },
     bindchange: function (e) {
         const that = this;
@@ -102,7 +102,15 @@ Page({
             url: '/pages/createActivity/index',
         })
     },
-  
+    // 获取活动列表
+    getActivityList() {
+        wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'getActivityList'
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

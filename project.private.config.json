@@ -191,7 +191,7 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/launchActivities/index",
+                    "name": "活动状态",
                     "pathName": "pages/launchActivities/index",
                     "query": "",
                     "launchMode": "default",

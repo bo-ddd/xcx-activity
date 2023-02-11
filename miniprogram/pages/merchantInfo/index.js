@@ -101,7 +101,7 @@ Page({
                     wx.cloud.callFunction({
                         name: 'merchantInfo',
                         data:{
-                            type:'upDataMerchantInfo',
+                            type:'updataMerchantInfo',
                             merchantId:_this.data.merchantId
                         }
                     })

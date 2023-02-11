@@ -1,32 +1,18 @@
 <!--pages/activity/index.wxml-->
 <view class="main">
     <view class="flex-nav nav wrap-40r">
-        <view class="nav-item  {{index==current?'text-selected current':''}}" wx:for="{{activityTypes}}" wx:key="id" bindtap="tabSelect" data-id="{{index}}">
+        <view class="nav-item  {{index==current?'text-selected current':''}}" wx:for="{{activityTypes}}" wx:key="id" bindtap="switchTab" data-id="{{index}}">
             {{item}}</view>
     </view>
-    <swiper class="activity-swiper" current="{{current}}" >
-        <swiper-item class="activity-item ">
-            <view class="actvity wrap-60r mt-24r" wx:for="{{activityLimitList}}" wx:key="id" style="background-image:url({{item.imgUrl}})">
+    <swiper class="activity-swiper" current="{{current}}">
+        <swiper-item class="activity-item" wx:for="{{activityTypes}}" wx:key="id">
+            <view style="background-image:url({{item.tempFileURL}})" class="actvity wrap-50r mt-24r" wx:for="{{activityList}}" wx:key="id">
                 <view class="flex-row">
                     <view class="duration">
-                        活动时间：<text class="time-start">{{item.startTime}}</text>-<text class="time-end">{{item.endTime}}</text>
+                        活动时间：<text class="time-start">{{item.activityStartTime}}</text>-<text class="time-end">{{item.activityEndTime}}</text>
                     </view>
                     <view class="entry">
-                        <view class="btn-entry" bindtap="to" data-id="{{item.id}}">
-                            {{entryText}}
-                        </view>
-                    </view>
-                </view>
-            </view>
-        </swiper-item>
-        <swiper-item class="activity-item">
-            <view class="actvity wrap-60r mt-24r" wx:for="{{activityDailyList}}" wx:key="id" style="background-image:url({{item.imgUrl}})">
-                <view class="flex-row">
-                    <view class="duration">
-                        活动时间：<text class="time-start">{{item.startTime}}</text>-<text class="time-end">{{item.endTime}}</text>
-                    </view>
-                    <view class="entry">
-                        <view class="btn-entry" bindtap="to" data-id="{{item.id}}">
+                        <view class="btn-entry" bindtap="to" data-id="{{item._id}}">
                             {{entryText}}
                         </view>
                     </view>
