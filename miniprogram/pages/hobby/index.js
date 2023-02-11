@@ -5,6 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        detailValue:[],
         riderCommentList: [{
             id: 1,
             selected: false,
@@ -38,7 +39,7 @@ Page({
             selected: false,
             title: '其他'
         }, {
-            id:9,
+            id: 9,
             selected: false,
             title: '其他'
         }, {
@@ -117,8 +118,21 @@ Page({
         this.setData({
             [string]: !this.data.riderCommentList[e.target.dataset.index].selected
         })
-        let detailValue = this.data.riderCommentList.filter(item => item.selected).map(item => item.id)
-        console.log(detailValue);
-    }
+        this.setData({
+            detailValue : this.data.riderCommentList.filter(item => item.selected).map(item => item.id)
+        })
+        // console.log(detailValue);
+    },
+    // 审核通过
+    pass() {
+        let _this = this
+        wx.cloud.callFunction({
+            name:'userinfo',
+            data:{
+                type:'addUserHobby',
+                hobby:_this.data.detailValue
+            }
+        })
+    },
 
 })

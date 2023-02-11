@@ -6,6 +6,7 @@
 .hobby {
     padding: 30rpx 0;
     height: 100%;
+    box-sizing: border-box;
 }
 
 .title {

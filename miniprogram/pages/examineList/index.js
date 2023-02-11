@@ -7,16 +7,16 @@ Page({
     data: {
         currentIndex: 0, //tab默认项
         activityList: [],
-        merchantList:[],
-        grades:['电子产品','卫生用品','厨房用品','清洁洗护','美妆护肤','二次元','潮流女装','潮男穿搭','美食达人']
+        merchantList: [],
+        grades: ['电子产品', '卫生用品', '厨房用品', '清洁洗护', '美妆护肤', '二次元', '潮流女装', '潮男穿搭', '美食达人']
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let _this = this
         this.showLoading()
+        this.getgetMerchantList()
         // 获取活动列表
         // wx.cloud.callFunction({
         //     name: 'activity',
@@ -30,22 +30,25 @@ Page({
         //         })
         //     }
         // })
-        // 获取商铺列表
+
+
+    },
+    // 获取商铺列表
+    getgetMerchantList() {
+        let _this = this
         wx.cloud.callFunction({
             name: 'merchantInfo',
             data: {
                 type: 'getMerchantList'
             },
             success(res) {
-                // console.log(res.result.list.data);
+                console.log(res.result);
                 _this.setData({
                     merchantList: res.result.list.data
                 })
             }
         })
     },
-
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
