@@ -23,13 +23,6 @@
                     "scene": null
                 },
                 {
-                    "name": "pages/mine/index",
-                    "pathName": "pages/mine/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
                     "name": "",
                     "pathName": "pages/mine/index",
                     "query": "",
@@ -198,8 +191,8 @@
                     "scene": null
                 },
                 {
-                    "name": "",
-                    "pathName": "pages/pointsDetails/index",
+                    "name": "活动状态",
+                    "pathName": "pages/launchActivities/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

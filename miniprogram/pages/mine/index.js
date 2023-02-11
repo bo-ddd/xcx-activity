@@ -51,12 +51,20 @@ Page({
                 name: 'examineList'
 
             },
+            // {
+            //     id: 3,
+            //     icon: '../../images/icon-opinion.png',
+            //     lable: '个人信息',
+            //     arrowIcon: '../../images/icon-arrow_list.png',
+            //     name: 'userInfo'
+
+            // },
             {
                 id: 3,
-                icon: '../../images/icon-opinion.png',
-                lable: '个人信息',
+                icon: '../../images/icon-integral1.png',
+                lable: '积分明细',
                 arrowIcon: '../../images/icon-arrow_list.png',
-                name: 'userInfo'
+                name: 'pointsMall'
 
             },
             {
@@ -112,21 +120,21 @@ Page({
      */
     //判断用户是否登录
     onShow() {
-        // let userInfo = getApp().globalData.userInfo
-        // console.log(userInfo);
-        // // 如果后台userInfo信息存在，可赋值直接进入登录页面，无需再次登录获取
-        // // 获取用户globalData信息
-        // if (userInfo != '' && userInfo != null) {
-        //     this.setData({
-        //         userInfo: userInfo,
-        //         hasUserInfo: true,
-        //         canIUseGetUserProfile: true
-        //     })
-        // }else{
-        //     wx.navigateTo({
-        //         url: '/pages/login/index',
-        //     })
-        // }
+        let userInfo = getApp().globalData.userInfo
+        console.log(userInfo);
+        // 如果后台userInfo信息存在，可赋值直接进入登录页面，无需再次登录获取
+        // 获取用户globalData信息
+        if (userInfo != '' && userInfo != null) {
+            this.setData({
+                userInfo: userInfo,
+                hasUserInfo: true,
+                canIUseGetUserProfile: true
+            })
+        }else{
+            wx.navigateTo({
+                url: '/pages/login/index',
+            })
+        }
     },
 
     /**

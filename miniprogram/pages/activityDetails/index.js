@@ -29,6 +29,7 @@ Page({
             },
         ]
     },
+    //切换上一个阶段;
     switchPrev() {
         let currentStage = this.data.currentStage;
         let finalStage = this.data.activityStageList.length - 1;
@@ -44,6 +45,7 @@ Page({
             return
         }
     },
+    //切换下一个阶段;
     switchNext() {
         let currentStage = this.data.currentStage;
         let upperLimit = this.data.activityStageList.length - 1;
@@ -59,6 +61,7 @@ Page({
             return
         }
     },
+
     //游戏规则-打开弹层事件;
     openActivityRule() {
         this.setData({
@@ -82,12 +85,14 @@ Page({
         //否：弹出助力成功页面，并标记当前用户已助力成功;
         //是：提醒用户已助力;
     },
+
     //兑换商店-跳转页面;
     to(e) {
         wx.navigateTo({
             url: '/pages/' + e.currentTarget.dataset.name + '/index',
         })
     },
+    
     //分享功能;
     onShareAppMessage(e) {
         console.log(e)

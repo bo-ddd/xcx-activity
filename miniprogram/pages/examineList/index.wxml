@@ -1,7 +1,7 @@
 <!--pages/examineList/index.wxml-->
 <view class="box">
     <view class="examine-list">
-        <view class='navBox'>
+        <!-- <view class='navBox'>
             <view class='titleBox-left' bindtap='titleClick' data-idx='0'>
                 <text class="{{0 == currentIndex ? 'fontColorBox-left' : ''}}">活动审核</text>
                 <view class="line {{0 == currentIndex ? 'lineBox' : 'notLineBox'}}" />
@@ -10,9 +10,9 @@
                 <text class="{{1 == currentIndex ? 'fontColorBox-right' : ''}}">商铺审核</text>
                 <view class="line {{1 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
             </view>
-        </view>
-        <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
-            <swiper-item class='swiperTtemBox-item'>
+        </view> -->
+       <!-- <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
+             <swiper-item class='swiperTtemBox-item'>
                 <view class="item mt-30 wrap" wx:for="{{ activityList }}" wx:key="_id" data-_id="{{ item._id }}" bindtap="toActiveDetail">
                     <view class="item-left">
                         <view class="stor-name ml-20">
@@ -32,8 +32,10 @@
                         <view class="btn">审核</view>
                     </view>
                 </view>
-            </swiper-item>
-            <swiper-item class='swiperTtemBox-item'>
+            </swiper-item> 
+        </swiper> -->
+
+            <view class='swiperTtemBox-item'>
                 <view class="item mt-30 wrap" wx:for="{{ merchantList }}" wx:key="_id" data-_id="{{ item._id }}" bindtap="toMerchantDetail">
                     <view class="item-left">
                         <view class="stor-name ml-20">
@@ -53,8 +55,7 @@
                         <view class="btn">审核</view>
                     </view>
                 </view>
-            </swiper-item>
-        </swiper>
+            </view>
 
     </view>
 </view>

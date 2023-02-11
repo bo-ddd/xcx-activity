@@ -5,37 +5,36 @@ Page({
      * 页面的初始数据
      */
     data: {
-      
-        form:{
-            shopname:'',
-            activitytitle:'',
+        form: {
+            shopname: '',
+            activitytitle: '',
         },
-  
+
         activitList: [{
-                id: 1,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
-            {
-                id: 2,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
-            {
-                id: 3,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
-            {
-                id: 4,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
-            {
-                id: 5,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
+            id: 1,
+            lable: '消消乐哈哈',
+            state: '进行中...'
+        },
+        {
+            id: 2,
+            lable: '消消乐哈哈',
+            state: '进行中...'
+        },
+        {
+            id: 3,
+            lable: '消消乐哈哈',
+            state: '进行中...'
+        },
+        {
+            id: 4,
+            lable: '消消乐哈哈',
+            state: '进行中...'
+        },
+        {
+            id: 5,
+            lable: '消消乐哈哈',
+            state: '进行中...'
+        },
         ],
         activityLimitList: [
             {
@@ -55,14 +54,14 @@ Page({
             },
         ],
         currentData: 0,
-       
+
         prizeSettingList: [{
             id: 1,
             prizeMapIcon: '../../images/icon-add_p.png',
             prizeName: '奖品名称',
             prizeNum: '奖品数量',
             prizePeople: '助力人数'
-        }, ]
+        },]
     },
 
 
@@ -70,7 +69,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        console.log(options);
     },
     bindchange: function (e) {
         const that = this;
@@ -103,45 +102,15 @@ Page({
             url: '/pages/createActivity/index',
         })
     },
-  
-    upload(){
-        let _this = this;
-        //唤起图片权限
-        wx.chooseMedia({
-            count: 1,
-            sizeType: ['original', 'compressed'],
-            sourceType: ['album', 'camera'],
-            success(res) {
-                // tempFilePath可以作为 img 标签的 src 属性显示图片
-                console.log(res);
-                let tempFilePaths = res.tempFiles[0].tempFilePath
-                let that = _this
-                wx.cloud.uploadFile({
-                    cloudPath: 'merchant/' + new Date().toLocaleString() + '.png',
-                    filePath: tempFilePaths,
-                    config: {
-                        env: 'zliu-dev-4gclbljp64cb5cd3'
-                    }, //不可以这么写，这样写会造成线上环境出现重大问题
-                    success(res) {
-                        that.setData({
-                            fileId: res.fileID
-                        })
-                        // wx.cloud.callFunction({
-                        //     name: 'getTempFileURL',
-                        //     data: {
-                        //         fileId: res.fileID
-                        //     }
-                        // }).then(res => {
-                        //     that.setData({
-                        //         fileId: res.result[0].tempFileURL
-                        //     })
-                        // })
-                    }
-                })
+    // 获取活动列表
+    getActivityList() {
+        wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'getActivityList'
             }
         })
     },
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

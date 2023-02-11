@@ -4,14 +4,15 @@ Page({
      * 页面的初始数据
      */
     data: {
+        opendId: '',
         isCreate: false,
         isUpdate: false,
         chosen: '',
         form: {
-            nameValue: '',
+            storeName: '',
             titleValue: '',
-            dateStartDay: '2023-01-01',
-            dateEndDay: '2023-01-01',
+            activityStartTime: '2023-01-01',
+            activityEndTime: '2023-01-01',
             textareaValue: "",
             prizeName: '',
             prizeNum: '',
@@ -40,7 +41,17 @@ Page({
             },
         ],
         fileId: '',
+        tempFileURL: '',
         prizeUrl: '',
+        item: {
+
+            id: 1,
+            prizeMapIcon: '../../images/icon-add_p.png',
+            prizeName: '奖品名称',
+            prizeNum: '奖品数量',
+            prizePeople: '助力人数'
+
+        },
         prizeSettingList: [{
             id: 1,
             prizeMapIcon: '../../images/icon-add_p.png',
@@ -59,18 +70,19 @@ Page({
             sourceType: ['album', 'camera'],
             success(res) {
                 const filePath = res.tempFiles[0].tempFilePath;
-                console.log(filePath);
                 // 调用云函数，把图片存到服务器中；
                 //上传图片
                 wx.cloud.uploadFile({
                     cloudPath: 'activity/' + new Date().toLocaleString() + '.png',
                     filePath: filePath,
-                    success(res) {
-                        console.log(res);
-                        _this.setData({
-                            fileId: res.fileID
-                        })
-                    }
+                }).then( async res => {
+                    let fileId = res.fileID;
+                    let tempFileURL = await _this.getTempFileURL(fileId);
+                    _this.setData({
+                        fileId,
+                        tempFileURL
+                    })
+
                 })
             }
         })
@@ -79,15 +91,15 @@ Page({
     dateChangestart(e) {
         console.log('值为', e.detail.value);
         this.setData({
-            ['form.dateStartDay']: e.detail.value
+            ['form.activityStartTime']: e.detail.value
         });
-        console.log(this.data.form.dateStartDay)
+        console.log(this.data.form.activityStartTime)
     },
     //结束时间
     dateChangeEnd(e) {
         console.log('结束时间', e.detail.value);
         this.setData({
-            ['form.dateEndDay']: e.detail.value
+            ['form.activityEndTime']: e.detail.value
         });
     },
     //奖品图
@@ -99,7 +111,6 @@ Page({
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
             success(res) {
-                console.log(res);
                 //本地地址
                 const prizeUrl1 = res.tempFiles[0].tempFilePath;
                 console.log(prizeUrl1);
@@ -109,7 +120,6 @@ Page({
                     cloudPath: 'activity/' + new Date().toLocaleString() + '.png',
                     filePath: prizeUrl1,
                     success(res) {
-                        console.log(res);
                         _this.setData({
                             prizeUrl: res.fileID
                         })
@@ -143,20 +153,6 @@ Page({
         }
         this.createActivity()
 
-        // for (let key in form) {
-        //     if (!form[key] || ) {
-
-        //         wx.showToast({
-        //             title: '请填写完整信息',
-        //             icon: 'error',
-        //             duration: 2000
-        //         })
-
-        //          return
-        //     }
-        // this.createActivity()
-        // }
-
     },
     //点击确定创建
     formSubmit(e) {
@@ -165,7 +161,6 @@ Page({
             form: e.detail.value
         })
         this.validateForm()
-        // this.createActivity()
     },
 
 
@@ -177,33 +172,80 @@ Page({
             name: 'activity',
             data: {
                 type: 'createActivity',
-                ...this.data.form,
+                storeName: this.data.form.storeName,
+                titleValue: this.data.form.titleValue,
+                activityStartTime: this.data.form.activityStartTime,
+                activityEndTime: this.data.form.activityEndTime,
+                textareaValue: this.data.form.textareaValue,
+                prizeName: this.data.form.prizeName,
+                prizeNum: this.data.form.prizeNum,
+                peopleNum: this.data.form.peopleNum,
+                activityType: parseInt(this.data.form.activityType),
+                activityForm: parseInt(this.data.form.activityForm),
                 fileId,
-                prizeUrl
+                tempFileURL:this.data.tempFileURL,
+                prizeUrl,
+                examineType: 0,
+                activityStatus: 0
             },
             success(res) {
                 console.log('创建完成')
+                console.log(res);
                 wx.navigateTo({
                     url: '/pages/launchActivities/index',
-                    success() {
-                        wx.showToast({
-                            title: '成功',
-                            icon: 'success',
-                            duration: 2000
-                        })
-                    }
+                }).then(res=>{
+                    wx.showToast({
+                        title: '成功',
+                        icon: 'success',
+                        duration: 2000
+                    })
                 })
             },
         })
     },
     //新增活动模块
     createModul() {
-        console.log(222);
+        this.data.prizeSettingList.push(this.data.item)
+        this.setData({
+            prizeSettingList: this.data.prizeSettingList
+        })
+    },
+    //获取商铺名称
+    getStoreName() {
+        wx.cloud.callFunction({
+            name: 'merchantInfo',
+            data: {
+                type: 'getMerchantInfo',
+            }
+        }).then(res => {
+            console.log(res);
+            this.setData({
+                ['form.storeName']: res.result.data[0].merchantName
+            })
+            console.log(this.data.form.storeName)
+        })
+    },
+   //把图片转成https格式
+    async getTempFileURL(fileId){
+        let tempFileURL = "";
+        await wx.cloud.callFunction({
+            name: 'getTempFileURL',
+            data: {
+                fileId
+            }
+        }).then(res => {
+            console.log(res)
+            tempFileURL = res.result[0].tempFileURL
+        })
+        return tempFileURL
     },
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options) {},
+    onLoad(options) {
+        this.getStoreName()
+
+    },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
