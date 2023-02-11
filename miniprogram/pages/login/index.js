@@ -20,7 +20,7 @@ Page({
                 console.log(userInfo)
                 // console.log(this.data.userInfo); 用户信息
                 let myUserInfo = await this.getUserInfoApi()
-                console.log(myUserInfo)
+                // console.log(myUserInfo)
                 if (myUserInfo) {
                     console.log('有信息')
                     //把信息显示到页面
