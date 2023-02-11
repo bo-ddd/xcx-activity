@@ -29,7 +29,7 @@
 .register-userinfo{
   color: white;
   display: flex;
-  font-size: 50rpx;
+  font-size: 40rpx;
   font-weight: 700;
   padding: 0 0 0 40rpx;
   background-color: unset;
@@ -44,6 +44,7 @@
   height: 30rpx;
 }
 .integral-outer-layer{
+  color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
