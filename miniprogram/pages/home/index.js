@@ -17,7 +17,7 @@ data: {
     interval: 2000,
     duration: 500,
     toView: 'green',
-    hotCommodities:{},
+    hotGoods:[],
     flashSaleCommodity:[
       {
         id:1,
@@ -50,7 +50,7 @@ data: {
     ],
 
   },
-
+  
   to(e){
     wx.navigateTo({
       url: '/pages/'+e.currentTarget.dataset.name+'/index',
@@ -88,16 +88,31 @@ data: {
 //   },
 
   async navTab(e){
+      console.log(e);
      await wx.navigateTo({
-      url: '/pages/productDetails/index?_id='+e.currentTarget.dataset._id,
+      url: '/pages/productDetails/index?_id='+e.currentTarget.dataset.id,
     })
   },
 
   onLoad(e){
-    this.getHotGoods()
-    // this.getUserInfo()
+ this.getHotGoods()
   },
 
+
+  getHotGoods(){
+      let that = this
+      wx.cloud.callFunction({
+          name:'goods',
+          data:{
+              type:'getHotGoods'
+          },success(res){
+              console.log(res);
+              that.setData({
+                hotGoods : res.result.data
+              })
+          }
+      })
+  }
 //   getUserInfo(){
 //     wx.cloud.callFunction({
 
@@ -106,29 +121,29 @@ data: {
 
 
 
-  getHotGoods(){
-    let _that = this
-    wx.cloud.callFunction({
-      name:'goods',
-      data:{
-        type:'goodsList',
-      },  
-     success:function(res){
-            let arr = [];
-            res.result.data.forEach(item=>{
-                if(item.type == 0){
-                item.goodsList.forEach(options=>{
-                    // console.log(options);
-                    arr.push(options)
-                })
-              }
-            })
-            _that.setData({
-                hotCommodities : arr
-              })
-      }
-    })
-  }
+//   getHotGoods(){
+//     let _that = this
+//     wx.cloud.callFunction({
+//       name:'goods',
+//       data:{
+//         type:'goodsList',
+//       },  
+//      success:function(res){
+//             let arr = [];
+//             res.result.data.forEach(item=>{
+//                 if(item.type == 0){
+//                 item.goodsList.forEach(options=>{
+//                     // console.log(options);
+//                     arr.push(options)
+//                 })
+//               }
+//             })
+//             _that.setData({
+//                 hotCommodities : arr
+//               })
+//       }
+//     })
+//   }
 
 //   scrollToTop() {
 //     this.setAction({

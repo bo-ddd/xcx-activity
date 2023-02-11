@@ -70,9 +70,6 @@ Page({
             sourceType: ['album', 'camera'],
             success(res) {
                 const filePath = res.tempFiles[0].tempFilePath;
-                // _this.setData({
-                //     localActivities:filePath
-                // })
                 // 调用云函数，把图片存到服务器中；
                 //上传图片
                 wx.cloud.uploadFile({
@@ -196,13 +193,12 @@ Page({
                 console.log(res);
                 wx.navigateTo({
                     url: '/pages/launchActivities/index',
-                    success() {
-                        wx.showToast({
-                            title: '成功',
-                            icon: 'success',
-                            duration: 2000
-                        })
-                    }
+                }).then(res=>{
+                    wx.showToast({
+                        title: '成功',
+                        icon: 'success',
+                        duration: 2000
+                    })
                 })
             },
         })
@@ -213,7 +209,6 @@ Page({
         this.setData({
             prizeSettingList: this.data.prizeSettingList
         })
-        // console.log(222);
     },
     //获取商铺名称
     getStoreName() {
@@ -223,13 +218,14 @@ Page({
                 type: 'getMerchantInfo',
             }
         }).then(res => {
+            console.log(res);
             this.setData({
                 ['form.storeName']: res.result.data[0].merchantName
             })
             console.log(this.data.form.storeName)
         })
     },
-
+   //把图片转成https格式
     async getTempFileURL(fileId){
         let tempFileURL = "";
         await wx.cloud.callFunction({
@@ -238,7 +234,6 @@ Page({
                 fileId
             }
         }).then(res => {
-            console.log('------------------------------------');
             console.log(res)
             tempFileURL = res.result[0].tempFileURL
         })
@@ -248,11 +243,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        // this.getOpendId()
         this.getStoreName()
 
-        //  let userInfo = getApp().globalData.userInfo
-        //    console.log(userInfo);                     
     },
 
     /**
