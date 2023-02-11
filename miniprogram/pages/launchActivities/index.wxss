@@ -129,9 +129,9 @@
     font-size: 30rpx;
 }
 
-.swiper-con {
-    /* text-align: center; */
-}
+/* .swiper-con {
+    text-align: center;
+} */
 
 .page-lable {
     display: flex;
