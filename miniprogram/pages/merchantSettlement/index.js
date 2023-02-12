@@ -134,11 +134,11 @@ Page({
         }
 
     },
-    // toAuditStatus() {
-    //     wx.navigateTo({
-    //         url: "/pages/auditStatus/index",
-    //     })
-    // },
+    toAuditStatus() {
+        wx.navigateTo({
+            url: "/pages/auditStatus/index",
+        })
+    },
     upload() {
         let _this = this
         wx.chooseMedia({
@@ -176,6 +176,7 @@ Page({
     },
     // 商家入驻的注册接口
     addMerchant() {
+        let _this = this
         wx.cloud.callFunction({
             name: 'merchantInfo',
             data: {
@@ -189,8 +190,7 @@ Page({
                 license: this.data.fileId
             }, success(res) {
                 console.log(res);
-            }, error(err) {
-                console.log(err);
+                _this.toAuditStatus()
             }
         })
     }

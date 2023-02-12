@@ -1,11 +1,9 @@
+
 // pages/login/index.js
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
-      userInfo:''
+        avatarUrl: '',
+        nickName: ''
     },
     async getUserInfo() {
         let {
@@ -14,24 +12,35 @@ Page({
             openSetting
         } = getApp();
         await getSetting().then(async res => {
-            console.log(res.authSetting['scope.userInfo']);
+            // console.log(res.authSetting['scope.userInfo']);
             if (res.authSetting['scope.userInfo']) {
                 let {
                     userInfo
                 } = await getUserProfile('用于登录')
-                this.setData({
-                    userInfo,
-                    hasUserInfo: true
-                })
-                this.setData({
-                    userInfo:userInfo
-                })
-                console.log(this.data.userInfo);
-                // this.judgeUserINfo()
+                console.log(userInfo)
+                // console.log(this.data.userInfo); 用户信息
+                let myUserInfo = await this.getUserInfoApi()
+                // console.log(myUserInfo)
+                if (myUserInfo) {
+                    console.log('有信息')
+                    //把信息显示到页面
+                    this.setData({
+                        avatarUrl: userInfo.avatarUrl,
+                        nickName: userInfo.nickName,
+                    })
+                } else {
+                    console.log('无信息')
+                    this.setData({
+                        avatarUrl: userInfo.avatarUrl,
+                        nickName: userInfo.nickName,
+                    })
+                    // I添加用户信息
+                    this.addUserInfoApi();
+                }
                 wx.navigateBack({
                     delta: 1
-                  })
-                   
+                })
+
             } else {
                 await openSetting()
             }
@@ -39,28 +48,39 @@ Page({
             await openSetting()
         })
     },
-    judgeUserINfo(){
-       if(this.data.userInfo){
+
+
+
+   async getUserInfoApi() {
+      const res= await wx.cloud.callFunction({
+            name: 'user',
+            data: {
+                type: 'getUserInfo',
+            }
+        })
+        console.log(res.result.data)
+        return res.result.data[0]
+    },
+    addUserInfoApi() {
+        console.log('添加')
         wx.cloud.callFunction({
             name: 'user',
             data: {
-                type: 'setUserInfo',
-            },
-            success(res) {
-                wx.navigateBack({
-                    delta: 1
-                  })
-                console.log('创建完成')
-               
-            },
+                type: 'addUserInfo',
+                avatarUrl:this.data.avatarUrl,
+                nickName:this.data.nickName,
+            }
+        }).then(res => {
+            console.log(res);
         })
-       }
+
     },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        
+
     },
 
 
@@ -75,7 +95,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
- 
+
     },
 
     /**
@@ -112,4 +132,4 @@ Page({
     onShareAppMessage() {
 
     }
-}) 
+})

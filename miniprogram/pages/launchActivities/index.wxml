@@ -6,7 +6,15 @@
         <view class='tab  {{currentData == 2 ? "tab-borer" : ""}}' data-current="2" bindtap='checkCurrent'>已结束</view>
     </view>
     <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
-        <swiper-item class="swiper-item">
+        <swiper-item class="swiper-item" wx:for="{{ activityStatus }}" wx:key="id">
+            <view class='swiper-con wrap' >
+                <view class="actvity wrap-60r" wx:for="{{activitList}}" wx:key="id">
+                 <image src="{{item.prizeUrl}}" mode="" class="activity-bg"/>
+                        <view class="update-btn fs-35" bindtap="updataTo">编辑活动</view>
+                </view>
+            </view>
+        </swiper-item>
+        <!-- <swiper-item class="swiper-item">
             <view class='swiper-con wrap'>
                 <view class="actvity wrap-60r" wx:for="{{activityLimitList}}" wx:key="id">
                  <image src="{{item.imgUrl}}" mode="" class="activity-bg"/>
@@ -21,14 +29,6 @@
                         <view class="update-btn fs-35" bindtap="updataTo">编辑活动</view>
                 </view>
             </view>
-        </swiper-item>
-        <swiper-item class="swiper-item">
-            <view class='swiper-con wrap'>
-                <view class="actvity wrap-60r" wx:for="{{activityLimitList}}" wx:key="id">
-                 <image src="{{item.imgUrl}}" mode="" class="activity-bg"/>
-                        <view class="update-btn fs-35" bindtap="updataTo">编辑活动</view>
-                </view>
-            </view>
-        </swiper-item>
+        </swiper-item> -->
     </swiper>
 </view>

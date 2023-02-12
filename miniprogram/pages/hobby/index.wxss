@@ -4,7 +4,9 @@
 }
 
 .hobby {
-    padding-top: 30rpx;
+    padding: 30rpx 0;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .title {
@@ -18,10 +20,12 @@
     height: 800rpx;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
     line-height: 50rpx;
+    overflow-y: scroll;
+    margin-bottom: 80rpx;
 }
+
 .hobby-item{
     border: 1rpx solid black;
     height: 100rpx;

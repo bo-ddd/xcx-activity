@@ -1,7 +1,7 @@
 <!--pages/hobby/index.wxml-->
 <view class="box">
     <view class="hobby">
-        <view class="title mb-30">
+        <view class="title mb-50">
             <view class="label mb-16 fs-54">
                 您对哪类商品感兴趣？
             </view>
@@ -10,11 +10,11 @@
             </view>
         </view>
         <view class="hobby-class wrap">
-            <view wx:for="{{riderCommentList}}" wx:for-item="item" wx:key="index" bindtap="checkboxChange" data-value="{{item.value}}" data-index="{{index}}" checked="{{item.selected}}" class="btn {{item.selected ? 'btn-selected' : ''}} wrap">
+            <view wx:for="{{riderCommentList}}" wx:for-item="item" wx:key="index" bindtap="checkboxChange" data-value="{{item.value}}" data-index="{{index}}" checked="{{item.selected}}" class="btn {{item.selected ? 'btn-selected' : ''}} wrap mb-16">
                 {{item.title}}
             </view>
         </view>
-        <view class="confirm wrap mt-20">
+        <view class="confirm wrap">
             <view bindtap="pass" class="pass">确定</view>
         </view>
     </view>

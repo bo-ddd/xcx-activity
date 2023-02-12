@@ -15,6 +15,7 @@ exports.main = async (event, context) => {
             storeClass: event.storeClass,
             storeAddress: event.storeAddress,
             license: event.license,
+            examineType:0,
             openId:wxContext.OPENID,
         }
     })

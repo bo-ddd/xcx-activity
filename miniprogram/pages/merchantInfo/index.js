@@ -100,15 +100,16 @@ Page({
                 if (res.confirm == true) {
                     wx.cloud.callFunction({
                         name: 'merchantInfo',
-                        data:{
-                            type:'upDataMerchantInfo',
-                            merchantId:_this.data.merchantId
+                        data: {
+                            type: 'updataMerchantInfo',
+                            merchantId: _this.data.merchantId
                         }
+                    }).then(() => {
+                        wx.navigateTo({
+                            url: '/pages/examineList/index',
+                        })
                     })
                 }
-                // wx.navigateTo({
-                //     url: '/pages/examineList/index',
-                // })
             }
         })
     },

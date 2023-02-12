@@ -5,63 +5,13 @@ Page({
      * 页面的初始数据
      */
     data: {
-        form:{
-            shopname:'',
-            activitytitle:'',
+        form: {
+            shopname: '',
+            activitytitle: '',
         },
-  
-        activitList: [{
-                id: 1,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
-            {
-                id: 2,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
-            {
-                id: 3,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
-            {
-                id: 4,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
-            {
-                id: 5,
-                lable: '消消乐哈哈',
-                state: '进行中...'
-            },
-        ],
-        activityLimitList: [
-            {
-                id: 1,
-                title: '帅娃娃哈哈哈',
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
-            },
-            {
-                id: 2,
-                title: '乌拉拉魔法棒',
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
-            },
-            {
-                id: 3,
-                title: '叫你一声你敢答应吗',
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
-            },
-        ],
-        currentData: 0,
-       
-        prizeSettingList: [{
-            id: 1,
-            prizeMapIcon: '../../images/icon-add_p.png',
-            prizeName: '奖品名称',
-            prizeNum: '奖品数量',
-            prizePeople: '助力人数'
-        }, ]
+        activityStatus: ['未开始', '待开奖', '已结束'],
+        activitList: [],
+        currentData: 0
     },
 
 
@@ -69,7 +19,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
- console.log(options);
+        console.log(options);
+        this.getActivityList()
     },
     bindchange: function (e) {
         const that = this;
@@ -88,6 +39,7 @@ Page({
             that.setData({
                 currentData: e.target.dataset.current
             })
+            this.getActivityList()
         }
     },
     //创建活动成功跳回活动页
@@ -102,7 +54,24 @@ Page({
             url: '/pages/createActivity/index',
         })
     },
-  
+    // 获取活动列表
+    getActivityList() {
+        let currentData = this.data.currentData
+        let _this = this
+        // console.log(typeof currentData);
+        wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'getActivityList',
+                activityStatus: Number(currentData)
+            }, success(res) {
+                console.log(res);
+                _this.setData({
+                    activitList: res.result.data.list.data
+                })
+            }
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
