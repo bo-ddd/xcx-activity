@@ -128,17 +128,15 @@ Page({
             })
             return;
         } else {
-            //   this.toAuditStatus()
-
             this.addMerchant()
         }
 
     },
-    // toAuditStatus() {
-    //     wx.navigateTo({
-    //         url: "/pages/auditStatus/index",
-    //     })
-    // },
+    toAuditStatus() {
+        wx.navigateTo({
+            url: "/pages/auditStatus/index",
+        })
+    },
     upload() {
         let _this = this
         wx.chooseMedia({
@@ -159,16 +157,7 @@ Page({
                         that.setData({
                             fileId: res.fileID 
                         })
-                        // wx.cloud.callFunction({
-                        //     name: 'getTempFileURL',
-                        //     data: {
-                        //         fileId: res.fileID
-                        //     }
-                        // }).then(res => {
-                        //     that.setData({
-                        //         fileId: res.result[0].tempFileURL
-                        //     })
-                        // })
+                
                     }
                 })
             }
@@ -176,6 +165,7 @@ Page({
     },
     // 商家入驻的注册接口
     addMerchant() {
+        let _this = this
         wx.cloud.callFunction({
             name: 'merchantInfo',
             data: {
@@ -189,8 +179,7 @@ Page({
                 license: this.data.fileId
             }, success(res) {
                 console.log(res);
-            }, error(err) {
-                console.log(err);
+                _this.toAuditStatus()
             }
         })
     }

@@ -14,7 +14,9 @@ exports.main = async (event, context) => {
     
     // 查询活动记录表（activityRecord）
     try {
-       let list = await db.collection('activity').get();
+       let list = await db.collection('activity').where({
+        activityStatus:event.activityStatus
+       }).get();
         return {
           success: true,
           event,

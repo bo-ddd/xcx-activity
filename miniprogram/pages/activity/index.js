@@ -20,15 +20,16 @@ Page({
         this.getActivityList()
     },
 
-    //跳转页面;
+    //跳转页面 把当前活动_id传给活动详情页面;
     to(e) {
         wx.navigateTo({
-            url: '/pages/activityDetails/index?id=' + e.currentTarget.dataset.id,
+            url: '/pages/activityDetails/index?_id=' + e.currentTarget.dataset.id,
         })
     },
 
    async onLoad(options) {
-      await  this.getActivityList();
+      await this.getActivityList();
+     
         //判断当前登录状态,显示不同的按钮文本;
         //在全局中拿到用户登录信息;
         //如果没有登录, 显示查看详情；
@@ -46,12 +47,9 @@ Page({
             // 传给云函数的参数
             data: {
                 type: 'getList',
-                activityType
+                activityType,
             }
         })
-        // this.setData({
-        //     activityList: []
-        // })
         this.setData({
             activityList: res.result.data
         })

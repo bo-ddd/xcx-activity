@@ -1,7 +1,7 @@
 <!--pages/hobby/index.wxml-->
 <view class="box">
     <view class="hobby">
-        <view class="title mb-30">
+        <view class="title mb-50">
             <view class="label mb-16 fs-54">
                 您对哪类商品感兴趣？
             </view>

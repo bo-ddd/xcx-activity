@@ -7,7 +7,6 @@
 <!-- 个人信息和头像 -->
   <view class="wrap register mt-30">
     <view class="register-user">
-
       <view class="register-userinfo" wx:if="{{ userInfo.nickName }}">
         您好！{{ userInfo.nickName }}
       </view>
