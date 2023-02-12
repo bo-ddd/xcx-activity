@@ -2,7 +2,7 @@
 <view class="main">
     <image class="img-top" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity_top.png?sign=ac235ae9dad379e10e7ac75c83629f0f&t=1675842384" mode="" />
     <view class="header wrap-10r">
-        <view class="shop-exchange" bindtap="to" data-name="home">
+        <view class="shop-exchange" bindtap="to" data-name="pointsDetails">
             <image class="icon-shop" src="../../images/icon-shop.png" mode="" />
             <view class="name">兑换商店</view>
         </view>
@@ -25,6 +25,14 @@
     <view class="container mt-24r">
         <image class="img-ad" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/image-ad.png?sign=d561a682349db72fb1ae780b7c8a881a&t=1675842267" mode="" />
     </view>
+    <view class="count-down mt-24r">
+    <text>距离活动结束：</text>
+        <text class="upHide1">{{day}}</text>天
+        <text class="upHide2">{{hour}}</text>时
+        <text class="upHide3">{{minute}}</text>分
+        <text class="upHide4">{{second}}</text>秒
+    </view>
+
     <view class="footer mt-24r wrap">
         <view class="flex">
             <image class="icon-switch_left" bindtap="switchPrev" src="../../images/icon-switch_01.png" mode="" />
@@ -66,12 +74,13 @@
         </view>
         <view class="content">
             <view class="text-rule mt-48r">
-                <view>1、点击"助力"按钮，即可以为商家助力;</view>
+                {{activityRule}}
+                <!-- <view>1、点击"助力"按钮，即可以为商家助力;</view>
                 <view>2、每个账号只能为商家助力一次;</view>
                 <view>3、本次活动日期为：2023年1月20日至2023年2月5日，截止日期后助力无效;</view>
                 <view>4、若发现某账号助力异常，或经他人举报并确认存在刷票行为，主办方有权取消参与资格;</view>
                 <view>5、同一人不可变更账号重复参加，已经发现取消助力资格，已助力置为无效状态;</view>
-                <view>6、本活动最终解释权归xxxx网络有限公司所有。</view>
+                <view>6、本活动最终解释权归xxxx网络有限公司所有。</view> -->
             </view>
         </view>
 

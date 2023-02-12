@@ -13,7 +13,8 @@ const db = cloud.database();
 exports.main = async (event, context) => {
     try {
         const res = await db.collection('activity').where({
-            activityType: event.activityType
+            activityType: event.activityType,
+            //examineStatus:1
         }).get();
         return res.data
     } catch (err) {
