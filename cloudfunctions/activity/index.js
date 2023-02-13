@@ -4,10 +4,8 @@ const createActivity = require('./createActivity');
 const getList = require('./getList');
 const getActivityList = require('./getActivityList')
 const getActivityDetail = require('./getActivityDetail')
-const updateActivity = require('./updateActivity')
 const updateActivityStatus = require('./updateActivityStatus')
 const updateActivity = require('./updateActivity') 
-const getParticipateStatus = require('./getParticipateStatus')
 const participateAactivities = require('./participateAactivities')
 const getParticipateList = require('./getParticipateList')
 

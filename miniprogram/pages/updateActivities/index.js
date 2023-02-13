@@ -5,6 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
+        merchantId: '',
+        activityDetail:[],
         dateDay: '2023-01-01',
         prizeSettingList: [
             {
@@ -21,8 +23,22 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options);
-        
+        this.setData({
+            merchantId: options.id
+        })
+        let _this = this
+        wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'getActivityDetail',
+                _id: options.id
+            }, success(res) {
+                console.log(res);
+                _this.setData({
+                    activityDetail: res.result.data
+                })
+            }
+        })
     },
     dateChangeDay(e) {
         console.log('值为', e.detail.value);

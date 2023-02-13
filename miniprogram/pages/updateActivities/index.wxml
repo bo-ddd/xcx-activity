@@ -6,7 +6,7 @@
         <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/ce1ae10792c11cf289c5e57bfca0add.png?sign=5c0c2e073041fbf9add158c83042cfbd&t=1675323381" mode="" class="gift" />
     </view>
     <form catchsubmit="formSubmit" catchreset="formReset">
-        <view class="add fs-28">
+        <view class="add fs-28" wx:for="{{ activityDetail }}" wx:key="_id">
                 <view class="page-poster">
                     <image src="../../images/icon-red.png" mode="" class="icon-min" />
                     <view class="lable">活动图片：</view>
