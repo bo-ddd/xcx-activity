@@ -128,8 +128,6 @@ Page({
             })
             return;
         } else {
-            //   this.toAuditStatus()
-
             this.addMerchant()
         }
 
@@ -159,16 +157,7 @@ Page({
                         that.setData({
                             fileId: res.fileID 
                         })
-                        // wx.cloud.callFunction({
-                        //     name: 'getTempFileURL',
-                        //     data: {
-                        //         fileId: res.fileID
-                        //     }
-                        // }).then(res => {
-                        //     that.setData({
-                        //         fileId: res.result[0].tempFileURL
-                        //     })
-                        // })
+                
                     }
                 })
             }
