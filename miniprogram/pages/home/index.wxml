@@ -24,8 +24,8 @@
 <!-- banner轮播图 -->
   <view class="container mt-30 wrap">
     <view class="page-body">
-      <view class="page-section page-section-spacing swiper">
-        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" >
+      <view class="page-section page-section-spacing swiper ">
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  >
           <block wx:for="{{background}}" wx:key="*this">
             <swiper-item>
               <image class="banner-images" src="{{item}}" mode="" />
@@ -97,8 +97,8 @@
 
 <swiper class="wrap minheight" indicator-dots="{{false}}" bindchange="handleSwiper" current="{{currentTab}}">
 	<block>
-			<swiper-item wx:for="{{ goodsList }}" wx:key="idx" style="overflow: scroll; ">
-				<scroll-view class="swiper-item" scroll-y refresher-enabled refresher-background="#F6F7F8" refresher-triggered="{{isRefresh}}" enable-flex="true"  bindrefresherrefresh="refresherpulling" bindscrolltolower="handleTolower">
+			<swiper-item wx:for="{{ goodsList }}" wx:key="idx" bindtap="navTab">
+				<scroll-view class="swiper-item" scroll-y refresher-enabled refresher-background="#F6F7F8" refresher-triggered="{{isRefresh}}" enable-flex="true"  bindrefresherrefresh="refresherpulling" bindscrolltolower="handleTolower" style="overflow: scroll; ">
 
 
                     <view class="commodity-item mt-30">
@@ -112,7 +112,7 @@
                                     <image class="integral" src="../../images/icon-integral.png" mode=""/>
                                 </view>
                                 <view class="quantity">
-                                    0元
+                                    0积分
                                 </view>
                             </view>
                             <view class="discount">
