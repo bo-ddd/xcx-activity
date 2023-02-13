@@ -13,6 +13,7 @@ Page({
 
     //切换顶部tab栏;
     switchTab(e) {
+        console.log(e);
         let current = e.currentTarget.dataset.id;
         this.setData({
             current
