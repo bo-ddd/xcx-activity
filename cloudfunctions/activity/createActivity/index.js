@@ -9,6 +9,9 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     // 查询活动记录表（activityRecord）
     try {
+        let activityStartTime=new Date(event.activityStartTime).getTime();
+        let activityEndTime=new Date(event.activityEndTime).getTime()+10*3600000;
+
         await db.collection('activity').add({
           // data 字段表示需新增的 JSON 数据
           data: {
@@ -17,8 +20,8 @@ exports.main = async (event, context) => {
             tempFileURL:event.tempFileURL,
             storeName: event.storeName,
             titleValue: event.titleValue,
-            activityStartTime: event.dateStartDay,
-            activityEndTime: event.dateEndDay,
+            activityStartTime: activityStartTime,
+            activityEndTime: activityEndTime,
             activityType: event.activityType,
             activityForm:event.activityForm,
             textareaValue: event.textareaValue,
@@ -30,7 +33,6 @@ exports.main = async (event, context) => {
             activityStatus:0
           }
         });
-        console.log(event);
         return {
           success: true,
           event

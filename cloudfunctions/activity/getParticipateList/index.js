@@ -10,11 +10,15 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     try {
         const res = await db.collection('participatingActivitieList').where({
-            openId: wxContext.OPENID,
-            activityId: event.activityId
+            openId:wxContext.OPENID,
         }).get();
-        return res.data.length ? true : false;
+        return res.data
     } catch (err) {
         return err
     }
+
+
+
+
+
 }

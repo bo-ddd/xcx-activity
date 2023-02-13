@@ -29,7 +29,6 @@ App({
                     }
                 }).then(res => {
                     if ( res.result.data[0]) {
-                        console.log(res.result.data[0])
                         this.globalData.userInfo= res.result.data[0];
                         resolve(res);
                     } else{ 
@@ -81,6 +80,7 @@ App({
                 })
             })
         };
+
         //开启通信;
         this.openSocket = function () {
             //打开时的动作
