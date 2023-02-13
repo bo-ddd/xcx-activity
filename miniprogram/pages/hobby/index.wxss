@@ -4,7 +4,7 @@
 }
 
 .hobby {
-    padding: 30rpx 0;
+    padding: 60rpx 0;
     height: 100%;
     box-sizing: border-box;
 }
@@ -26,10 +26,6 @@
     margin-bottom: 80rpx;
 }
 
-.hobby-item{
-    border: 1rpx solid black;
-    height: 100rpx;
-}
 
 .btn{
     height: 50rpx;

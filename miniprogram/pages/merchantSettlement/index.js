@@ -128,8 +128,6 @@ Page({
             })
             return;
         } else {
-            //   this.toAuditStatus()
-
             this.addMerchant()
         }
 
@@ -152,23 +150,14 @@ Page({
                 wx.cloud.uploadFile({
                     cloudPath: 'merchant/' + new Date().toLocaleString() + '.png',
                     filePath: tempFilePaths,
-                    config: {
-                        env: 'zliu-dev-4gclbljp64cb5cd3'
-                    }, //不可以这么写，这样写会造成线上环境出现重大问题
+                    // config: {
+                    //     env: 'zliu-dev-4gclbljp64cb5cd3'
+                    // }, //不可以这么写，这样写会造成线上环境出现重大问题
                     success(res) {
                         that.setData({
                             fileId: res.fileID 
                         })
-                        // wx.cloud.callFunction({
-                        //     name: 'getTempFileURL',
-                        //     data: {
-                        //         fileId: res.fileID
-                        //     }
-                        // }).then(res => {
-                        //     that.setData({
-                        //         fileId: res.result[0].tempFileURL
-                        //     })
-                        // })
+                
                     }
                 })
             }

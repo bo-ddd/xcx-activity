@@ -22,13 +22,8 @@ Page({
         console.log(options);
         this.getActivityList()
     },
-    bindchange: function (e) {
-        const that = this;
-        that.setData({
-            currentData: e.detail.current
-        })
-    },
-    //点击切换，滑块index赋值
+    
+    //点击切换，改变滑块index值
     checkCurrent: function (e) {
         const that = this;
 
@@ -41,6 +36,14 @@ Page({
             })
             this.getActivityList()
         }
+    },
+    // 滑动改变滑块index值
+    bindchange(e) {
+        const that = this;
+        that.setData({
+            currentData: e.detail.current
+        })
+        this.getActivityList()
     },
     //创建活动成功跳回活动页
     to() {
