@@ -19,6 +19,7 @@ Page({
         minute: '00',
         second: '00',
         activityId: '',
+        participateStatus: false,
 
 
         prizeList: [{
@@ -99,21 +100,56 @@ Page({
         })
     },
     //助力按钮事件;
-    onhelp() {
-        console.log('助力成功');
+  async onhelp() {
+        let _this=this;
+       await this.getParticipateStatus()
+            if (this.data.ParticipateStatus == '' || this.data.ParticipateStatus == null) {
+            //提示参与成功,把活动id和用户id存入数据库
+            wx.showModal({
+                title: '提示',
+                content: '助力成功',
+                success(res) {
+                 _this.addParticipateStatus()  
+                }
+            })
+        } else {
+            wx.showModal({
+                title: '提示',
+                content: '您已助力过啦！',
+                success(res) {
+                  console.log(res);
+                }
+            })
+        }
+    },
+    //获取参与状态
+    getParticipateStatus() {
+        wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'getParticipateStatus',
+                // activityId: this.data.activityId
+            }
+        }).then(res => {
+            this.setData({
+                participateStatus: res.result.data
+            })
+            console.log(this.data.participateStatus); //null代表没助力
+        })
+    },
+    //添加参与状态
+    addParticipateStatus() {
         console.log(this.data.activityId);
         wx.cloud.callFunction({
             name: 'activity',
             data: {
                 type: 'participateAactivities',
+                activityId: this.data.activityId
             }
-        }).then(res=>{
-            console.log(res);
+        }).then(res => {
+            console.log(res.result);
         })
-        // return res
     },
-   
-
     //兑换商店-跳转页面;
     to(e) {
         wx.navigateTo({
@@ -140,7 +176,6 @@ Page({
         this.setData({
             activityId: options._id
         })
-        console.log(this.data.activityId);
         //通过活动Id获取活动详情;
         const res = await this.getActivityDetail(this.data.activityId);
         const activityDetail = res.result.data;
@@ -190,7 +225,7 @@ Page({
 
     updataTimeCallback(endTime) {
         var downTime = parseInt(new Date(endTime.replace(/-/g, "/")).getTime() - new Date().getTime())
-        console.log(123)
+
         // 倒计时结束
         if (downTime <= 0) {
             this.setData({
