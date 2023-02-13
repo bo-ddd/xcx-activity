@@ -18,6 +18,7 @@ Page({
         hour: '00',
         minute: '00',
         second: '00',
+        activityId: '',
 
 
         prizeList: [{
@@ -100,13 +101,18 @@ Page({
     //助力按钮事件;
     onhelp() {
         console.log('助力成功');
-
-
-        //判断当前用户是否助力过？
-        //否：弹出助力成功页面，并标记当前用户已助力成功;
-        //是：提醒用户已助力;
-
+        console.log(this.data.activityId);
+        wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'participateAactivities',
+            }
+        }).then(res=>{
+            console.log(res);
+        })
+        // return res
     },
+   
 
     //兑换商店-跳转页面;
     to(e) {
@@ -131,9 +137,12 @@ Page({
             menus: ['shareAppMessage', 'shareTimeline']
         })
         //拿到活动列表传递过来的活动_id;
-        const activityId = options._id;
+        this.setData({
+            activityId: options._id
+        })
+        console.log(this.data.activityId);
         //通过活动Id获取活动详情;
-        const res = await this.getActivityDetail(activityId);
+        const res = await this.getActivityDetail(this.data.activityId);
         const activityDetail = res.result.data;
         let {
             activityForm, //活动形式;
