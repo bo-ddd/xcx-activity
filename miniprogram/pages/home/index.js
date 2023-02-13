@@ -5,12 +5,12 @@ Page({
             path: 'page/component/pages/swiper/swiper'
         }
     },
-
+   
     data: {
         userInfo: '',
         hasUserInfo: false,
         canIUseGetUserProfile: false,
-        background: ['https://img0.baidu.com/it/u=4031581625,3277412684&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1675789200&t=7e0c688bfb1f1947d5bd32775270218b', 'https://img0.baidu.com/it/u=3415735950,3480425996&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1675789200&t=f217828480b7749bfca080ed07d2cf08', 'https://img2.baidu.com/it/u=3782883384,256687608&fm=253&app=138&size=w931&n=0&f=PNG&fmt=auto?sec=1675789200&t=282b40a649bce69f7f22b307cfe72e21'],
+        background:  ['https://img0.baidu.com/it/u=4031581625,3277412684&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1675789200&t=7e0c688bfb1f1947d5bd32775270218b', 'https://img0.baidu.com/it/u=3415735950,3480425996&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1675789200&t=f217828480b7749bfca080ed07d2cf08', 'https://img2.baidu.com/it/u=3782883384,256687608&fm=253&app=138&size=w931&n=0&f=PNG&fmt=auto?sec=1675789200&t=282b40a649bce69f7f22b307cfe72e21'],
         indicatorDots: true,
         vertical: false,
         autoplay: true,
@@ -47,7 +47,10 @@ Page({
                 requiredPoints: 2100
             },
         ],
-
+        isRefresh: false,
+        currentTab: 0,
+        goodsList : [],
+        goodsType: [],
     },
 
     to(e) {
@@ -78,9 +81,14 @@ Page({
         this.queryUserInfo()
       
         this.getHotGoods()
+
+        this.getGoodsType()
+        this.removeminheight()
     },
 
-
+ removeminheight(){
+  
+ },
     getHotGoods() {
         let that = this
         wx.cloud.callFunction({
@@ -95,7 +103,7 @@ Page({
                 })
             }
         })
-    }
+    },
     //   getUserInfo(){
     //     wx.cloud.callFunction({
 
@@ -153,4 +161,76 @@ Page({
     //     })
     //   }
 
+    //分类
+    getGoodsType(){
+        let that = this;
+        let arr = []
+        wx.cloud.callFunction({
+            name:'goods',
+            data:{
+                type:'getGoodsType',
+            },success(res){
+                that.setData({
+                    goodsList : res.result.data
+                })
+                res.result.data.forEach(item=>{
+                    arr.push(item.goodsType)
+                })
+                let type = arr.filter((item,index,array)=>{
+                    return array.indexOf(item) === index
+                })
+                that.setData({
+                    goodsType : type
+                })
+            }
+        })
+    },
+
+
+
+
+
+
+    details(e){
+        console.log(e.currentTarget.dataset.uid);
+    },
+    // 点击tab栏
+     handleClick(e) {
+     console.log(e);
+    let currentTab = e.currentTarget.dataset.index
+    this.setData({
+        currentTab
+    })
+   
+  },
+  handleSwiper(e) {
+    let {
+      current,
+      source
+    } = e.detail;
+    if (source === 'autoplay' || source === 'touch') {
+      const currentTab = current
+      this.setData({
+        currentTab
+      })
+    }
+  },
+  handleTolower(e){
+    wx.showToast({
+      title: '到底啦'
+    })
+  },
+  refresherpulling() {
+    wx.showLoading({
+      title: '刷新中'
+    })
+    setTimeout(() => {
+      this.setData({
+        isRefresh: false
+      })
+      wx.showToast({
+        title: '加载完成'
+      })
+    }, 1500)
+  },
 })

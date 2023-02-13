@@ -6,6 +6,11 @@ const getActivityList = require('./getActivityList')
 const getActivityDetail = require('./getActivityDetail')
 const updateActivity = require('./updateActivity')
 const updateActivityStatus = require('./updateActivityStatus')
+const updateActivity = require('./updateActivity') 
+const getParticipateStatus = require('./getParticipateStatus')
+const participateAactivities = require('./participateAactivities')
+const getParticipateList = require('./getParticipateList')
+
 cloud.init({
     env: cloud.DYNAMIC_CURRENT_ENV
 }) // 使用当前云环境
@@ -39,6 +44,14 @@ exports.main = async (event, context) => {
             break;
         case 'updateActivityStatus':
             res.data = await updateActivityStatus.main(event, context);
+        case 'getParticipateStatus':
+            res.data = await getParticipateStatus.main(event, context);
+            break;
+        case 'participateAactivities':
+            participateAactivities.main(event, context);
+            break;
+        case 'getParticipateList':
+            res.data = await getParticipateList.main(event, context);
             break;
         default:
             res.status = 0;

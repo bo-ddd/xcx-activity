@@ -1,4 +1,5 @@
 // pages/activity/index.js
+const commonFun = require('../../common/formatDate');
 Page({
 
     /**
@@ -7,8 +8,7 @@ Page({
     data: {
         current: 0,
         activityTypes: ['周期活动', '日常活动'],
-        entryText: '查看详情',
-        activityList:[]
+        activityList: []
     },
 
     //切换顶部tab栏;
@@ -19,6 +19,14 @@ Page({
         });
         this.getActivityList()
     },
+    //触摸屏幕切换页面;
+    bindchange(e) {
+        let current = e.detail.current;
+        this.setData({
+            current
+        })
+        this.getActivityList()
+    },
 
     //跳转页面 把当前活动_id传给活动详情页面;
     to(e) {
@@ -27,40 +35,59 @@ Page({
         })
     },
 
-   async onLoad(options) {
-      await this.getActivityList();
-     
+    async onLoad(options) {
+        await this.getActivityList();
+
         //判断当前登录状态,显示不同的按钮文本;
         //在全局中拿到用户登录信息;
         //如果没有登录, 显示查看详情；
         //如果登录了，判断是否参与活动，参与->显示已参与 未参与->显示查看详情；
     },
 
-    // 获取活动列表  type: 1; 周期活动   2日常活动；
-
-  
+    // 获取活动列表;  
+    //type: 1-周期活动   2-日常活动
     async getActivityList() {
         const activityType = this.data.current === 0 ? 1 : 2;
         const res = await wx.cloud.callFunction({
-            // 云函数名称
             name: 'activity',
-            // 传给云函数的参数
             data: {
                 type: 'getList',
                 activityType,
             }
         })
+        const activityList = JSON.parse(JSON.stringify(res.result.data));
         this.setData({
-            activityList: res.result.data
+            activityList: this.handleData(activityList)
         })
-        console.log(this.data.activityList)
+    },
+    
+    //处理返回的数据结构;
+    handleData(data) {
+        data.forEach(async item => {
+            item.ParticipateStatus = await this.getParticipateStatus(item._id);
+            item.activityStartTime = commonFun.formatDate(item.activityStartTime);
+            item.activityEndTime = commonFun.formatDate(item.activityEndTime);
+        })
+        return data
+    },
+    
+    //获取当前用户参与活动状态, 返回bool;
+    async getParticipateStatus(activityId) {
+        const res = await wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'getParticipateStatus',
+                activityId,
+            }
+        })
+        return res.result.data
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady() {
-        
+
     },
 
     /**

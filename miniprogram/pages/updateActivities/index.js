@@ -22,6 +22,7 @@ Page({
      */
     onLoad(options) {
         console.log(options);
+        
     },
     dateChangeDay(e) {
         console.log('值为', e.detail.value);
