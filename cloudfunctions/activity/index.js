@@ -5,6 +5,7 @@ const getList = require('./getList');
 const getActivityList = require('./getActivityList')
 const getActivityDetail = require('./getActivityDetail')
 const updateActivity = require('./updateActivity')
+const getParticipateStatus = require('./getParticipateStatus')
 
 cloud.init({
     env: cloud.DYNAMIC_CURRENT_ENV
@@ -36,6 +37,9 @@ exports.main = async (event, context) => {
             break;
         case 'getActivityDetail':
             res.data = await getActivityDetail.main(event, context);
+            break;
+        case 'getParticipateStatus':
+            res.data = await getParticipateStatus.main(event, context);
             break;
         default:
             res.status = 0;

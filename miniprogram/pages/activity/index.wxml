@@ -9,11 +9,12 @@
             <view style="background-image:url({{item.tempFileURL}})" class="actvity wrap-50r mt-24r" wx:for="{{activityList}}" wx:key="id">
                 <view class="flex-row">
                     <view class="duration">
-                        活动时间：<text class="time-start">{{item.activityStartTime}}</text>-<text class="time-end">{{item.activityEndTime}}</text>
+                        <text>活动时间：</text>
+                        <text class="time-start">{{item.activityStartTime}}</text>-<text class="time-end">{{item.activityEndTime}}</text>
                     </view>
                     <view class="entry">
                         <view class="btn-entry" bindtap="to" data-id="{{item._id}}">
-                            {{entryText}}
+                            {{item.ParticipateStatus? '已参加':"去参加"}}
                         </view>
                     </view>
                 </view>

@@ -69,6 +69,8 @@
 .actvity .duration {
     font-size: 20rpx;
     color: white;
+    display: flex;
+    align-items: center;
 }
 
 .actvity .entry {
