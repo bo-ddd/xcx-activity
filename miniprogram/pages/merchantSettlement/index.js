@@ -5,6 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        flag:true,
         radios: [
             { value: '1', name: '男' },
             { value: '0', name: '女' },
@@ -13,18 +14,18 @@ Page({
             DqOpenid: '',
             select: false,
             grade_name: '--请选择--',
-            grades:['电子产品','卫生用品','厨房用品','清洁洗护','美妆护肤','二次元','潮流女装','潮男穿搭','美食达人'],
+            grades: ['电子产品', '卫生用品', '厨房用品', '清洁洗护', '美妆护肤', '二次元', '潮流女装', '潮男穿搭', '美食达人'],
         },
         form: {
             merchantname: '',
-            merchantsex:0,
+            merchantsex: 0,
             merchantphone: '',
             storename: '',
-            storeaddress:'',
+            storeaddress: '',
             license: ''
         },
         // 选择的经验类别
-        storeclass:0,
+        storeclass: 0,
         // 上传的图片
         tempFilePath: '',
         // 上传图片的云ID
@@ -118,7 +119,7 @@ Page({
     formSubmit: function (e) {
         console.log(e);
         this.setData({
-            form : e.detail.value
+            form: e.detail.value
         })
         if (!this.data.form.merchantname) {
             wx.showToast({
@@ -128,7 +129,9 @@ Page({
             })
             return;
         } else {
-            this.addMerchant()
+            this.throttle(()=>{
+                this.addMerchant()
+            })
         }
 
     },
@@ -155,9 +158,9 @@ Page({
                     // }, //不可以这么写，这样写会造成线上环境出现重大问题
                     success(res) {
                         that.setData({
-                            fileId: res.fileID 
+                            fileId: res.fileID
                         })
-                
+
                     }
                 })
             }
@@ -174,7 +177,7 @@ Page({
                 merchantPhone: this.data.form.merchantphone,
                 merchantSex: parseInt(this.data.form.merchantsex),
                 storeName: this.data.form.storename,
-                storeAddress:this.data.form.storeaddress,
+                storeAddress: this.data.form.storeaddress,
                 storeClass: this.data.storeclass,
                 license: this.data.fileId
             }, success(res) {
@@ -182,5 +185,25 @@ Page({
                 _this.toAuditStatus()
             }
         })
+    },
+    // 按钮的节流
+    throttle(callback) {
+        let _this = this
+            if (_this.data.flag) {
+                callback();
+                _this.setData({
+                    flag:false
+                })
+            } else {
+                console.log('别点啦');
+                return
+            }
+            setTimeout(() => {
+                console.log('我又适了')
+                _this.setData({
+                    flag:true
+                })
+            }, 2000)
+        
     }
 })

@@ -6,13 +6,13 @@ Page({
      */
     data: {
         dateDay: '2023-01-01',
-        prizeSettingList:[
+        prizeSettingList: [
             {
-                id:1,
-                prizeMapIcon:'../../images/icon-add_p.png',
-                prizeName:'奖品名称',
-                prizeNum:'奖品数量',
-                prizePeople:'助力人数'
+                id: 1,
+                prizeMapIcon: '../../images/icon-add_p.png',
+                prizeName: '奖品名称',
+                prizeNum: '奖品数量',
+                prizePeople: '助力人数'
             },
         ]
     },
@@ -21,7 +21,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        console.log(options);
     },
     dateChangeDay(e) {
         console.log('值为', e.detail.value);

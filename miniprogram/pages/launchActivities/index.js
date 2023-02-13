@@ -22,7 +22,7 @@ Page({
         console.log(options);
         this.getActivityList()
     },
-    
+
     //点击切换，改变滑块index值
     checkCurrent: function (e) {
         const that = this;
@@ -52,9 +52,10 @@ Page({
         })
     },
     //跳转编辑活动
-    updataTo() {
-        wx.navigateTo({
-            url: '/pages/createActivity/index',
+     async updataTo(e) {
+         console.log(e)
+        await wx.navigateTo({
+            url: '/pages/updateActivities/index?id=' + e.currentTarget.dataset._id,
         })
     },
     // 获取活动列表
@@ -75,6 +76,7 @@ Page({
             }
         })
     },
+   
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
