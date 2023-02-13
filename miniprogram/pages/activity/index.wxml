@@ -14,7 +14,7 @@
                     </view>
                     <view class="entry">
                         <view class="btn-entry" bindtap="to" data-id="{{item._id}}">
-                            {{item.ParticipateStatus? '已参加':"去参加"}}
+                            {{item.participateStatus? '已参加':"去参加"}}
                         </view>
                     </view>
                 </view>

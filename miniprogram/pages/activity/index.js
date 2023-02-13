@@ -37,7 +37,6 @@ Page({
 
     async onLoad(options) {
         await this.getActivityList();
-
         //判断当前登录状态,显示不同的按钮文本;
         //在全局中拿到用户登录信息;
         //如果没有登录, 显示查看详情；
@@ -55,32 +54,40 @@ Page({
                 activityType,
             }
         })
-        const activityList = JSON.parse(JSON.stringify(res.result.data));
+        let activityList = await this.handleData(JSON.parse(JSON.stringify(res.result.data)))
+        console.log(activityList)
         this.setData({
-            activityList: this.handleData(activityList)
+            activityList
         })
     },
-    
+
     //处理返回的数据结构;
-    handleData(data) {
-        data.forEach(async item => {
-            item.ParticipateStatus = await this.getParticipateStatus(item._id);
+    async handleData(data) {
+        const participateList = await this.getParticipateList();
+        data.forEach(item => {
+            item.participateStatus = participateList.includes(item._id);
             item.activityStartTime = commonFun.formatDate(item.activityStartTime);
             item.activityEndTime = commonFun.formatDate(item.activityEndTime);
         })
         return data
     },
-    
-    //获取当前用户参与活动状态, 返回bool;
-    async getParticipateStatus(activityId) {
+
+    //获取当前用户参与的活动列表;
+    async getParticipateList() {
+        let participateList = [];
         const res = await wx.cloud.callFunction({
             name: 'activity',
             data: {
-                type: 'getParticipateStatus',
-                activityId,
+                type: 'getParticipateList'
             }
         })
-        return res.result.data
+        const arr = res.result.data;
+        if (arr.length) {
+            arr.forEach(item => {
+                participateList.push(item.activityId)
+            })
+        }
+        return participateList
     },
 
     /**
