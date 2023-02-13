@@ -199,5 +199,9 @@
                 }
             ]
         }
+    },
+    "projectname": "quickstart-wx-cloud",
+    "setting": {
+        "compileHotReLoad": true
     }
 }

@@ -150,9 +150,9 @@ Page({
                 wx.cloud.uploadFile({
                     cloudPath: 'merchant/' + new Date().toLocaleString() + '.png',
                     filePath: tempFilePaths,
-                    config: {
-                        env: 'zliu-dev-4gclbljp64cb5cd3'
-                    }, //不可以这么写，这样写会造成线上环境出现重大问题
+                    // config: {
+                    //     env: 'zliu-dev-4gclbljp64cb5cd3'
+                    // }, //不可以这么写，这样写会造成线上环境出现重大问题
                     success(res) {
                         that.setData({
                             fileId: res.fileID 
