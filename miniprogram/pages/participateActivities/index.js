@@ -77,11 +77,22 @@ Page({
             })
         }
     },
+    //获取参与活动列表
+    getParticipateActivities(){
+        wx.cloud.callFunction({
+            name: 'acticity',
+            data: {
+                type: 'getParticipateList',
+            }
+        }).then(res => {
+            console.log(res);
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+      this.getParticipateActivities()
     },
 
     /**
