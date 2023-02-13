@@ -19,6 +19,14 @@ Page({
         });
         this.getActivityList()
     },
+    //触摸屏幕切换页面;
+    bindchange(e){
+        let current=e.detail.current;
+        this.setData({
+            current
+        })
+        this.getActivityList()
+    },
 
     //跳转页面 把当前活动_id传给活动详情页面;
     to(e) {
