@@ -1,12 +1,17 @@
 /* pages/productDetails/index.wxss */
 .detail-outer-layer {
-    background-color: #EFEFEF;
+    background-color: #ffffff;
     height: calc(100vh - 100rpx);
 }
-
+.bd-redius{
+    width: 100%;
+    height: 40vh;
+    background-color: #f8f8f8;
+}
 .bg-details {
     width: 100%;
     height: 40vh;
+
 }
 
 .product-details {
@@ -14,13 +19,29 @@
     background-color: white;
     padding: 60rpx;
 }
-
+.commodity{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 .commodity-price {
     font-size: 50rpx;
     font-weight: 700;
     color: #E64430;
 }
-
+.collection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.collection-image{
+    width: 50rpx;
+    height: 50rpx;
+}
+.collection-text{
+    font-size: 25rpx;
+}
 .trade-name {
     font-size: 40rpx;
     font-weight: 700;
@@ -30,13 +51,19 @@
     font-size: 24rpx;
     color: #969696;
 }
-
-.address-laber {
-    width: 150rpx;
+.item-color{
+    width: 10vh;
     font-weight: 700;
+   
+}
+.address-laber {
+    width: 10vh;
+    font-weight: 700;
+
 }
 
 .information {
+
     font-size: 24rpx;
     color: #969696;
     overflow: hidden;

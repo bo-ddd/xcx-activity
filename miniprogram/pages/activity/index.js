@@ -37,6 +37,7 @@ Page({
     },
 
     async onLoad(options) {
+
         await this.getActivityList();
         //判断当前登录状态,显示不同的按钮文本;
         //在全局中拿到用户登录信息;
@@ -56,7 +57,6 @@ Page({
             }
         })
         let activityList = await this.handleData(JSON.parse(JSON.stringify(res.result.data)))
-        console.log(activityList)
         this.setData({
             activityList
         })

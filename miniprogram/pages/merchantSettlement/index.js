@@ -5,7 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        flag:true,
+        flag: true,
         radios: [
             { value: '1', name: '男' },
             { value: '0', name: '女' },
@@ -22,15 +22,14 @@ Page({
             merchantphone: '',
             storename: '',
             storeaddress: '',
-            license: ''
         },
-        // 选择的经验类别
+        // 选择的经营类别
         storeclass: 0,
-        // 上传的图片
+        // 选择的经营类别值
+        storeclassValue: '',
+        // 上传的图片本地路径
         tempFilePath: '',
-        // 上传图片的云ID
-        cloudId: '',
-        // 上传图片的真实链接
+        // 上传图片的云地址
         fileId: '',
 
     },
@@ -112,34 +111,57 @@ Page({
         this.setData({
             ['selectItem.grade_name']: e.currentTarget.dataset.name,
             storeclass: e.currentTarget.dataset.storeclass,
+            storeclassValue: e.currentTarget.dataset.name,
             select: false
+        })
+    },
+    //  消息提示
+    tips(text) {
+        wx.showToast({
+            title: text,
+            icon: 'error',
+            duration: 2000
         })
     },
     // 提交表单
     formSubmit: function (e) {
-        console.log(e);
         this.setData({
             form: e.detail.value
         })
         if (!this.data.form.merchantname) {
-            wx.showToast({
-                title: '请填写完整信息',
-                icon: 'error',
-                duration: 2000
-            })
+            this.tips('请输入姓名！')
+            return;
+        } else if (!this.data.form.merchantphone) {
+            this.tips('请输入手机号！')
+            return;
+        } else if (this.data.form.merchantphone.length < 11) {
+            this.tips('手机号不完整！')
+            return;
+        } else if (!this.data.form.storename) {
+            this.tips('请输入店铺姓名！')
+            return;
+        } else if (!this.data.form.storeaddress) {
+            this.tips('请输入店铺地址！')
+            return;
+        } else if (!this.data.storeclassValue) {
+            this.tips('请选择经营类型！')
+            return;
+        } else if (!this.data.fileId) {
+            this.tips('请上传营业执照！')
             return;
         } else {
-            this.throttle(()=>{
+            this.throttle(() => {
                 this.addMerchant()
             })
         }
-
     },
+    // 跳转审核提示页面
     toAuditStatus() {
         wx.navigateTo({
             url: "/pages/auditStatus/index",
         })
     },
+    // 点击选择图片后上传
     upload() {
         let _this = this
         wx.chooseMedia({
@@ -147,21 +169,20 @@ Page({
             sizeType: ['original', 'compressed'],
             sourceType: ['album', 'camera'],
             success(res) {
-                // tempFilePath可以作为 img 标签的 src 属性显示图片
                 let tempFilePaths = res.tempFiles[0].tempFilePath
-                let that = _this
-                wx.cloud.uploadFile({
-                    cloudPath: 'merchant/' + new Date().toLocaleString() + '.png',
-                    filePath: tempFilePaths,
-                    // config: {
-                    //     env: 'zliu-dev-4gclbljp64cb5cd3'
-                    // }, //不可以这么写，这样写会造成线上环境出现重大问题
-                    success(res) {
-                        that.setData({
-                            fileId: res.fileID
-                        })
-
-                    }
+                _this.uploadFile(tempFilePaths)
+            }
+        })
+    },
+    // 上传云存储
+    uploadFile(tempFilePath) {
+        let _this =this
+        wx.cloud.uploadFile({
+            cloudPath: 'merchant/' + new Date().toLocaleString() + '.png',
+            filePath: tempFilePath,
+            success(res) {
+                _this.setData({
+                    fileId: res.fileID
                 })
             }
         })
@@ -189,21 +210,20 @@ Page({
     // 按钮的节流
     throttle(callback) {
         let _this = this
-            if (_this.data.flag) {
-                callback();
-                _this.setData({
-                    flag:false
-                })
-            } else {
-                console.log('别点啦');
-                return
-            }
-            setTimeout(() => {
-                console.log('我又适了')
-                _this.setData({
-                    flag:true
-                })
-            }, 2000)
-        
+        if (_this.data.flag) {
+            callback();
+            _this.setData({
+                flag: false
+            })
+        } else {
+            console.log('别点啦');
+            return
+        }
+        setTimeout(() => {
+            _this.setData({
+                flag: true
+            })
+        }, 2000)
+
     }
 })

@@ -124,10 +124,6 @@
     font-size: 30rpx;
 }
 
-.swiper-con {
-    /* text-align: center; */
-}
-
 .page-lable {
     display: flex;
     align-items: center;

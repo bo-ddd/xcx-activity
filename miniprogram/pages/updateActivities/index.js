@@ -1,4 +1,5 @@
 // pages/updataActivities/index.js
+const commonFun = require ('../../common/formatDate')
 Page({
 
     /**
@@ -6,7 +7,9 @@ Page({
      */
     data: {
         merchantId: '',
-        activityDetail:{},
+        activityDetail: {},
+        activityStartTime: '',
+        activityEndTime: '',
         dateDay: '2023-01-01',
         prizeSettingList: [
             {
@@ -35,10 +38,17 @@ Page({
             }, success(res) {
                 console.log(res);
                 _this.setData({
-                    activityDetail: res.result.data
+                    activityDetail: res.result.data,
+                    activityStartTime: _this.handleDate(res.result.data.activityStartTime),
+                    activityEndTime: _this.handleDate(res.result.data.activityEndTime)
                 })
             }
         })
+    },
+    // 时间戳转化为日期
+    handleDate(date){
+     let time =  commonFun.formatDate(date);
+      return time
     },
     dateChangeDay(e) {
         console.log('值为', e.detail.value);

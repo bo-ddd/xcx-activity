@@ -62,10 +62,10 @@ Page({
             
     },
 
-    async navTab(e) {
+    async navTab(e) {     
         console.log(e);
         await wx.navigateTo({
-            url: '/pages/productDetails/index?_id=' + e.currentTarget.dataset.id,
+            url: '/pages/productDetails/index?_id=' + e.currentTarget.id,
         })
     },
     async queryUserInfo(){
@@ -78,10 +78,10 @@ Page({
 
     onLoad(e) {
         this.queryUserInfo()
-      
+        this.getGoodsType()
         this.getHotGoods()
 
-        this.getGoodsType()
+        
 
     },
 
@@ -91,12 +91,13 @@ Page({
         wx.cloud.callFunction({
             name: 'goods',
             data: {
-                type: 'getHotGoods'
+                type: 'getHotGoods',
+                currentTab:that.data.currentTab
             },
             success(res) {
                 console.log(res);
                 that.setData({
-                    hotGoods: res.result.data
+                    hotGoods: res.result.list.data
                 })
             }
         })
@@ -167,9 +168,11 @@ Page({
             data:{
                 type:'getGoodsType',
             },success(res){
+
                 that.setData({
                     goodsList : res.result.data
                 })
+                
                 res.result.data.forEach(item=>{
                     arr.push(item.goodsType)
                 })
@@ -177,7 +180,7 @@ Page({
                     return array.indexOf(item) === index
                 })
                 that.setData({
-                    goodsType : type
+                    goodsType : type                    
                 })
             }
         })
@@ -194,40 +197,48 @@ Page({
     // 点击tab栏
      handleClick(e) {
      console.log(e);
-    let currentTab = e.currentTarget.dataset.index
+     this.setData({
+         currentTab:e.currentTarget.dataset.index
+        })
+    this.getHotGoods()
+  },
+//   滑动改变index值
+bindchange(e){
+    console.log(e.detail.current)
     this.setData({
-        currentTab
+        currentTab:e.detail.current
     })
-   
-  },
-  handleSwiper(e) {
-    let {
-      current,
-      source
-    } = e.detail;
-    if (source === 'autoplay' || source === 'touch') {
-      const currentTab = current
-      this.setData({
-        currentTab
-      })
-    }
-  },
-  handleTolower(e){
-    wx.showToast({
-      title: '到底啦'
-    })
-  },
-  refresherpulling() {
-    wx.showLoading({
-      title: '刷新中'
-    })
-    setTimeout(() => {
-      this.setData({
-        isRefresh: false
-      })
-      wx.showToast({
-        title: '加载完成'
-      })
-    }, 1500)
-  },
+    this.getHotGoods()
+}
+//   handleSwiper(e) {
+//       console.log(e);
+//     let {
+//       current,
+//       source
+//     } = e.detail;
+//     if (source === 'autoplay' || source === 'touch') {
+//       const currentTab = current
+//       this.setData({
+//         currentTab
+//       })
+//     }
+//   },
+//   handleTolower(e){
+//     wx.showToast({
+//       title: '到底啦'
+//     })
+//   },
+//   refresherpulling() {
+//     wx.showLoading({
+//       title: '刷新中'
+//     })
+//     setTimeout(() => {
+//       this.setData({
+//         isRefresh: false
+//       })
+//       wx.showToast({
+//         title: '加载完成'
+//       })
+//     }, 1500)
+//   },
 })

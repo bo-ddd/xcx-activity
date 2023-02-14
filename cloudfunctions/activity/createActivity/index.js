@@ -16,7 +16,6 @@ exports.main = async (event, context) => {
           // data 字段表示需新增的 JSON 数据
           data: {
             fileId:event.fileId, 
-            prizeUrl:event.prizeUrl,
             tempFileURL:event.tempFileURL,
             storeName: event.storeName,
             titleValue: event.titleValue,
@@ -25,12 +24,10 @@ exports.main = async (event, context) => {
             activityType: event.activityType,
             activityForm:event.activityForm,
             textareaValue: event.textareaValue,
-            prizeName: event.prizeName,
-            prizeNum:event.prizeNum,
-            peopleNum:event.peopleNum,
             openId:wxContext.OPENID,
             examineType:0,
-            activityStatus:0
+            activityStatus:0,
+            prizeSettingList:event.prizeSettingList
           }
         });
         return {
