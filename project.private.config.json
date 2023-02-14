@@ -210,6 +210,20 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/exchangeRecords/index",
+                    "query": "pages/exchangeRecords/index",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/officialNews/index",
+                    "query": "pages/officialNews/index",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }
