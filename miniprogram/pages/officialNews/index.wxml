@@ -1,2 +1,25 @@
 <!--pages/officialNews/index.wxml-->
-<text>pages/officialNews/index.wxml</text>
+<view class="box">
+    <view class="content" wx:for="{{notice}}">
+        <view class="content-item wrap">
+            <view class="title">
+                <view class="text-content">
+                    <image src="{{item.icon}}" mode="" />
+                    {{item.record}}
+                </view>
+                <view class="time mr-10">{{item.time}}</view>
+            </view>
+            <view class="news mt-30">
+                {{item.content}}
+            </view>
+            <view class="bottom">
+                <view class="details">
+                    {{item.datails}}
+                </view>
+                <view class="arrow">
+                    <image src="{{item.iconRight}}" mode=""/>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

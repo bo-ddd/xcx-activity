@@ -196,8 +196,19 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "课程通知",
+                    "pathName": "pages/officialNews/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }
+    },
+    "projectname": "quickstart-wx-cloud",
+    "setting": {
+        "compileHotReLoad": true
     }
 }
