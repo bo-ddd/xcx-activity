@@ -5,42 +5,41 @@ Page({
      * 页面的初始数据
      */
     data: {
-        // productDetails:[],
-        // id : ''
+        productDetails:[],
+        id : ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-    },
+        var that = this;
 
-    // getGoodsDetail(e){
-        
-    //    let _that = this
-    // //    let arr = []
-    //    wx.cloud.callFunction({
-    //        name:'goods',
-    //        data:{
-    //            type:'getProductDetails',
-    //            goodsId : e
-    //        },success:function(res){
-    //         // _that.setData({
-    //         //     productDetails : res.result.data,
-    //         // })
-    //         // console.log(res.result.data);
-    //         // res.result.data.forEach(item=>{
-    //         //     item.goodsList.forEach(options=>{
-    //         //         arr.push(options)
-    //         //         _that.setData({
-    //         //             productDetails : arr
-    //         //         })
-    //         //     })
-    //         // })
-    //         console.log(res);
-    //        }
-    //    })
-    // },
+         that.setData({ 
+         id: options._id, 
+         })
+        console.log(options._id);
+
+      this.getGoodsDetail()
+    },
+    
+    getGoodsDetail(e){      
+       let _that = this
+    //    let arr = []
+       wx.cloud.callFunction({
+           name:'goods',
+           data:{
+               type:'getProductDetails',
+               goodsId : _that.data.id
+           },success:function(res){
+               console.log(res);  
+               _that.setData({
+                productDetails:res.result.list.data
+               })
+
+           }
+       })
+    },
 
     /**
      * 生命周期函数--监听页面初次渲染完成

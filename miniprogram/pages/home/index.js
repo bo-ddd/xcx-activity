@@ -62,10 +62,10 @@ Page({
             
     },
 
-    async navTab(e) {
+    async navTab(e) {     
         console.log(e);
         await wx.navigateTo({
-            url: '/pages/productDetails/index?_id=' + e.currentTarget.dataset.id,
+            url: '/pages/productDetails/index?_id=' + e.currentTarget.id,
         })
     },
     async queryUserInfo(){
@@ -204,7 +204,7 @@ Page({
   },
 //   滑动改变index值
 bindchange(e){
-    console.log(e)
+    console.log(e.detail.current)
     this.setData({
         currentTab:e.detail.current
     })
