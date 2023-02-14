@@ -79,10 +79,11 @@ Page({
         const res = await wx.cloud.callFunction({
             name: 'activity',
             data: {
-                type: 'getParticipateList'
+                type: 'getParticipateListByUserId'
             }
         })
         const arr = res.result.data;
+        console.log(arr)
         if (arr.length) {
             arr.forEach(item => {
                 participateList.push(item.activityId)
