@@ -22,13 +22,7 @@ exports.main = async (event, context) => {
         .end()
         console.log(res);
         return res
-      
     } catch (err) {
         return err
     }
-
-
-
-
-
 }

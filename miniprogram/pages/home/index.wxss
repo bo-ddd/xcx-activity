@@ -293,10 +293,11 @@ width: 250rpx;
       font-weight: 700;
   }
   .exchange{
-      font-size: 22rpx;
+      font-size: 35rpx;
       margin: 10rpx 0;
   }
   .quantity{
+      
       color: red;
   }
 .price{
@@ -304,6 +305,7 @@ width: 250rpx;
     align-items: center;
     justify-content: space-between;
     margin-top: 15rpx;
+    font-size: 30rpx;
 }
 .swiper-item{
     height: calc(100vh - 100rpx);

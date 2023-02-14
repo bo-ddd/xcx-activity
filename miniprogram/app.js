@@ -47,7 +47,7 @@ App({
                 }).then(res=>{
                     console.log(res);
                         _this.globalData.userInfo=res.userInfo
-                        //   console.log( _this.globalData.userInfo);
+                          console.log( _this.globalData.userInfo);
                           resolve(res)
                 })
             })

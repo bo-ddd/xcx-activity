@@ -41,12 +41,12 @@ Page({
             },
         }).then(async res=>{
                 let list = res.result.data.list
-                let ParticipateActivities = []
+                let participateActivities = [];
                 list.forEach(item => {
-                    ParticipateActivities.push(item.userParticipatingList[0])
+                    participateActivities.push(item.userParticipatingList[0])
                 });
                 _this.setData({
-                    participateActivityList: ParticipateActivities
+                    participateActivityList: participateActivities
                 })
                 console.log(_this.data.participateActivityList);
                await _this.participateState()
@@ -59,14 +59,15 @@ Page({
        let endActivity= this.data.participateActivityList.filter(item=>item.activityStatus==2)
        console.log(notStartedActivity);
        console.log(waitActivity);
-       console.log(endActivity);
        this.setData({
         notStartedActivityList:notStartedActivity,
         waitActivityList:waitActivity,
         endActivityList:endActivity,
        })
     },
-
+    toDetail(e){
+        console.log(e);
+    },
     /**
      * 生命周期函数--监听页面加载
      */
