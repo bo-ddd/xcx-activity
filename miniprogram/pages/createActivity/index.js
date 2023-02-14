@@ -162,7 +162,7 @@ Page({
         let prizeSettingList = this.data.prizeSettingList;
         let form = this.data.form;
         prizeSettingList.forEach((item, index) => {
-            item.prizeName = form[`prizeName${index}`],
+                item.prizeName = form[`prizeName${index}`],
                 item.prizeNum = form[`prizeNum${index}`],
                 item.peopleNum = form[`peopleNum${index}`]
         })
@@ -217,22 +217,20 @@ Page({
                 type: 'getMerchantInfo',
             }
         }).then(res => {
-            console.log(res);
             this.setData({
                 ['form.storeName']: res.result.data[0].merchantName
             })
         })
     },
     //把图片转成https格式
-    async getTempFileURL(fileId) {
+    getTempFileURL(fileId) {
         let tempFileURL = "";
-        await wx.cloud.callFunction({
+        wx.cloud.callFunction({
             name: 'getTempFileURL',
             data: {
                 fileId
             }
         }).then(res => {
-            console.log(res)
             tempFileURL = res.result[0].tempFileURL
         })
         return tempFileURL
