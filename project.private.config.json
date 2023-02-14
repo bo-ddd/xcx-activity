@@ -191,13 +191,6 @@
                     "scene": null
                 },
                 {
-                    "name": "活动状态",
-                    "pathName": "pages/launchActivities/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
                     "name": "发起的活动",
                     "pathName": "pages/launchActivities/index",
                     "query": "",
@@ -208,6 +201,20 @@
                     "name": "",
                     "pathName": "pages/launchActivities/index",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/exchangeRecords/index",
+                    "query": "pages/exchangeRecords/index",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/officialNews/index",
+                    "query": "pages/officialNews/index",
                     "launchMode": "default",
                     "scene": null
                 }

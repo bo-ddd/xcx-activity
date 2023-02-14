@@ -5,58 +5,11 @@ Page({
      * 页面的初始数据
      */
     data: {
-        currentData:0,
-        waitActivityList: [
-            {
-                id: 1,
-                title: '帅娃娃哈哈哈',
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
-            },
-            {
-                id: 2,
-                title: '乌拉拉魔法棒',
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
-            },
-            {
-                id: 3,
-                title: '叫你一声你敢答应吗',
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
-            },
-        ],
-        endActivityList: [
-            {
-                id: 1,
-                title: '帅娃娃哈哈哈',
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
-            },
-            {
-                id: 2,
-                title: '乌拉拉魔法棒',
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
-            },
-            {
-                id: 3,
-                title: '叫你一声你敢答应吗',
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
-            },
-        ],
-        notStartedActivityList: [
-            {
-                id: 1,
-                title: '帅娃娃哈哈哈',
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
-            },
-            {
-                id: 2,
-                title: '乌拉拉魔法棒',
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
-            },
-            {
-                id: 3,
-                title: '叫你一声你敢答应吗',
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/img-activity.png?sign=92b504f8dbc1315a2db61d1da53d766f&t=1675306209',
-            },
-        ],
+        currentData: 0,
+        notStartedActivityList: [],
+        waitActivityList: [],
+        endActivityList: [],
+        participateActivityList: [],
     },
 
     bindchange: function (e) {
@@ -78,21 +31,48 @@ Page({
         }
     },
     //获取参与活动列表
-    getParticipateActivities(){
+    getParticipateActivities() {
+        let _this = this;
+        // let currentData = this.data.currentData
         wx.cloud.callFunction({
-            name: 'acticity',
+            name: 'activity',
             data: {
                 type: 'getParticipateList',
-            }
-        }).then(res => {
-            console.log(res);
+            },
+        }).then(async res=>{
+                let list = res.result.data.list
+                let ParticipateActivities = []
+                list.forEach(item => {
+                    ParticipateActivities.push(item.userParticipatingList[0])
+                });
+                _this.setData({
+                    participateActivityList: ParticipateActivities
+                })
+                console.log(_this.data.participateActivityList);
+               await _this.participateState()
         })
     },
+    //参与的活动状态
+    participateState(){
+       let notStartedActivity= this.data.participateActivityList.filter(item=>item.activityStatus==0)
+       let waitActivity= this.data.participateActivityList.filter(item=>item.activityStatus==1)
+       let endActivity= this.data.participateActivityList.filter(item=>item.activityStatus==2)
+       console.log(notStartedActivity);
+       console.log(waitActivity);
+       console.log(endActivity);
+       this.setData({
+        notStartedActivityList:notStartedActivity,
+        waitActivityList:waitActivity,
+        endActivityList:endActivity,
+       })
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options) {
-      this.getParticipateActivities()
+   onLoad(options) {
+        //获取参与活动列表。拿到有活动id。连表查询该活动的所有信息
+     this.getParticipateActivities()
     },
 
     /**

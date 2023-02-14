@@ -13,19 +13,19 @@
                 </view>
                
                 <view class="poster" bindtap="upload">
-                    <image src="{{fileId}}" mode="" class="poster-icon" wx:if="{{fileId}}"/>
+                    <image src="{{activityDetail.fileId}}" mode="" class="poster-icon" wx:if="{{activityDetail.fileId}}"/>
                 </view>
             <view class="page-lable">
                 <image src="../../images/icon-red.png" mode="" class="icon-min"/>
     
                 <view class="lable">商铺名称：</view>
-                <input class="input" name="storeName" value="{{form.storeName}}" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" disabled/>
+                <input class="input" name="storeName" value="{{activityDetail.storeName}}" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx" disabled/>
             </view>
             <view class="page-lable">
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />
     
                 <view class="lable">活动标题：</view>
-                <input class="input" name="titleValue" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx"/>
+                <input class="input" name="titleValue" value="{{ activityDetail.titleValue }}" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx"/>
             </view>
             <view class="page-lable">
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />
