@@ -1,1 +1,80 @@
 /* pages/officialNews/index.wxss */
+.box {
+    height: 100vh;
+    box-sizing: border-box;
+}
+.title{
+    padding-top: 20rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.content{
+    width: 700rpx;
+    height: 300rpx;
+    margin: 30rpx auto 0rpx;
+    border: 1rpx solid gray;
+    border-radius: 20rpx;
+}
+.content-record {
+    height: 100%;
+}
+ .content-item {
+    width: 620rpx;
+    border-radius: 20rpx;
+}
+.content image {
+    width: 50rpx;
+    height: 50rpx;
+    background-color: #9291fa;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 20rpx;
+}
+ .text-content {
+    font-size: 36rpx;
+    font-weight: 600;
+}
+.time { 
+    /* display: flex;
+    flex-direction: column;
+    gap: 10rpx 10rpx;   //第一个y轴   第二个x轴 */
+    color: rgba(128, 128, 128, 0.747); 
+    font-size: 30rpx;
+}
+.news {
+    color: gray;
+    font-size: 28rpx;
+    padding-bottom: 20rpx;
+} 
+.details{
+    display: inline-block;
+   font-size: 30rpx;
+}
+
+.class-begins{
+    width: 700rpx;
+    height: 300rpx;
+    margin: 35rpx auto;
+    border: 1rpx solid gray;
+    border-radius: 20rpx;
+}
+.class-begins image {
+    width: 50rpx;
+    height: 50rpx;
+    background-color: #2cd790;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 20rpx;
+}
+.bottom{
+    line-height: 30rpx;
+    border-top: 1rpx solid rgba(128, 128, 128, 0.26);
+    display: flex;
+    justify-content: space-between;
+    padding-top: 34rpx;
+}
+.bottom image{
+    width: 20rpx;
+    height: 28rpx;
+    background-color: white;   
+}

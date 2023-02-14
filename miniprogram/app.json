@@ -40,7 +40,8 @@
     "pages/merchantInfo/index",
     "pages/switchAddress/index",
     "pages/selectCity/index",
-    "pages/officialNews/index"
+    "pages/officialNews/index",
+    "pages/exchangeRecords/index"
   ],
   "tabBar": {
     "color":"#8a8a8a",

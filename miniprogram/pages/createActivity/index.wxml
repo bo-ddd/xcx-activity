@@ -89,25 +89,25 @@
                     <image src="../../images/icon-add_activit.png" mode="" class="icon-addprizes" bindtap="createModul"/>
                 </view>
     
-                <view class="prize-setting wrap mb-40" wx:for="{{prizeSettingList}}" wx:key="id">
-                    <view class="mr-30" bindtap="PrizeMap">
-                        <image src="{{prizeUrl}}" mode="" class="add-p" wx:if="{{prizeUrl}}"/>
-                        <image src="{{item.prizeMapIcon}}" mode="" class="add-p" wx:else/>
+                <view class="prize-setting wrap mb-40" wx:for="{{prizeSettingList}}" wx:key="index">
+                    <view class="mr-30" bindtap="PrizeMap"  data-index="{{index}}">
+                        <image src="{{item.prizeUrl}}" mode="" class="add-p" wx:if="{{item.prizeUrl}}"/>
+                        <image src="../../images/icon-add_p.png" mode="" class="add-p" wx:else/>
                         <view class="color-blue"> 更换图片
                         </view>
                     </view>
                     <view class="prize-right">
                         <view class="setting" >
-                            <view class="setting-lable">{{item.prizeName}} </view>
-                            <input type="text" class="prize-ipt" name="prizeName"/>
+                            <view class="setting-lable">奖品名称</view>
+                            <input type="text" class="prize-ipt" name="prizeName{{index}}"/>
                         </view>
                         <view class="setting">
-                            <view class="setting-lable">{{item.prizeNum}} </view>
-                            <input type="text" class="prize-ipt"  name="prizeNum"/>
+                            <view class="setting-lable">奖品数量</view>
+                            <input type="text" class="prize-ipt" name="prizeNum{{index}}"/>
                         </view>
                         <view class="setting">
-                            <view class="setting-lable">{{item.prizePeople}} </view>
-                            <input type="text" class="prize-ipt"  name="peopleNum"/>
+                            <view class="setting-lable">助力人数</view>
+                            <input type="text" class="prize-ipt"  name="peopleNum{{index}}"/>
                         </view>
                     </view>
                 </view>
