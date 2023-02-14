@@ -11,7 +11,7 @@
       "pages/createActivity/index",
     "pages/activityDetails/index",
     "pages/mineActivity/index",
-    "pages/updataActivities/index",                               
+    "pages/updateActivities/index",                               
     "pages/merchantSettlement/index",
     "pages/examineList/index",
     "pages/examineDetails/index",

@@ -80,6 +80,7 @@ App({
                 })
             })
         };
+
         //开启通信;
         this.openSocket = function () {
             //打开时的动作

@@ -14,14 +14,28 @@ exports.main = async (event, context) => {
 
     // 查询活动记录表（activityRecord）
     try {
-        let list = await db.collection('activity').where({
-            openId: wxContext.OPENID,
-            activityStatus: event.activityStatus
-        }).get();
+        let nowTime = Date.now();
+        await db.collection('activity').where({
+            activityStartTime: _.gt(nowTime)
+        }).update({
+            data: {
+                activityStatus: 1
+            }, success(res) {
+                console.log(res)
+            }
+        })
+        await db.collection('activity').where({
+            activityStartTime: _.gt(nowTime)
+        }).update({
+            data: {
+                activityStatus: 2
+            }, success(res) {
+                console.log(res)
+            }
+        })
         return {
             success: true,
             event,
-            list
         };
     } catch (e) {
         // 这里catch到的是该collection已经存在，从业务逻辑上来说是运行成功的，所以catch返回success给前端，避免工具在前端抛出异常
