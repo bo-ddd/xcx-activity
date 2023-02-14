@@ -5,7 +5,26 @@ Page({
      * 页面的初始数据
      */
     data: {
+        notice:[
+            {
+                icon:'../../images/icon-comment.png',
+                record:'点评记录',
+                time:'13:28',
+                content:' 您好，宝贝在19:30有一节私教课，请提前20分钟预习上课内容，检查上课设备，并准时进入教室!',
+                datails:'查看详情',
+                iconRight:'../../images/icon-arrow_list.png',
+            },          
+                {
+                    icon:'../../images/icon-record.png',
+                    record:'上课记录',
+                    time:'13:28',
+                    content:' 您好，宝贝在19:30有一节私教课，请提前20分钟预习上课内容，检查上课设备，并准时进入教室!',
+                    datails:'查看详情',
+                    iconRight:'../../images/icon-arrow_list.png',
+                }
 
+            ]
+        
     },
 
     /**

@@ -1,0 +1,13 @@
+<!--pages/exchangeRecords/index.wxml-->
+<view class="box">
+    <view class="Consignment">
+        <view class="oddnumbers">
+            <view class="number">
+                {{number}}
+            </view>
+            <view class="">
+                
+            </view>
+        </view>
+    </view>
+</view>
