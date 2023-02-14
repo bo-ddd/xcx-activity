@@ -4,7 +4,6 @@ const createActivity = require('./createActivity');
 const getList = require('./getList');
 const getActivityList = require('./getActivityList')
 const getActivityDetail = require('./getActivityDetail')
-const updateActivityStatus = require('./updateActivityStatus')
 const getParticipateStatus = require('./getParticipateStatus')
 const participateAactivities = require('./participateAactivities')
 const getParticipateList = require('./getParticipateList')
@@ -36,9 +35,6 @@ exports.main = async (event, context) => {
             break;
         case 'getActivityDetail':
             res.data = await getActivityDetail.main(event, context);
-            break;
-        case 'updateActivityStatus':
-            res.data = await updateActivityStatus.main(event, context);
             break;
         case 'getParticipateStatus':
             res.data = await getParticipateStatus.main(event, context);
