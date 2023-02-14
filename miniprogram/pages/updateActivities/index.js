@@ -6,7 +6,7 @@ Page({
      */
     data: {
         merchantId: '',
-        activityDetail:[],
+        activityDetail:{},
         dateDay: '2023-01-01',
         prizeSettingList: [
             {
