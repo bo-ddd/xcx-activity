@@ -17,12 +17,28 @@ App({
 
         this.globalData = {
             socketStatus: 'closed',
-            userInfo:''
+            userInfo:{}
         };
-        this.getUserInfo = function () {
-
+        //判断用户是否登录
+        this.queryUserInfo = function () {
+            return new Promise((resolve)=>{
+                wx.cloud.callFunction({
+                    name: 'user',
+                    data: {
+                        type: 'getUserInfo',
+                    }
+                }).then(res => {
+                    if ( res.result.data[0]) {
+                        this.globalData.userInfo= res.result.data[0];
+                        resolve(res);
+                    } else{ 
+                        wx.navigateTo({
+                            url: '/pages/login/index',
+                        })
+                    }
+                })
+            })
         };
-        let _this=this
         this.getUserProfile = function (desc) {
             return new Promise((resolve) => {
                 wx.getUserProfile({
@@ -64,6 +80,7 @@ App({
                 })
             })
         };
+
         //开启通信;
         this.openSocket = function () {
             //打开时的动作

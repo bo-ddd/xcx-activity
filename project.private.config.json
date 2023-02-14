@@ -191,15 +191,8 @@
                     "scene": null
                 },
                 {
-                    "name": "活动状态",
+                    "name": "发起的活动",
                     "pathName": "pages/launchActivities/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "课程通知",
-                    "pathName": "pages/officialNews/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

@@ -4,16 +4,17 @@
         <view class="nav-item  {{index==current?'text-selected current':''}}" wx:for="{{activityTypes}}" wx:key="id" bindtap="switchTab" data-id="{{index}}">
             {{item}}</view>
     </view>
-    <swiper class="activity-swiper" current="{{current}}">
+    <swiper class="activity-swiper" current="{{current}}" bindchange="bindchange">
         <swiper-item class="activity-item" wx:for="{{activityTypes}}" wx:key="id">
             <view style="background-image:url({{item.tempFileURL}})" class="actvity wrap-50r mt-24r" wx:for="{{activityList}}" wx:key="id">
                 <view class="flex-row">
                     <view class="duration">
-                        活动时间：<text class="time-start">{{item.activityStartTime}}</text>-<text class="time-end">{{item.activityEndTime}}</text>
+                        <text>活动时间：</text>
+                        <text class="time-start">{{item.activityStartTime}}</text>-<text class="time-end">{{item.activityEndTime}}</text>
                     </view>
                     <view class="entry">
                         <view class="btn-entry" bindtap="to" data-id="{{item._id}}">
-                            {{entryText}}
+                            {{item.participateStatus? '已参加':"去参加"}}
                         </view>
                     </view>
                 </view>

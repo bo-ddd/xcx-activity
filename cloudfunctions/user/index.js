@@ -3,6 +3,7 @@ const cloud = require('wx-server-sdk')
 const getMyActivityRecordList = require('./getMyActivityRecordList')
 const getUserInfo = require('./getUserInfo')
 const addUserInfo = require('./addUserInfo')
+const addUserHobby = require('./addUserHobby')
 cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 
 // 云函数入口函数
@@ -23,6 +24,9 @@ exports.main = async (event, context) => {
             return res;
         case 'addUserInfo':
             res.data = await addUserInfo.main(event, context); 
+            return res;
+        case 'addUserHobby':
+            res.data = await addUserHobby.main(event, context); 
             return res;
         default:
             res.status = 0;

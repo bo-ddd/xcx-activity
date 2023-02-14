@@ -5,6 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
+        userId: '',
+        detailId: [],
         riderCommentList: [{
             id: 1,
             selected: false,
@@ -38,7 +40,7 @@ Page({
             selected: false,
             title: '其他'
         }, {
-            id:9,
+            id: 9,
             selected: false,
             title: '其他'
         }, {
@@ -60,7 +62,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        this.getUserId()
     },
 
     /**
@@ -117,8 +119,64 @@ Page({
         this.setData({
             [string]: !this.data.riderCommentList[e.target.dataset.index].selected
         })
-        let detailValue = this.data.riderCommentList.filter(item => item.selected).map(item => item.id)
-        console.log(detailValue);
+        this.setData({
+            detailId: this.data.riderCommentList.filter(item => item.selected).map(item => item.id)
+        })
+        // console.log(detailId);
+    },
+    // 获取用户_id
+    getUserId(){
+        let _this = this
+        wx.cloud.callFunction({
+            name: 'user',
+            data: {
+                type: 'getUserInfo'
+            }, success(res) {
+                console.log(res.result.data[0]._id);
+                _this.setData({
+                    userId: res.result.data[0]._id
+                })
+            }
+        })
+    },
+    // 审核通过
+    pass() {
+        let _this = this
+        if (_this.data.detailId == '') {
+            wx.showModal({
+                title: '温馨提示',
+                content: '是否跳过选择？',
+                success(res) {
+                    if (res.confirm) {
+                        _this.addUserHobby()
+                        _this.toHome()
+                    } else if (res.cancel) {
+                        console.log('用户点击取消')
+                    }
+                }
+            })
+        } else {
+            _this.addUserHobby()
+            _this.toHome()
+        }
+    },
+    // 用户选择喜好
+    addUserHobby() {
+        wx.cloud.callFunction({
+            name: 'user',
+            data: {
+                type: 'addUserHobby',
+                hobby: this.data.detailId,
+                userId: this.data.userId
+            }, success(res) {
+                console.log(res);
+            }
+        })
+    },
+    // 用户选择喜好后跳转首页
+    toHome() {
+        wx.switchTab({
+            url: '/pages/home/index',
+        })
     }
-
 })

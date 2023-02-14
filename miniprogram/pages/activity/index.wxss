@@ -69,6 +69,8 @@
 .actvity .duration {
     font-size: 20rpx;
     color: white;
+    display: flex;
+    align-items: center;
 }
 
 .actvity .entry {
@@ -77,10 +79,11 @@
 }
 
 .actvity .btn-entry {
-    border: solid 1rpx white;
     display: inline-block;
-    padding: 4rpx 10rpx;
+    padding: 8rpx 16rpx;
+    box-sizing: border-box;
     font-size: 20rpx;
     border-radius: 20rpx;
     color: white;
+    background-color: red;
 }

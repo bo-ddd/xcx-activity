@@ -83,10 +83,12 @@ Page({
     },
     // 审核不通过
     refuse() {
+        let _this = this
         wx.showActionSheet({
             itemList: ['活动规则不符合', '商家标题涉嫌违规，请及时更改'],
             success(res) {
-                console.log(res.tapIndex)
+                _this.addExamineType(2)
+                _this.toExamineList()
             }
         })
     },
@@ -98,18 +100,28 @@ Page({
             content: '是否确认通过',
             success(res) {
                 if (res.confirm == true) {
-                    wx.cloud.callFunction({
-                        name: 'merchantInfo',
-                        data:{
-                            type:'updataMerchantInfo',
-                            merchantId:_this.data.merchantId
-                        }
-                    })
+                    _this.addExamineType(1)  
+                    _this.toExamineList()
                 }
-                // wx.navigateTo({
-                //     url: '/pages/examineList/index',
-                // })
             }
         })
     },
+    // 点击通过和拒绝后的操作
+    addExamineType(type){
+        let _this = this
+        wx.cloud.callFunction({
+            name: 'merchantInfo',
+            data: {
+                type: 'updataMerchantInfo',
+                merchantId: _this.data.merchantId,
+                examineType:type
+            }
+        })
+    },
+    //跳转审核列表页面
+    toExamineList(){
+        wx.navigateTo({
+            url: '/pages/examineList/index',
+        })
+    }
 })

@@ -11,12 +11,16 @@
   height: 48rpx;
   margin: 30rpx;
 }
+
 .outer-layer{
     height: 100vh;
-    background: url(https://img1.baidu.com/it/u=3585557138,620773340&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=749);
+    /* background: url(https://img1.baidu.com/it/u=3585557138,620773340&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=749); */
+    /* background-color:rgb(230, 68, 48); */
+     background: linear-gradient(to bottom,rgb(230, 68, 48),white);
     background-size: 100% 100%;
     overflow-y: scroll;
 }
+
 .register{
   display: flex;
   align-items: center;
@@ -29,9 +33,9 @@
 .register-userinfo{
   color: white;
   display: flex;
-  font-size: 40rpx;
+  font-size: 45rpx;
   font-weight: 700;
-  padding: 0 0 0 40rpx;
+  padding: 0 0 0 10rpx;
   background-color: unset;
 }
 .register-user image{
@@ -49,10 +53,21 @@
   align-items: center;
   justify-content: space-between;
   font-size: 30rpx ;
-  height: 80rpx;
-  background-image: linear-gradient(to right, rgb(233, 117, 9), rgb(216, 14, 41));
-  border-radius: 40rpx;
+  /* height: 70rpx; */
+  /* border: 1rpx solid red; */
+  border-radius: 20rpx;
+  position: relative;
 }
+
+/* 轮播图样式 */
+.container{
+    overflow: hidden;
+    border-radius: 20rpx;
+}
+.banner-images{
+    width: 700rpx;
+}
+
 .more{
   display: flex;
   align-items: center;
@@ -150,9 +165,6 @@ width: 250rpx;
   float: right;
   background-image: linear-gradient(to left, #E1C082, #C99A51);
 }
-.banner-images{
-    width: 100%;
-}
 
 .best-sellers-title{
   font-size: 40rpx;
@@ -172,7 +184,7 @@ width: 250rpx;
 }
 .best-sellers-item{
   width: 320rpx;
-  border-radius: 30rpx;
+  border-radius: 26rpx;
   background-color: white;
 }
 .best-sellers-need{
@@ -203,3 +215,106 @@ width: 250rpx;
   display: flex;
   align-items: center;
 }
+
+
+/* pages/pointsDetails/index.wxss */
+.scroll-wrapper {
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    height: 90rpx;
+    padding: 0 32rpx;
+    box-sizing: border-box;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+  }
+  
+  .navigate-item {
+    display: inline-block;
+    text-align: center;
+    height: 90rpx;
+    line-height: 90rpx;
+    margin: 0 16rpx;
+  }
+  
+  .names {
+    font-size: 28rpx;
+    color: #3c3c3c;
+  }
+  
+  .names.active {
+    color: white;
+    font-weight: bold;
+    font-size: 34rpx;
+  }
+  
+  .currtline {
+    margin: -8rpx auto 0 auto;
+    width: 100rpx;
+    height: 8rpx;
+    border-radius: 4rpx;
+  }
+  
+  .currtline.active {
+    background: white;
+    transition: all .3s;
+  }
+  
+  .minheight {
+    min-height: calc(100vh - 100rpx);
+  }
+  
+  .commodity-item{
+      width: 320rpx;
+      height: 500rpx;
+      background-color: white;
+      border-radius: 20rpx;
+  }
+  .commodity-content{
+      padding: 20rpx;
+  }
+  .commodity-logo{
+      width: 320rpx;
+      height: 300rpx;
+      border-radius: 20rpx 20rpx 0 0;
+  }
+  .commodity-price{
+    display: flex;
+    align-items: center;
+  }
+  .integral{
+      width: 50rpx;
+      height: 50rpx;
+  }
+  .commodity-describe{
+      font-weight: 700;
+  }
+  .exchange{
+      font-size: 22rpx;
+      margin: 10rpx 0;
+  }
+  .quantity{
+      color: red;
+  }
+.price{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15rpx;
+}
+.swiper-item{
+    height: calc(100vh - 100rpx);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10rpx;
+    justify-content: space-between;
+    overflow: scroll;
+}
+  
+
+/* .points-mall{
+    background-color: #EFEFEF;
+  } */

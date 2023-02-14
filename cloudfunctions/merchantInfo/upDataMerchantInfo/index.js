@@ -8,7 +8,7 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     await db.collection('merchantInfo').doc(event.merchantId).update({
         data: {
-            examineType: 1
+            examineType: event.examineType
         }
     })
     return {

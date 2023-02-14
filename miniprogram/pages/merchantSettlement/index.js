@@ -5,6 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        flag:true,
         radios: [
             { value: '1', name: '男' },
             { value: '0', name: '女' },
@@ -13,18 +14,18 @@ Page({
             DqOpenid: '',
             select: false,
             grade_name: '--请选择--',
-            grades:['电子产品','卫生用品','厨房用品','清洁洗护','美妆护肤','二次元','潮流女装','潮男穿搭','美食达人'],
+            grades: ['电子产品', '卫生用品', '厨房用品', '清洁洗护', '美妆护肤', '二次元', '潮流女装', '潮男穿搭', '美食达人'],
         },
         form: {
             merchantname: '',
-            merchantsex:0,
+            merchantsex: 0,
             merchantphone: '',
             storename: '',
-            storeaddress:'',
+            storeaddress: '',
             license: ''
         },
         // 选择的经验类别
-        storeclass:0,
+        storeclass: 0,
         // 上传的图片
         tempFilePath: '',
         // 上传图片的云ID
@@ -118,7 +119,7 @@ Page({
     formSubmit: function (e) {
         console.log(e);
         this.setData({
-            form : e.detail.value
+            form: e.detail.value
         })
         if (!this.data.form.merchantname) {
             wx.showToast({
@@ -128,17 +129,17 @@ Page({
             })
             return;
         } else {
-            //   this.toAuditStatus()
-
-            this.addMerchant()
+            this.throttle(()=>{
+                this.addMerchant()
+            })
         }
 
     },
-    // toAuditStatus() {
-    //     wx.navigateTo({
-    //         url: "/pages/auditStatus/index",
-    //     })
-    // },
+    toAuditStatus() {
+        wx.navigateTo({
+            url: "/pages/auditStatus/index",
+        })
+    },
     upload() {
         let _this = this
         wx.chooseMedia({
@@ -152,23 +153,14 @@ Page({
                 wx.cloud.uploadFile({
                     cloudPath: 'merchant/' + new Date().toLocaleString() + '.png',
                     filePath: tempFilePaths,
-                    config: {
-                        env: 'zliu-dev-4gclbljp64cb5cd3'
-                    }, //不可以这么写，这样写会造成线上环境出现重大问题
+                    // config: {
+                    //     env: 'zliu-dev-4gclbljp64cb5cd3'
+                    // }, //不可以这么写，这样写会造成线上环境出现重大问题
                     success(res) {
                         that.setData({
-                            fileId: res.fileID 
+                            fileId: res.fileID
                         })
-                        // wx.cloud.callFunction({
-                        //     name: 'getTempFileURL',
-                        //     data: {
-                        //         fileId: res.fileID
-                        //     }
-                        // }).then(res => {
-                        //     that.setData({
-                        //         fileId: res.result[0].tempFileURL
-                        //     })
-                        // })
+
                     }
                 })
             }
@@ -176,6 +168,7 @@ Page({
     },
     // 商家入驻的注册接口
     addMerchant() {
+        let _this = this
         wx.cloud.callFunction({
             name: 'merchantInfo',
             data: {
@@ -184,14 +177,33 @@ Page({
                 merchantPhone: this.data.form.merchantphone,
                 merchantSex: parseInt(this.data.form.merchantsex),
                 storeName: this.data.form.storename,
-                storeAddress:this.data.form.storeaddress,
+                storeAddress: this.data.form.storeaddress,
                 storeClass: this.data.storeclass,
                 license: this.data.fileId
             }, success(res) {
                 console.log(res);
-            }, error(err) {
-                console.log(err);
+                _this.toAuditStatus()
             }
         })
+    },
+    // 按钮的节流
+    throttle(callback) {
+        let _this = this
+            if (_this.data.flag) {
+                callback();
+                _this.setData({
+                    flag:false
+                })
+            } else {
+                console.log('别点啦');
+                return
+            }
+            setTimeout(() => {
+                console.log('我又适了')
+                _this.setData({
+                    flag:true
+                })
+            }, 2000)
+        
     }
 })

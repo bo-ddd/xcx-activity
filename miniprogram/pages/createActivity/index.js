@@ -37,7 +37,7 @@ Page({
             },
             {
                 value: 2,
-                name: '长期活动'
+                name: '日常活动'
             },
         ],
         fileId: '',
@@ -75,7 +75,7 @@ Page({
                 wx.cloud.uploadFile({
                     cloudPath: 'activity/' + new Date().toLocaleString() + '.png',
                     filePath: filePath,
-                }).then( async res => {
+                }).then(async res => {
                     let fileId = res.fileID;
                     let tempFileURL = await _this.getTempFileURL(fileId);
                     _this.setData({
@@ -183,7 +183,7 @@ Page({
                 activityType: parseInt(this.data.form.activityType),
                 activityForm: parseInt(this.data.form.activityForm),
                 fileId,
-                tempFileURL:this.data.tempFileURL,
+                tempFileURL: this.data.tempFileURL,
                 prizeUrl,
                 examineType: 0,
                 activityStatus: 0
@@ -193,7 +193,7 @@ Page({
                 console.log(res);
                 wx.navigateTo({
                     url: '/pages/launchActivities/index',
-                }).then(res=>{
+                }).then(res => {
                     wx.showToast({
                         title: '成功',
                         icon: 'success',
@@ -225,8 +225,8 @@ Page({
             console.log(this.data.form.storeName)
         })
     },
-   //把图片转成https格式
-    async getTempFileURL(fileId){
+    //把图片转成https格式
+    async getTempFileURL(fileId) {
         let tempFileURL = "";
         await wx.cloud.callFunction({
             name: 'getTempFileURL',
@@ -244,8 +244,14 @@ Page({
      */
     onLoad(options) {
         this.getStoreName()
+        // let date=new Date().getTime();
+        console.log(this.formatDate(1678874400000))
+        
 
     },
+      
+    
+
 
     /**
      * 生命周期函数--监听页面初次渲染完成
