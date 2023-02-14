@@ -1,12 +1,5 @@
 {
     "permissions": {
         "openapi": []
-    },
-    "triggers": [
-        {
-            "name": "updateActivityStatus",
-            "type": "timer",
-            "config": "*/5 * * * * * *"
-        }
-    ]
+    }
 }

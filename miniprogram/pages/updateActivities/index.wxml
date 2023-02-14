@@ -35,7 +35,7 @@
                     <picker mode="date" bind:change="dateChangestart" fields="day" name="activityStartTime">
                         <view>
                             <text class="chooseItem">请选择：</text>
-                            <text>{{ form.activityStartTime }}</text>
+                            <text>{{ activityStartTime }}</text>
                         </view>
                     </picker>
                 </view>
@@ -46,7 +46,7 @@
                 <view class="section date-section" hover-class="section-active">
                     <picker mode="date" bind:change="dateChangeEnd" fields="day" name="activityEndTime">
                         <view>
-                            <text class="chooseItem">请选择：</text>{{form.activityEndTime}}
+                            <text class="chooseItem">请选择：</text>{{activityEndTime}}
                         </view>
                     </picker>
                 </view>
@@ -58,7 +58,7 @@
                 <view class="lable">活动类型：</view>
                 <radio-group name="activityType" class="radio color-ccc">
                     <label wx:for="{{items1}}" wx:key="value">
-                        <radio value="{{item.value}}" style="transform: scale(0.7);" checked="{{item.checked}}"/>{{item.name}}
+                        <radio value="{{item.value}}" style="transform: scale(0.7);" checked="{{item.checked}}"/>{{activityDetail.activityType}}
                     </label>
                   
                 </radio-group>
@@ -69,7 +69,7 @@
                 <view class="lable">活动形式：</view>
                 <radio-group name="activityForm" class="radio color-ccc" >
                     <label wx:for="{{items}}" wx:key="value">
-                        <radio value="{{item.value}}" style="transform: scale(0.7);" checked="{{item.checked}}"/>{{item.name}}
+                        <radio value="{{item.value}}" style="transform: scale(0.7);" checked="{{item.checked}}"/>{{activityDetail.activityForm}}
                     </label>
                   
                 </radio-group>
@@ -78,7 +78,7 @@
             <view class="page-lable-rule">
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />
                 <view class="lable">活动规则：</view>
-                <textarea placeholder="请输入规则" name="textareaValue" class="textarea"></textarea>
+                <textarea placeholder="请输入规则" name="textareaValue" value="{{ activityDetail.textareaValue }}" class="textarea"></textarea>
             </view>
             <view class="page-prize wrap">
                 <view class="prize mb-20">
@@ -99,15 +99,15 @@
                     <view class="prize-right">
                         <view class="setting" >
                             <view class="setting-lable">{{item.prizeName}} </view>
-                            <input type="text" class="prize-ipt" name="prizeName"/>
+                            <input type="text" class="prize-ipt" value="{{ activityDetail.prizeName }}" name="prizeName"/>
                         </view>
                         <view class="setting">
                             <view class="setting-lable">{{item.prizeNum}} </view>
-                            <input type="text" class="prize-ipt"  name="prizeNum"/>
+                            <input type="text" class="prize-ipt" value="{{ activityDetail.prizeNum }}"  name="prizeNum"/>
                         </view>
                         <view class="setting">
                             <view class="setting-lable">{{item.prizePeople}} </view>
-                            <input type="text" class="prize-ipt"  name="peopleNum"/>
+                            <input type="text" class="prize-ipt" value="{{ activityDetail.peopleNum }}"  name="peopleNum"/>
                         </view>
                     </view>
                 </view>
