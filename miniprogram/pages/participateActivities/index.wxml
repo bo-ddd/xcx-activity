@@ -8,24 +8,24 @@
     <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
         <swiper-item class="swiper-item">
             <view class='swiper-con wrap'>
-                <view class="actvity wrap-60r" wx:for="{{endActivityList}}" wx:key="id">
-                 <image src="{{item.imgUrl}}" mode="" class="activity-bg"/>
+                <view class="actvity wrap-60r" wx:for="{{ notStartedActivityList }}" wx:key="_id">
+                 <image src="{{item.fileId}}" class="activity-bg"/>
                         <view class="update-btn fs-35"  bindtap="updataTo">查看详情</view>
                 </view>
             </view>
         </swiper-item>
         <swiper-item class="swiper-item">
             <view class='swiper-con wrap'>
-                <view class="actvity wrap-60r" wx:for="{{endActivityList}}" wx:key="id">
-                 <image src="{{item.imgUrl}}" mode="" class="activity-bg"/>
+                <view class="actvity wrap-60r" wx:for="{{waitActivityList}}" wx:key="_id">
+                 <image src="{{item.fileId}}" mode="" class="activity-bg"/>
                         <view class="update-btn fs-35"  bindtap="updataTo">查看详情</view>
                 </view>
             </view>
         </swiper-item>
         <swiper-item class="swiper-item">
             <view class='swiper-con wrap'>
-                <view class="actvity wrap-60r" wx:for="{{endActivityList}}" wx:key="id">
-                 <image src="{{item.imgUrl}}" mode="" class="activity-bg"/>
+                <view class="actvity wrap-60r" wx:for="{{endActivityList}}" wx:key="_id">
+                 <image src="{{item.fileId}}" mode="" class="activity-bg"/>
                         <view class="update-btn fs-35"  bindtap="updataTo">查看详情</view>
                 </view>
             </view>
