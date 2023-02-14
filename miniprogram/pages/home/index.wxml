@@ -95,24 +95,22 @@
 </scroll-view>
 
 
-<swiper class="wrap minheight" indicator-dots="{{false}}" bindchange="handleSwiper" current="{{currentTab}}">
+<swiper class="wrap minheight" indicator-dots="{{false}}"  current="{{currentTab}}" bindchange="bindchange">
 	<block>
-			<swiper-item wx:for="{{ goodsList }}" wx:key="idx" bindtap="navTab">
-				<scroll-view class="swiper-item" scroll-y refresher-enabled refresher-background="#F6F7F8" refresher-triggered="{{isRefresh}}" enable-flex="true"  bindrefresherrefresh="refresherpulling" bindscrolltolower="handleTolower" style="overflow: scroll; ">
-
-
-                    <view class="commodity-item mt-30">
-                        <image class="commodity-logo" src="../../images/iphone.png" mode=""/>
+			<swiper-item wx:for="{{ goodsList }}" wx:key="idx" >
+				<scroll-view class="swiper-item" scroll-y enable-flex="true"  style="overflow: scroll; ">
+                    <view class="commodity-item mt-30" wx:for="{{ hotGoods }}" wx:key="index"bindtap="navTab">
+                        <image class="commodity-logo" src="{{item.goodsUrl}}" mode=""/>
                         <view class="commodity-content">
                             <view class="commodity-describe">{{ myItem.title }}</view>
-                            <view class="exchange">已有69人兑换</view>
+                            <view class="exchange">{{item.goodsTitle}}</view>
                             <view class="price">
                                 <view class="commodity-price">
                                 <view class="integral-logo">
                                     <image class="integral" src="../../images/icon-integral.png" mode=""/>
                                 </view>
                                 <view class="quantity">
-                                    0积分
+                                    {{item.price}}积分
                                 </view>
                             </view>
                             <view class="discount">
