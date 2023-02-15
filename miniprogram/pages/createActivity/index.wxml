@@ -103,11 +103,11 @@
                         </view>
                         <view class="setting">
                             <view class="setting-lable">奖品数量</view>
-                            <input type="text" class="prize-ipt" name="prizeNum{{index}}"/>
+                            <input type="number" class="prize-ipt" name="prizeNum{{index}}"/>
                         </view>
                         <view class="setting">
                             <view class="setting-lable">助力人数</view>
-                            <input type="text" class="prize-ipt"  name="peopleNum{{index}}"/>
+                            <input type="number" class="prize-ipt"  name="peopleNum{{index}}"/>
                         </view>
                     </view>
                 </view>

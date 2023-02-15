@@ -4,10 +4,12 @@ const createActivity = require('./createActivity');
 const getList = require('./getList');
 const getActivityList = require('./getActivityList')
 const getActivityDetail = require('./getActivityDetail')
+// const updateActivity = require('./updateActivity')
 const getParticipateStatus = require('./getParticipateStatus')
 const participateAactivities = require('./participateAactivities')
 const getParticipateList = require('./getParticipateList')
-
+const getParticipateNum = require('./getParticipateNum')
+const getParticipateListByUserId =require('./getParticipateListByUserId')
 cloud.init({
     env: cloud.DYNAMIC_CURRENT_ENV
 }) // 使用当前云环境
@@ -44,6 +46,12 @@ exports.main = async (event, context) => {
             break;
         case 'getParticipateList':
             res.data = await getParticipateList.main(event, context);
+            break;
+        case 'getParticipateNum':
+            res.data = await getParticipateNum.main(event, context);
+            break;
+            case 'getParticipateListByUserId':
+            res.data = await getParticipateListByUserId.main(event, context);
             break;
         default:
             res.status = 0;

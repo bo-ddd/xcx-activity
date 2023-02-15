@@ -25,7 +25,14 @@
     <view class="container mt-24r">
         <image class="img-ad" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/image-ad.png?sign=d561a682349db72fb1ae780b7c8a881a&t=1675842267" mode="" />
     </view>
-    <view class="count-down mt-24r">
+    <view class="count-down mt-24r" wx:if="{{activityStatus==0}}">
+        <text>距离活动开始：</text>
+        <text class="upHide1">{{day}}</text>天
+        <text class="upHide2">{{hour}}</text>时
+        <text class="upHide3">{{minute}}</text>分
+        <text class="upHide4">{{second}}</text>秒
+    </view>
+    <view class="count-down mt-24r" wx:if="{{activityStatus==1}}">
         <text>距离活动结束：</text>
         <text class="upHide1">{{day}}</text>天
         <text class="upHide2">{{hour}}</text>时
@@ -37,28 +44,26 @@
         <view class="flex">
             <image class="icon-switch_left" bindtap="switchPrev" src="../../images/icon-switch_01.png" mode="" />
             <swiper class="swiper" current="{{currentStage}}" duration="{{duration}}">
-                <block wx:for="{{activityStageList}}" wx:key="id">
-                    <swiper-item>
+                    <swiper-item wx:for="{{prizeList}}" wx:key="index">
                         <view class="center">
                             <view class="prize">
                                 <view class="mask-prize" wx:if="{{ongoingStage!=index}}"></view>
-                                <text class="title-prize">{{ongoingStage==index? '本阶段奖品':ongoingStage>index? '已开奖':'待解锁阶段'}}</text>
+                                <text class="title-prize">{{ongoingStage==index? '本阶段奖品':ongoingStage>index? '奖品已升级':'待解锁阶段'}}</text>
                                 <image class="img-prize" src="{{item.prizeUrl}}"></image>
                             </view>
                             <view class="tip-activity mt-24r">{{ongoingStage==index? '距离升级奖品只差一点点呦！':ongoingStage>index? '当前阶段已结束':'完成上一阶段后升级奖励'}}</view>
                             <view class="mt-20r">
                                 <view class="progress">
-                                    <view class="round-left">{{item.startNumber}}</view>
+                                    <view class="round-left">{{activityHelpNumberList[index].startNumber}}</view>
                                     <view class="bar-progress">
-                                        <view class="value">{{ongoingStage==index? progressValue:ongoingStage>index? '100%':'0%'}}</view>
-                                        <view class="line-inner" style="width:{{ongoingStage==index? progressValue:ongoingStage>index? '100%':'0%'}};"></view>
+                                        <view class="value">{{ongoingStage==index? activityProgress:ongoingStage>index? '100%':'0%'}}</view>
+                                        <view class="line-inner" style="width:{{ongoingStage==index? activityProgress:ongoingStage>index? '100%':'0%'}};"></view>
                                     </view>
-                                    <view class="round-right">{{item.endNumber}}</view>
+                                    <view class="round-right">{{activityHelpNumberList[index].endNumber}}</view>
                                 </view>
                             </view>
                         </view>
                     </swiper-item>
-                </block>
             </swiper>
             <image class="icon-switch_right" src="../../images/icon-switch_02.png" mode="" bindtap="switchNext" />
         </view>
