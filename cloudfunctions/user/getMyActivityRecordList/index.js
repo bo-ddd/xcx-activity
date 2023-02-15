@@ -11,12 +11,6 @@ const db = cloud.database();
 exports.main = async (event, context) => {
     // 获取微信云的上下文  content(ctx): 上下文中包含了 当前调用接口的 openid， appid等相关的信息参数；
     const wxContext = cloud.getWXContext();
-
-
-    // 查询活动记录表（activityRecord），根据用户的openid来查；
-    // return await db.collection("activityRecord").where({
-    //    _id: '3d96233763dcd5cd0005065c1094cb00'
-    // }).get();
     
     // 查询活动记录表（activityRecord）
     return await db.collection("activityRecord").get();

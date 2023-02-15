@@ -1,26 +1,32 @@
 <!--pages/productDetails/index.wxml-->
-<view class="detail-outer-layer">
-<view> 
-    
-
-    <image class="bg-details" src="{{ item.images }}" mode=""/>
-
+<view class="detail-outer-layer" wx:for="{{productDetails}}" wx:key="_id">
+<view>   
+<view  class="bd-redius">  
+    <image class="bg-details" src="{{item.goodsUrl}}" mode=""/>
+</view>
     <view class="product-details">
-        <view class="commodity-price">
-            ￥{{ item.integral }}
-        </view> 
-        
-        <view class="trade-name mt-30">
-            {{ item.title }}
+        <view class="commodity">
+        <view class="commodity-price">           
+            {{ item.price }}积分
         </view>
- 
-        <view class="product-introduction mt-30">
-           {{ item.content }}
+        <view class="collection">
+            <image class="collection-image" src="../../images/icon-collection.png" mode=""/>
+            <text class="collection-text">收藏</text>
+        </view>
+        </view> 
+        <view class="trade-name">
+              {{item.goodsTitle}}
+        </view>
+        <view class="product-introduction mt-10">
+        {{item.goodsContent}}
+        </view>
+        <view class="item-color mt-30">
+            颜 色
         </view>
 
         <view class="address mt-30">
             <view class="address-laber">
-                自提地址
+                配 送
             </view>
             <view class="information ml-40">
                 埃斯库的hi跨世纪都i啊建瓯市asdasdkjhasjkdhaksjdhakjsh
@@ -36,7 +42,7 @@
 
 <view class="footer">
 
-<view class="buy">
-        提交订单
+<view class="buy"  bindtap="to">
+        兑换商品
 </view> 
 </view>

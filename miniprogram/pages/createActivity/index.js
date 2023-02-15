@@ -42,23 +42,19 @@ Page({
         ],
         fileId: '',
         tempFileURL: '',
-        prizeUrl: '',
         item: {
-
-            id: 1,
-            prizeMapIcon: '../../images/icon-add_p.png',
-            prizeName: '奖品名称',
-            prizeNum: '奖品数量',
-            prizePeople: '助力人数'
-
+            prizeUrl: '',
+            prizeName: '',
+            prizeNum: '',
+            peopleNum: ''
         },
         prizeSettingList: [{
-            id: 1,
-            prizeMapIcon: '../../images/icon-add_p.png',
-            prizeName: '奖品名称',
-            prizeNum: '奖品数量',
-            prizePeople: '助力人数'
-        }, ]
+            prizeUrl: '',
+            prizeName: '',
+            prizeNum: '',
+            peopleNum: ''
+        }],
+        prizeList: []
     },
     //点击上传活动图
     upload() {
@@ -78,6 +74,7 @@ Page({
                 }).then(async res => {
                     let fileId = res.fileID;
                     let tempFileURL = await _this.getTempFileURL(fileId);
+                    console.log(tempFileURL)
                     _this.setData({
                         fileId,
                         tempFileURL
@@ -93,7 +90,6 @@ Page({
         this.setData({
             ['form.activityStartTime']: e.detail.value
         });
-        console.log(this.data.form.activityStartTime)
     },
     //结束时间
     dateChangeEnd(e) {
@@ -103,8 +99,9 @@ Page({
         });
     },
     //奖品图
-    PrizeMap() {
+    PrizeMap(e) {
         let _this = this;
+        let index = e.currentTarget.dataset.index;
         //唤起图片权限
         wx.chooseMedia({
             count: 1,
@@ -112,16 +109,16 @@ Page({
             sourceType: ['album', 'camera'],
             success(res) {
                 //本地地址
-                const prizeUrl1 = res.tempFiles[0].tempFilePath;
-                console.log(prizeUrl1);
+                const prizeUrl = res.tempFiles[0].tempFilePath;
+
                 // 调用云函数，把图片存到服务器中；
                 //上传图片
                 wx.cloud.uploadFile({
                     cloudPath: 'activity/' + new Date().toLocaleString() + '.png',
-                    filePath: prizeUrl1,
+                    filePath: prizeUrl,
                     success(res) {
                         _this.setData({
-                            prizeUrl: res.fileID
+                            [`prizeSettingList[${index}].prizeUrl`]: res.fileID
                         })
                     }
                 })
@@ -132,7 +129,7 @@ Page({
     //校验
     validateForm() {
         let form = this.data.form;
-        if (!this.data.fileId || !this.data.prizeUrl) {
+        if (!this.data.fileId) {
             wx.showToast({
                 title: '请填写完整信息',
                 icon: 'error',
@@ -151,23 +148,31 @@ Page({
                 }
             }
         }
-        this.createActivity()
-
+        return true
     },
     //点击确定创建
     formSubmit(e) {
-        console.log(e.detail.value);
         this.setData({
             form: e.detail.value
         })
-        this.validateForm()
+        this.getPrizeSettingList();
+        if (this.validateForm()) this.createActivity();
+    },
+
+    getPrizeSettingList() {
+        let prizeSettingList = this.data.prizeSettingList;
+        let form = this.data.form;
+        prizeSettingList.forEach((item, index) => {
+                item.prizeName = form[`prizeName${index}`],
+                item.prizeNum = form[`prizeNum${index}`],
+                item.peopleNum = form[`peopleNum${index}`]
+        })
     },
 
 
     //创建活动
     createActivity() {
         let fileId = this.data.fileId;
-        let prizeUrl = this.data.prizeUrl;
         wx.cloud.callFunction({
             name: 'activity',
             data: {
@@ -177,20 +182,15 @@ Page({
                 activityStartTime: this.data.form.activityStartTime,
                 activityEndTime: this.data.form.activityEndTime,
                 textareaValue: this.data.form.textareaValue,
-                prizeName: this.data.form.prizeName,
-                prizeNum: this.data.form.prizeNum,
-                peopleNum: this.data.form.peopleNum,
                 activityType: parseInt(this.data.form.activityType),
                 activityForm: parseInt(this.data.form.activityForm),
                 fileId,
                 tempFileURL: this.data.tempFileURL,
-                prizeUrl,
                 examineType: 0,
-                activityStatus: 0
+                activityStatus: 0,
+                prizeSettingList: this.data.prizeSettingList
             },
             success(res) {
-                console.log('创建完成')
-                console.log(res);
                 wx.navigateTo({
                     url: '/pages/launchActivities/index',
                 }).then(res => {
@@ -205,7 +205,7 @@ Page({
     },
     //新增活动模块
     createModul() {
-        this.data.prizeSettingList.push(this.data.item)
+        this.data.prizeSettingList.push(JSON.parse(JSON.stringify(this.data.item)))
         this.setData({
             prizeSettingList: this.data.prizeSettingList
         })
@@ -218,23 +218,20 @@ Page({
                 type: 'getMerchantInfo',
             }
         }).then(res => {
-            console.log(res);
             this.setData({
                 ['form.storeName']: res.result.data[0].merchantName
             })
-            console.log(this.data.form.storeName)
         })
     },
     //把图片转成https格式
-    async getTempFileURL(fileId) {
+    getTempFileURL(fileId) {
         let tempFileURL = "";
-        await wx.cloud.callFunction({
+        wx.cloud.callFunction({
             name: 'getTempFileURL',
             data: {
                 fileId
             }
         }).then(res => {
-            console.log(res)
             tempFileURL = res.result[0].tempFileURL
         })
         return tempFileURL
@@ -244,13 +241,11 @@ Page({
      */
     onLoad(options) {
         this.getStoreName()
-        // let date=new Date().getTime();
-        console.log(this.formatDate(1678874400000))
-        
+
 
     },
-      
-    
+
+
 
 
     /**
