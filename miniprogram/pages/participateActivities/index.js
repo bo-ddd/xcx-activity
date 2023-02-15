@@ -43,6 +43,7 @@ Page({
                 let list = res.result.data.list
                 let participateActivities = [];
                 list.forEach(item => {
+                    console.log(item);
                     participateActivities.push(item.userParticipatingList[0])
                 });
                 _this.setData({
@@ -67,6 +68,10 @@ Page({
     },
     toDetail(e){
         console.log(e);
+        //传入活动id跳转到对应活动页
+        wx.navigateTo({
+          url: '/pages/activityDetails/index?_id='+e.currentTarget.dataset.id,
+        })
     },
     /**
      * 生命周期函数--监听页面加载
