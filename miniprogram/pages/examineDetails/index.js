@@ -16,7 +16,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options);
+        // let app = getApp()
+        // app.showLoading()
         let _this = this
         wx.cloud.callFunction({
             name: 'activity',

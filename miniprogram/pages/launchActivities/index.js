@@ -19,8 +19,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options);
         this.getActivityList()
+        // let app = getApp()
+        // app.showLoading()
     },
 
     //点击切换，改变滑块index值
