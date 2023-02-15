@@ -16,7 +16,8 @@
 .tip {
     color: #ccc;
 }
-.hobby-class{
+
+.hobby-class {
     height: 800rpx;
     display: flex;
     flex-direction: column;
@@ -27,7 +28,7 @@
 }
 
 
-.btn{
+.btn {
     height: 50rpx;
     width: 80%;
     font-size: 24rpx;
@@ -40,16 +41,21 @@
     text-align: center;
 }
 
-.btn-selected{
+.btn-selected {
     border: 1px solid #FF7C80;
     color: #F73C41;
     background: #FFFFFF;
 }
-.confirm{
+
+.confirm {
     text-align: center;
+    display: flex;
+    justify-content: space-around;
+
 }
+
 .pass {
-    width: 80%;
+    width: 200rpx;
     display: inline-block;
     color: #fff;
     font-weight: bold;
@@ -57,4 +63,15 @@
     border-radius: 30rpx;
     text-align: center;
     background: linear-gradient(to right bottom, rgb(243, 211, 211), #e45e4c);
+}
+
+.skip {
+    width: 200rpx;
+    display: inline-block;
+    color: red;
+    font-weight: bold;
+    padding: 15rpx 30rpx;
+    border-radius: 30rpx;
+    text-align: center;
+    border: 1rpx solid red;
 }

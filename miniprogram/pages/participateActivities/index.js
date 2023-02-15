@@ -10,6 +10,7 @@ Page({
         waitActivityList: [],
         endActivityList: [],
         participateActivityList: [],
+        loaded: false
     },
 
     bindchange: function (e) {
@@ -30,50 +31,73 @@ Page({
             })
         }
     },
-    //获取参与活动列表
-    getParticipateActivities() {
-        let _this = this;
-        // let currentData = this.data.currentData
-        wx.cloud.callFunction({
-            name: 'activity',
-            data: {
-                type: 'getParticipateList',
-            },
-        }).then(async res=>{
-                let list = res.result.data.list
-                let participateActivities = [];
-                list.forEach(item => {
-                    participateActivities.push(item.userParticipatingList[0])
-                });
-                _this.setData({
-                    participateActivityList: participateActivities
-                })
-                console.log(_this.data.participateActivityList);
-               await _this.participateState()
+
+    getParticipateListApi() {
+        return new Promise((resolve, reject) => {
+            // let currentData = this.data.currentData
+            wx.cloud.callFunction({
+                name: 'activity',
+                data: {
+                    type: 'getParticipateList',
+                },
+            }).then(async res => {
+                resolve(res);
+            })
         })
     },
-    //参与的活动状态
-    participateState(){
-       let notStartedActivity= this.data.participateActivityList.filter(item=>item.activityStatus==0)
-       let waitActivity= this.data.participateActivityList.filter(item=>item.activityStatus==1)
-       let endActivity= this.data.participateActivityList.filter(item=>item.activityStatus==2)
-       console.log(notStartedActivity);
-       console.log(waitActivity);
-       this.setData({
-        notStartedActivityList:notStartedActivity,
-        waitActivityList:waitActivity,
-        endActivityList:endActivity,
-       })
+
+    //获取参与活动列表
+    async getParticipateActivities() {
+        let _this = this;
+        let res = await this.getParticipateListApi();
+        let list = res.result.data.list
+        let participateActivities = [];
+        list.forEach(item => {
+            console.log(item);
+            participateActivities.push(item.userParticipatingList[0])
+        });
+        _this.setData({
+            participateActivityList: participateActivities
+        })
+        console.log(_this.data.participateActivityList);
+        await _this.participateState()
     },
-    toDetail(e){
+    //参与的活动状态
+    participateState() {
+        let notStartedActivity = this.data.participateActivityList.filter(item => item.activityStatus == 0)
+        let waitActivity = this.data.participateActivityList.filter(item => item.activityStatus == 1)
+        let endActivity = this.data.participateActivityList.filter(item => item.activityStatus == 2)
+        console.log(notStartedActivity);
+        console.log(waitActivity);
+        this.setData({
+            notStartedActivityList: notStartedActivity,
+            waitActivityList: waitActivity,
+            endActivityList: endActivity,
+        })
+    },
+    toDetail(e) {
         console.log(e);
+        //传入活动id跳转到对应活动页
+        wx.navigateTo({
+            url: '/pages/activityDetails/index?_id=' + e.currentTarget.dataset.id,
+        })
     },
     /**
      * 生命周期函数--监听页面加载
      */
-   onLoad(options) {
+    async onLoad(options) {
+        ///首屏优化
         //获取参与活动列表。拿到有活动id。连表查询该活动的所有信息
-     this.getParticipateActivities()
+        wx.showLoading({
+            title: '加载中...',
+        })
+        await this.getParticipateActivities();
+
+        wx.hideLoading();
+
+        this.setData({
+            loaded: true
+        })
     },
 
     /**

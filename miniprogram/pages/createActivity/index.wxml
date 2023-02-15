@@ -9,7 +9,9 @@
         <view class="add fs-28">
                 <view class="page-poster">
                     <image src="../../images/icon-red.png" mode="" class="icon-min" />
-                    <view class="lable">活动图片：</view>
+                    <view class="pic-lable"> 活动图片：<text class="color-cc">(用户如果不传，则显示平台默认图片)</text>
+                    
+                    </view>
                 </view>
                
                 <view class="poster" bindtap="upload">
@@ -25,14 +27,14 @@
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />
     
                 <view class="lable">活动标题：</view>
-                <input class="input" name="titleValue" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx"/>
+                <input class="input" name="titleValue" maxlength="20" placeholder="这是一个输入框" placeholder-style="color:#a7a7a7;font-size:23rpx"/>
             </view>
             <view class="page-lable">
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />
     
                 <view class="lable">开始日期：</view>
                 <view class="section date-section" hover-class="section-active">
-                    <picker mode="date" bind:change="dateChangestart" fields="day" name="activityStartTime">
+                    <picker mode="date" bind:change="dateChangestart" value="{{form.activityStartTime}}" fields="day" name="activityStartTime">
                         <view>
                             <text class="chooseItem">请选择：</text>
                             <text>{{ form.activityStartTime }}</text>
@@ -66,7 +68,7 @@
             <view class="page-lable">
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />
     
-                <view class="lable">活动形式：</view>
+                <view class="lable">活动玩法：</view>
                 <radio-group name="activityForm" class="radio color-ccc" >
                     <label wx:for="{{items}}" wx:key="value">
                         <radio value="{{item.value}}" style="transform: scale(0.7);" checked="{{item.checked}}"/>{{item.name}}
@@ -90,7 +92,7 @@
                 </view>
     
                 <view class="prize-setting wrap mb-40" wx:for="{{prizeSettingList}}" wx:key="index">
-                    <view class="mr-30" bindtap="PrizeMap"  data-index="{{index}}">
+                    <view class="mr-30" bindtap="prizeMap"  data-index="{{index}}">
                         <image src="{{item.prizeUrl}}" mode="" class="add-p" wx:if="{{item.prizeUrl}}"/>
                         <image src="../../images/icon-add_p.png" mode="" class="add-p" wx:else/>
                         <view class="color-blue"> 更换图片
@@ -99,22 +101,26 @@
                     <view class="prize-right">
                         <view class="setting" >
                             <view class="setting-lable">奖品名称</view>
-                            <input type="text" class="prize-ipt" name="prizeName{{index}}"/>
+                            <input type="text" class="prize-ipt" placeholder='请设置奖品名称' placeholder-style="color:#a7a7a7;font-size:23rpx" name="prizeName{{index}}"/>
                         </view>
                         <view class="setting">
                             <view class="setting-lable">奖品数量</view>
-                            <input type="number" class="prize-ipt" name="prizeNum{{index}}"/>
+                            <input type="number" class="prize-ipt" placeholder='1' placeholder-style="color:#a7a7a7;font-size:23rpx" name="prizeNum{{index}}"/>
                         </view>
                         <view class="setting">
                             <view class="setting-lable">助力人数</view>
-                            <input type="number" class="prize-ipt"  name="peopleNum{{index}}"/>
+                            <input type="number" class="prize-ipt" placeholder='请设置助力人数' placeholder-style="color:#a7a7a7;font-size:23rpx"  name="peopleNum{{index}}"/>
                         </view>
                     </view>
                 </view>
     
             </view>
         </view>
-        <button type="warn" plain="true" class="btn" formType="submit" >创建活动</button>
+        <view class="btn-box">
+        <button type="warn" class="template-btn" plain="false">保存模板</button>
+        <button type="warn" class="btn" formType="submit" plain="false">创建活动</button>
+        
+        </view>
     </form>
 </view>
 </view>

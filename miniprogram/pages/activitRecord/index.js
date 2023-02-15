@@ -13,7 +13,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        this.showLoading();
+        // let app=getApp()
+        // app.showLoading()
         this.getActivityRecordList();
     },
 
@@ -31,16 +32,6 @@ Page({
         })
     },
 
-    //前几秒白屏
-    showLoading(){
-        wx.showLoading({
-            title: '加载中',
-          })
-          
-          setTimeout(function () {
-            wx.hideLoading()
-          }, 500)
-    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

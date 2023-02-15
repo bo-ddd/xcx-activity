@@ -6,39 +6,27 @@ Page({
      */
     data: {
         currentIndex: 0, //tab默认项
-        activityList: [],
         merchantList: [],
-        grades: ['电子产品', '卫生用品', '厨房用品', '清洁洗护', '美妆护肤', '二次元', '潮流女装', '潮男穿搭', '美食达人']
+        grades: ['电子产品', '卫生用品', '厨房用品', '清洁洗护', '美妆护肤', '二次元', '潮流女装', '潮男穿搭', '美食达人'],
+        merchantStatus: ['商铺审核列表', '商铺列表']
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        // let app = getApp()
+        // app.showLoading()
         this.showLoading()
-        this.getgetMerchantList()
-        // 获取活动列表
-        // wx.cloud.callFunction({
-        //     name: 'activity',
-        //     data: {
-        //         type: 'getActivityList'
-        //     },
-        //     success(res) {
-        //         console.log(res);
-        //         _this.setData({
-        //             activityList: res.result.data.list.data
-        //         })
-        //     }
-        // })
-
-
+        this.getMerchantList()
     },
     // 获取商铺列表
-    getgetMerchantList() {
+    getMerchantList() {
         let _this = this
         wx.cloud.callFunction({
             name: 'merchantInfo',
             data: {
+                currentTarget: Number(this.data.currentIndex),
                 type: 'getMerchantList'
             },
             success(res) {
@@ -120,22 +108,31 @@ Page({
         }, 500)
     },
     // tab切换
-    pagechange(e) {
-        // 通过touch判断，改变tab的下标值
-        if ("touch" === e.detail.source) {
-            let currentPageIndex = this.data.currentIndex;
-            currentPageIndex = (currentPageIndex + 1) % 2;
-            // 拿到当前索引并动态改变
-            this.setData({
-                currentIndex: currentPageIndex,
-            })
-        }
-    },
-    titleClick: function (e) {
+    // pagechange(e) {
+    //     // 通过touch判断，改变tab的下标值
+    //     console.log(e);
+    //     if ("touch" === e.detail.source) {
+    //         let currentPageIndex = this.data.currentIndex;
+    //         currentPageIndex = (currentPageIndex + 1) % 2;
+    //         // 拿到当前索引并动态改变
+    //         this.setData({
+    //             currentIndex: currentPageIndex,
+    //         })
+    //     }
+    // },
+    titleClick(e) {
+        console.log(e);
         this.setData({
             //拿到当前索引并动态改变
             currentIndex: e.currentTarget.dataset.idx
         })
-    }
-
+        this.getMerchantList()
+    },
+    // 滑动改变滑块index值
+    bindchange(e) {
+        this.setData({
+            currentIndex: e.detail.current
+        })
+        this.getMerchantList()
+    },
 })

@@ -12,6 +12,7 @@ exports.main = async (event, context) => {
     try {
         console.log('----------------我是连表查询---------')
         console.log(openid);
+        ///根据我参与的活动id ，对照所有活动id 查询到我参与的活动所有数据
        const res=await db.collection('participatingActivitieList').aggregate()
         .lookup({
           from: 'activity',//被关联的表

@@ -1,5 +1,5 @@
 <!--pages/participateActivities/index.wxml-->
-<view class="launch-activities">
+<view class="launch-activities" wx:if="{{ loaded }}">
     <view class='top-tab_swiper'>
         <view class='tab  {{currentData == 0 ? "tab-borer" : ""}}' data-current="0" bindtap='checkCurrent'>未开始</view>
         <view class='tab  {{currentData == 1 ? "tab-borer" : ""}}' data-current="1" bindtap='checkCurrent'>待开奖</view>

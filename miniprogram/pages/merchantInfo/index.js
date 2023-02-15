@@ -14,7 +14,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log(options);
+        // let app = getApp()
+        // app.showLoading()
         this.setData({
             merchantId: options.id
         })
@@ -100,26 +101,26 @@ Page({
             content: '是否确认通过',
             success(res) {
                 if (res.confirm == true) {
-                    _this.addExamineType(1)  
+                    _this.addExamineType(1)
                     _this.toExamineList()
                 }
             }
         })
     },
     // 点击通过和拒绝后的操作
-    addExamineType(type){
+    addExamineType(type) {
         let _this = this
         wx.cloud.callFunction({
             name: 'merchantInfo',
             data: {
                 type: 'updataMerchantInfo',
                 merchantId: _this.data.merchantId,
-                examineType:type
+                examineType: type
             }
         })
     },
     //跳转审核列表页面
-    toExamineList(){
+    toExamineList() {
         wx.navigateTo({
             url: '/pages/examineList/index',
         })

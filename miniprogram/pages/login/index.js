@@ -35,7 +35,7 @@ Page({
                         nickName: userInfo.nickName,
                     })
                     // I添加用户信息
-                    this.addUserInfoApi();
+                    await this.addUserInfoApi();
                 }
                 wx.navigateBack({
                     delta: 1
@@ -61,17 +61,20 @@ Page({
         console.log(res.result.data)
         return res.result.data[0]
     },
-    addUserInfoApi() {
+    async addUserInfoApi() {
         console.log('添加')
-        wx.cloud.callFunction({
-            name: 'user',
-            data: {
-                type: 'addUserInfo',
-                avatarUrl:this.data.avatarUrl,
-                nickName:this.data.nickName,
-            }
-        }).then(res => {
-            console.log(res);
+        return new Promise((resolve, reject)=>{
+            wx.cloud.callFunction({
+                name: 'user',
+                data: {
+                    type: 'addUserInfo',
+                    avatarUrl:this.data.avatarUrl,
+                    nickName:this.data.nickName,
+                }
+            }).then(res => {
+                console.log(res);
+                resolve(res);
+            })
         })
 
     },

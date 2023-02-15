@@ -16,12 +16,11 @@
 
 .activity-bg {
     border-radius: 20rpx;
-    width: 690rpx;
+    /* width: 690rpx; */
     height: 295rpx;
 }
 
 .update-btn {
-    /* display: inline-block; */
     background: rgb(247, 245, 245);
     font-size: 30rpx;
     border-radius: 20rpx;
@@ -107,8 +106,8 @@
 }
 
 .gift {
-    width: 200rpx;
-    height: 200rpx;
+    width: 150rpx;
+    height: 150rpx;
 }
 
 .top-tab_swiper:after {
@@ -147,12 +146,15 @@
 .lable {
     font-size: 32rpx;
     color: rgb(75, 74, 74);
-    width: 185rpx;
+    width: 165rpx;
 
 }
-
+.color-cc{
+    font-size: 25rpx;
+    color: rgb(165, 165, 165);
+}
 .input {
-    width: 400rpx;
+    /* width: 400rpx; */
     height: 60rpx;
     border-bottom: 1px solid rgb(201, 200, 200);
 }
@@ -200,6 +202,8 @@
 
 .prize-ipt {
     border-bottom: 1px solid rgb(201, 200, 200);
+    height: 35rpx;
+
 
 }
 
@@ -211,7 +215,21 @@
     width: 30rpx;
     height: 30rpx;
 }
-
-.btn {
+.btn-box{
+    display: flex;
+    align-items: center;
+}
+.template-btn{
     border-radius: 20rpx;
+    font-size: 28rpx;
+    padding: 20rpx;
+
+}
+.btn {
+    display: inline-block;
+    padding: 20rpx;
+    font-size: 28rpx;
+    border-radius: 20rpx;
+    background: #e64430!important;
+    color: #fff!important;
 }

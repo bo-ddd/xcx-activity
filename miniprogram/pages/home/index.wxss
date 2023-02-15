@@ -63,10 +63,12 @@
 .container{
     overflow: hidden;
     border-radius: 20rpx;
+    /* border: 1rpx solid blue; */
 }
-.banner-images{
-    width: 700rpx;
+.banner-images{  
+    height: 100%;
 }
+
 
 .more{
   display: flex;
@@ -159,7 +161,7 @@ width: 250rpx;
 .snap-purchase{
   font-size: 24rpx;
   color: white;
-  display: inline-block;
+  display: block;
   padding: 10rpx 20rpx;
   border-radius: 50rpx;
   float: right;
