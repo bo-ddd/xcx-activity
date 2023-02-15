@@ -32,11 +32,39 @@
     overflow: scroll;
     padding: 5rpx 10rpx;
 }
-.title{
+
+.title {
     font-size: 38rpx;
     font-weight: bold;
 }
+
 .passage {
     text-indent: 60rpx;
     text-align: left;
+}
+
+.next {
+    text-align: center;
+}
+
+.pass {
+    width: 80%;
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    padding: 15rpx 30rpx;
+    border-radius: 30rpx;
+    text-align: center;
+    background-color: #ccc;
+}
+
+.disable {
+    width: 80%;
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    padding: 15rpx 30rpx;
+    border-radius: 30rpx;
+    text-align: center;
+    background: linear-gradient(to right bottom, rgb(243, 211, 211), #e45e4c);
 }

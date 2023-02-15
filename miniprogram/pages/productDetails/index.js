@@ -6,7 +6,9 @@ Page({
      */
     data: {
         productDetails:[],
-        id : ''
+        id : '',
+        currentTab:0,
+        flag:true,
     },
 
     /**
@@ -22,12 +24,27 @@ Page({
 
       this.getGoodsDetail()
     },
+    //点击收藏变颜色
+    collection(e){
+        if(this.data.flag){
+            this.setData({
+                flag:false
+            })
+        }else{
+            this.setData({
+                flag:true
+            })
+        }
+
+    },
+    //兑换商品按钮跳转
     to(e){
         wx.navigateTo({
           url: '/pages/confirmOrder/index',
         })
 
     },
+    //获取数据
     getGoodsDetail(e){      
        let _that = this
     //    let arr = []
@@ -44,6 +61,13 @@ Page({
 
            }
        })
+    },
+    colorclick(e){
+        console.log(e);
+        this.setData({
+            currentTab:e.currentTarget.dataset.idx
+           })
+
     },
 
     /**

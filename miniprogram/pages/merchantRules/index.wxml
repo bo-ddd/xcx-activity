@@ -42,8 +42,8 @@
                     <view class="passage">（2）甲方因违法被取缔或自行停业的。</view>
                 </view>
             </view>
-            <view>
-                <button class="next" disabled="{{ isTrue }}" type="primary" bindtap="toMerchantSettlement">我已知晓，立即入驻</button>
+            <view class="next wrap">
+                <view bindtap="pass" bindtap="toMerchantSettlement" class="{{ isTrue ? 'disable' : 'pass'}}">我已知晓，立即入驻</view>
             </view>
         </view>
     </view>

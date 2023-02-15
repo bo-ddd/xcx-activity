@@ -15,6 +15,7 @@
             </view>
         </view>
         <view class="confirm wrap">
+            <view bindtap="skip" class="skip">跳过</view>
             <view bindtap="pass" class="pass">确定</view>
         </view>
     </view>

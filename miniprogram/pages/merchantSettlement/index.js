@@ -7,14 +7,51 @@ Page({
     data: {
         flag: true,
         radios: [
-            { value: '1', name: '男' },
-            { value: '0', name: '女' },
+            { value: '1', name: '女' },
+            { value: '0', name: '男' },
         ],
         selectItem: {
             DqOpenid: '',
             select: false,
             grade_name: '--请选择--',
-            grades: ['电子产品', '卫生用品', '厨房用品', '清洁洗护', '美妆护肤', '二次元', '潮流女装', '潮男穿搭', '美食达人'],
+            grades:[
+                {
+                    id:1,
+                    value:'电子产品'
+                },
+                {
+                    id:2,
+                    value:'卫生用品'
+                },
+                {
+                    id:3,
+                    value:'厨房用品'
+                },
+                {
+                    id:4,
+                    value:'清洁洗护'
+                },
+                {
+                    id:5,
+                    value:'美妆护肤'
+                },
+                {
+                    id:6,
+                    value:'二次元'
+                },
+                {
+                    id:7,
+                    value:'潮流女装'
+                },
+                {
+                    id:8,
+                    value:'潮男穿搭'
+                },
+                {
+                    id:9,
+                    value:'美食达人'
+                },
+            ]
         },
         form: {
             merchantname: '',
@@ -114,6 +151,7 @@ Page({
             storeclassValue: e.currentTarget.dataset.name,
             select: false
         })
+        
     },
     //  消息提示
     tips(text) {
@@ -157,7 +195,7 @@ Page({
     },
     // 跳转审核提示页面
     toAuditStatus() {
-        wx.navigateTo({
+        wx.redirectTo({
             url: "/pages/auditStatus/index",
         })
     },
@@ -176,7 +214,7 @@ Page({
     },
     // 上传云存储
     uploadFile(tempFilePath) {
-        let _this =this
+        let _this = this
         wx.cloud.uploadFile({
             cloudPath: 'merchant/' + new Date().toLocaleString() + '.png',
             filePath: tempFilePath,

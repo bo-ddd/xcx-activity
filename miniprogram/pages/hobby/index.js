@@ -125,7 +125,7 @@ Page({
         // console.log(detailId);
     },
     // 获取用户_id
-    getUserId(){
+    getUserId() {
         let _this = this
         wx.cloud.callFunction({
             name: 'user',
@@ -139,7 +139,11 @@ Page({
             }
         })
     },
-    // 审核通过
+    // 跳过
+    skip() {
+        this.toHome()
+    },
+    // 确认选择
     pass() {
         let _this = this
         if (_this.data.detailId == '') {

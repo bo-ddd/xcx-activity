@@ -9,7 +9,7 @@ exports.main = async (event, context) => {
     // 查询活动记录表（activityRecord）
     try {
        let list = await db.collection('merchantInfo').where({
-        examineType:0
+        examineType:event.currentTarget
        }).get();
         return {
           success: true,

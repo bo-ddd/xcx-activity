@@ -9,8 +9,8 @@
         <view class="commodity-price">           
             {{ item.price }}积分
         </view>
-        <view class="collection">
-            <image class="collection-image" src="../../images/icon-collection.png" mode=""/>
+        <view class="collection" bindtap="collection">
+            <image class="collection-image" src="{{flag?'../../images/icon-collection.png':'../../images/icon-collection_fill.png'}}" mode=""/>
             <text class="collection-text">收藏</text>
         </view>
         </view> 
@@ -21,16 +21,29 @@
         {{item.goodsContent}}
         </view>
         <view class="item-color mt-30">
-            颜 色
+            <view class="fs-35 width-15">颜 色</view>
+            <view class="cl-btn width-85">              
+            <view  bindtap="colorclick" data-idx="0">               
+            <view class="reduis-50vh cl-white {{0==currentTab?'border-blue':''}}"></view>
+            </view>
+            <view  bindtap="colorclick" data-idx="1">               
+            <view class="reduis-50vh cl-black {{1==currentTab?'border-blue':''}} " ></view>
+            </view>
+            <view  bindtap="colorclick" data-idx="2">              
+            <view class="reduis-50vh cl-grey {{2==currentTab?'border-blue':''}}" ></view>
+            </view>
+            </view>
         </view>
 
         <view class="address mt-30">
-            <view class="address-laber">
+            <view class="address-laber fs-35">
                 配 送
             </view>
-            <view class="information ml-40">
-                埃斯库的hi跨世纪都i啊建瓯市asdasdkjhasjkdhaksjdhakjsh
-                <view>
+            <view class="width-85">
+            <view class="information ">                  
+                埃斯库的hi跨世纪都i啊播放失败是发SVSV是发VS发是让师傅部分的不是
+            </view>
+                <view class="information ">
                     朱鑫鹏 15937160395
                 </view>
             </view>

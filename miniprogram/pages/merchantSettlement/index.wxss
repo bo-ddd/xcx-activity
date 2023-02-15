@@ -92,6 +92,11 @@
     border-bottom: 1px solid #ccc;
 }
 
+.submit {
+    border-radius: 50rpx;
+    background: linear-gradient(to right bottom, rgb(243, 211, 211), #e45e4c);
+}
+
 /* 下拉过度效果 */
 @keyframes myclassify {
     from {

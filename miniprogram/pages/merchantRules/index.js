@@ -5,7 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        isTrue: true
+        isTrue: false,
     },
 
     /**
@@ -14,7 +14,7 @@ Page({
     onLoad(options) {
         setTimeout(() => {
             this.setData({
-                isTrue: false
+                isTrue: true
             })
         }, 3000)
     },

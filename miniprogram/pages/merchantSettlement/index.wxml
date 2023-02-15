@@ -1,60 +1,60 @@
 <!--pages/merchantSettlement/index.wxml-->
 <view class="box">
-        <view class="store-settlement">
-            <view class="title fs-54">
-                <image class="img" src="../../images/icon-merchantsettlement.png" mode="" />
+    <view class="store-settlement">
+        <view class="title fs-54">
+            <image class="img" src="../../images/icon-merchantsettlement.png" mode="" />
+        </view>
+        <form bindsubmit="formSubmit">
+            <view class="merchant-name wrap">
+                <view class="label">姓名</view>
+                <input class="ipt" type="text" name="merchantname" placeholder="请输入您的姓名" />
             </view>
-            <form bindsubmit="formSubmit">
-                <view class="merchant-name wrap">
-                    <view class="label">姓名</view>
-                    <input class="ipt" type="text" name="merchantname" placeholder="请输入您的姓名" />
-                </view>
-                <view class="merchant-sex wrap">
-                    <view class="label mt-16 mb-16">性别</view>
-                    <radio-group class="radio" bindchange="radioChange" name="merchantsex">
-                        <label wx:for="{{radios}}" wx:key="value">
-                            <view>
-                                <radio value="{{item.value}}" checked="true" />
-                                <text class="sex">{{item.name}}</text>
-                            </view>
-                        </label>
-                    </radio-group>
-                </view>
-                <view class="merchant-phone wrap">
-                    <view class="label mt-16 mb-16">手机号码</view>
-                    <input type="number" name="merchantphone" placeholder="请输入您的手机号" />
-                </view>
-                <view class="store-name wrap">
-                    <view class="label mt-16 mb-16">店铺名称</view>
-                    <input type="text" name="storename" placeholder="请输入店铺名称" />
-                </view>
-                <view class="store-address wrap">
-                    <view class="label mt-16 mb-16">店铺地址</view>
-                    <input type="text" name="storeaddress" placeholder="请输入店铺地址" />
-                </view>
-                <view class="store-class wrap">
-                    <view class="label mt-16 mb-16">经营分类</view>
-                    <!-- 下拉菜单 -->
-                    <view class="select">
-                        <view class='select-item' bindtap='bindShowMsg'>
-                            <text>{{selectItem.grade_name}}</text>
-                            <image class="arrow-bottom" src='../../images/icon-arrow_bottom.png' style="{{select?'transform:rotateZ(180deg)':''}}"></image>
-                            <!-- 下拉需要显示的列表 -->
-                            <view class="items" wx:if="{{select}}">
-                                <view wx:for="{{selectItem.grades}}" wx:key="index">
-                                    <view class="item" catchtap="mySelect" data-storeclass="{{ index }}" data-name="{{item}}">{{item}}</view>
-                                </view>
+            <view class="merchant-sex wrap">
+                <view class="label mt-16 mb-16">性别</view>
+                <radio-group class="radio" bindchange="radioChange" name="merchantsex">
+                    <label wx:for="{{radios}}" wx:key="id">
+                        <view>
+                            <radio value="{{item.value}}" checked="true" />
+                            <text class="sex">{{item.name}}</text>
+                        </view>
+                    </label>
+                </radio-group>
+            </view>
+            <view class="merchant-phone wrap">
+                <view class="label mt-16 mb-16">手机号码</view>
+                <input type="number" name="merchantphone" placeholder="请输入您的手机号" />
+            </view>
+            <view class="store-name wrap">
+                <view class="label mt-16 mb-16">店铺名称</view>
+                <input type="text" name="storename" placeholder="请输入店铺名称" />
+            </view>
+            <view class="store-address wrap">
+                <view class="label mt-16 mb-16">店铺地址</view>
+                <input type="text" name="storeaddress" placeholder="请输入店铺地址" />
+            </view>
+            <view class="store-class wrap">
+                <view class="label mt-16 mb-16">经营分类</view>
+                <!-- 下拉菜单 -->
+                <view class="select">
+                    <view class='select-item' bindtap='bindShowMsg'>
+                        <text>{{selectItem.grade_name}}</text>
+                        <image class="arrow-bottom" src='../../images/icon-arrow_bottom.png' style="{{select?'transform:rotateZ(180deg)':''}}"></image>
+                        <!-- 下拉需要显示的列表 -->
+                        <view class="items" wx:if="{{select}}">
+                            <view wx:for="{{selectItem.grades}}" wx:key="index">
+                                <view class="item" catchtap="mySelect" data-storeclass="{{ item.id}}" data-name="{{item.value}}">{{item.value}}</view>
                             </view>
                         </view>
                     </view>
                 </view>
-                <view class="upload-license wrap">
-                    <view class="label mt-16 mb-16 ">上传营业执照</view>
-                    <view class="license" bindtap="upload">
-                        <image class="icon-license" wx:if="{{ fileId }}" src="{{ fileId }}" data-license="{{ fileId }}" mode="" />
-                    </view>
-                    <button class="submit mt-16" type="primary" formType="submit">提交</button>
+            </view>
+            <view class="upload-license wrap">
+                <view class="label mt-16 mb-16 ">上传营业执照</view>
+                <view class="license" bindtap="upload">
+                    <image class="icon-license" wx:if="{{ fileId }}" src="{{ fileId }}" data-license="{{ fileId }}" mode="" />
                 </view>
-            </form>
-        </view>
+                <button class="submit mt-16" type="primary" formType="submit">提交</button>
+            </view>
+        </form>
+    </view>
 </view>
