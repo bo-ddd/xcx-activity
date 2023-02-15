@@ -100,18 +100,18 @@ Page({
         }
     },
     //获取参与状态
-   async getParticipateStatus() {
-     const res= await  wx.cloud.callFunction({
+    async getParticipateStatus() {
+        const res = await wx.cloud.callFunction({
             name: 'activity',
             data: {
                 type: 'getParticipateStatus',
-                activityId:this.data.activityId
+                activityId: this.data.activityId
             }
         })
-            this.setData({
-                participateStatus: res.result.data
-            })
-        
+        this.setData({
+            participateStatus: res.result.data
+        })
+
     },
     //添加参与状态
     addParticipateStatus() {
@@ -139,8 +139,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     async onLoad(options) {
-        //开启倒计时;
-        this.countDown('2023-02-20 00:00:00');
         //打开分享功能;
         wx.showShareMenu({
             withShareTicket: true,
@@ -154,19 +152,25 @@ Page({
         const res = await this.getActivityDetail(this.data.activityId);
         const activityDetail = res.result.data;
         let {
+            activityStartTime, //活动开始时间;
+            activityEndTime, //活动结束时间
             activityForm, //活动形式;
             activityStatus, //活动状态;
             textareaValue: activityRule, //游戏规则;
             titleValue: activityTitle, //活动标题;
-            prizeSettingList: prizeList
+            prizeSettingList: prizeList //奖品列表;
         } = activityDetail;
         this.setData({
-            activityForm,
-            activityStatus,
-            activityRule,
-            activityTitle,
-            prizeList
-        })
+                activityStartTime,
+                activityEndTime,
+                activityForm,
+                activityStatus,
+                activityRule,
+                activityTitle,
+                prizeList
+            }),
+        //开启倒计时;
+        this.openCountDown();
         //设置活动标题;
         this.setActivityTitle();
         //获取活动助力数列表;
@@ -184,7 +188,7 @@ Page({
             }
         })
     },
-
+    //获取活动各阶段的助力值档位;
     getActivityHelpNumberList() {
         let prizeList = this.data.prizeList;
         let arr = ['0']
@@ -204,28 +208,38 @@ Page({
             activityHelpNumberList
         })
     },
-
+    //设置活动标题;
     setActivityTitle() {
         let _this = this;
         wx.setNavigationBarTitle({
             title: _this.data.activityTitle
         })
     },
+    //开启倒计时;
+    openCountDown() {
+        let activityStatus = this.data.activityStatus;
+        let activityStartTime = this.data.activityStartTime;
+        let activityEndTime = this.data.activityEndTime;
+        if (activityStatus == 0) { //未开始;
+            this.countDown(activityStartTime)
+        } else if (activityStatus == 1) { //进行中;
+            this.countDown(activityEndTime)
+        }
+    },
 
-    countDown(endTime) {
+    countDown(time) {
         var _this = this;
         clearTimeout(this.data.timer);
         this.setData({
             timer: setTimeout(() => {
-                _this.updataTimeCallback(endTime)
-                _this.countDown(endTime)
+                _this.updataTimeCallback(time)
+                _this.countDown(time)
             }, 1000)
         })
     },
 
-    updataTimeCallback(endTime) {
-        var downTime = parseInt(new Date(endTime.replace(/-/g, "/")).getTime() - new Date().getTime())
-
+    updataTimeCallback(time) {
+        var downTime = parseInt(new Date(time).getTime() - new Date().getTime());
         // 倒计时结束
         if (downTime <= 0) {
             this.setData({
@@ -283,7 +297,7 @@ Page({
                 this.setData({
                     currentStage: this.data.ongoingStage
                 })
-                let activityProgress = parseInt(Number(activityCount) / (Number(item.endNumber) - Number(item.startNumber)) * 100) + '%';
+                let activityProgress = parseInt((Number(activityCount) - Number(item.startNumber)) / (Number(item.endNumber) - Number(item.startNumber)) * 100) + '%';
                 //设置当前活动进度百分比;
                 this.setData({
                     activityProgress

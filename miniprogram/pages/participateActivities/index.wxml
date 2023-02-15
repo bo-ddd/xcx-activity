@@ -23,8 +23,8 @@
             </view>
         </swiper-item>
         <swiper-item class="swiper-item">
-            <view class='swiper-con wrap'>
-                <view class="actvity wrap-60r" wx:for="{{endActivityList}}" wx:key="_id">
+            <view class='swiper-con wrap' wx:for="{{endActivityList}}" wx:key="_id">
+                <view class="actvity wrap-60r">
                  <image src="{{item.fileId}}" mode="" class="activity-bg"/>
                         <view class="update-btn fs-35"  bindtap="toDetail">查看详情</view>
                 </view>

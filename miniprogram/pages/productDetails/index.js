@@ -22,7 +22,12 @@ Page({
 
       this.getGoodsDetail()
     },
-    
+    to(e){
+        wx.navigateTo({
+          url: '/pages/confirmOrder/index',
+        })
+
+    },
     getGoodsDetail(e){      
        let _that = this
     //    let arr = []

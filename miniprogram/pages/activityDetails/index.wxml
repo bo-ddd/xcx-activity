@@ -25,7 +25,14 @@
     <view class="container mt-24r">
         <image class="img-ad" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/image-ad.png?sign=d561a682349db72fb1ae780b7c8a881a&t=1675842267" mode="" />
     </view>
-    <view class="count-down mt-24r">
+    <view class="count-down mt-24r" wx:if="{{activityStatus==0}}">
+        <text>距离活动开始：</text>
+        <text class="upHide1">{{day}}</text>天
+        <text class="upHide2">{{hour}}</text>时
+        <text class="upHide3">{{minute}}</text>分
+        <text class="upHide4">{{second}}</text>秒
+    </view>
+    <view class="count-down mt-24r" wx:if="{{activityStatus==1}}">
         <text>距离活动结束：</text>
         <text class="upHide1">{{day}}</text>天
         <text class="upHide2">{{hour}}</text>时
