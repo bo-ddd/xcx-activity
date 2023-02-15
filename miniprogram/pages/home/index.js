@@ -51,7 +51,19 @@ Page({
         currentTab: 0,
         goodsList : [],
         goodsType: [],
+        swiperHeight:""
     },
+    //轮播图高度自适应
+    computeImgHeight(e) {
+        var winWid = wx.getSystemInfoSync().windowWidth;      //获取当前屏幕的宽度
+        var imgh=e.detail.height;　　　　　　　　　　　　　　　 //图片高度
+        var imgw=e.detail.width;
+        var swiperH = winWid * imgh / imgw + "px"　           //等比设置swiper的高度。  
+        //即 屏幕宽度 / swiper高度 = 图片宽度 / 图片高度  -->  swiper高度 = 屏幕宽度 * 图片高度 / 图片宽度
+        this.setData({
+          swiperHeight: swiperH		//设置swiper高度
+        })
+      },
 
     to(e) {
         wx.navigateTo({
@@ -61,13 +73,14 @@ Page({
     onShow() {
             
     },
-
+//商品跳转商品详情页面
     async navTab(e) {     
         console.log(e);
         await wx.navigateTo({
             url: '/pages/productDetails/index?_id=' + e.currentTarget.id,
         })
     },
+    //解决重复授权问题
     async queryUserInfo(){
         let app = getApp()
         await app.queryUserInfo()
@@ -79,13 +92,11 @@ Page({
     onLoad(e) {
         this.queryUserInfo()
         this.getGoodsType()
-        this.getHotGoods()
-
-        
+        this.getHotGoods()       
 
     },
 
-
+//获取商品信息
     getHotGoods() {
         let that = this
         wx.cloud.callFunction({
@@ -174,7 +185,12 @@ Page({
                 })
                 
                 res.result.data.forEach(item=>{
-                    arr.push(item.goodsType)
+                    console.log(item.goodsType);                   
+                        if(arr.indexOf(item.goodsType)==-1){  
+                            // console.log(item.goodsType);
+                            arr.push(item.goodsType)
+                        }
+                    
                 })
                 let type = arr.filter((item,index,array)=>{
                     return array.indexOf(item) === index
