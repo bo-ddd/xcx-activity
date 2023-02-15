@@ -9,7 +9,6 @@ const getParticipateStatus = require('./getParticipateStatus')
 const participateAactivities = require('./participateAactivities')
 const getParticipateList = require('./getParticipateList')
 const getParticipateNum = require('./getParticipateNum')
-const getParticipateStatus =require('./getParticipateStatus')
 const getParticipateListByUserId =require('./getParticipateListByUserId')
 cloud.init({
     env: cloud.DYNAMIC_CURRENT_ENV

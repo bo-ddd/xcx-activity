@@ -74,6 +74,7 @@ Page({
                 }).then(async res => {
                     let fileId = res.fileID;
                     let tempFileURL = await _this.getTempFileURL(fileId);
+                    console.log(tempFileURL)
                     _this.setData({
                         fileId,
                         tempFileURL
@@ -204,7 +205,7 @@ Page({
     },
     //新增活动模块
     createModul() {
-        this.data.prizeSettingList.push(this.data.item)
+        this.data.prizeSettingList.push(JSON.parse(JSON.stringify(this.data.item)))
         this.setData({
             prizeSettingList: this.data.prizeSettingList
         })

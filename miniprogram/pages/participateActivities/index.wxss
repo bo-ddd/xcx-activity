@@ -39,10 +39,6 @@
     font-size: 30rpx;
 }
 
-.swiper-con {
-    /* text-align: center; */
-}
-
 .actvity {
     height: 295rpx;
     border-radius: 20rpx;
