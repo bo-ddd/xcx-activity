@@ -1,1 +1,212 @@
 /* pages/exchangeRecords/index.wxss */
+
+
+.box {
+    padding-top: 10rpx;
+    height: 100vh;
+}
+
+.consignment {
+    overflow: hidden;
+    padding: 0 20rpx;
+    background-color: white;
+    border-radius: 0rpx 0rpx 22rpx 22rpx;
+}
+
+.oddnumbers {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30rpx;
+}
+
+.number {
+    font-size: 30rpx;
+    color: #7f7f7f;
+}
+
+.wait {
+    font-size: 30rpx;
+    color: #f24f3b;
+}
+
+.intro {
+    font-size: 30rpx;
+}
+
+/* .content{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50rpx;
+    width: 100%;
+} */
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+.contented{
+    display: flex;
+}
+
+
+.prize image {
+    width: 180rpx;
+    height: 150rpx;
+}
+
+.golder image {
+    width: 40rpx;
+    height: 40rpx;
+}
+.goldered image {
+    width: 40rpx;
+    height: 40rpx;
+}
+.goldered{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.golder {
+    display: flex;
+    justify-content: space-between;
+}
+
+.golds {
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+}
+
+.fund {
+    font-size: 35rpx;
+}
+
+.amount {
+    color: #da4d3d;
+}
+
+.total {
+    display: flex;
+    justify-content: flex-end;
+    padding: 30rpx 0;
+    font-size: 35rpx;
+}
+
+.remind {
+    width: 200rpx;
+    height: 70rpx;
+    border: 1rpx solid red;
+    border-radius: 40rpx;
+    color: #dc5646;
+    text-align: center;
+    line-height: 70rpx;
+    float: right;
+    font-size: 32rpx;
+}
+.logistics{
+    width: 200rpx;
+    height: 70rpx;
+    border: 1rpx solid red;
+    border-radius: 40rpx;
+    color: #dc5646;
+    text-align: center;
+    line-height: 70rpx;
+    float: right;
+    font-size: 32rpx;
+    margin-right: 15rpx;
+}
+.confirm{
+    width: 200rpx;
+    height: 70rpx;
+    border: 1rpx solid gray;
+    border-radius: 40rpx;
+    color: gray;
+    text-align: center;
+    line-height: 70rpx;
+    float: right;
+    font-size: 32rpx;
+    margin-right: 20rpx;
+}
+.ready{
+    font-size: 32rpx;
+    color: black;
+    font-weight: bolder;
+}
+.evaluate{
+    width: 200rpx;
+    height: 70rpx;
+    border: 1rpx solid orange;
+    border-radius: 40rpx;
+    color: #f5f1f1;
+    background-color: orange;
+    text-align: center;
+    line-height: 70rpx;
+    float: right;
+    font-size: 32rpx;
+    margin-right: 20rpx;
+}
+
+
+
+
+
+.fontColorBox,
+.fontColorBox1 {
+    /* 文字默认颜色 */
+    color: red;
+
+}
+
+.navBox {
+    /* 顶部tab盒子样式 */
+    width: 100%;
+    height: 54rpx;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+
+.titleBox {
+    /* 未选中文字的样式 */
+    width: 500rpx;
+    color: rgb(168, 170, 175);
+    font-size: 30rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10rpx;
+
+}
+
+.lineBox,
+.notLineBox {
+    /* 选中及未选中底线共同样式 */
+    width: 100%;
+    height: 5rpx;
+}
+
+.lineBox {
+    /* 选中底线样式 */
+    background: red;
+    border-radius: 4rpx;
+
+}
+
+.notLineBox {
+    /* 未选中底线样式 */
+    background: transparent;
+}
+
+.swiperTtemBox {
+    /* 底部内容样式 */
+    height: 100vh;
+    overflow: scroll;
+    margin: 12rpx 0rpx;
+    background: white;
+    font-size: 28rpx;
+}
