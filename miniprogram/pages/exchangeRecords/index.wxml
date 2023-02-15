@@ -12,7 +12,7 @@
             <hr class="{{1 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
         </view>
         <view class='titleBox' bindtap='titleClick' data-idx='2'>
-            <text class="{{2 == currentIndex ? 'fontColorBox2' : ''}}">已完成</text>
+            <text class="{{2 == currentIndex ? 'fontColorBox2' : ''}}">已收货</text>
             <hr class="{{2 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
         </view>
     </view>

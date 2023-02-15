@@ -44,7 +44,7 @@ amount:'9430',
 }],
 completed:[{ 
     numbers:'兑换单号： 62056856842546',
-    awaits:'已完成',
+    awaits:'已收货',
     prizesed:'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/rice%20cookerd.png.png?sign=ca55fab701be5da99643dc47fe75da18&t=1676360433',
     introtext:'三诺血糖测试仪100支试纸测量血糖的仪器',
     prizesed:'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/ricecooker.png.png?sign=18fff8eee802e43a45b3e95753ee85c0&t=1676423028',
