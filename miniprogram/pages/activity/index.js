@@ -37,7 +37,6 @@ Page({
     },
 
     async onLoad(options) {
-
         await this.getActivityList();
         //判断当前登录状态,显示不同的按钮文本;
         //在全局中拿到用户登录信息;
@@ -64,13 +63,14 @@ Page({
 
     //处理返回的数据结构;
     async handleData(data) {
+        let arr = this.handleListSort(data);
         const participateList = await this.getParticipateList();
-        data.forEach(item => {
+        arr.forEach(item => {
             item.participateStatus = participateList.includes(item._id);
             item.activityStartTime = commonFun.formatDate(item.activityStartTime);
             item.activityEndTime = commonFun.formatDate(item.activityEndTime);
         })
-        return data
+        return arr
     },
 
     //获取当前用户参与的活动列表;
@@ -90,6 +90,15 @@ Page({
             })
         }
         return participateList
+    },
+    //对活动列表进行排序，根据活动状态(进行中、未开始、已结束);
+    handleListSort(data) {
+        let arr = [];
+        let beforeStartArr = data.filter(item => item.activityStatus == 0).sort((a, b) => a.activityStartTime - b.activityStartTime) //未开始
+        let onstartArr = data.filter(item => item.activityStatus == 1).sort((a, b) => a.activityEndTime - b.activityEndTime) //已开始
+        let onendArr = data.filter(item => item.activityStatus == 2).sort((a, b) => b.activityEndTime - a.activityEndTime) //已结束
+        arr.push(...onstartArr, ...beforeStartArr, ...onendArr);
+        return arr
     },
 
     /**
