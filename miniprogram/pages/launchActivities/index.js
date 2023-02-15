@@ -33,7 +33,7 @@ Page({
         } else {
 
             that.setData({
-                currentData: e.target.dataset.current
+                examineType: e.target.dataset.current
             })
             this.getActivityList()
         }

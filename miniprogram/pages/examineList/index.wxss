@@ -11,12 +11,15 @@
     width: 100%;
     align-items: center;
 }
-.fontColorBox-left,
-.fontColorBox-right {
+
+.colorLeftBox,
+.coloRightBox {
     /* 文字默认颜色 */
     color: #f00;
 }
-.titleBox-left {
+
+.titleLeftBox,
+.titleRightBox {
     /* 未选中文字的样式 */
     color: black;
     font-size: 30rpx;
@@ -27,37 +30,33 @@
     height: 100%;
     padding-top: 16rpx;
     box-sizing: border-box;
+    width: 50%;
 }
-.titleBox-right {
-    color: black;
-    font-size: 30rpx;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    padding-top: 16rpx;
-    box-sizing: border-box;
-}
-.lineBox,.notLineBox{
+
+.lineBox,
+.notLineBox {
     /* 选中及未选中底线共同样式 */
-    width: 300rpx;
+    width: 100%;
     height: 4rpx;
 }
+
 .lineBox {
     /* 选中底线样式 */
     background: #f00;
     border-radius: 4rpx;
 }
+
 .notLineBox {
     /* 未选中底线样式 */
     background: transparent;
 }
-.swiperTtemBox{
+
+.swiperTtemBox {
     height: calc(100vh - 80rpx);
-    
+
 }
-.swiperTtemBox-item{
+
+.swiperTtemBox-item {
     overflow: hidden;
     overflow: scroll;
     padding-bottom: 30rpx;
