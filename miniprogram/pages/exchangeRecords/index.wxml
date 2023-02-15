@@ -90,8 +90,11 @@
                     </view>
 
                 </view>
+                <view class="wrap">
                 <view class="logistics">确认收货</view>
                 <view class="confirm">查看物流</view>
+                    
+                </view>
             </swiper-item>
             <swiper-item class='swiperTtemBox'>
                 <view class="consignment" wx:for="{{completed}}">

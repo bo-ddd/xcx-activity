@@ -44,7 +44,8 @@
     display: flex;
     justify-content: space-between;
 }
-.contented{
+
+.contented {
     display: flex;
 }
 
@@ -58,11 +59,13 @@
     width: 40rpx;
     height: 40rpx;
 }
+
 .goldered image {
     width: 40rpx;
     height: 40rpx;
 }
-.goldered{
+
+.goldered {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -95,57 +98,60 @@
 }
 
 .remind {
-    width: 200rpx;
-    height: 70rpx;
-    border: 1rpx solid red;
+    display: block;
+    padding: 10rpx 15rpx;
+    box-sizing: border-box;
+    border: 1rpx solid #de5141;
     border-radius: 40rpx;
-    color: #dc5646;
+    color: #de5141;
     text-align: center;
-    line-height: 70rpx;
     float: right;
-    font-size: 32rpx;
+    font-size: 28rpx;
+
 }
-.logistics{
-    width: 200rpx;
-    height: 70rpx;
-    border: 1rpx solid red;
+
+.logistics {
+    display: block;
+    padding: 10rpx 15rpx;
+    box-sizing: border-box;
+    border: 1rpx solid #de5141;
     border-radius: 40rpx;
-    color: #dc5646;
+    color: #de5141;
     text-align: center;
-    line-height: 70rpx;
     float: right;
-    font-size: 32rpx;
-    margin-right: 15rpx;
+    font-size: 28rpx;
 }
-.confirm{
-    width: 200rpx;
-    height: 70rpx;
-    border: 1rpx solid gray;
+
+.confirm {
+    display: block;
+    padding: 10rpx 15rpx;
+    box-sizing: border-box;
+    border: 1rpx solid #5c5c5c;
     border-radius: 40rpx;
-    color: gray;
+    color: #5c5c5c;
     text-align: center;
-    line-height: 70rpx;
     float: right;
-    font-size: 32rpx;
+    font-size: 28rpx;
     margin-right: 20rpx;
 }
-.ready{
+
+.ready {
     font-size: 32rpx;
     color: black;
     font-weight: bolder;
 }
-.evaluate{
-    width: 200rpx;
-    height: 70rpx;
+
+.evaluate {
+    display: block;
+    padding: 10rpx 15rpx;
+    box-sizing: border-box;
     border: 1rpx solid orange;
     border-radius: 40rpx;
     color: #f5f1f1;
     background-color: orange;
     text-align: center;
-    line-height: 70rpx;
     float: right;
-    font-size: 32rpx;
-    margin-right: 20rpx;
+    font-size: 28rpx;
 }
 
 
