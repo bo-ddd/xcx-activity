@@ -114,8 +114,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     async onLoad(options) {
-      await this.queryUserInfo()
-      console.log(this.data.userInfo)
+
     //    let windowWidth=wx.getSystemInfoSync().windowWidth
     //    let windowHeight=wx.getSystemInfoSync().windowHeight
     //    this.setData({
@@ -134,8 +133,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     //判断用户是否登录
-    onShow() {
-      
+    async onShow() {
+        await this.queryUserInfo()
+        console.log(this.data.userInfo)
     },
 
     /**

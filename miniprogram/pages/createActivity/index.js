@@ -41,7 +41,7 @@ Page({
                 name: '日常活动'
             },
         ],
-        fileId: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220615081914.jpg?sign=8970b6f7da70c8f12e1c5e1c657a9f16&t=1676437065',
+        fileId: '',
         tempFileURL: '',
         ///
         item: {
@@ -75,6 +75,7 @@ Page({
                     filePath: filePath,
                 }).then(async res => {
                     let fileId = res.fileID;
+                    console.log(fileId);
                     let tempFileURL = await _this.getTempFileURL(fileId);
                     console.log(tempFileURL)
                     _this.setData({
@@ -238,6 +239,7 @@ Page({
                 fileId
             }
         }).then(res => {
+            console.log(res);
             tempFileURL = res.result[0].tempFileURL
         })
         return tempFileURL
