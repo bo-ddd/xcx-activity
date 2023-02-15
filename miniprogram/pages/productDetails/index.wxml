@@ -17,7 +17,7 @@
         <view class="trade-name">
               {{item.goodsTitle}}
         </view>
-        <view class="product-introduction">
+        <view class="product-introduction mt-10">
         {{item.goodsContent}}
         </view>
         <view class="item-color mt-30">
@@ -42,7 +42,7 @@
 
 <view class="footer">
 
-<view class="buy">
+<view class="buy"  bindtap="to">
         兑换商品
 </view> 
 </view>
