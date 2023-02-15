@@ -70,7 +70,7 @@ Page({
     },
     async queryUserInfo(){
         let app = getApp()
-        await app.queryUserInfo()
+        await app.judgeUserInfo();
         this.setData({
             userInfo: app.globalData.userInfo
         })
@@ -80,9 +80,6 @@ Page({
         this.queryUserInfo()
         this.getGoodsType()
         this.getHotGoods()
-
-        
-
     },
 
 

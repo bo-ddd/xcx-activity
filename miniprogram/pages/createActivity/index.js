@@ -11,15 +11,16 @@ Page({
         form: {
             storeName: '',
             titleValue: '',
-            activityStartTime: '2023-01-01',
-            activityEndTime: '2023-01-01',
+            activityStartTime: '',
+            activityEndTime: '',
             textareaValue: "",
             prizeName: '',
-            prizeNum: '',
+            prizeNum:1,
             peopleNum: '',
             activityType: 1,
             activityForm: 1,
         },
+        ////////////
         items: [{
                 value: 1,
                 name: '抽奖活动',
@@ -40,18 +41,19 @@ Page({
                 name: '日常活动'
             },
         ],
-        fileId: '',
+        fileId: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20220615081914.jpg?sign=8970b6f7da70c8f12e1c5e1c657a9f16&t=1676437065',
         tempFileURL: '',
+        ///
         item: {
             prizeUrl: '',
             prizeName: '',
-            prizeNum: '',
+            prizeNum: 1,
             peopleNum: ''
         },
         prizeSettingList: [{
             prizeUrl: '',
             prizeName: '',
-            prizeNum: '',
+            prizeNum: 1,
             peopleNum: ''
         }],
         prizeList: []
@@ -99,7 +101,7 @@ Page({
         });
     },
     //奖品图
-    PrizeMap(e) {
+    prizeMap(e) {
         let _this = this;
         let index = e.currentTarget.dataset.index;
         //唤起图片权限
@@ -157,8 +159,11 @@ Page({
         })
         this.getPrizeSettingList();
         if (this.validateForm()) this.createActivity();
+        this.setData({
+            form: '',
+        })
     },
-
+   ///获取奖品列表     
     getPrizeSettingList() {
         let prizeSettingList = this.data.prizeSettingList;
         let form = this.data.form;
@@ -187,7 +192,8 @@ Page({
                 fileId,
                 tempFileURL: this.data.tempFileURL,
                 examineType: 0,
-                activityStatus: 0,
+                ////////
+                activityStatus: 0, 
                 prizeSettingList: this.data.prizeSettingList
             },
             success(res) {
@@ -236,10 +242,14 @@ Page({
         })
         return tempFileURL
     },
-    /**
+  
+    /**                                                    
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        //取消分享功能
+        // let app=getApp()
+        // app.hideShareMenu()
         this.getStoreName()
 
 
@@ -294,6 +304,8 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage() {
-
+        wx.hideShareMenu({
+            menus: ['shareAppMessage', 'shareTimeline']
+          })
     }
 })

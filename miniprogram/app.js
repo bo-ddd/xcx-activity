@@ -17,38 +17,49 @@ App({
 
         this.globalData = {
             socketStatus: 'closed',
-            userInfo:{}
+            userInfo: {},
+            needLogin: true,
         };
+        let _this = this
         //判断用户是否登录
-        this.queryUserInfo = function () {
-            return new Promise((resolve)=>{
+        this.judgeUserInfo = function (callback) {
+            return new Promise((resolve) => {
+                if (!this.globalData.needLogin) {
+                    return this.globalData.userInfo;
+                }
                 wx.cloud.callFunction({
                     name: 'user',
                     data: {
                         type: 'getUserInfo',
                     }
                 }).then(res => {
-                    if ( res.result.data[0]) {
-                        this.globalData.userInfo= res.result.data[0];
+                    if (res.result.data[0]) {
+                        this.globalData.userInfo = res.result.data[0];
                         resolve(res);
-                    } else{ 
-                        wx.navigateTo({
-                            url: '/pages/login/index',
-                        })
+                        this.globalData.needLogin = false;
+                        //不可以跳转
+                    } else {
+                        if (callback) {
+                            callback();
+                        } else {
+                            wx.navigateTo({
+                                url: '/pages/login/index',
+                            })
+                        }
                     }
                 })
             })
         };
-        let _this=this
+
         this.getUserProfile = function (desc) {
             return new Promise((resolve) => {
                 wx.getUserProfile({
                     desc, // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-                }).then(res=>{
+                }).then(res => {
                     console.log(res);
-                        _this.globalData.userInfo=res.userInfo
-                          console.log( _this.globalData.userInfo);
-                          resolve(res)
+                    _this.globalData.userInfo = res.userInfo
+                    console.log(_this.globalData.userInfo);
+                    resolve(res)
                 })
             })
         };
@@ -62,6 +73,7 @@ App({
 
             })
         };
+        //打开授权
         this.openSetting = function () {
             return new Promise((resolve, reject) => {
                 wx.openSetting({
@@ -114,6 +126,14 @@ App({
                     data: "{\"name\":\"" + wx.getStorageSync('openid') + "\"}"
                 })
             }
+        }
+  
+        //禁止分享
+        this.hideShareMenu = function () {
+            wx.hideShareMenu({
+                menus: ['shareAppMessage', 'shareTimeline']
+            })
+
         }
     },
 

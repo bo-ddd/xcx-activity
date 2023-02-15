@@ -1,5 +1,5 @@
 <!--pages/mine/index.wxml-->
-<view class="mine">
+<view class="mine" style="height: {{scroll_height}}rpx;">
 <view class="header">
 <view class="box wrap">   
 <view class="userInfo wrap">
