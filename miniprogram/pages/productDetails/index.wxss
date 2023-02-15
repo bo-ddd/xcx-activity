@@ -41,6 +41,7 @@
 }
 .collection-text{
     font-size: 25rpx;
+    color: #ff9000;
 }
 .trade-name {
     font-size: 40rpx;
@@ -52,25 +53,48 @@
     color: #969696;
 }
 .item-color{
-    width: 10vh;
-    font-weight: 700;
-   
+    font-weight: 700;  
+    display: flex;
+    align-items: center;
+}
+.width-15{
+     width:15%;
+}
+.cl-btn{
+    display: flex;
+}
+.reduis-50vh{
+width: 40rpx;
+height: 40rpx;
+border-radius: 50vh;
+box-sizing: border-box;
+margin-right:20rpx ;
+
+}
+.border-blue{
+    border: 5rpx solid #1043cb;
+}
+.cl-white{
+    background-color: #48dfa5;
+}
+.cl-black{
+    background-color: #f04040;
+}
+.cl-grey{
+    background-color: #b0b0b0;
 }
 .address-laber {
-    width: 10vh;
+    width: 15%;   
     font-weight: 700;
-
 }
 
 .information {
-
     font-size: 24rpx;
     color: #969696;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space:nowrap
 }
-
+.width-85{
+    width: 85%;
+}
 .address {
     display: flex;
 }
@@ -83,4 +107,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: fixed;
+    bottom: 0;
 }
