@@ -1,13 +1,140 @@
 <!--pages/exchangeRecords/index.wxml-->
+
+
 <view class="box">
-    <view class="Consignment">
-        <view class="oddnumbers">
-            <view class="number">
-                {{number}}
-            </view>
-            <view class="">
-                
-            </view>
+    <view class='navBox'>
+        <view class='titleBox' bindtap='titleClick' data-idx='0'>
+            <text class="{{0 == currentIndex ? 'fontColorBox' : ''}}">待发货</text>
+            <hr class="{{0 == currentIndex ? 'lineBox' : 'notLineBox'}}" />
+        </view>
+        <view class='titleBox' bindtap='titleClick' data-idx='1'>
+            <text class="{{1 == currentIndex ? 'fontColorBox1' : ''}}">已发货</text>
+            <hr class="{{1 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
+        </view>
+        <view class='titleBox' bindtap='titleClick' data-idx='2'>
+            <text class="{{2 == currentIndex ? 'fontColorBox2' : ''}}">已收货</text>
+            <hr class="{{2 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
         </view>
     </view>
+    <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}'>
+        <swiper-item class='swiperTtemBox'>
+            <view class="consignment" wx:for="{{unshipped}}">
+                <view class="oddnumbers">
+                    <view class="number">
+                        {{item.numbers}}
+                    </view>
+                    <view class="wait">
+                        {{item.await}}
+                    </view>
+                </view>
+                <view class="content">
+                    <view class="prize">
+                        <image src="{{item.prizes}}" mode="" />
+                    </view>
+                    <view class="ml-40">
+                        <view class="intro">
+                            {{item.introtext}}
+                        </view>
+                        <view class="golder mt-20">
+                            <view class="golds">
+                                <image src="{{item.gold}}" mode="" />
+                                {{item.text}}
+                            </view>
+                            <view class="fund">
+                                {{item.funded}}
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="total">
+                    {{item.aggregate}}
+                    <text class="amount">{{item.amount}}</text>
+                </view>
+                <view class="remind">{{ item.tips }}
+                </view>
+
+            </view>
+        </swiper-item>
+            <swiper-item class='swiperTtemBox'>
+                <view class="consignment" wx:for="{{shipped}}">
+                    <view class="oddnumbers">
+                        <view class="number">
+                            {{item.numbers}}
+                        </view>
+                        <view class="wait">
+                            {{item.awaits}}
+                        </view>
+                    </view>
+                    <view class="content">
+                        <view class="prize">
+                            <image src="{{item.prizesed}}" mode="" />
+                        </view>
+                        <view class="ml-40">
+                            <view class="intro">
+                                {{item.introtext}}
+                            </view>
+                            <view class="golder mt-20">
+                                <view class="golds">
+                                    <image src="{{item.gold}}" mode="" />
+                                    {{item.text}}
+                                </view>
+                                <view class="fund">
+                                    {{item.funded}}
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="total">
+                        {{item.aggregate}}
+                        <text class="amount">{{item.amount}}</text>
+                    </view>
+
+                </view>
+                <view class="wrap">
+                <view class="logistics">确认收货</view>
+                <view class="confirm">查看物流</view>
+                    
+                </view>
+            </swiper-item>
+            <swiper-item class='swiperTtemBox'>
+                <view class="consignment" wx:for="{{completed}}">
+                    <view class="oddnumbers">
+                        <view class="number">
+                            {{item.numbers}}
+                        </view>
+                        <view class="ready">
+                            {{item.awaits}}
+                        </view>
+                    </view>
+                    <view class="contented">
+                        <view class="prize">
+                            <image src="{{item.prizesed}}" mode="" />
+                        </view>
+                        <view class="integral ml-40">
+                            <view class="intro">
+                                {{item.introtext}}
+                            </view>
+                            <view class="goldered mt-20">
+                                <view class="golds">
+                                    <image src="{{item.gold}}" mode="" />
+                                    {{item.text}}
+                                </view>
+                                <view class="fund">
+                                    {{item.funded}}
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="total">
+                        {{item.aggregate}}
+                        <text class="amount">{{item.amount}}</text>
+                    </view>
+<view class="evaluate">
+    发表追评
+</view>
+                </view>
+            </swiper-item>
+    </swiper>
+
+
 </view>

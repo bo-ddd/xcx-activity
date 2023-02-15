@@ -1,30 +1,49 @@
 <!--pages/productDetails/index.wxml-->
-<view class="detail-outer-layer">
-<view> 
-    
-
-    <image class="bg-details" src="{{ item.images }}" mode=""/>
-
+<view class="detail-outer-layer" wx:for="{{productDetails}}" wx:key="_id">
+<view>   
+<view  class="bd-redius">  
+    <image class="bg-details" src="{{item.goodsUrl}}" mode=""/>
+</view>
     <view class="product-details">
-        <view class="commodity-price">
-            ￥{{ item.integral }}
-        </view> 
-        
-        <view class="trade-name mt-30">
-            {{ item.title }}
+        <view class="commodity">
+        <view class="commodity-price">           
+            {{ item.price }}积分
         </view>
- 
-        <view class="product-introduction mt-30">
-           {{ item.content }}
+        <view class="collection" bindtap="collection">
+            <image class="collection-image" src="{{flag?'../../images/icon-collection.png':'../../images/icon-collection_fill.png'}}" mode=""/>
+            <text class="collection-text">收藏</text>
+        </view>
+        </view> 
+        <view class="trade-name">
+              {{item.goodsTitle}}
+        </view>
+        <view class="product-introduction mt-10">
+        {{item.goodsContent}}
+        </view>
+        <view class="item-color mt-30">
+            <view class="fs-35 width-15">颜 色</view>
+            <view class="cl-btn width-85">              
+            <view  bindtap="colorclick" data-idx="0">               
+            <view class="reduis-50vh cl-white {{0==currentTab?'border-blue':''}}"></view>
+            </view>
+            <view  bindtap="colorclick" data-idx="1">               
+            <view class="reduis-50vh cl-black {{1==currentTab?'border-blue':''}} " ></view>
+            </view>
+            <view  bindtap="colorclick" data-idx="2">              
+            <view class="reduis-50vh cl-grey {{2==currentTab?'border-blue':''}}" ></view>
+            </view>
+            </view>
         </view>
 
         <view class="address mt-30">
-            <view class="address-laber">
-                自提地址
+            <view class="address-laber fs-35">
+                配 送
             </view>
-            <view class="information ml-40">
-                埃斯库的hi跨世纪都i啊建瓯市asdasdkjhasjkdhaksjdhakjsh
-                <view>
+            <view class="width-85">
+            <view class="information ">                  
+                埃斯库的hi跨世纪都i啊播放失败是发SVSV是发VS发是让师傅部分的不是
+            </view>
+                <view class="information ">
                     朱鑫鹏 15937160395
                 </view>
             </view>
@@ -36,7 +55,7 @@
 
 <view class="footer">
 
-<view class="buy">
-        提交订单
+<view class="buy"  bindtap="to">
+        兑换商品
 </view> 
 </view>

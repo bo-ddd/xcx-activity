@@ -101,6 +101,7 @@ Page({
             url: '/pages/message/index'
         })
     },
+    //登录后获取用户信息
     async queryUserInfo(){
         let app = getApp()
         await app.queryUserInfo()

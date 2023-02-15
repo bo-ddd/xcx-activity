@@ -25,10 +25,10 @@
   <view class="container mt-30 wrap">
     <view class="page-body">
       <view class="page-section page-section-spacing swiper ">
-        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"  >
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height: {{swiperHeight}};">
           <block wx:for="{{background}}" wx:key="*this">
             <swiper-item>
-              <image class="banner-images" src="{{item}}" mode="" />
+              <image class="banner-images" src="{{item}}" mode="heightFix" bindload="computeImgHeight"/>
             </swiper-item>
           </block>
         </swiper>
@@ -90,16 +90,15 @@
 		<view class="names {{currentTab === index ? 'active' : ''}}" wx:if="{{ item == 3 }}">潮流女装</view>
 		<view class="names {{currentTab === index ? 'active' : ''}}" wx:if="{{ item == 4 }}">美妆达人</view>
 		<view class="names {{currentTab === index ? 'active' : ''}}" wx:if="{{ item == 5 }}">潮男穿搭</view>
-		<view class="currtline {{currentTab === index ? 'active' : ''}}"></view>
 	</view>
 </scroll-view>
 
 
 <swiper class="wrap minheight" indicator-dots="{{false}}"  current="{{currentTab}}" bindchange="bindchange">
 	<block>
-			<swiper-item wx:for="{{ goodsList }}" wx:key="idx" >
-				<scroll-view class="swiper-item" scroll-y enable-flex="true"  style="overflow: scroll; ">
-                    <view class="commodity-item mt-30" wx:for="{{ hotGoods }}" wx:key="index"bindtap="navTab">
+			<swiper-item wx:for="{{ goodsType }}" wx:key="index" >
+				<scroll-view class="swiper-item"  enable-flex="true"  style="overflow: scroll; ">
+                    <view class="commodity-item mt-30" wx:for="{{ hotGoods }}" wx:key="index" id="{{item._id}}" bind-id="{{item-id}}" bindtap="navTab">
                         <image class="commodity-logo" src="{{item.goodsUrl}}" mode=""/>
                         <view class="commodity-content">
                             <view class="commodity-describe">{{ myItem.title }}</view>

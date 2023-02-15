@@ -4,7 +4,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        progressValue: '30%',
+        activityProgress: '0%',
         currentStage: 0,
         ongoingStage: 0,
         activityTitle: '',
@@ -13,47 +13,22 @@ Page({
         activityEndTime: '',
         activityForm: '',
         activityStatus: '',
+        prizeList: [],
+        activityHelpNumberList: [],
         timer: null,
         day: '00',
         hour: '00',
         minute: '00',
         second: '00',
         activityId: '',
-        participateStatus: false,
-
-
-        prizeList: [{
-            id: '',
-            helpNumber: '',
-            prizeImg: ''
-        }],
+        participateStatus: null,
         showModal: false,
         duration: 500,
-
-        activityStageList: [{
-                id: 1,
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/image-prize.png?sign=95f7bd8a670e8b036964f4c6ee83e420&t=1675843368',
-                startNumber: 0,
-                endNumber: 100,
-            },
-            {
-                id: 2,
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/image-prize_02.png?sign=ca4f7b9d7274d3a087c10b1b8fbac274&t=1675857619',
-                startNumber: 100,
-                endNumber: 200,
-            },
-            {
-                id: 3,
-                imgUrl: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/image-prize_03.png?sign=614816d52e4bd3495089fb9e361c4fe6&t=1675858424',
-                startNumber: 200,
-                endNumber: 300,
-            },
-        ]
     },
     //切换上一个阶段;
     switchPrev() {
         let currentStage = this.data.currentStage;
-        let finalStage = this.data.activityStageList.length - 1;
+        let finalStage = this.data.prizeList.length - 1;
         if (currentStage > 0) {
             this.setData({
                 currentStage: currentStage - 1
@@ -69,7 +44,7 @@ Page({
     //切换下一个阶段;
     switchNext() {
         let currentStage = this.data.currentStage;
-        let upperLimit = this.data.activityStageList.length - 1;
+        let upperLimit = this.data.prizeList.length - 1;
         if (currentStage < upperLimit) {
             this.setData({
                 currentStage: currentStage + 1
@@ -100,16 +75,18 @@ Page({
         })
     },
     //助力按钮事件;
-  async onhelp() {
-        let _this=this;
-       await this.getParticipateStatus()
-            if (this.data.ParticipateStatus == '' || this.data.ParticipateStatus == null) {
+    async onhelp() {
+        let _this = this;
+        await this.getParticipateStatus();
+        if (!this.data.participateStatus) {
             //提示参与成功,把活动id和用户id存入数据库
             wx.showModal({
                 title: '提示',
                 content: '助力成功',
                 success(res) {
-                 _this.addParticipateStatus()  
+                    _this.addParticipateStatus()
+                    //更新活动进度;
+                    _this.updataActivityProgress();
                 }
             })
         } else {
@@ -117,25 +94,24 @@ Page({
                 title: '提示',
                 content: '您已助力过啦！',
                 success(res) {
-                  console.log(res);
+                    console.log(res);
                 }
             })
         }
     },
     //获取参与状态
-    getParticipateStatus() {
-        wx.cloud.callFunction({
+    async getParticipateStatus() {
+        const res = await wx.cloud.callFunction({
             name: 'activity',
             data: {
                 type: 'getParticipateStatus',
-                // activityId: this.data.activityId
+                activityId: this.data.activityId
             }
-        }).then(res => {
-            this.setData({
-                participateStatus: res.result.data
-            })
-            console.log(this.data.participateStatus); //null代表没助力
         })
+        this.setData({
+            participateStatus: res.result.data
+        })
+
     },
     //添加参与状态
     addParticipateStatus() {
@@ -158,15 +134,11 @@ Page({
     },
 
     //分享功能;
-    onShareAppMessage(e) {
-        console.log(e)
-    },
+    onShareAppMessage(e) {},
     /**
      * 生命周期函数--监听页面加载
      */
     async onLoad(options) {
-        //开启倒计时;
-        this.countDown('2023-02-20 00:00:00');
         //打开分享功能;
         wx.showShareMenu({
             withShareTicket: true,
@@ -180,20 +152,31 @@ Page({
         const res = await this.getActivityDetail(this.data.activityId);
         const activityDetail = res.result.data;
         let {
+            activityStartTime, //活动开始时间;
+            activityEndTime, //活动结束时间
             activityForm, //活动形式;
             activityStatus, //活动状态;
             textareaValue: activityRule, //游戏规则;
-            titleValue: activityTitle //活动标题;
+            titleValue: activityTitle, //活动标题;
+            prizeSettingList: prizeList //奖品列表;
         } = activityDetail;
         this.setData({
-            activityForm,
-            activityStatus,
-            activityRule,
-            activityTitle
-        })
+                activityStartTime,
+                activityEndTime,
+                activityForm,
+                activityStatus,
+                activityRule,
+                activityTitle,
+                prizeList
+            }),
+        //开启倒计时;
+        this.openCountDown();
         //设置活动标题;
         this.setActivityTitle();
-
+        //获取活动助力数列表;
+        this.getActivityHelpNumberList();
+        //更新当前活动阶段和进度;
+        this.updataActivityProgress();
     },
 
     async getActivityDetail(_id) {
@@ -205,27 +188,58 @@ Page({
             }
         })
     },
+    //获取活动各阶段的助力值档位;
+    getActivityHelpNumberList() {
+        let prizeList = this.data.prizeList;
+        let arr = ['0']
+        let activityHelpNumberList = [];
+        prizeList.forEach(item => {
+            arr.push(item.peopleNum)
+        })
+        arr.forEach((item, index) => {
+            if (arr[index + 1]) {
+                activityHelpNumberList.push({
+                    startNumber: arr[index],
+                    endNumber: arr[index + 1]
+                })
+            }
+        })
+        this.setData({
+            activityHelpNumberList
+        })
+    },
+    //设置活动标题;
     setActivityTitle() {
         let _this = this;
         wx.setNavigationBarTitle({
             title: _this.data.activityTitle
         })
     },
+    //开启倒计时;
+    openCountDown() {
+        let activityStatus = this.data.activityStatus;
+        let activityStartTime = this.data.activityStartTime;
+        let activityEndTime = this.data.activityEndTime;
+        if (activityStatus == 0) { //未开始;
+            this.countDown(activityStartTime)
+        } else if (activityStatus == 1) { //进行中;
+            this.countDown(activityEndTime)
+        }
+    },
 
-    countDown(endTime) {
+    countDown(time) {
         var _this = this;
         clearTimeout(this.data.timer);
         this.setData({
             timer: setTimeout(() => {
-                _this.updataTimeCallback(endTime)
-                _this.countDown(endTime)
+                _this.updataTimeCallback(time)
+                _this.countDown(time)
             }, 1000)
         })
     },
 
-    updataTimeCallback(endTime) {
-        var downTime = parseInt(new Date(endTime.replace(/-/g, "/")).getTime() - new Date().getTime())
-
+    updataTimeCallback(time) {
+        var downTime = parseInt(new Date(time).getTime() - new Date().getTime());
         // 倒计时结束
         if (downTime <= 0) {
             this.setData({
@@ -256,6 +270,43 @@ Page({
             second: s
         })
     },
+
+    //获取参与活动人数/助力值;
+    async getActivityCount() {
+        const res = await wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'getParticipateNum',
+                activityId: this.data.activityId,
+            }
+        })
+        return res.result.data.length
+    },
+
+    //更新当前活动进度和阶段;
+    async updataActivityProgress() {
+        let activityHelpNumberList = this.data.activityHelpNumberList;
+        let activityCount = await this.getActivityCount();
+        activityHelpNumberList.forEach((item, index) => {
+            if (activityCount >= item.startNumber && activityCount < item.endNumber) {
+                //设置当前进行阶段;
+                this.setData({
+                    ongoingStage: index
+                })
+                //设置当前默认显示阶段;
+                this.setData({
+                    currentStage: this.data.ongoingStage
+                })
+                let activityProgress = parseInt((Number(activityCount) - Number(item.startNumber)) / (Number(item.endNumber) - Number(item.startNumber)) * 100) + '%';
+                //设置当前活动进度百分比;
+                this.setData({
+                    activityProgress
+                })
+            }
+        })
+    },
+
+
 
 
 
