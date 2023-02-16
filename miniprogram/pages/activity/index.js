@@ -8,7 +8,8 @@ Page({
     data: {
         current: 0,
         activityTypes: ['周期活动', '日常活动'],
-        activityList: []
+        activityList: [],
+        loadingStatus: true,
     },
 
     //切换顶部tab栏;
@@ -18,7 +19,9 @@ Page({
         this.setData({
             current
         });
-        this.getActivityList()
+        this.openLoading();
+        this.getActivityList();
+        this.closeLoading();
     },
     //触摸屏幕切换页面;
     bindchange(e) {
@@ -26,7 +29,9 @@ Page({
         this.setData({
             current
         })
-        this.getActivityList()
+        this.openLoading();
+        this.getActivityList();
+        this.closeLoading();
     },
 
     //跳转页面 把当前活动_id传给活动详情页面;
@@ -37,13 +42,8 @@ Page({
     },
 
     async onLoad(options) {
-        // wx.showLoading({
-        //   title: 'title',
-        // })
         await this.getActivityList();
-        // wx.hideLoading({
-        //     title: 'title',
-        //   })
+        this.closeLoading();
         //判断当前登录状态,显示不同的按钮文本;
         //在全局中拿到用户登录信息;
         //如果没有登录, 显示查看详情；
@@ -118,6 +118,17 @@ Page({
         })
         return data
     },
+    openLoading() {
+        this.setData({
+            loadingStatus: true
+        })
+    },
+    closeLoading() {
+        this.setData({
+            loadingStatus: false
+        })
+    },
+
 
     /**
      * 生命周期函数--监听页面初次渲染完成
