@@ -37,7 +37,13 @@ Page({
     },
 
     async onLoad(options) {
+        // wx.showLoading({
+        //   title: 'title',
+        // })
         await this.getActivityList();
+        // wx.hideLoading({
+        //     title: 'title',
+        //   })
         //判断当前登录状态,显示不同的按钮文本;
         //在全局中拿到用户登录信息;
         //如果没有登录, 显示查看详情；
@@ -63,14 +69,10 @@ Page({
 
     //处理返回的数据结构;
     async handleData(data) {
-        let arr = this.handleListSort(data);
-        const participateList = await this.getParticipateList();
-        arr.forEach(item => {
-            item.participateStatus = participateList.includes(item._id);
-            item.activityStartTime = commonFun.formatDate(item.activityStartTime);
-            item.activityEndTime = commonFun.formatDate(item.activityEndTime);
-        })
-        return arr
+        let PendingData = await this.addParticipateStatusField(data);
+        let afterSortList = this.handleListSort(PendingData);
+        let finalData = this.handleDateFormat(afterSortList);
+        return finalData
     },
 
     //获取当前用户参与的活动列表;
@@ -91,14 +93,30 @@ Page({
         }
         return participateList
     },
-    //对活动列表进行排序，根据活动状态(进行中、未开始、已结束);
+    //添加用户参与状态字段;
+    async addParticipateStatusField(data) {
+        const participateList = await this.getParticipateList();
+        data.forEach(item => {
+            item.participateStatus = participateList.includes(item._id);
+        })
+        return data
+    },
+    //对活动列表进行排序，根据活动状态(进行中、未参加、已参加、已结束);
     handleListSort(data) {
         let arr = [];
-        let beforeStartArr = data.filter(item => item.activityStatus == 0).sort((a, b) => a.activityStartTime - b.activityStartTime) //未开始
-        let onstartArr = data.filter(item => item.activityStatus == 1).sort((a, b) => a.activityEndTime - b.activityEndTime) //已开始
-        let onendArr = data.filter(item => item.activityStatus == 2).sort((a, b) => b.activityEndTime - a.activityEndTime) //已结束
-        arr.push(...onstartArr, ...beforeStartArr, ...onendArr);
+        let beforeStartArr = data.filter(item => item.activityStatus == 0).sort((a, b) => a.activityStartTime - b.activityStartTime) //未开始;
+        let beforeParticipateArr = data.filter(item => item.activityStatus == 1 && !item.participateStatus).sort((a, b) => a.activityEndTime - b.activityEndTime) //未参与;
+        let onparticipateArr = data.filter(item => item.activityStatus == 1 && item.participateStatus).sort((a, b) => a.activityEndTime - b.activityEndTime) //已参与;
+        let onendArr = data.filter(item => item.activityStatus == 2).sort((a, b) => b.activityEndTime - a.activityEndTime) //已结束;
+        arr.push(...onparticipateArr, ...beforeParticipateArr, ...beforeStartArr, ...onendArr);
         return arr
+    },
+    handleDateFormat(data) {
+        data.forEach(item => {
+            item.activityStartTime = commonFun.formatDate(item.activityStartTime);
+            item.activityEndTime = commonFun.formatDate(item.activityEndTime);
+        })
+        return data
     },
 
     /**

@@ -6,14 +6,14 @@
     <swiper class="activity-swiper" current="{{current}}" bindchange="bindchange">
         <swiper-item class="activity-item" wx:for="{{activityTypes}}" wx:key="id">
             <view style="background-image:url({{item.tempFileURL}})" class="actvity wrap-50r mt-24r" wx:for="{{activityList}}" wx:key="id">
-            <image class="icon-hot" src="../../images/icon-hot.png" wx:if="{{item.activityStatus==1}}"></image>
+                <image class="icon-hot" src="../../images/icon-hot.png" wx:if="{{item.activityStatus==1}}"></image>
                 <view class="flex-row">
                     <view class="duration">
                         <text>活动时间：</text>
                         <text class="time-start">{{item.activityStartTime}}</text>-<text class="time-end">{{item.activityEndTime}}</text>
                     </view>
                     <view class="entry">
-                        <view class="btn-entry {{activityStatus==1?'active':'no-active'}}" bindtap="to" data-id="{{item._id}}">
+                        <view class="btn-entry {{item.activityStatus==1?'active':'no-active'}}" bindtap="to" data-id="{{item._id}}">
                             <text wx:if="{{item.activityStatus==0}}">未开始</text>
                             <text wx:if="{{item.activityStatus==1}}">{{item.participateStatus? '已参加':"去参加"}}</text>
                             <text wx:if="{{item.activityStatus==2}}">已结束</text>
