@@ -40,7 +40,8 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload() {
-
+        let app = getApp()
+        app.hideShareMenu()
     },
 
     /**
@@ -63,9 +64,9 @@ Page({
     onShareAppMessage() {
 
     },
-    tomine(){
+    tomine() {
         wx.switchTab({
-          url: '/pages/mine/index',
+            url: '/pages/mine/index',
         })
     }
 })
