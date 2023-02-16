@@ -41,9 +41,9 @@ Page({
                 name: '日常活动'
             },
         ],
-        fileId: '',
+        fileId: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/activity/2023/2/10%E4%B8%8B%E5%8D%8810%3A00%3A17.png?sign=6672866c2615398ded2fa84166ff654a&t=1676515352',
         tempFileURL: '',
-        ///
+        ///命名
         item: {
             prizeUrl: '',
             prizeName: '',
@@ -74,13 +74,12 @@ Page({
                     cloudPath: 'activity/' + new Date().toLocaleString() + '.png',
                     filePath: filePath,
                 }).then(async res => {
-                    let fileId = res.fileID;
-                    console.log(fileId);
-                    let tempFileURL = await _this.getTempFileURL(fileId);
-                    console.log(tempFileURL)
+                    console.log(res);
+                    let fileId1 = res.fileID;
+                    console.log(fileId1); //有值cloud:
+                    await _this.getTempFileURL(fileId1);
                     _this.setData({
-                        fileId,
-                        tempFileURL
+                        fileId:fileId1,
                     })
 
                 })
@@ -231,18 +230,23 @@ Page({
         })
     },
     //把图片转成https格式
-    getTempFileURL(fileId) {
+    getTempFileURL(fileId1) {
         let tempFileURL = "";
         wx.cloud.callFunction({
             name: 'getTempFileURL',
             data: {
-                fileId
+                fileId:fileId1
             }
         }).then(res => {
             console.log(res);
             tempFileURL = res.result[0].tempFileURL
+            console.log(tempFileURL);
+            this.setData({
+                tempFileURL:tempFileURL
+            })
         })
-        return tempFileURL
+        //https 地址
+        // return tempFileURL 
     },
   
     /**                                                    
