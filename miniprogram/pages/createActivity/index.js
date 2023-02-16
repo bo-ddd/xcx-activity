@@ -159,9 +159,7 @@ Page({
         })
         this.getPrizeSettingList();
         if (this.validateForm()) this.createActivity();
-        this.setData({
-            form: '',
-        })
+       
     },
    ///获取奖品列表     
     getPrizeSettingList() {
