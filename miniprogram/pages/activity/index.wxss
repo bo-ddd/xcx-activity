@@ -58,6 +58,7 @@
     background-position: center;
     background-size: cover;
     overflow: hidden;
+    position:relative;
 }
 
 .actvity .flex-row {
@@ -80,10 +81,22 @@
 
 .actvity .btn-entry {
     display: inline-block;
-    padding: 8rpx 16rpx;
+    padding: 10rpx 20rpx;
     box-sizing: border-box;
     font-size: 20rpx;
     border-radius: 20rpx;
     color: white;
+}
+.actvity .icon-hot{
+    width:100rpx;
+    height:100rpx;
+    position: absolute;
+    top:0;
+    left:0;
+}
+.active{
     background-color: red;
+}
+.no-active{
+    background-color: #949292;
 }

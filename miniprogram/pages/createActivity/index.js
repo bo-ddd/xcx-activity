@@ -11,15 +11,16 @@ Page({
         form: {
             storeName: '',
             titleValue: '',
-            activityStartTime: '2023-01-01',
-            activityEndTime: '2023-01-01',
+            activityStartTime: '',
+            activityEndTime: '',
             textareaValue: "",
             prizeName: '',
-            prizeNum: '',
+            prizeNum:1,
             peopleNum: '',
             activityType: 1,
             activityForm: 1,
         },
+        ////////////
         items: [{
                 value: 1,
                 name: '抽奖活动',
@@ -42,16 +43,17 @@ Page({
         ],
         fileId: '',
         tempFileURL: '',
+        ///
         item: {
             prizeUrl: '',
             prizeName: '',
-            prizeNum: '',
+            prizeNum: 1,
             peopleNum: ''
         },
         prizeSettingList: [{
             prizeUrl: '',
             prizeName: '',
-            prizeNum: '',
+            prizeNum: 1,
             peopleNum: ''
         }],
         prizeList: []
@@ -73,6 +75,7 @@ Page({
                     filePath: filePath,
                 }).then(async res => {
                     let fileId = res.fileID;
+                    console.log(fileId);
                     let tempFileURL = await _this.getTempFileURL(fileId);
                     console.log(tempFileURL)
                     _this.setData({
@@ -99,7 +102,7 @@ Page({
         });
     },
     //奖品图
-    PrizeMap(e) {
+    prizeMap(e) {
         let _this = this;
         let index = e.currentTarget.dataset.index;
         //唤起图片权限
@@ -157,8 +160,11 @@ Page({
         })
         this.getPrizeSettingList();
         if (this.validateForm()) this.createActivity();
+        this.setData({
+            form: '',
+        })
     },
-
+   ///获取奖品列表     
     getPrizeSettingList() {
         let prizeSettingList = this.data.prizeSettingList;
         let form = this.data.form;
@@ -187,7 +193,8 @@ Page({
                 fileId,
                 tempFileURL: this.data.tempFileURL,
                 examineType: 0,
-                activityStatus: 0,
+                ////////
+                activityStatus: 0, 
                 prizeSettingList: this.data.prizeSettingList
             },
             success(res) {
@@ -232,14 +239,19 @@ Page({
                 fileId
             }
         }).then(res => {
+            console.log(res);
             tempFileURL = res.result[0].tempFileURL
         })
         return tempFileURL
     },
-    /**
+  
+    /**                                                    
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        //取消分享功能
+        // let app=getApp()
+        // app.hideShareMenu()
         this.getStoreName()
 
 
@@ -294,6 +306,8 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage() {
-
+        wx.hideShareMenu({
+            menus: ['shareAppMessage', 'shareTimeline']
+          })
     }
 })

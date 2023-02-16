@@ -103,8 +103,9 @@ Page({
     },
     //登录后获取用户信息
     async queryUserInfo(){
-        let app = getApp()
-        await app.queryUserInfo()
+        let app = getApp();
+        await app.judgeUserInfo();
+
         this.setData({
             userInfo: app.globalData.userInfo
         })
@@ -112,8 +113,13 @@ Page({
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options) {
-       this.queryUserInfo()
+    async onLoad(options) {
+
+    //    let windowWidth=wx.getSystemInfoSync().windowWidth
+    //    let windowHeight=wx.getSystemInfoSync().windowHeight
+    //    this.setData({
+    //        scroll_height:windowHeight*750/windowWidth
+    //    })
     },
 
     /**
@@ -127,8 +133,9 @@ Page({
      * 生命周期函数--监听页面显示
      */
     //判断用户是否登录
-    onShow() {
-
+    async onShow() {
+        await this.queryUserInfo()
+        console.log(this.data.userInfo)
     },
 
     /**

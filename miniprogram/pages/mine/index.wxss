@@ -4,8 +4,9 @@
 
 .mine{
  padding: 20rpx 0;
+ margin: 0px;
   background-color: rgb(241, 241, 241);
-  height:100vh;
+  /* height:100vh; */
   box-sizing: border-box;
 }
 .box{

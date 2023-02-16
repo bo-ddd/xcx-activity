@@ -67,7 +67,7 @@
             </swiper>
             <image class="icon-switch_right" src="../../images/icon-switch_02.png" mode="" bindtap="switchNext" />
         </view>
-        <view class="btn-help mt-5" bindtap="onhelp">助力</view>
+        <view class="btn-help mt-5" bindtap="help" >助力</view>
     </view>
     <!-- 遮罩层 -->
     <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>

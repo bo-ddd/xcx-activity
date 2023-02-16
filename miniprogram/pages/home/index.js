@@ -71,7 +71,8 @@ Page({
         })
     },
     onShow() {
-            
+        console.log('-------querUserInfo-----------')
+        this.queryUserInfo()
     },
 //商品跳转商品详情页面
     async navTab(e) {     
@@ -80,19 +81,20 @@ Page({
             url: '/pages/productDetails/index?_id=' + e.currentTarget.id,
         })
     },
-    //解决重复授权问题
+    
     async queryUserInfo(){
-        let app = getApp()
-        await app.queryUserInfo()
+        let app = getApp() 
+        let userInfo = await app.judgeUserInfo()
         this.setData({
-            userInfo: app.globalData.userInfo
+            userInfo
         })
+ 
+ 
     },
 
     onLoad(e) {
-        this.queryUserInfo()
         this.getGoodsType()
-        this.getHotGoods()       
+        this.getHotGoods()
 
     },
 
@@ -185,7 +187,6 @@ Page({
                 })
                 
                 res.result.data.forEach(item=>{
-                    console.log(item.goodsType);                   
                         if(arr.indexOf(item.goodsType)==-1){  
                             // console.log(item.goodsType);
                             arr.push(item.goodsType)
