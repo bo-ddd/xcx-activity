@@ -49,3 +49,15 @@
     padding: 10rpx;
 
 }
+.received{
+    display: inline-block;
+    background-color: #ccc;
+    color: #fff;
+    border-radius: 20rpx;
+    padding: 10rpx;
+}
+.winning-record{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
