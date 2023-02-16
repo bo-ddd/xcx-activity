@@ -238,24 +238,21 @@ Page({
         }).then(res => {
             console.log(res);
             tempFileURL = res.result[0].tempFileURL
-            console.log(tempFileURL);
+            //https 地址
+            // console.log(tempFileURL);
             this.setData({
                 tempFileURL:tempFileURL
             })
         })
-        //https 地址
-        // return tempFileURL 
     },
-  
     /**                                                    
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
         //取消分享功能
-        // let app=getApp()
-        // app.hideShareMenu()
+        let app=getApp()
+        app.hideShareMenu()
         this.getStoreName()
-
 
     },
 
