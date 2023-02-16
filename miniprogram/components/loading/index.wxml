@@ -1,0 +1,11 @@
+<!--components/loadingAnimation/index.wxml-->
+<view class="contain {{show? '':'hidden'}}">
+    <view class="container">
+        <view class="loader">
+            <view style="--i:1;--color:#FD79A8"></view>
+            <view style="--i:2;--color:#0984E3"></view>
+            <view style="--i:3;--color:#00B894"></view>
+            <view style="--i:4;--color:#FDCB6E"></view>
+        </view>
+    </view>
+</view>

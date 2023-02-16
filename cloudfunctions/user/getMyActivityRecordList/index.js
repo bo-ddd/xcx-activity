@@ -14,4 +14,4 @@ exports.main = async (event, context) => {
     
     // 查询活动记录表（activityRecord）
     return await db.collection("activityRecord").get();
-}
+} 
