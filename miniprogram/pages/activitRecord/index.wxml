@@ -1,8 +1,7 @@
 <!--pages/activitRecord/index.wxml-->
 <view class="activit-record">
-<!-- <loading show="{{ loadingStatus }}"></loading> -->
+<loading show="{{ loadingStatus }}"></loading>
     <view class="wrap">
- 
         <view class="record-list wrap mb-20" wx:if="{{ recordList.length > 0 }}">
             <view class="list-item" wx:for="{{ recordList }}" wx:key="_id">
                 <view class="item-left">
@@ -14,14 +13,11 @@
                 <view wx:else="{{ item.prizeStatus == 1 }}" class="received fs-25">已领取</view>
             </view>
         </view> 
-
     <view class="record-list winning-record wrap mb-20" wx:else=" {{ recordList.length < 0 }} ">
         <view>
             暂无参与，请参与！
         </view>
         </view>
-
-       
   <view class="explain fs-25">
        感谢您的参与，最终解释权归商家所有
   </view>

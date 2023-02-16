@@ -7,7 +7,7 @@ Page({
      */
     data: {
         recordList:[],
-        // lodingStatus : true
+        lodingStatus : true
     },
     
     /**
@@ -15,10 +15,9 @@ Page({
      */
     onLoad(options) {
         // let app=getApp()
-        // app.showLoading()
         app.hideShareMenu()
         this.getActivityRecordList();
-        // this.closeLoding()
+        this.closeLoding()
     },
 
     getActivityRecordList(){
@@ -39,12 +38,12 @@ Page({
             url: '/pages/' + e.currentTarget.dataset.name + '/index',
         })
     },
-    // closeLoding(){
-    //     this.setData({
-    //         lodingStatus : false
-    //     })
-    // },
-        // "loading":"../../components/loading/index"
+    closeLoding(){
+        this.setData({
+            lodingStatus : false
+        })
+    },
+        
 
 
     /**
