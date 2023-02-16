@@ -59,7 +59,7 @@
     
                 <view class="lable">活动类型：</view>
                 <radio-group name="activityType" class="radio color-ccc">
-                    <label wx:for="{{items1}}" wx:key="value">
+                    <label wx:for="{{activityPlay}}" wx:key="value">
                         <radio value="{{item.value}}" style="transform: scale(0.7);" checked="{{item.checked}}"/>{{item.name}}
                     </label>
                   
@@ -70,7 +70,7 @@
     
                 <view class="lable">活动玩法：</view>
                 <radio-group name="activityForm" class="radio color-ccc" >
-                    <label wx:for="{{items}}" wx:key="value">
+                    <label wx:for="{{activitesType}}" wx:key="value">
                         <radio value="{{item.value}}" style="transform: scale(0.7);" checked="{{item.checked}}"/>{{item.name}}
                     </label>
                   
