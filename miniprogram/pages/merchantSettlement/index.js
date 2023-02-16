@@ -1,10 +1,14 @@
 // pages/merchantSettlement/index.js
+const commonFn = require('../../common/throttle')
+const app = getApp()
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        loadingStatus: true,
         flag: true,
         radios: [
             { value: '1', name: '女' },
@@ -14,42 +18,42 @@ Page({
             DqOpenid: '',
             select: false,
             grade_name: '--请选择--',
-            grades:[
+            grades: [
                 {
-                    id:1,
-                    value:'电子产品'
+                    id: 1,
+                    value: '电子产品'
                 },
                 {
-                    id:2,
-                    value:'卫生用品'
+                    id: 2,
+                    value: '卫生用品'
                 },
                 {
-                    id:3,
-                    value:'厨房用品'
+                    id: 3,
+                    value: '厨房用品'
                 },
                 {
-                    id:4,
-                    value:'清洁洗护'
+                    id: 4,
+                    value: '清洁洗护'
                 },
                 {
-                    id:5,
-                    value:'美妆护肤'
+                    id: 5,
+                    value: '美妆护肤'
                 },
                 {
-                    id:6,
-                    value:'二次元'
+                    id: 6,
+                    value: '二次元'
                 },
                 {
-                    id:7,
-                    value:'潮流女装'
+                    id: 7,
+                    value: '潮流女装'
                 },
                 {
-                    id:8,
-                    value:'潮男穿搭'
+                    id: 8,
+                    value: '潮男穿搭'
                 },
                 {
-                    id:9,
-                    value:'美食达人'
+                    id: 9,
+                    value: '美食达人'
                 },
             ]
         },
@@ -75,8 +79,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let app = getApp()
         app.hideShareMenu()
+        this.closeLoading()
     },
 
     /**
@@ -127,6 +131,12 @@ Page({
     onShareAppMessage() {
 
     },
+    // 加载中
+    closeLoading() {
+        this.setData({
+            loadingStatus: false
+        })
+    },
     // 单选框
     radioChange(e) {
         const items = this.data.radios
@@ -152,7 +162,7 @@ Page({
             storeclassValue: e.currentTarget.dataset.name,
             select: false
         })
-        
+
     },
     //  消息提示
     tips(text) {
@@ -167,32 +177,30 @@ Page({
         this.setData({
             form: e.detail.value
         })
-        if (!this.data.form.merchantname) {
-            this.tips('请输入姓名！')
-            return;
-        } else if (!this.data.form.merchantphone) {
-            this.tips('请输入手机号！')
-            return;
-        } else if (this.data.form.merchantphone.length < 11) {
-            this.tips('手机号不完整！')
-            return;
-        } else if (!this.data.form.storename) {
-            this.tips('请输入店铺姓名！')
-            return;
-        } else if (!this.data.form.storeaddress) {
-            this.tips('请输入店铺地址！')
-            return;
-        } else if (!this.data.storeclassValue) {
-            this.tips('请选择经营类型！')
-            return;
-        } else if (!this.data.fileId) {
-            this.tips('请上传营业执照！')
-            return;
-        } else {
-            this.throttle(() => {
-                this.addMerchant()
-            })
-        }
+        // if (!this.data.form.merchantname) {
+        //     this.tips('请输入姓名！')
+        //     return;
+        // } else if (!this.data.form.merchantphone) {
+        //     this.tips('请输入手机号！')
+        //     return;
+        // } else if (this.data.form.merchantphone.length < 11) {
+        //     this.tips('手机号不完整！')
+        //     return;
+        // } else if (!this.data.form.storename) {
+        //     this.tips('请输入店铺姓名！')
+        //     return;
+        // } else if (!this.data.form.storeaddress) {
+        //     this.tips('请输入店铺地址！')
+        //     return;
+        // } else if (!this.data.storeclassValue) {
+        //     this.tips('请选择经营类型！')
+        //     return;
+        // } else if (!this.data.fileId) {
+        //     this.tips('请上传营业执照！')
+        //     return;
+        // } else {
+            commonFn.throttle(this.addMerchant)()
+        // }
     },
     // 跳转审核提示页面
     toAuditStatus() {
@@ -246,23 +254,4 @@ Page({
             }
         })
     },
-    // 按钮的节流
-    throttle(callback) {
-        let _this = this
-        if (_this.data.flag) {
-            callback();
-            _this.setData({
-                flag: false
-            })
-        } else {
-            console.log('别点啦');
-            return
-        }
-        setTimeout(() => {
-            _this.setData({
-                flag: true
-            })
-        }, 2000)
-
-    }
 })

@@ -1,5 +1,6 @@
 <!--pages/merchantInfo/index.wxml-->
 <view class="box">
+    <loading show="{{ loadingStatus }}"></loading>
     <view class="title fs-54">
         商家信息
     </view>
