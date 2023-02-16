@@ -1,5 +1,6 @@
 <!--pages/activity/index.wxml-->
 <view class="main">
+    <loading show="{{loadingStatus}}"></loading>
     <view class="flex-nav nav wrap-40r">
         <view class="nav-item  {{index==current?'text-selected current':''}}" wx:for="{{activityTypes}}" wx:key="id" bindtap="switchTab" data-id="{{index}}">{{item}}</view>
     </view>
