@@ -50,7 +50,10 @@
     /* 未选中底线样式 */
     background: transparent;
 }
-
+.isNull{
+    color: black;
+    position: absolute;
+}
 .swiperTtemBox {
     height: calc(100vh - 80rpx);
 

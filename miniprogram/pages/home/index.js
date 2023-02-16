@@ -81,7 +81,7 @@ Page({
             url: '/pages/productDetails/index?_id=' + e.currentTarget.id,
         })
     },
-    //解决重复授权问题
+    
     async queryUserInfo(){
         let app = getApp() 
         let userInfo = await app.judgeUserInfo()

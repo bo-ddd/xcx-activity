@@ -55,6 +55,10 @@
     margin-top: 5%;
 }
 
+.pb-20r{
+   padding-bottom:20rpx;
+}
+
 .main {
     background: url(https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/bg-activity.png?sign=3f3863fe462c4b6f791a00c877522eaa&t=1675842156) no-repeat center;
     background-size: 100%;
@@ -130,7 +134,7 @@
 }
 
 .footer .tip-activity {
-    padding:20rpx 0;
+    padding: 20rpx 0;
 }
 
 .footer .flex {
@@ -160,7 +164,8 @@
     background-color: #FBEEA4;
     position: relative;
 }
-.footer .mask-prize{
+
+.footer .mask-prize {
     width: 400rpx;
     height: 400rpx;
     position: fixed;
@@ -227,9 +232,10 @@
     flex-direction: column;
     align-items: center;
 }
-.footer .swiper{
-    width:600rpx;
-    height:600rpx;
+
+.footer .swiper {
+    width: 600rpx;
+    height: 600rpx;
 }
 
 
@@ -248,16 +254,61 @@
     margin-top: -20rpx;
 }
 
+/* 助力按钮; */
 .footer .btn-help {
-    padding: 20rpx 200rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    animation: scaleDraw 5s ease-in-out infinite;
+}
+
+.btn-help button {
+    color: white;
+    transform: scale(120%);
     background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/icon-btn_help.png?sign=26036c9f94496b9c95202a99374afd8f&t=1675239826') no-repeat center;
     background-size: 100%;
-    color: white;
-    font-size: 36rpx;
-    font-weight: bold;
-    border-radius: 30rpx;
-    display: flex;
-    justify-content: center;
+    font-size: 28rpx;
+}
+
+@keyframes scaleDraw {
+
+    /*定义关键帧、scaleDrew是需要绑定到选择器的关键帧名称*/
+    0% {
+        transform: scale(1);
+        /*开始为原始大小*/
+    }
+
+    25% {
+        transform: scale(1.1);
+        /*放大1.1倍*/
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes living {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0;
+        /*圆形放大的同时，透明度逐渐减小为0*/
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
 }
 
 /* 遮罩层 */
@@ -329,7 +380,8 @@
     line-height: 48rpx;
     color: black;
 }
-.count-down{
+
+.count-down {
     display: flex;
     align-items: center;
     justify-content: center;

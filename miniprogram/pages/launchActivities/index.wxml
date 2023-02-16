@@ -7,10 +7,11 @@
     </view>
     <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
         <swiper-item class="swiper-item" wx:for="{{ activityStatus }}" wx:key="id">
-            <view class='swiper-con wrap' >
+            <view class='swiper-con wrap'>
                 <view class="actvity wrap-60r" wx:for="{{activitList}}" wx:key="_id">
-                 <image src="{{item.fileId}}" mode="" class="activity-bg"/>
-                        <view class="update-btn fs-35" bindtap="updataTo" data-_id="{{ item._id }}" >编辑活动</view>
+                    <image src="{{item.fileId}}" mode="" class="activity-bg" />
+                    <image class="delete" bindtap="delete" data-_id="{{ item._id }}" src="../../images/icon-delete.png" mode="" />
+                    <view class="update-btn fs-35" bindtap="updataTo" data-_id="{{ item._id }}">编辑活动</view>
                 </view>
             </view>
         </swiper-item>

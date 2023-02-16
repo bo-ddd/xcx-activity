@@ -52,7 +52,7 @@ App({
                 })
             })
         };
-
+       //登录流程
         this.getUserProfile = function (desc) {
             return new Promise((resolve) => {
                 wx.getUserProfile({
@@ -65,6 +65,7 @@ App({
                 })
             })
         };
+        //获取授权
         this.getSetting = function () {
             return new Promise((resolve) => {
                 wx.getSetting({
