@@ -15,10 +15,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        // let app = getApp()
-        // app.showLoading()
+        let app = getApp()
+        app.hideShareMenu()
         this.showLoading()
         this.getMerchantList()
+
     },
     // 获取商铺列表
     getMerchantList() {
@@ -37,6 +38,7 @@ Page({
             }
         })
     },
+    
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -89,7 +91,7 @@ Page({
     async toActiveDetail(e) {
         console.log(e);
         await wx.navigateTo({
-            url: '/pages/examineDetails/index?id=' + e.currentTarget.dataset._id,
+            url: '/pages/merchantInfo/index?id=' + e.currentTarget.dataset._id,
         })
     },
     // 跳转商家信息详情

@@ -1,4 +1,5 @@
 // pages/activityDetails/index.js
+const commonFun=require('../../common/throttle');
 Page({
     /**
      * 页面的初始数据
@@ -74,8 +75,10 @@ Page({
             showModal: false
         })
     },
+    
     //助力按钮事件;
-    async onhelp() {
+    async onHelp() {
+        console.log(123)
         let _this = this;
         await this.getParticipateStatus();
         if (!this.data.participateStatus) {
@@ -84,7 +87,8 @@ Page({
                 title: '提示',
                 content: '助力成功',
                 success(res) {
-                    _this.addParticipateStatus()
+                    //把活动id和用户id存入数据库;
+                    _this.addParticipateStatus();
                     //更新活动进度;
                     _this.updataActivityProgress();
                 }
@@ -93,11 +97,12 @@ Page({
             wx.showModal({
                 title: '提示',
                 content: '您已助力过啦！',
-                success(res) {
-                    console.log(res);
-                }
             })
         }
+    },
+    help(){
+        let _this=this;
+        commonFun.throttle(_this.onHelp)();
     },
     //获取参与状态
     async getParticipateStatus() {

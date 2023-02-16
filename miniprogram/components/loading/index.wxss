@@ -1,0 +1,96 @@
+/* components/loadingAnimation/index.wxss */
+page{
+    margin : 0;
+    padding: 0;
+    background-color: white;
+  }
+  
+  .contain{
+    position: absolute;
+    left    : 25%;
+    top     : 40%;
+    z-index : 999;
+  }
+  
+  .container {
+    transform: scale(0.8);
+  }
+  
+  .loader {
+    position: relative;
+    width   : 608.5rpx;
+    height  : 100rpx;
+  }
+  
+  .loader view {
+    position        : absolute;
+    width           : 80rpx;
+    height          : 80rpx;
+    background-color: var(--color);
+    left            : calc((var(--i) - 1) * 125rpx - 70rpx);
+    border-radius   : 20rpx;
+    animation       : animate 1s linear infinite;
+  
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+  }
+  
+  @keyframes animate {
+    0% {
+        transform: rotate(-45deg);
+    }
+  
+    100% {
+        transform: rotate(45deg);
+    }
+  }
+  
+  .loader view::after {
+    position        : absolute;
+    content         : '';
+    width           : 80rpx;
+    height          : 80rpx;
+    background-color: var(--color);
+    top             : -120rpx;
+    border-radius   : 20rpx;
+    animation       : animate_show 4s steps(1, end) infinite;
+    animation-delay : calc((5 - var(--i)) * -1s);
+  }
+  
+  @keyframes animate_show {
+  
+    0% {
+        opacity: 1;
+    }
+  
+    25% {
+        opacity: 0;
+    }
+  
+    50% {
+        opacity: 0;
+    }
+  
+    75% {
+        opacity: 0;
+    }
+  
+    100% {
+        opacity: 0;
+    }
+  
+  }
+  
+  
+  .loader view::before {
+    position        : absolute;
+    content         : '';
+    width           : 40rpx;
+    height          : 40rpx;
+    border-radius   : 50%;
+    background-color: #fff;
+  }
+  .hidden{
+      display:none
+  }

@@ -10,7 +10,8 @@ Page({
         waitActivityList: [],
         endActivityList: [],
         participateActivityList: [],
-        loaded: false
+        // loaded: false,
+         loadingStatus: true,
     },
 
     bindchange: function (e) {
@@ -82,22 +83,22 @@ Page({
             url: '/pages/activityDetails/index?_id=' + e.currentTarget.dataset.id,
         })
     },
+    closeLoading() {
+        this.setData({
+            loadingStatus: false
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     async onLoad(options) {
         ///首屏优化
         //获取参与活动列表。拿到有活动id。连表查询该活动的所有信息
-        wx.showLoading({
-            title: '加载中...',
-        })
+
         await this.getParticipateActivities();
 
-        wx.hideLoading();
-
-        this.setData({
-            loaded: true
-        })
+        this.closeLoading();
+      
     },
 
     /**

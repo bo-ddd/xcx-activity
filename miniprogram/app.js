@@ -25,7 +25,8 @@ App({
         this.judgeUserInfo = function (callback) {
             return new Promise((resolve) => {
                 if (!this.globalData.needLogin) {
-                    return this.globalData.userInfo;
+                    resolve(this.globalData.userInfo);
+                    return;
                 }
                 wx.cloud.callFunction({
                     name: 'user',
@@ -35,13 +36,14 @@ App({
                 }).then(res => {
                     if (res.result.data[0]) {
                         this.globalData.userInfo = res.result.data[0];
-                        resolve(res);
                         this.globalData.needLogin = false;
+                        resolve(res);
                         //不可以跳转
                     } else {
                         if (callback) {
                             callback();
                         } else {
+                            this.globalData.needLogin = true;
                             wx.navigateTo({
                                 url: '/pages/login/index',
                             })
@@ -50,7 +52,7 @@ App({
                 })
             })
         };
-
+       //登录流程
         this.getUserProfile = function (desc) {
             return new Promise((resolve) => {
                 wx.getUserProfile({
@@ -63,6 +65,7 @@ App({
                 })
             })
         };
+        //获取授权
         this.getSetting = function () {
             return new Promise((resolve) => {
                 wx.getSetting({
