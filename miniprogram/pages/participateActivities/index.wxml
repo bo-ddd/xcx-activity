@@ -1,35 +1,41 @@
 <!--pages/participateActivities/index.wxml-->
-<view class="launch-activities" wx:if="{{ loaded }}">
+
+<loading show="{{loadingStatus}}"></loading>
+<view class="launch-activities" >
     <view class='top-tab_swiper'>
         <view class='tab  {{currentData == 0 ? "tab-borer" : ""}}' data-current="0" bindtap='checkCurrent'>未开始</view>
         <view class='tab  {{currentData == 1 ? "tab-borer" : ""}}' data-current="1" bindtap='checkCurrent'>待开奖</view>
         <view class='tab  {{currentData == 2 ? "tab-borer" : ""}}' data-current="2" bindtap='checkCurrent'>已结束</view>
     </view>
-    <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
+    <view wx:if="{{!participateActivityList.length}}" class="tips">
+        <image class="empty" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/activity/2023/2/%E6%9A%82%E6%97%A0%E6%95%B0%E6%8D%AE.png?sign=954ff57976e02122a19d07a8966b5289&t=1676535588"></image>
+        <view>您还未参与活动，快去列表参与吧！</view>
+    </view>
+    <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange" wx:else>
         <swiper-item class="swiper-item">
             <view class='swiper-con wrap'>
                 <view class="actvity wrap-60r" wx:for="{{ notStartedActivityList }}" wx:key="_id">
-                 <image src="{{item.fileId}}" class="activity-bg"/>
-                        <view class="update-btn fs-35"  bindtap="toDetail" data-id="{{item._id}}">查看详情</view>
+                    <image src="{{item.fileId}}" class="activity-bg" />
+                    <view class="update-btn fs-35" bindtap="toDetail" data-id="{{item._id}}">查看详情</view>
                 </view>
             </view>
         </swiper-item>
         <swiper-item class="swiper-item">
             <view class='swiper-con wrap'>
                 <view class="actvity wrap-60r" wx:for="{{waitActivityList}}" wx:key="_id">
-                 <image src="{{item.fileId}}" mode="" class="activity-bg"/>
-                        <view class="update-btn fs-35"  bindtap="toDetail">查看详情</view>
+                    <image src="{{item.fileId}}" mode="" class="activity-bg" />
+                    <view class="update-btn fs-35" bindtap="toDetail">查看详情</view>
                 </view>
             </view>
         </swiper-item>
         <swiper-item class="swiper-item">
             <view class='swiper-con wrap' wx:for="{{endActivityList}}" wx:key="_id">
                 <view class="actvity wrap-60r">
-                 <image src="{{item.fileId}}" mode="" class="activity-bg"/>
-                        <view class="update-btn fs-35"  bindtap="toDetail">查看详情</view>
+                    <image src="{{item.fileId}}" mode="" class="activity-bg" />
+                    <view class="update-btn fs-35" bindtap="toDetail">查看详情</view>
                 </view>
             </view>
         </swiper-item>
-      
+
     </swiper>
 </view>

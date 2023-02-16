@@ -79,7 +79,6 @@ Page({
     },
 
     to(e) {
-        console.log(e);
         wx.navigateTo({
             url: '/pages/' + e.currentTarget.dataset.name + '/index'
         })
@@ -135,7 +134,6 @@ Page({
     //判断用户是否登录
     async onShow() {
         await this.queryUserInfo()
-        console.log(this.data.userInfo)
     },
 
     /**

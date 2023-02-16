@@ -17,11 +17,11 @@ Page({
             prizeName: '',
             prizeNum:1,
             peopleNum: '',
-            activityType: 1,
-            activityForm: 1,
+            activityType: '',
+            activityForm: '',
         },
         ////////////
-        items: [{
+        activitesType: [{
                 value: 1,
                 name: '抽奖活动',
                 checked: 'true'
@@ -31,7 +31,7 @@ Page({
                 name: '助力活动'
             },
         ],
-        items1: [{
+        activityPlay: [{
                 value: 1,
                 name: '周期活动',
                 checked: 'true'
@@ -41,10 +41,10 @@ Page({
                 name: '日常活动'
             },
         ],
-        fileId: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/activity/2023/2/10%E4%B8%8B%E5%8D%8810%3A00%3A17.png?sign=6672866c2615398ded2fa84166ff654a&t=1676515352',
-        tempFileURL: '',
+        fileId: 'cloud://zliu-dev-4gclbljp64cb5cd3.7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483/activity/2023/2/16下午3:03:19.png',
+        tempFileURL: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/activity/2023/2/16下午3:05:21.png',
         ///命名
-        item: {
+        prizeItem: {
             prizeUrl: '',
             prizeName: '',
             prizeNum: 1,
@@ -78,7 +78,7 @@ Page({
                     let fileId1 = res.fileID;
                     console.log(fileId1); //有值cloud:
                     await _this.getTempFileURL(fileId1);
-                    _this.setData({
+                    _this.setData({ 
                         fileId:fileId1,
                     })
 
@@ -159,9 +159,7 @@ Page({
         })
         this.getPrizeSettingList();
         if (this.validateForm()) this.createActivity();
-        this.setData({
-            form: '',
-        })
+       
     },
    ///获取奖品列表     
     getPrizeSettingList() {
@@ -192,8 +190,8 @@ Page({
                 fileId,
                 tempFileURL: this.data.tempFileURL,
                 examineType: 0,
-                ////////
-                activityStatus: 0, 
+                //////// 
+                // activityStatus: 0,  前端不传
                 prizeSettingList: this.data.prizeSettingList
             },
             success(res) {
@@ -211,7 +209,7 @@ Page({
     },
     //新增活动模块
     createModul() {
-        this.data.prizeSettingList.push(JSON.parse(JSON.stringify(this.data.item)))
+        this.data.prizeSettingList.push(JSON.parse(JSON.stringify(this.data.prizeItem)))
         this.setData({
             prizeSettingList: this.data.prizeSettingList
         })
@@ -240,24 +238,21 @@ Page({
         }).then(res => {
             console.log(res);
             tempFileURL = res.result[0].tempFileURL
-            console.log(tempFileURL);
+            //https 地址
+            // console.log(tempFileURL);
             this.setData({
                 tempFileURL:tempFileURL
             })
         })
-        //https 地址
-        // return tempFileURL 
     },
-  
     /**                                                    
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
         //取消分享功能
-        // let app=getApp()
-        // app.hideShareMenu()
+        let app=getApp()
+        app.hideShareMenu()
         this.getStoreName()
-
 
     },
 
