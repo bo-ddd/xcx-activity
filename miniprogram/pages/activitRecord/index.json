@@ -1,7 +1,5 @@
 {
-    "usingComponents": {
-        "loading":"../../components/loading/index"
-    },
+    "usingComponents": {},
     "navigationBarTitleText": "参与记录",
     "navigationBarTextStyle": "white"
 }

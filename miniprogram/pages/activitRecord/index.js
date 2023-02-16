@@ -7,7 +7,7 @@ Page({
      */
     data: {
         recordList:[],
-        lodingStatus : true
+        // lodingStatus : true
     },
     
     /**
@@ -18,7 +18,7 @@ Page({
         // app.showLoading()
         app.hideShareMenu()
         this.getActivityRecordList();
-        this.closeLoding()
+        // this.closeLoding()
     },
 
     getActivityRecordList(){
@@ -39,11 +39,13 @@ Page({
             url: '/pages/' + e.currentTarget.dataset.name + '/index',
         })
     },
-    closeLoding(){
-        this.setData({
-            lodingStatus : false
-        })
-    },
+    // closeLoding(){
+    //     this.setData({
+    //         lodingStatus : false
+    //     })
+    // },
+        // "loading":"../../components/loading/index"
+
 
     /**
      * 生命周期函数--监听页面初次渲染完成

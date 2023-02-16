@@ -1,6 +1,6 @@
 <!--pages/activitRecord/index.wxml-->
 <view class="activit-record">
-<loading show="{{ loadingStatus }}"></loading>
+<!-- <loading show="{{ loadingStatus }}"></loading> -->
     <view class="wrap">
  
         <view class="record-list wrap mb-20" wx:if="{{ recordList.length > 0 }}">
