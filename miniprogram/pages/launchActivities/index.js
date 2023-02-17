@@ -40,7 +40,7 @@ Page({
         } else {
 
             that.setData({
-                examineType: e.target.dataset.current
+                currentData: e.target.dataset.current
             })
             that.getActivityList()
         }

@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
         let nowTime = new Date().getTime();
         return new Promise((resolve, reject) => {
             db.collection('activity').where({
-                activityStartTime: _.gte(nowTime),
+                activityStartTime: _.lte(nowTime),
                 activityStatus: 0
             }).update({
                 data: {
@@ -29,7 +29,7 @@ exports.main = async (event, context) => {
         let nowTime = new Date().getTime();
         return new Promise((resolve, reject) => {
             db.collection('activity').where({
-                activityStartTime: _.gte(nowTime),
+                activityEndTime: _.lte(nowTime),
                 activityStatus: 1
             }).update({
                 data: {

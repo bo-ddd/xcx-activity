@@ -11,8 +11,8 @@ Page({
         form: {
             storeName: '',
             titleValue: '',
-            activityStartTime: '',
-            activityEndTime: '',
+            activityStartTime: '',//开始时间
+            activityEndTime: '',//结束时间
             textareaValue: "",
             prizeName: '',
             prizeNum:1,
@@ -86,6 +86,24 @@ Page({
             }
         })
     },
+    time(date){
+        let y = date.getFullYear()
+        let m = date.getMonth()+1
+        let d = date.getDate()
+        let h = date.getHours()
+        if(h >= 20){
+            let tomorrow = y + '-' + m + '-' + d + 1 
+            this.setData({
+                ['form.activityStartTime'] : tomorrow
+            })
+        }else{
+            let timer = y + '-' + m + '-' + d 
+            this.setData({
+                ['form.activityStartTime'] : timer
+            })
+        }
+    },
+   
     //开始时间
     dateChangestart(e) {
         console.log('值为', e.detail.value);
@@ -96,6 +114,7 @@ Page({
     //结束时间
     dateChangeEnd(e) {
         console.log('结束时间', e.detail.value);
+        console.log(this.data.form.activityStartTime);
         this.setData({
             ['form.activityEndTime']: e.detail.value
         });
@@ -254,7 +273,7 @@ Page({
         let app=getApp()
         app.hideShareMenu()
         this.getStoreName()
-
+        this.time(new Date())
     },
 
 
