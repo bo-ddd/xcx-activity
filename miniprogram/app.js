@@ -21,38 +21,43 @@ App({
             needLogin: true,
         };
         let _this = this
-        //判断用户是否登录
-        this.judgeUserInfo = function (callback) {
-            return new Promise((resolve) => {
-                if (!this.globalData.needLogin) {
-                    resolve(this.globalData.userInfo);
-                    return;
-                }
-                wx.cloud.callFunction({
-                    name: 'user',
-                    data: {
-                        type: 'getUserInfo',
+      
+            //判断用户是否登录
+            this.judgeUserInfo = function (callback) {
+                return new Promise((resolve) => {
+                    if (!this.globalData.needLogin) {
+                        resolve(this.globalData.userInfo);
+                        return;
                     }
-                }).then(res => {
-                    if (res.result.data[0]) {
-                        this.globalData.userInfo = res.result.data[0];
-                        this.globalData.needLogin = false;
-                        resolve(res);
-                        //不可以跳转
-                    } else {
-                        if (callback) {
-                            callback();
-                        } else {
-                            this.globalData.needLogin = true;
-                            wx.navigateTo({
-                                url: '/pages/login/index',
-                            })
+                    wx.cloud.callFunction({
+                        name: 'user',
+                        data: {
+                            type: 'getUserInfo',
                         }
-                    }
+                    }).then(res => {
+                        if (res.result.data[0]) {
+                            this.globalData.userInfo = res.result.data[0];
+                            this.globalData.needLogin = false;
+                            console.log(this.globalData.userInfo);
+                            resolve(res);
+                            //不可以跳转
+                        }else {
+                            console.log('没登录，请登录');
+                             ////需要登录
+                            this.globalData.needLogin = true;
+                            //   callback();
+                            // if (callback) {
+                            // } else {
+                            //     this.globalData.needLogin = true;
+                            //     wx.navigateTo({
+                            //         url: '/pages/login/index',
+                            //     })
+                            // }
+                        }
+                    })
                 })
-            })
-        };
-       //登录流程
+            };
+        //登录流程
         this.getUserProfile = function (desc) {
             return new Promise((resolve) => {
                 wx.getUserProfile({
@@ -130,7 +135,7 @@ App({
                 })
             }
         }
-  
+
         //禁止分享
         this.hideShareMenu = function () {
             wx.hideShareMenu({

@@ -6,7 +6,7 @@
         <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/ce1ae10792c11cf289c5e57bfca0add.png?sign=5c0c2e073041fbf9add158c83042cfbd&t=1675323381" mode="" class="gift" />
     </view>
     <form catchsubmit="formSubmit" catchreset="formReset">
-        <view class="add fs-28">
+        <view class="add fs-28"> 
                 <view class="page-poster">
                     <image src="../../images/icon-red.png" mode="" class="icon-min" />
                     <view class="pic-lable"> 活动图片：<text class="color-cc">(用户如果不传，则显示平台默认图片)</text>
@@ -59,7 +59,7 @@
     
                 <view class="lable">活动类型：</view>
                 <radio-group name="activityType" class="radio color-ccc">
-                    <label wx:for="{{items1}}" wx:key="value">
+                    <label wx:for="{{activityPlay}}" wx:key="value">
                         <radio value="{{item.value}}" style="transform: scale(0.7);" checked="{{item.checked}}"/>{{item.name}}
                     </label>
                   
@@ -70,7 +70,7 @@
     
                 <view class="lable">活动玩法：</view>
                 <radio-group name="activityForm" class="radio color-ccc" >
-                    <label wx:for="{{items}}" wx:key="value">
+                    <label wx:for="{{activitesType}}" wx:key="value">
                         <radio value="{{item.value}}" style="transform: scale(0.7);" checked="{{item.checked}}"/>{{item.name}}
                     </label>
                   

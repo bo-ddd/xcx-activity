@@ -1,10 +1,12 @@
 // pages/examineList/index.js
+const app = getApp()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        loadingStatus: true,
         currentIndex: 0, //tab默认项
         merchantList: [],
         grades: ['电子产品', '卫生用品', '厨房用品', '清洁洗护', '美妆护肤', '二次元', '潮流女装', '潮男穿搭', '美食达人'],
@@ -15,10 +17,15 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        // let app = getApp()
-        // app.showLoading()
-        this.showLoading()
+        app.hideShareMenu()
         this.getMerchantList()
+        this.closeLoading()
+    },
+    // 加载中
+    closeLoading() {
+        this.setData({
+            loadingStatus: false
+        })
     },
     // 获取商铺列表
     getMerchantList() {
@@ -37,6 +44,7 @@ Page({
             }
         })
     },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -89,7 +97,7 @@ Page({
     async toActiveDetail(e) {
         console.log(e);
         await wx.navigateTo({
-            url: '/pages/examineDetails/index?id=' + e.currentTarget.dataset._id,
+            url: '/pages/merchantInfo/index?id=' + e.currentTarget.dataset._id,
         })
     },
     // 跳转商家信息详情
@@ -98,15 +106,7 @@ Page({
             url: '/pages/merchantInfo/index?id=' + e.currentTarget.dataset._id,
         })
     },
-    // 页面加载中
-    showLoading() {
-        wx.showLoading({
-            title: '加载中',
-        })
-        setTimeout(function () {
-            wx.hideLoading()
-        }, 500)
-    },
+
     // tab切换
     // pagechange(e) {
     //     // 通过touch判断，改变tab的下标值

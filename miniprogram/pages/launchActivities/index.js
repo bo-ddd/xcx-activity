@@ -1,10 +1,12 @@
 // pages/launchActivities/index.js
+const app = getApp()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        loadingStatus: true,
         form: {
             shopname: '',
             activitytitle: '',
@@ -19,23 +21,28 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        app.hideShareMenu()
         this.getActivityList()
-        // let app = getApp()
-        // app.showLoading()
+        this.closeLoading()
     },
-
+    // 加载中
+    closeLoading() {
+        this.setData({
+            loadingStatus: false
+        })
+    },
     //点击切换，改变滑块index值
     checkCurrent: function (e) {
+        console.log(e);
         const that = this;
-
         if (that.data.currentData === e.target.dataset.current) {
             return false;
         } else {
 
             that.setData({
-                examineType: e.target.dataset.current
+                currentData: e.target.dataset.current
             })
-            this.getActivityList()
+            that.getActivityList()
         }
     },
     // 滑动改变滑块index值
@@ -53,8 +60,8 @@ Page({
         })
     },
     //跳转编辑活动
-     async updataTo(e) {
-         console.log(e)
+    async updataTo(e) {
+        console.log(e)
         await wx.navigateTo({
             url: '/pages/updateActivities/index?id=' + e.currentTarget.dataset._id,
         })
@@ -63,21 +70,32 @@ Page({
     getActivityList() {
         let currentData = this.data.currentData
         let _this = this
-        // console.log(typeof currentData);
         wx.cloud.callFunction({
             name: 'activity',
             data: {
                 type: 'getActivityList',
                 activityStatus: Number(currentData)
             }, success(res) {
-                console.log(res);
                 _this.setData({
                     activitList: res.result.data.list.data
                 })
             }
         })
     },
-   
+    //    删除活动
+    delete(e) {
+        console.log(e);
+        wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'deleteActivity',
+                _id: e.currentTarget.dataset._id
+            }, success(res) {
+                this.getActivityList()
+            }
+        })
+    },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

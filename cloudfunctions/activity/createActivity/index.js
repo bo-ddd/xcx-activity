@@ -20,7 +20,7 @@ exports.main = async (event, context) => {
             storeName: event.storeName,
             titleValue: event.titleValue,
             activityStartTime: activityStartTime,
-            activityEndTime: activityEndTime,
+            activityEndTime: activityEndTime,                                                                                           
             activityType: event.activityType,
             activityForm:event.activityForm,
             textareaValue: event.textareaValue,

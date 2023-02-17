@@ -3,6 +3,19 @@
     height: 100vh;
 }
 
+.tips {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(240, 98, 98);
+    font-size: 35rpx;
+    font-weight: bold;
+}
+
+.tips.empty {
+    width: 50%;
+}
+
 .swiper {
     height: 100%;
 }
@@ -13,6 +26,16 @@
     padding: 40rpx 0;
     box-sizing: border-box;
 }
+
+.delete {
+    width: 32rpx;
+    height: 32rpx;
+    position: absolute;
+    top: 10rpx;
+    right: 20rpx;
+}
+
+
 
 .actvity {
     height: 295rpx;
@@ -40,6 +63,7 @@
     bottom: 10rpx;
     right: 10rpx;
 }
+
 .actvity .flex-row {
     display: flex;
     justify-content: space-between;

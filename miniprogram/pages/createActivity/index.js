@@ -11,17 +11,17 @@ Page({
         form: {
             storeName: '',
             titleValue: '',
-            activityStartTime: '',
-            activityEndTime: '',
+            activityStartTime: '',//开始时间
+            activityEndTime: '',//结束时间
             textareaValue: "",
             prizeName: '',
             prizeNum:1,
             peopleNum: '',
-            activityType: 1,
-            activityForm: 1,
+            activityType: '',
+            activityForm: '',
         },
         ////////////
-        items: [{
+        activitesType: [{
                 value: 1,
                 name: '抽奖活动',
                 checked: 'true'
@@ -31,7 +31,7 @@ Page({
                 name: '助力活动'
             },
         ],
-        items1: [{
+        activityPlay: [{
                 value: 1,
                 name: '周期活动',
                 checked: 'true'
@@ -41,10 +41,10 @@ Page({
                 name: '日常活动'
             },
         ],
-        fileId: '',
-        tempFileURL: '',
-        ///
-        item: {
+        fileId: 'cloud://zliu-dev-4gclbljp64cb5cd3.7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483/activity/2023/2/16下午3:03:19.png',
+        tempFileURL: 'https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/activity/2023/2/16下午3:05:21.png',
+        ///命名
+        prizeItem: {
             prizeUrl: '',
             prizeName: '',
             prizeNum: 1,
@@ -74,19 +74,36 @@ Page({
                     cloudPath: 'activity/' + new Date().toLocaleString() + '.png',
                     filePath: filePath,
                 }).then(async res => {
-                    let fileId = res.fileID;
-                    console.log(fileId);
-                    let tempFileURL = await _this.getTempFileURL(fileId);
-                    console.log(tempFileURL)
-                    _this.setData({
-                        fileId,
-                        tempFileURL
+                    console.log(res);
+                    let fileId1 = res.fileID;
+                    console.log(fileId1); //有值cloud:
+                    await _this.getTempFileURL(fileId1);
+                    _this.setData({ 
+                        fileId:fileId1,
                     })
 
                 })
             }
         })
     },
+    time(date){
+        let y = date.getFullYear()
+        let m = date.getMonth()+1
+        let d = date.getDate()
+        let h = date.getHours()
+        if(h >= 20){
+            let tomorrow = y + '-' + m + '-' + d + 1 
+            this.setData({
+                ['form.activityStartTime'] : tomorrow
+            })
+        }else{
+            let timer = y + '-' + m + '-' + d 
+            this.setData({
+                ['form.activityStartTime'] : timer
+            })
+        }
+    },
+   
     //开始时间
     dateChangestart(e) {
         console.log('值为', e.detail.value);
@@ -97,6 +114,7 @@ Page({
     //结束时间
     dateChangeEnd(e) {
         console.log('结束时间', e.detail.value);
+        console.log(this.data.form.activityStartTime);
         this.setData({
             ['form.activityEndTime']: e.detail.value
         });
@@ -160,9 +178,7 @@ Page({
         })
         this.getPrizeSettingList();
         if (this.validateForm()) this.createActivity();
-        this.setData({
-            form: '',
-        })
+       
     },
    ///获取奖品列表     
     getPrizeSettingList() {
@@ -193,8 +209,8 @@ Page({
                 fileId,
                 tempFileURL: this.data.tempFileURL,
                 examineType: 0,
-                ////////
-                activityStatus: 0, 
+                //////// 
+                // activityStatus: 0,  前端不传
                 prizeSettingList: this.data.prizeSettingList
             },
             success(res) {
@@ -212,7 +228,7 @@ Page({
     },
     //新增活动模块
     createModul() {
-        this.data.prizeSettingList.push(JSON.parse(JSON.stringify(this.data.item)))
+        this.data.prizeSettingList.push(JSON.parse(JSON.stringify(this.data.prizeItem)))
         this.setData({
             prizeSettingList: this.data.prizeSettingList
         })
@@ -231,18 +247,22 @@ Page({
         })
     },
     //把图片转成https格式
-    getTempFileURL(fileId) {
+    getTempFileURL(fileId1) {
         let tempFileURL = "";
         wx.cloud.callFunction({
             name: 'getTempFileURL',
             data: {
-                fileId
+                fileId:fileId1
             }
         }).then(res => {
             console.log(res);
             tempFileURL = res.result[0].tempFileURL
+            //https 地址
+            // console.log(tempFileURL);
+            this.setData({
+                tempFileURL:tempFileURL
+            })
         })
-        return tempFileURL
     },
   
     /**                                                    
@@ -250,11 +270,10 @@ Page({
      */
     onLoad(options) {
         //取消分享功能
-        // let app=getApp()
-        // app.hideShareMenu()
+        let app=getApp()
+        app.hideShareMenu()
         this.getStoreName()
-
-
+        this.time(new Date())
     },
 
 

@@ -1,30 +1,39 @@
 // pages/merchantInfo/index.js
+const app = getApp()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        loadingStatus: true,
         merchantDetail: [],
         grades: ['电子产品', '卫生用品', '厨房用品', '清洁洗护', '美妆护肤', '二次元', '潮流女装', '潮男穿搭', '美食达人'],
+        // 商户Id
         merchantId: '',
+        // 拒绝原因
+        placeholderText: ''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        // let app = getApp()
-        // app.showLoading()
+        app.hideShareMenu()
         this.setData({
             merchantId: options.id
         })
+        this.getMercnahtInfo()
+        this.closeLoading()
+    },
+    // 获取商家详情信息
+    getMercnahtInfo(){
         let _this = this
         wx.cloud.callFunction({
             name: 'merchantInfo',
             data: {
                 type: 'getMerchantDetail',
-                _id: options.id
+                _id: _this.data.merchantId
             }, success(res) {
                 console.log(res.result.data);
                 _this.setData({
@@ -33,7 +42,6 @@ Page({
             }
         })
     },
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -82,14 +90,28 @@ Page({
     onShareAppMessage() {
 
     },
+    // 加载中
+    closeLoading() {
+        this.setData({
+            loadingStatus: false
+        })
+    },
     // 审核不通过
     refuse() {
         let _this = this
-        wx.showActionSheet({
-            itemList: ['活动规则不符合', '商家标题涉嫌违规，请及时更改'],
-            success(res) {
-                _this.addExamineType(2)
-                _this.toExamineList()
+        wx.showModal({
+            //显示输入框
+            editable: true,
+            //显示输入框提示信息
+            placeholderText: '输入拒绝原因',
+            success: res => {
+                //点击了确认
+                if (res.confirm) {
+                    //用户输入的值
+                    _this.setData({
+                        placeholderText: res.content
+                    })
+                }
             }
         })
     },

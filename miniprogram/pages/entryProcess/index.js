@@ -13,17 +13,17 @@ Page({
           },
           {
              id:2,
-             text:'商家入驻首页',
+             text:'商家入驻规则',
              icon:'../../images/icon-rule (2).png'
           },
           {
              id:3,
-             text:'商家入驻首页',
+             text:'商家填写信息',
              icon:'../../images/icon-upload (2).png'
           },
           {
              id:4,
-             text:'商家入驻首页',
+             text:'商家提交审核',
              icon:'../../images/icon-examine.png'
           },
           

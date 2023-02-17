@@ -1,3 +1,7 @@
 {
-    "usingComponents": {}
+    "usingComponents": {
+        "loading":"../../components/loading/index"
+    },
+    "navigationBarTitleText": "商户入驻",
+    "navigationBarTextStyle": "white"
 }

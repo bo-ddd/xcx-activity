@@ -10,7 +10,7 @@ Page({
         waitActivityList: [],
         endActivityList: [],
         participateActivityList: [],
-        loaded: false
+         loadingStatus: true,
     },
 
     bindchange: function (e) {
@@ -32,9 +32,9 @@ Page({
         }
     },
 
+    //获取参与活动列表。拿到有活动id。连表查询该活动的所有信息
     getParticipateListApi() {
         return new Promise((resolve, reject) => {
-            // let currentData = this.data.currentData
             wx.cloud.callFunction({
                 name: 'activity',
                 data: {
@@ -53,7 +53,7 @@ Page({
         let list = res.result.data.list
         let participateActivities = [];
         list.forEach(item => {
-            console.log(item);
+            // console.log(item);
             participateActivities.push(item.userParticipatingList[0])
         });
         _this.setData({
@@ -64,16 +64,19 @@ Page({
     },
     //参与的活动状态
     participateState() {
-        let notStartedActivity = this.data.participateActivityList.filter(item => item.activityStatus == 0)
+        // let notStartedActivity = this.data.participateActivityList.filter(item => item.activityStatus == 0)
         let waitActivity = this.data.participateActivityList.filter(item => item.activityStatus == 1)
         let endActivity = this.data.participateActivityList.filter(item => item.activityStatus == 2)
-        console.log(notStartedActivity);
+        // console.log(notStartedActivity);
         console.log(waitActivity);
         this.setData({
-            notStartedActivityList: notStartedActivity,
+            // notStartedActivityList: notStartedActivity,
             waitActivityList: waitActivity,
             endActivityList: endActivity,
         })
+    },
+    sort(){
+      
     },
     toDetail(e) {
         console.log(e);
@@ -82,22 +85,20 @@ Page({
             url: '/pages/activityDetails/index?_id=' + e.currentTarget.dataset.id,
         })
     },
+    closeLoading() {
+        this.setData({
+            loadingStatus: false
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     async onLoad(options) {
         ///首屏优化
-        //获取参与活动列表。拿到有活动id。连表查询该活动的所有信息
-        wx.showLoading({
-            title: '加载中...',
-        })
         await this.getParticipateActivities();
 
-        wx.hideLoading();
-
-        this.setData({
-            loaded: true
-        })
+        await this.closeLoading();
+      
     },
 
     /**

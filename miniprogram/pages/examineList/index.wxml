@@ -1,5 +1,6 @@
 <!--pages/examineList/index.wxml-->
 <view class="box">
+    <loading show="{{ loadingStatus }}"></loading>
     <view class="examine-list">
         <view class='navBox'>
             <view class='titleLeftBox' bindtap='titleClick' data-idx='0'>
@@ -11,9 +12,12 @@
                 <view class="line {{1 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
             </view>
         </view>
-        <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}' bindchange="bindchange">
+        <view wx:if="{{!merchantList.length}}" class="tips">
+            <view>暂时还没有商铺入驻哦~</view>
+        </view>
+        <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}' bindchange="bindchange" wx:else>
             <swiper-item class='swiperTtemBox-item' wx:for="{{merchantStatus}}" wx:key="index">
-                <view class="item mt-30 wrap"  wx:for="{{ merchantList }}" wx:key="_id" data-_id="{{ item._id }}" bindtap="toActiveDetail">
+                <view class="item mt-30 wrap" wx:for="{{ merchantList }}" wx:key="_id" data-_id="{{ item._id }}" bindtap="toActiveDetail">
                     <view class="item-left">
                         <view class="stor-name ml-20">
                             <text>商铺名称：</text>
