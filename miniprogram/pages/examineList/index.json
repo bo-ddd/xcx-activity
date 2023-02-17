@@ -1,7 +1,8 @@
 {
     "usingComponents": {
-        "loading":"../../components/loading/index"
+        "loading": "../../components/loading/index"
     },
     "navigationBarTitleText": "商铺列表",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
 }

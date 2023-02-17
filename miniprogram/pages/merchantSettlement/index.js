@@ -79,6 +79,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        this.openLoading()
         app.hideShareMenu()
         this.closeLoading()
     },
@@ -115,7 +116,10 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh() {
-
+        setTimeout(() => {
+            //停止下拉刷新
+            wx.stopPullDownRefresh();
+        }, 2000)
     },
 
     /**
@@ -131,10 +135,16 @@ Page({
     onShareAppMessage() {
 
     },
-    // 加载中
+    // 关闭加载动画
     closeLoading() {
         this.setData({
             loadingStatus: false
+        })
+    },
+    // 开启加载动画
+    openLoading() {
+        this.setData({
+            loadingStatus: true
         })
     },
     // 单选框
@@ -177,30 +187,30 @@ Page({
         this.setData({
             form: e.detail.value
         })
-        // if (!this.data.form.merchantname) {
-        //     this.tips('请输入姓名！')
-        //     return;
-        // } else if (!this.data.form.merchantphone) {
-        //     this.tips('请输入手机号！')
-        //     return;
-        // } else if (this.data.form.merchantphone.length < 11) {
-        //     this.tips('手机号不完整！')
-        //     return;
-        // } else if (!this.data.form.storename) {
-        //     this.tips('请输入店铺姓名！')
-        //     return;
-        // } else if (!this.data.form.storeaddress) {
-        //     this.tips('请输入店铺地址！')
-        //     return;
-        // } else if (!this.data.storeclassValue) {
-        //     this.tips('请选择经营类型！')
-        //     return;
-        // } else if (!this.data.fileId) {
-        //     this.tips('请上传营业执照！')
-        //     return;
-        // } else {
+        if (!this.data.form.merchantname) {
+            this.tips('请输入姓名！')
+            return;
+        } else if (!this.data.form.merchantphone) {
+            this.tips('请输入手机号！')
+            return;
+        } else if (this.data.form.merchantphone.length < 11) {
+            this.tips('手机号不完整！')
+            return;
+        } else if (!this.data.form.storename) {
+            this.tips('请输入店铺姓名！')
+            return;
+        } else if (!this.data.form.storeaddress) {
+            this.tips('请输入店铺地址！')
+            return;
+        } else if (!this.data.storeclassValue) {
+            this.tips('请选择经营类型！')
+            return;
+        } else if (!this.data.fileId) {
+            this.tips('请上传营业执照！')
+            return;
+        } else {
             commonFn.throttle(this.addMerchant)()
-        // }
+        }
     },
     // 跳转审核提示页面
     toAuditStatus() {

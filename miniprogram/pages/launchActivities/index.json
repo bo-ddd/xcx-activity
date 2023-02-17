@@ -1,7 +1,9 @@
 {
     "usingComponents": {
-        "loading":"../../components/loading/index"
+        "loading": "../../components/loading/index"
     },
     "navigationBarTitleText": "发起的活动",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50
 }
