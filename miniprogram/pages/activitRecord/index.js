@@ -1,12 +1,13 @@
 // pages/activitRecord/index.js
+const app = getApp()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        recordList:[]
-
+        recordList:[],
+        lodingStatus : true
     },
     
     /**
@@ -14,23 +15,36 @@ Page({
      */
     onLoad(options) {
         // let app=getApp()
-        // app.showLoading()
+        app.hideShareMenu()
         this.getActivityRecordList();
+        this.closeLoding()
     },
 
     getActivityRecordList(){
         wx.cloud.callFunction({
             name:'user',
             data:{
-                type:'getMyActivityRecordList'
+                type:'getMyActivityRecordList',
             }
         }).then(res=>{
+            let arr = res.result.data.data.sort((a,b)=> a.prizeStatus - b.prizeStatus )
             this.setData({
-                recordList :res.result.data.data
+                recordList : arr
             })
-            console.log(this.data.recordList);
         })
     },
+    to(e) {
+        wx.navigateTo({
+            url: '/pages/' + e.currentTarget.dataset.name + '/index',
+        })
+    },
+    closeLoding(){
+        this.setData({
+            lodingStatus : false
+        })
+    },
+        
+
 
     /**
      * 生命周期函数--监听页面初次渲染完成

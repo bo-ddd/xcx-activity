@@ -1,4 +1,15 @@
 /* pages/participateActivities/index.wxss */
+.tips{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(240, 98, 98);
+    font-size: 35rpx;
+    font-weight: bold;
+}
+.tips .empty{
+    width: 50%;
+}
 .launch-activities {
     height: 100vh;
 }

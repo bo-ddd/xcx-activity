@@ -7,8 +7,8 @@ cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 const db = cloud.database();
 const _ = db.command
 exports.main = async (event, context) => {
-    let nowTime = new Date().getTime();
     let changeTyp1 = () => {
+        let nowTime = new Date().getTime();
         return new Promise((resolve, reject) => {
             db.collection('activity').where({
                 activityStartTime: _.gte(nowTime),
@@ -26,6 +26,7 @@ exports.main = async (event, context) => {
     }
 
     let changeType2 = () => {
+        let nowTime = new Date().getTime();
         return new Promise((resolve, reject) => {
             db.collection('activity').where({
                 activityStartTime: _.gte(nowTime),

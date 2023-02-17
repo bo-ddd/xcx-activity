@@ -10,7 +10,7 @@ Page({
         waitActivityList: [],
         endActivityList: [],
         participateActivityList: [],
-        loaded: false
+         loadingStatus: true,
     },
 
     bindchange: function (e) {
@@ -34,7 +34,7 @@ Page({
 
     getParticipateListApi() {
         return new Promise((resolve, reject) => {
-            // let currentData = this.data.currentData
+              //获取参与活动列表。拿到有活动id。连表查询该活动的所有信息
             wx.cloud.callFunction({
                 name: 'activity',
                 data: {
@@ -75,6 +75,9 @@ Page({
             endActivityList: endActivity,
         })
     },
+    sort(){
+      
+    },
     toDetail(e) {
         console.log(e);
         //传入活动id跳转到对应活动页
@@ -82,22 +85,20 @@ Page({
             url: '/pages/activityDetails/index?_id=' + e.currentTarget.dataset.id,
         })
     },
+    closeLoading() {
+        this.setData({
+            loadingStatus: false
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     async onLoad(options) {
         ///首屏优化
-        //获取参与活动列表。拿到有活动id。连表查询该活动的所有信息
-        wx.showLoading({
-            title: '加载中...',
-        })
         await this.getParticipateActivities();
 
-        wx.hideLoading();
-
-        this.setData({
-            loaded: true
-        })
+        await this.closeLoading();
+      
     },
 
     /**
