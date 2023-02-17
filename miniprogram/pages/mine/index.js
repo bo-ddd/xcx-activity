@@ -161,7 +161,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     async onLoad(options) {
-        await this.setUserInfo()
+        // await this.setUserInfo()
     },
 
     /**
@@ -176,7 +176,7 @@ Page({
      */
     //判断用户是否登录
      onShow() {
-
+        this.setUserInfo()
     },
 
     /**
