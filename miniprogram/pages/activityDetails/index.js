@@ -94,6 +94,7 @@ Page({
                 }
             })
         } else {
+            console.log(1111);
             wx.showModal({
                 title: '提示',
                 content: '您已助力过啦！',

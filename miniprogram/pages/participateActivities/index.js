@@ -32,9 +32,9 @@ Page({
         }
     },
 
+    //获取参与活动列表。拿到有活动id。连表查询该活动的所有信息
     getParticipateListApi() {
         return new Promise((resolve, reject) => {
-              //获取参与活动列表。拿到有活动id。连表查询该活动的所有信息
             wx.cloud.callFunction({
                 name: 'activity',
                 data: {
@@ -53,7 +53,7 @@ Page({
         let list = res.result.data.list
         let participateActivities = [];
         list.forEach(item => {
-            console.log(item);
+            // console.log(item);
             participateActivities.push(item.userParticipatingList[0])
         });
         _this.setData({
@@ -64,13 +64,13 @@ Page({
     },
     //参与的活动状态
     participateState() {
-        let notStartedActivity = this.data.participateActivityList.filter(item => item.activityStatus == 0)
+        // let notStartedActivity = this.data.participateActivityList.filter(item => item.activityStatus == 0)
         let waitActivity = this.data.participateActivityList.filter(item => item.activityStatus == 1)
         let endActivity = this.data.participateActivityList.filter(item => item.activityStatus == 2)
-        console.log(notStartedActivity);
+        // console.log(notStartedActivity);
         console.log(waitActivity);
         this.setData({
-            notStartedActivityList: notStartedActivity,
+            // notStartedActivityList: notStartedActivity,
             waitActivityList: waitActivity,
             endActivityList: endActivity,
         })
