@@ -1,36 +1,37 @@
 // pages/activity/index.js
 const commonFun = require('../../common/formatDate');
+const app = getApp();
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
         current: 0,
         activityTypes: ['周期活动', '日常活动'],
         activityList: [],
         loadingStatus: true,
+        pageSize: 10,
+        pageNum: 1,
+        showEndWarn: false,
     },
 
     //切换顶部tab栏;
-    switchTab(e) {
-        console.log(e);
+    async switchTab(e) {
         let current = e.currentTarget.dataset.id;
         this.setData({
             current
         });
+        this.hiddenEndWarn();
         this.openLoading();
-        this.getActivityList();
+        await this.getActivityList();
         this.closeLoading();
     },
     //触摸屏幕切换页面;
-    bindchange(e) {
+    async bindchange(e) {
         let current = e.detail.current;
         this.setData({
             current
         })
+        this.hiddenEndWarn();
         this.openLoading();
-        this.getActivityList();
+        await this.getActivityList();
         this.closeLoading();
     },
 
@@ -42,12 +43,12 @@ Page({
     },
 
     async onLoad(options) {
+        //关闭分享功能;
+        app.hideShareMenu();
+        //渲染活动列表;
         await this.getActivityList();
+        //关闭加载动画;
         this.closeLoading();
-        //判断当前登录状态,显示不同的按钮文本;
-        //在全局中拿到用户登录信息;
-        //如果没有登录, 显示查看详情；
-        //如果登录了，判断是否参与活动，参与->显示已参与 未参与->显示查看详情；
     },
 
     // 获取活动列表;  
@@ -85,7 +86,6 @@ Page({
             }
         })
         const arr = res.result.data;
-        console.log(arr)
         if (arr.length) {
             arr.forEach(item => {
                 participateList.push(item.activityId)
@@ -93,6 +93,7 @@ Page({
         }
         return participateList
     },
+
     //添加用户参与状态字段;
     async addParticipateStatusField(data) {
         const participateList = await this.getParticipateList();
@@ -101,6 +102,7 @@ Page({
         })
         return data
     },
+
     //对活动列表进行排序，根据活动状态(进行中、未参加、已参加、已结束);
     handleListSort(data) {
         let arr = [];
@@ -111,6 +113,8 @@ Page({
         arr.push(...onparticipateArr, ...beforeParticipateArr, ...beforeStartArr, ...onendArr);
         return arr
     },
+
+    //处理时间格式;
     handleDateFormat(data) {
         data.forEach(item => {
             item.activityStartTime = commonFun.formatDate(item.activityStartTime);
@@ -118,14 +122,32 @@ Page({
         })
         return data
     },
+
+    //开启加载动画;
     openLoading() {
         this.setData({
             loadingStatus: true
         })
     },
+
+    //关闭加载动画;
     closeLoading() {
         this.setData({
             loadingStatus: false
+        })
+    },
+
+    //隐藏到底提示语;
+    hiddenEndWarn() {
+        this.setData({
+            showEndWarn: false
+        })
+    },
+
+    //显示到底提示语;
+    showEndWarn() {
+        this.setData({
+            showEndWarn: true
         })
     },
 
@@ -161,15 +183,43 @@ Page({
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh() {
-
+    async onPullDownRefresh() {
+        this.openLoading();
+        await this.getActivityList();
+        this.closeLoading();
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom() {
-
+    async onReachBottom() {
+        let loadingStatus = this.data.loadingStatus;
+        if (loadingStatus || showEndWarn) return;
+        this.setData({
+            pageNum: this.data.pageNum++
+        })
+        this.openLoading();
+        //调用接口请求下一条数据？
+        const activityType = this.data.current === 0 ? 1 : 2;
+        const res = await wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'getList',
+                activityType,
+                pageSize: 4,
+                pageNum: 1
+            }
+        })
+        this.closeLoading();
+        const list = res.result.data;
+        if (list.length) {
+            const fragment = await this.handleData(JSON.parse(JSON.stringify(list)));
+            this.setData({
+                activityList: this.data.activityList.push(fragment)
+            })
+        } else {
+            this.showEndWarn();
+        }
     },
 
     /**
