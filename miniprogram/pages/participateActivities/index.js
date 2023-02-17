@@ -50,8 +50,14 @@ Page({
     async getParticipateActivities() {
         let _this = this;
         let res = await this.getParticipateListApi();
+        console.log('--------我是返回数据----------');
+        console.log(res);
         let list = res.result.data.list
         let participateActivities = [];
+        this.setData({
+            participateActivityList:list
+        })
+        console.log(list)
         list.forEach(item => {
             // console.log(item);
             participateActivities.push(item.userParticipatingList[0])

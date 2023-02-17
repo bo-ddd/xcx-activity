@@ -23,6 +23,8 @@ exports.main = async (event, context) => {
           localField: '_id',//当前表想要查的字段
           foreignField: 'activityId',//关联表想要的字段
           as: 'userParticipatingList',
+        }).sort({
+            activityStartTime:1
         })
         .end()
         console.log(res);

@@ -4,6 +4,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        settled:true,
         opendId: '',
         isCreate: false,
         isUpdate: false,
@@ -11,10 +12,10 @@ Page({
         form: {
             storeName: '',
             titleValue: '',
-            activityStartTime: '',//开始时间
-            activityEndTime: '',//结束时间
-            textareaValue: "",
-            prizeName: '',
+            activityStartTime: '',
+            activityEndTime: '',
+            textareaValue: "点击助力按钮，即可以为商家助力",
+            prizeName: '', 
             prizeNum:1,
             peopleNum: '',
             activityType: '',
@@ -86,24 +87,6 @@ Page({
             }
         })
     },
-    time(date){
-        let y = date.getFullYear()
-        let m = date.getMonth()+1
-        let d = date.getDate()
-        let h = date.getHours()
-        if(h >= 20){
-            let tomorrow = y + '-' + m + '-' + d + 1 
-            this.setData({
-                ['form.activityStartTime'] : tomorrow
-            })
-        }else{
-            let timer = y + '-' + m + '-' + d 
-            this.setData({
-                ['form.activityStartTime'] : timer
-            })
-        }
-    },
-   
     //开始时间
     dateChangestart(e) {
         console.log('值为', e.detail.value);
@@ -114,7 +97,6 @@ Page({
     //结束时间
     dateChangeEnd(e) {
         console.log('结束时间', e.detail.value);
-        console.log(this.data.form.activityStartTime);
         this.setData({
             ['form.activityEndTime']: e.detail.value
         });
@@ -214,7 +196,7 @@ Page({
                 prizeSettingList: this.data.prizeSettingList
             },
             success(res) {
-                wx.navigateTo({
+                wx.redirectTo({
                     url: '/pages/launchActivities/index',
                 }).then(res => {
                     wx.showToast({
@@ -226,7 +208,7 @@ Page({
             },
         })
     },
-    //新增活动模块
+    //新增奖品活动模块
     createModul() {
         this.data.prizeSettingList.push(JSON.parse(JSON.stringify(this.data.prizeItem)))
         this.setData({
@@ -244,6 +226,12 @@ Page({
             this.setData({
                 ['form.storeName']: res.result.data[0].merchantName
             })
+        }).catch(err=>{
+            this.setData({
+                settled:false
+
+            })
+
         })
     },
     //把图片转成https格式
@@ -269,11 +257,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        this.getStoreName()
         //取消分享功能
         let app=getApp()
         app.hideShareMenu()
-        this.getStoreName()
-        this.time(new Date())
+
     },
 
 
