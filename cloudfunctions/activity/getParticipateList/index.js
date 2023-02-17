@@ -13,12 +13,18 @@ exports.main = async (event, context) => {
         console.log('----------------我是连表查询---------')
         console.log(openid);
         ///根据我参与的活动id ，对照所有活动id 查询到我参与的活动所有数据
-       const res=await db.collection('participatingActivitieList').aggregate()
+       const res=await db.collection('activity').aggregate()
+    //    .sort({
+    //        //1升序  -1 降序
+    //     activityStartTime: -1,
+    //    })
         .lookup({
-          from: 'activity',//被关联的表
-          localField: 'activityId',//当前表想要查的字段
-          foreignField: '_id',//关联表想要的字段
+          from: 'participatingActivitieList',//被关联的表
+          localField: '_id',//当前表想要查的字段
+          foreignField: 'activityId',//关联表想要的字段
           as: 'userParticipatingList',
+        }).sort({
+            activityStartTime:1
         })
         .end()
         console.log(res);

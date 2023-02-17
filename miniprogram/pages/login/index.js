@@ -1,4 +1,3 @@
-
 // pages/login/index.js
 Page({
     data: {
@@ -18,7 +17,6 @@ Page({
                     userInfo
                 } = await getUserProfile('用于登录')
                 console.log(userInfo)
-                // console.log(this.data.userInfo); 用户信息
                 let myUserInfo = await this.getUserInfoApi()
                 // console.log(myUserInfo)
                 if (myUserInfo) {
@@ -49,10 +47,8 @@ Page({
         })
     },
 
-
-
-   async getUserInfoApi() {
-      const res= await wx.cloud.callFunction({
+    async getUserInfoApi() {
+        const res = await wx.cloud.callFunction({
             name: 'user',
             data: {
                 type: 'getUserInfo',
@@ -63,13 +59,13 @@ Page({
     },
     async addUserInfoApi() {
         console.log('添加')
-        return new Promise((resolve, reject)=>{
+        return new Promise((resolve, reject) => {
             wx.cloud.callFunction({
                 name: 'user',
                 data: {
                     type: 'addUserInfo',
-                    avatarUrl:this.data.avatarUrl,
-                    nickName:this.data.nickName,
+                    avatarUrl: this.data.avatarUrl,
+                    nickName: this.data.nickName,
                 }
             }).then(res => {
                 console.log(res);
@@ -83,7 +79,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
     },
 
 

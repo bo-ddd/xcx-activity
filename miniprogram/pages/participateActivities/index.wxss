@@ -26,7 +26,7 @@
 }
 .tab {
     float: left;
-    width: 33.3333%;
+    width: 49.3333%;
     text-align: center;
     padding: 10rpx 0;
 }
