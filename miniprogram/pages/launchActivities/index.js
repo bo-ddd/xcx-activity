@@ -1,10 +1,12 @@
 // pages/launchActivities/index.js
+const app = getApp()
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        loadingStatus: true,
         form: {
             shopname: '',
             activitytitle: '',
@@ -19,11 +21,16 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let app = getApp()
         app.hideShareMenu()
         this.getActivityList()
+        this.closeLoading()
     },
-
+    // 加载中
+    closeLoading() {
+        this.setData({
+            loadingStatus: false
+        })
+    },
     //点击切换，改变滑块index值
     checkCurrent: function (e) {
         console.log(e);
@@ -33,7 +40,7 @@ Page({
         } else {
 
             that.setData({
-                examineType: e.target.dataset.current
+                currentData: e.target.dataset.current
             })
             that.getActivityList()
         }

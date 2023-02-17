@@ -3,5 +3,7 @@
         "loading":"../../components/loading/index"
     },
     "navigationBarTitleText": "活动列表",
-    "navigationBarTextStyle": "white" 
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh" : true,
+    "onReachBottomDistance" :160
 }

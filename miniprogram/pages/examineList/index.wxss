@@ -3,6 +3,18 @@
     height: 100vh;
 }
 
+.tips {
+    color: #ccc;
+    font-size: 35rpx;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50%;
+}
+
+.tips.empty {
+    width: 50%;
+}
+
 .navBox {
     display: flex;
     justify-content: space-around;
@@ -50,10 +62,12 @@
     /* 未选中底线样式 */
     background: transparent;
 }
-.isNull{
+
+.isNull {
     color: black;
     position: absolute;
 }
+
 .swiperTtemBox {
     height: calc(100vh - 80rpx);
 

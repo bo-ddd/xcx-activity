@@ -12,10 +12,14 @@ const db = cloud.database();
 // 云函数入口函数
 exports.main = async (event, context) => {
     try {
+        let {
+            pageSize = 5, pageNum = 1
+        } = event;
+        console.log(event)
         const res = await db.collection('activity').where({
             activityType: event.activityType,
             //examineStatus:1
-        }).get();
+        }).skip(pageSize * (pageNum - 1)).limit(pageSize).get();
         return res.data
     } catch (err) {
         throw err

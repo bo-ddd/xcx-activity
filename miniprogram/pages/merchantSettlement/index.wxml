@@ -1,5 +1,6 @@
 <!--pages/merchantSettlement/index.wxml-->
 <view class="box">
+    <loading show="{{ loadingStatus }}"></loading>
     <view class="store-settlement">
         <view class="title fs-54">
             <image class="img" src="../../images/icon-merchantsettlement.png" mode="" />
