@@ -1,4 +1,5 @@
 // pages/participateActivities/index.js
+
 Page({
 
     /**
@@ -10,7 +11,7 @@ Page({
         waitActivityList: [],
         endActivityList: [],
         participateActivityList: [],
-         loadingStatus: true,
+        loadingStatus: true,
     },
 
     bindchange: function (e) {
@@ -25,7 +26,6 @@ Page({
         if (that.data.currentData === e.target.dataset.current) {
             return false;
         } else {
-
             that.setData({
                 currentData: e.target.dataset.current
             })
@@ -55,7 +55,7 @@ Page({
         let list = res.result.data.list
         let participateActivities = [];
         this.setData({
-            participateActivityList:list
+            participateActivities:list
         })
         list.forEach(item => {
             if(item.userParticipatingList.length){
@@ -73,14 +73,13 @@ Page({
         let waitActivity = this.data.participateActivityList.filter(item => item.activityStatus == 1)
         let endActivity = this.data.participateActivityList.filter(item => item.activityStatus == 2)
         console.log(waitActivity);
+        console.log(endActivity);
         this.setData({
             waitActivityList: waitActivity,
             endActivityList: endActivity,
         })
     },
-    sort(){
-      
-    },
+   
     toDetail(e) {
         console.log(e);
         //传入活动id跳转到对应活动页

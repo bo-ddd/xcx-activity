@@ -10,22 +10,23 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     const openid = wxContext.OPENID;
     try {
-        console.log('----------------我是连表查询---------')
+        let {
+            pageSize = 6, pageNum = 1
+        } = event;
         console.log(openid);
         ///根据我参与的活动id ，对照所有活动id 查询到我参与的活动所有数据
        const res=await db.collection('activity').aggregate()
-    //    .sort({
-    //        //1升序  -1 降序
-    //     activityStartTime: -1,
-    //    })
         .lookup({
           from: 'participatingActivitieList',//被关联的表
           localField: '_id',//当前表想要查的字段
           foreignField: 'activityId',//关联表想要的字段
           as: 'userParticipatingList',
         }).sort({
-            activityStartTime:1
+            //按开始时间降序
+            activityStartTime:-1
         })
+        ///分页
+        .skip(pageSize * (pageNum - 1)).limit(pageSize)
         .end()
         console.log(res);
         return res

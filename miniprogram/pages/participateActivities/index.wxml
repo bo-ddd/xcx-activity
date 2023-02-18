@@ -12,14 +12,6 @@
         <view>您还未参与活动，快去列表参与吧！</view>
     </view>
     <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange" wx:else>
-        <!-- <swiper-item class="swiper-item">
-            <view class='swiper-con wrap'>
-                <view class="actvity wrap-60r" wx:for="{{ notStartedActivityList }}" wx:key="_id">
-                    <image src="{{item.fileId}}" class="activity-bg" />
-                    <view class="update-btn fs-35" bindtap="toDetail" data-id="{{item._id}}">查看详情</view>
-                </view>
-            </view>
-        </swiper-item> -->
         <swiper-item class="swiper-item">
             <view class='swiper-con wrap'>
                 <view class="actvity wrap-60r" wx:for="{{waitActivityList}}" wx:key="_id">
