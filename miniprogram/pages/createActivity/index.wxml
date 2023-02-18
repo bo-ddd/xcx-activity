@@ -80,7 +80,7 @@
             <view class="page-lable-rule">
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />
                 <view class="lable">活动规则：</view>
-                <textarea placeholder="请输入规则" name="textareaValue" class="textarea"></textarea>
+                <textarea name="textareaValue" value="活动规则，点击助力按钮，即可以为商家助力" class="textarea"></textarea>
             </view>
             <view class="page-prize wrap">
                 <view class="prize mb-20">

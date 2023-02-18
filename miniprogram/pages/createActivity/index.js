@@ -14,7 +14,7 @@ Page({
             titleValue: '',
             activityStartTime: '',
             activityEndTime: '',
-            textareaValue: "点击助力按钮，即可以为商家助力",
+            textareaValue: "",
             prizeName: '', 
             prizeNum:1,
             peopleNum: '',
@@ -229,7 +229,15 @@ Page({
         }).catch(err=>{
             this.setData({
                 settled:false
-
+            })
+            wx.showToast({
+                title: '请先入驻',
+                icon: 'error',
+                fail(){
+                    wx.navigateTo({
+                      url: '/pages/mine/index',
+                    })
+                }
             })
 
         })
