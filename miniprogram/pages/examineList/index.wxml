@@ -4,18 +4,18 @@
     <view class="examine-list">
         <view class='navBox'>
             <view class='titleLeftBox' bindtap='titleClick' data-idx='0'>
-                <text class="tab {{0 == currentIndex ? 'colorLeftBox' : ''}}">待审核商铺</text>
+                <text class="tab {{0 == currentIndex ? 'colorLeftBox' : ''}}">待审核</text>
                 <view class="line {{0 == currentIndex ? 'lineBox' : 'notLineBox'}}" />
             </view>
             <view class='titleRightBox' bindtap='titleClick' data-idx='1'>
-                <text class="tab {{1 == currentIndex ? 'coloRightBox' : ''}}">商铺列表</text>
+                <text class="tab {{1 == currentIndex ? 'coloRightBox' : ''}}">已审核</text>
                 <view class="line {{1 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
             </view>
         </view>
         <view wx:if="{{!merchantList.length}}" class="tips">
             <view>暂时还没有商铺入驻哦~</view>
         </view>
-        <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}' bindchange="bindchange" wx:else>
+        <swiper class='swiperTtemBox' current='{{currentIndex}}' bindchange="bindchange" wx:else>
             <swiper-item class='swiperTtemBox-item' wx:for="{{merchantStatus}}" wx:key="index">
                 <view class="item mt-30 wrap" wx:for="{{ merchantList }}" wx:key="_id" data-_id="{{ item._id }}" bindtap="toActiveDetail">
                     <view class="item-left">

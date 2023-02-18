@@ -1,18 +1,21 @@
 // pages/launchActivities/index.js
 const app = getApp()
+const commonFn = require('../../common/throttle')
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        pageSize: 4,
+        pageNum: 1,
         loadingStatus: true,
         form: {
             shopname: '',
             activitytitle: '',
         },
         activityStatus: ['未开始', '待开奖', '已结束'],
-        activitList: [],
+        activityList: [],
         currentData: 0
     },
 
@@ -25,10 +28,16 @@ Page({
         this.getActivityList()
         this.closeLoading()
     },
-    // 加载中
+    // 关闭加载动画
     closeLoading() {
         this.setData({
             loadingStatus: false
+        })
+    },
+    // 开启加载动画
+    openLoading() {
+        this.setData({
+            loadingStatus: true
         })
     },
     //点击切换，改变滑块index值
@@ -42,7 +51,10 @@ Page({
             that.setData({
                 currentData: e.target.dataset.current
             })
+            that.openLoading()
             that.getActivityList()
+            that.closeLoading()
+
         }
     },
     // 滑动改变滑块index值
@@ -51,7 +63,9 @@ Page({
         that.setData({
             currentData: e.detail.current
         })
+        this.openLoading()
         this.getActivityList()
+        this.closeLoading()
     },
     //创建活动成功跳回活动页
     to() {
@@ -68,16 +82,17 @@ Page({
     },
     // 获取活动列表
     getActivityList() {
-        let currentData = this.data.currentData
         let _this = this
         wx.cloud.callFunction({
             name: 'activity',
             data: {
                 type: 'getActivityList',
-                activityStatus: Number(currentData)
+                activityStatus: Number(this.data.currentData),
+                pageNum: 1,
+                pageSize: 4
             }, success(res) {
                 _this.setData({
-                    activitList: res.result.data.list.data
+                    activityList: res.result.data.list.data
                 })
             }
         })
@@ -91,7 +106,9 @@ Page({
                 type: 'deleteActivity',
                 _id: e.currentTarget.dataset._id
             }, success(res) {
+                this.openLoading()
                 this.getActivityList()
+                this.closeLoading()
             }
         })
     },
@@ -128,14 +145,56 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh() {
-
+        setTimeout(() => {
+            this.getActivityList()
+            //停止下拉刷新
+            wx.stopPullDownRefresh();
+        }, 2000)
     },
-
+    // 上拉加载
+    pullUp() {
+        console.log('到底啦');
+        let _this = this
+        let loadingStatus = this.data.loadingStatus;
+        if (loadingStatus) return;
+        this.setData({
+            pageNum: this.data.pageNum + 1,
+        })
+        console.log(this.data.pageNum);
+        this.openLoading();
+        wx.cloud.callFunction({
+            name: 'activity',
+            data: {
+                type: 'getActivityList',
+                activityStatus: Number(this.data.currentData),
+                pageNum: this.data.pageNum,
+                pageSize: 4
+            }, success(res) {
+                console.log(res);
+                if (!res.result.data.list.data.length) {
+                    _this.setData({
+                        pageNum: _this.data.pageNum - 1,
+                    })
+                }
+                if (res.result.data.list.data.length) {
+                    let list = res.result.data.list.data
+                    console.log(list);
+                    _this.data.activityList.push(...list)
+                    _this.setData({
+                        activityList: _this.data.activityList
+                    })
+                    console.log(_this.data.activityList);
+                }
+            }
+        })
+        this.closeLoading();
+    },
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom() {
-
+        // this.pullUp()
+        commonFn.throttle(this.pullUp)()
     },
 
     /**

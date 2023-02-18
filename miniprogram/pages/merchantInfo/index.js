@@ -19,6 +19,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        this.openLoading()
         app.hideShareMenu()
         this.setData({
             merchantId: options.id
@@ -90,10 +91,16 @@ Page({
     onShareAppMessage() {
 
     },
-    // 加载中
+    // 关闭加载动画
     closeLoading() {
         this.setData({
             loadingStatus: false
+        })
+    },
+    // 开启加载动画
+    openLoading() {
+        this.setData({
+            loadingStatus: true
         })
     },
     // 审核不通过
