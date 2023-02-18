@@ -163,6 +163,7 @@
     border: 1px solid #ccc;
     padding: 15rpx;
     width: 500rpx;
+    height: 430rpx;
     box-sizing: border-box;
 }
 
@@ -223,12 +224,13 @@
     border-radius: 20rpx;
     font-size: 28rpx;
     padding: 20rpx;
-
+    width: 300rpx !important;
 }
 .btn {
     display: inline-block;
     padding: 20rpx;
     font-size: 28rpx;
+    width: 300rpx !important;
     border-radius: 20rpx;
     background: #e64430!important;
     color: #fff!important;

@@ -38,7 +38,8 @@
 }
 
 .activity-swiper {
-    height: calc(100vh - 84rpx);
+    /* height: calc(100vh - 84rpx); */
+    height: 100vh;
 }
 
 .activity-swiper .activity-item {

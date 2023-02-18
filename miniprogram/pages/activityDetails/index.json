@@ -1,5 +1,7 @@
 {
-    "usingComponents": {},
-    "navigationBarTitleText": "助力赢大奖",
+    "usingComponents": {
+        "loading":"../../components/loading/index"
+    },
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "white"
 }

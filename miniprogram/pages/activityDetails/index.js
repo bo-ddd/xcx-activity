@@ -1,5 +1,12 @@
 // pages/activityDetails/index.js
-const commonFun=require('../../common/throttle');
+const {
+    throttle
+} = require('../../common/throttle');
+const {
+    formatDate,
+    formatTime
+} = require('../../common/formatDate');
+
 Page({
     /**
      * 页面的初始数据
@@ -12,6 +19,7 @@ Page({
         activityRule: '',
         activityStartTime: '',
         activityEndTime: '',
+        activityDuration: '',
         activityForm: '',
         activityStatus: '',
         prizeList: [],
@@ -24,7 +32,38 @@ Page({
         activityId: '',
         participateStatus: null,
         showModal: false,
+        showIntegral: false,
+        showPrizeInfo: false,
+        isLottery: false,
+        showWinInfo: false,
         duration: 500,
+        loadingStatus: true,
+        prizeInfoList: [{
+                id: 1,
+                nickName: '马格烜',
+                prizeName: '苹果手机'
+            },
+            {
+                id: 2,
+                nickName: '格有格调',
+                prizeName: '苹果手机'
+            },
+            {
+                id: 2,
+                nickName: '班长',
+                prizeName: '苹果手机'
+            },
+            {
+                id: 3,
+                nickName: '班长',
+                prizeName: '苹果手机'
+            },
+            {
+                id: 4,
+                nickName: '班长',
+                prizeName: '苹果手机'
+            },
+        ]
     },
     //切换上一个阶段;
     switchPrev() {
@@ -75,10 +114,9 @@ Page({
             showModal: false
         })
     },
-    
+
     //助力按钮事件;
     async onHelp() {
-        console.log(123)
         let _this = this;
         await this.getParticipateStatus();
         if (!this.data.participateStatus) {
@@ -87,6 +125,8 @@ Page({
                 title: '提示',
                 content: '助力成功',
                 success(res) {
+                    //弹出积分获取提示框;
+                    _this.showIntegral();
                     //把活动id和用户id存入数据库;
                     _this.addParticipateStatus();
                     //更新活动进度;
@@ -101,11 +141,11 @@ Page({
             })
         }
     },
-    help(){
-        let _this=this;
-        commonFun.throttle(_this.onHelp)();
+    help() {
+        let _this = this;
+        throttle(_this.onHelp)();
     },
-    //获取参与状态
+    //获取参与状态;
     async getParticipateStatus() {
         const res = await wx.cloud.callFunction({
             name: 'activity',
@@ -145,6 +185,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     async onLoad(options) {
+        //开启加载动画;
+        this.openLoading();
         //打开分享功能;
         wx.showShareMenu({
             withShareTicket: true,
@@ -159,7 +201,7 @@ Page({
         const activityDetail = res.result.data;
         let {
             activityStartTime, //活动开始时间;
-            activityEndTime, //活动结束时间
+            activityEndTime, //活动结束时间;
             activityForm, //活动形式;
             activityStatus, //活动状态;
             textareaValue: activityRule, //游戏规则;
@@ -175,14 +217,18 @@ Page({
                 activityTitle,
                 prizeList
             }),
-        //开启倒计时;
-        this.openCountDown();
+            //开启倒计时;
+            this.openCountDown();
+        //获取活动开始和结束时间;
+        this.getActivityTime();
         //设置活动标题;
         this.setActivityTitle();
         //获取活动助力数列表;
         this.getActivityHelpNumberList();
         //更新当前活动阶段和进度;
         this.updataActivityProgress();
+        //关闭加载动画;
+        //  this.closeLoading();
     },
 
     async getActivityDetail(_id) {
@@ -219,6 +265,19 @@ Page({
         let _this = this;
         wx.setNavigationBarTitle({
             title: _this.data.activityTitle
+        })
+    },
+    //获取活动起止时间;
+    getActivityTime() {
+        let activityStartTime = this.data.activityStartTime;
+        let activityEndTime = this.data.activityEndTime;
+        const startData = formatDate(activityStartTime);
+        const startTime = formatTime(activityStartTime);
+        const endData = formatDate(activityEndTime);
+        const endTime = formatTime(activityEndTime);
+        const activityDuration = startData + startTime + '-' + endData + endTime;
+        this.setData({
+            activityDuration
         })
     },
     //开启倒计时;
@@ -294,7 +353,7 @@ Page({
         let activityHelpNumberList = this.data.activityHelpNumberList;
         let activityCount = await this.getActivityCount();
         activityHelpNumberList.forEach((item, index) => {
-            if (activityCount >= item.startNumber && activityCount < item.endNumber) {
+            if (activityCount >= item.startNumber && activityCount <= item.endNumber) {
                 //设置当前进行阶段;
                 this.setData({
                     ongoingStage: index
@@ -311,17 +370,50 @@ Page({
             }
         })
     },
-
-
-
-
-
+    //开启加载动画;
+    openLoading() {
+        this.setData({
+            loadingStatus: true
+        })
+    },
+    //图片加载完,关闭加载动画;
+    bindload() {
+        this.setData({
+            loadingStatus: false
+        })
+    },
+    //弹出积分提示框;
+    showIntegral() {
+        this.setData({
+            showIntegral: true
+        })
+    },
+    //查看中奖名单;
+    getPrizeInfo() {
+        //调接口获取当前活动中奖信息;
+        //...;
+        //显示中奖名单;
+        this.setData({
+            showPrizeInfo: true
+        })
+    },
+    //关闭中奖名单;
+    closePrizeInfoPop() {
+        this.setData({
+            showPrizeInfo: false
+        })
+    },
+    //开奖事件;
+    lottery(){
+        this.setData({
+            isLottery:true,
+            showWinInfo:true
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady() {
-
-
 
     },
 

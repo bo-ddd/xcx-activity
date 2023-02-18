@@ -13,7 +13,7 @@ const db = cloud.database();
 exports.main = async (event, context) => {
     try {
         let {
-            pageSize = 5, pageNum = 1
+            pageSize = 4, pageNum = 1
         } = event;
         console.log(event)
         const res = await db.collection('activity').where({
