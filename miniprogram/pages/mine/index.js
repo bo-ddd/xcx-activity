@@ -125,14 +125,11 @@ Page({
     },
     //设置用户信息r
     async setUserInfo() {
-        console.log(22222222);
         let app = getApp();
         await app.judgeUserInfo();
         if (app.globalData.needLogin == true) {
-            console.log('需要登录');
           
         } else {
-            console.log('bu需要登录');
             // 想让一个数组中的某一项或者某某项在登陆的时候显示  未登录的时候隐藏
             /**
              * 实现思路：
@@ -153,7 +150,6 @@ Page({
                     activityList:navData
                 })
             }
-            console.log('userInfo', this.data.userInfo);
         }
 
     },

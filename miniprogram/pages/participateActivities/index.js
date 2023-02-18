@@ -1,4 +1,5 @@
 // pages/participateActivities/index.js
+
 Page({
 
     /**
@@ -10,7 +11,7 @@ Page({
         waitActivityList: [],
         endActivityList: [],
         participateActivityList: [],
-         loadingStatus: true,
+        loadingStatus: true,
     },
 
     bindchange: function (e) {
@@ -25,7 +26,6 @@ Page({
         if (that.data.currentData === e.target.dataset.current) {
             return false;
         } else {
-
             that.setData({
                 currentData: e.target.dataset.current
             })
@@ -55,35 +55,31 @@ Page({
         let list = res.result.data.list
         let participateActivities = [];
         this.setData({
-            participateActivityList:list
+            participateActivities:list
         })
-        console.log(list)
         list.forEach(item => {
-            // console.log(item);
-            participateActivities.push(item.userParticipatingList[0])
+            if(item.userParticipatingList.length){
+                ///参与的活动
+                participateActivities.push(item)
+            }        
         });
         _this.setData({
             participateActivityList: participateActivities
         })
-        console.log(_this.data.participateActivityList);
         await _this.participateState()
     },
     //参与的活动状态
     participateState() {
-        // let notStartedActivity = this.data.participateActivityList.filter(item => item.activityStatus == 0)
         let waitActivity = this.data.participateActivityList.filter(item => item.activityStatus == 1)
         let endActivity = this.data.participateActivityList.filter(item => item.activityStatus == 2)
-        // console.log(notStartedActivity);
         console.log(waitActivity);
+        console.log(endActivity);
         this.setData({
-            // notStartedActivityList: notStartedActivity,
             waitActivityList: waitActivity,
             endActivityList: endActivity,
         })
     },
-    sort(){
-      
-    },
+   
     toDetail(e) {
         console.log(e);
         //传入活动id跳转到对应活动页

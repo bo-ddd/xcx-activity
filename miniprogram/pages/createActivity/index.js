@@ -1,4 +1,5 @@
 // pages/createActivity/index.js
+const common = require('../../common/throttle')
 Page({
     /**
      * 页面的初始数据
@@ -12,9 +13,9 @@ Page({
         form: {
             storeName: '',
             titleValue: '',
-            activityStartTime: '',
-            activityEndTime: '',
-            textareaValue: "点击助力按钮，即可以为商家助力",
+            activityStartTime: '',//开始时间
+            activityEndTime: '',//结束时间
+            textareaValue: "",
             prizeName: '', 
             prizeNum:1,
             peopleNum: '',
@@ -87,6 +88,40 @@ Page({
             }
         })
     },
+
+    time(date){
+        let y = date.getFullYear()
+        let m = date.getMonth()+1
+        let d = date.getDate()
+        let h = date.getHours()
+        if(h >= 20){
+            let d = date.getDate()+1
+            let tomorrow = y + '-' + m + '-' + d 
+            this.setData({
+                ['form.activityStartTime'] : tomorrow
+            })
+        }else{
+            let timer = y + '-' + m + '-' + d 
+            this.setData({
+                ['form.activityStartTime'] : timer
+            })
+        }
+        let endDay = date.getDate()+1
+        let startTime = y + '-0' + m + '-' + d 
+        let endTime = y + '-0' + m + '-' + endDay 
+        if(endTime.split('-')[1].length > 1 ){
+            this.setData({
+                ['form.activityEndTime'] : endTime,
+                ['form.activityStartTime'] : startTime
+            })
+        }else{
+            this.setData({
+                ['form.activityEndTime'] : endTime,
+                ['form.activityStartTime'] : timer
+            })
+        }
+      
+    },
     //开始时间
     dateChangestart(e) {
         console.log('值为', e.detail.value);
@@ -97,11 +132,12 @@ Page({
     //结束时间
     dateChangeEnd(e) {
         console.log('结束时间', e.detail.value);
+        
         this.setData({
             ['form.activityEndTime']: e.detail.value
         });
     },
-    //奖品图
+    //奖品图w
     prizeMap(e) {
         let _this = this;
         let index = e.currentTarget.dataset.index;
@@ -155,12 +191,12 @@ Page({
     },
     //点击确定创建
     formSubmit(e) {
+        let throttle = common.throttle()
         this.setData({
             form: e.detail.value
         })
         this.getPrizeSettingList();
-        if (this.validateForm()) this.createActivity();
-       
+        if (this.validateForm()) throttle(this.createActivity());
     },
    ///获取奖品列表     
     getPrizeSettingList() {
@@ -223,14 +259,33 @@ Page({
                 type: 'getMerchantInfo',
             }
         }).then(res => {
+            if(res.result.data[0].examineType != 1){
+                wx.showToast({
+                    title: '商家待审核',
+                    icon: 'error',
+                })
+               setTimeout(()=>{
+                    wx.switchTab({
+                        url: '/pages/mine/index',
+                      })
+               },1000)
+            }
             this.setData({
                 ['form.storeName']: res.result.data[0].merchantName
             })
         }).catch(err=>{
             this.setData({
                 settled:false
-
             })
+            wx.showToast({
+                title: '请先入驻',
+                icon: 'error',
+            })
+           setTimeout(()=>{
+                wx.switchTab({
+                    url: '/pages/mine/index',
+                  })
+           },1000)
 
         })
     },
@@ -261,7 +316,7 @@ Page({
         //取消分享功能
         let app=getApp()
         app.hideShareMenu()
-
+        this.time(new Date())
     },
 
 

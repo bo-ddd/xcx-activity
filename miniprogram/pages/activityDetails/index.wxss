@@ -55,8 +55,8 @@
     margin-top: 5%;
 }
 
-.pb-20r{
-   padding-bottom:20rpx;
+.pb-20r {
+    padding-bottom: 20rpx;
 }
 
 .main {
@@ -141,7 +141,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .footer .icon-switch_left,
@@ -386,4 +385,110 @@
     align-items: center;
     justify-content: center;
     font-size: 30rpx;
+}
+
+/* 获取积分弹出框 */
+.pop-integral {
+    width: 70%;
+    position: fixed;
+    top: 30%;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #6BABFF;
+    padding: 30rpx;
+    box-sizing: border-box;
+}
+
+/* 查看中奖信息弹框 */
+.pop-info_prize {
+    width: 70%;
+    height:500rpx;
+    position: fixed;
+    top: 30%;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4a3c2f;
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.pop-info_prize .title-info {
+    position: absolute;
+    top: -140rpx;
+    width: 400rpx;
+    height: 186rpx;
+}
+
+.pop-info_prize .content {
+    width:100%;
+    height:450rpx;
+    border:solid 8rpx #261e17;
+    color:#fedfaf;
+    padding: 20rpx;
+    box-sizing: border-box;
+    overflow: scroll;
+    border-radius: 20rpx;
+}
+.pop-info_prize .title{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size:28rpx;
+}
+.pop-info_prize .info{
+    display: flex;
+    justify-content: space-between;
+    padding:20rpx 50rpx;
+    font-size:24rpx;
+    border-bottom:solid 1rpx #392b1d;
+}
+.pop-info_prize .close-btn{
+    width:100rpx;
+    height:100rpx;
+    border-radius:50%;
+    background-color: #ebc279;
+    position: absolute;
+    bottom:-120rpx;
+    left:50%;
+    margin-left:-50rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pop-info_prize .icon-close{
+    width:60rpx;
+    height:60rpx;
+}
+
+.pop-lottery_win{
+    width: 70%;
+    height:500rpx;
+    position: fixed;
+    top: 30%;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4a3c2f;
+    padding: 20rpx;
+    box-sizing: border-box;
 }
