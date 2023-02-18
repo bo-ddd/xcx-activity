@@ -1,5 +1,7 @@
 // pages/activity/index.js
-const commonFun = require('../../common/formatDate');
+const {
+    formatDate
+} = require('../../common/formatDate');
 const app = getApp();
 Page({
     data: {
@@ -7,7 +9,7 @@ Page({
         activityTypes: ['周期活动', '日常活动'],
         activityList: [],
         loadingStatus: true,
-        pageSize: 10,
+        pageSize: 5,
         pageNum: 1,
         showEndWarn: false,
     },
@@ -117,8 +119,8 @@ Page({
     //处理时间格式;
     handleDateFormat(data) {
         data.forEach(item => {
-            item.activityStartTime = commonFun.formatDate(item.activityStartTime);
-            item.activityEndTime = commonFun.formatDate(item.activityEndTime);
+            item.activityStartTime = formatDate(item.activityStartTime);
+            item.activityEndTime = formatDate(item.activityEndTime);
         })
         return data
     },
@@ -149,6 +151,14 @@ Page({
         this.setData({
             showEndWarn: true
         })
+    },
+
+    revertMillisecondFormat(data){
+         data.forEach(item=>{
+             item.activityStartTime=new Date(item.activityStartTime).getTime();
+             item.activityEndTime =new Date(item.activityEndTime).getTime();
+         })
+         return data
     },
 
 
@@ -194,9 +204,14 @@ Page({
      */
     async onReachBottom() {
         let loadingStatus = this.data.loadingStatus;
+        let showEndWarn = this.data.showEndWarn;
+        let pageNum = this.data.pageNum;
+        let pageSize = this.data.pageSize;
+
         if (loadingStatus || showEndWarn) return;
+        pageNum++;
         this.setData({
-            pageNum: this.data.pageNum++
+            pageNum,
         })
         this.openLoading();
         //调用接口请求下一条数据？
@@ -206,16 +221,19 @@ Page({
             data: {
                 type: 'getList',
                 activityType,
-                pageSize: 4,
-                pageNum: 1
+                pageSize,
+                pageNum,
             }
         })
         this.closeLoading();
         const list = res.result.data;
+        let activityList = this.data.activityList;
         if (list.length) {
-            const fragment = await this.handleData(JSON.parse(JSON.stringify(list)));
+            let  preActivityList= revertMillisecondFormat(activityList);
+            preActivityList.push(list);
+            const fragment = await this.handleData(JSON.parse(JSON.stringify(preActivityList)));
             this.setData({
-                activityList: this.data.activityList.push(fragment)
+                activityList: fragment,
             })
         } else {
             this.showEndWarn();
