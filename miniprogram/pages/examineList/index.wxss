@@ -69,8 +69,7 @@
 }
 
 .swiperTtemBox {
-    height: calc(100vh - 80rpx);
-
+    height: 100%;
 }
 
 .swiperTtemBox-item {

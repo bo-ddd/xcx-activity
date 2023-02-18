@@ -12,7 +12,7 @@
             </view>
             <view class="list-item mt-16">
                 <text>商家性别</text>
-                <text>{{ item.merchantSex == 1 ? '男':'女' }}</text>
+                <text>{{ item.merchantSex == 0 ? '男':'女' }}</text>
             </view>
             <view class="list-item mt-16">
                 <text>店铺名称</text>
@@ -20,7 +20,7 @@
             </view>
             <view class="list-item mt-16">
                 <text>店铺类型</text>
-                <text>{{ grades[item.storeClass] }}</text>
+                <text>{{ grades[item.storeClass-1] }}</text>
             </view>
             <view class="list-item mt-16">
                 <text>店铺地址</text>
