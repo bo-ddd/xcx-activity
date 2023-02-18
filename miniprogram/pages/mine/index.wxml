@@ -2,7 +2,7 @@
 <view class="mine" style="height: {{scroll_height}}rpx;">
 <view class="header">
 <view class="box wrap">   
-<view class="userInfo wrap">
+<view class="userInfo wrap" bindtap="toLogin">
     <image src="{{userInfo.avatarUrl}}" mode="" class="avatar mr-50" wx:if='{{userInfo.avatarUrl}}' />
     <image src="../../images/icon-avatar.png" mode="" class="avatar mr-20" wx:else />
     <text class="user" wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}</text>

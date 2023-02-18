@@ -88,8 +88,6 @@ Page({
         this.setData({
             userInfo
         })
- 
- 
     },
 
     onLoad(e) {
@@ -186,12 +184,9 @@ Page({
                     goodsList : res.result.data
                 })
                 
-                res.result.data.forEach(item=>{
-                        if(arr.indexOf(item.goodsType)==-1){  
+                res.result.data.forEach(item=>{                      
                             // console.log(item.goodsType);
-                            arr.push(item.goodsType)
-                        }
-                    
+                            arr.push(item.goodsType)                                         
                 })
                 let type = arr.filter((item,index,array)=>{
                     return array.indexOf(item) === index

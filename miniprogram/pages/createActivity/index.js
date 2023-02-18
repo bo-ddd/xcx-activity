@@ -4,6 +4,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        settled:true,
         opendId: '',
         isCreate: false,
         isUpdate: false,
@@ -14,7 +15,7 @@ Page({
             activityStartTime: '',
             activityEndTime: '',
             textareaValue: "",
-            prizeName: '',
+            prizeName: '', 
             prizeNum:1,
             peopleNum: '',
             activityType: '',
@@ -195,7 +196,7 @@ Page({
                 prizeSettingList: this.data.prizeSettingList
             },
             success(res) {
-                wx.navigateTo({
+                wx.redirectTo({
                     url: '/pages/launchActivities/index',
                 }).then(res => {
                     wx.showToast({
@@ -207,7 +208,7 @@ Page({
             },
         })
     },
-    //新增活动模块
+    //新增奖品活动模块
     createModul() {
         this.data.prizeSettingList.push(JSON.parse(JSON.stringify(this.data.prizeItem)))
         this.setData({
@@ -225,6 +226,20 @@ Page({
             this.setData({
                 ['form.storeName']: res.result.data[0].merchantName
             })
+        }).catch(err=>{
+            this.setData({
+                settled:false
+            })
+            wx.showToast({
+                title: '请先入驻',
+                icon: 'error',
+                fail(){
+                    wx.navigateTo({
+                      url: '/pages/mine/index',
+                    })
+                }
+            })
+
         })
     },
     //把图片转成https格式
@@ -245,14 +260,15 @@ Page({
             })
         })
     },
+  
     /**                                                    
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        this.getStoreName()
         //取消分享功能
         let app=getApp()
         app.hideShareMenu()
-        this.getStoreName()
 
     },
 

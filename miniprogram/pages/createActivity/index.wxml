@@ -6,7 +6,7 @@
         <image src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/static/activity/ce1ae10792c11cf289c5e57bfca0add.png?sign=5c0c2e073041fbf9add158c83042cfbd&t=1675323381" mode="" class="gift" />
     </view>
     <form catchsubmit="formSubmit" catchreset="formReset">
-        <view class="add fs-28">
+        <view class="add fs-28"> 
                 <view class="page-poster">
                     <image src="../../images/icon-red.png" mode="" class="icon-min" />
                     <view class="pic-lable"> 活动图片：<text class="color-cc">(用户如果不传，则显示平台默认图片)</text>
@@ -80,7 +80,7 @@
             <view class="page-lable-rule">
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />
                 <view class="lable">活动规则：</view>
-                <textarea placeholder="请输入规则" name="textareaValue" class="textarea"></textarea>
+                <textarea name="textareaValue" value="活动规则，点击助力按钮，即可以为商家助力" class="textarea"></textarea>
             </view>
             <view class="page-prize wrap">
                 <view class="prize mb-20">

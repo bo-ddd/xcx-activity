@@ -14,10 +14,11 @@ exports.main = async (event, context) => {
 
     // 查询活动记录表（activityRecord）
     try {
+        
         let list = await db.collection('activity').where({
             openId: wxContext.OPENID,
             activityStatus: event.activityStatus
-        }).get();
+        }).skip(event.pageSize * (event.pageNum - 1)).limit(event.pageSize).get();
         return {
             success: true,
             event,

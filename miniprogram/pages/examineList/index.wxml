@@ -4,19 +4,18 @@
     <view class="examine-list">
         <view class='navBox'>
             <view class='titleLeftBox' bindtap='titleClick' data-idx='0'>
-                <text class="tab {{0 == currentIndex ? 'colorLeftBox' : ''}}">待审核商铺</text>
+                <text class="tab {{0 == currentIndex ? 'colorLeftBox' : ''}}">待审核</text>
                 <view class="line {{0 == currentIndex ? 'lineBox' : 'notLineBox'}}" />
             </view>
             <view class='titleRightBox' bindtap='titleClick' data-idx='1'>
-                <text class="tab {{1 == currentIndex ? 'coloRightBox' : ''}}">商铺列表</text>
+                <text class="tab {{1 == currentIndex ? 'coloRightBox' : ''}}">已审核</text>
                 <view class="line {{1 == currentIndex ? 'lineBox' : 'notLineBox'}} " />
             </view>
         </view>
         <view wx:if="{{!merchantList.length}}" class="tips">
-            <image class="empty" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/activity/2023/2/%E6%9A%82%E6%97%A0%E6%95%B0%E6%8D%AE.png?sign=954ff57976e02122a19d07a8966b5289&t=1676535588"></image>
-            <view>您还未参与活动，快去列表参与吧！</view>
+            <view>暂时还没有商铺入驻哦~</view>
         </view>
-        <swiper class='swiperTtemBox' bindchange='pagechange' current='{{currentIndex}}' bindchange="bindchange" wx:else>
+        <swiper class='swiperTtemBox' current='{{currentIndex}}' bindchange="bindchange" wx:else>
             <swiper-item class='swiperTtemBox-item' wx:for="{{merchantStatus}}" wx:key="index">
                 <view class="item mt-30 wrap" wx:for="{{ merchantList }}" wx:key="_id" data-_id="{{ item._id }}" bindtap="toActiveDetail">
                     <view class="item-left">

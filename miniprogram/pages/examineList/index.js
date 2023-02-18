@@ -17,14 +17,21 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        this.openLoading()
         app.hideShareMenu()
         this.getMerchantList()
         this.closeLoading()
     },
-    // 加载中
+    // 关闭加载动画
     closeLoading() {
         this.setData({
             loadingStatus: false
+        })
+    },
+    // 开启加载动画
+    openLoading() {
+        this.setData({
+            loadingStatus: true
         })
     },
     // 获取商铺列表
@@ -77,7 +84,11 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh() {
-
+        setTimeout( () => {
+            this.getMerchantList()
+            //停止下拉刷新
+            wx.stopPullDownRefresh();
+        }, 2000)
     },
 
     /**
@@ -107,32 +118,24 @@ Page({
         })
     },
 
-    // tab切换
-    // pagechange(e) {
-    //     // 通过touch判断，改变tab的下标值
-    //     console.log(e);
-    //     if ("touch" === e.detail.source) {
-    //         let currentPageIndex = this.data.currentIndex;
-    //         currentPageIndex = (currentPageIndex + 1) % 2;
-    //         // 拿到当前索引并动态改变
-    //         this.setData({
-    //             currentIndex: currentPageIndex,
-    //         })
-    //     }
-    // },
+
     titleClick(e) {
         console.log(e);
         this.setData({
             //拿到当前索引并动态改变
             currentIndex: e.currentTarget.dataset.idx
         })
+        this.openLoading()
         this.getMerchantList()
+        this.closeLoading()
     },
     // 滑动改变滑块index值
     bindchange(e) {
         this.setData({
             currentIndex: e.detail.current
         })
+        this.openLoading()
         this.getMerchantList()
+        this.closeLoading()
     },
 })
