@@ -1,6 +1,6 @@
 /* pages/merchantSettlement/index.wxss */
 .box {
-    height: 100%;
+    height: 100vh;
     padding-bottom: 20rpx;
 }
 
