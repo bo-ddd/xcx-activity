@@ -32,10 +32,11 @@ Page({
         activityId: '',
         participateStatus: null,
         showModal: false,
-        showIntegral: false,
+        openIntegral: false,
         showPrizeInfo: false,
         isLottery: false,
         showWinInfo: false,
+        showFailInfo: false,
         duration: 500,
         loadingStatus: true,
         prizeInfoList: [{
@@ -120,21 +121,15 @@ Page({
         let _this = this;
         await this.getParticipateStatus();
         if (!this.data.participateStatus) {
-            //提示参与成功,把活动id和用户id存入数据库
-            wx.showModal({
-                title: '提示',
-                content: '助力成功',
-                success(res) {
-                    //弹出积分获取提示框;
-                    _this.showIntegral();
-                    //把活动id和用户id存入数据库;
-                    _this.addParticipateStatus();
-                    //更新活动进度;
-                    _this.updataActivityProgress();
-                }
-            })
+            //弹出提示框，提示参与成功,送积分;
+            _this.openIntegral();
+            //送积分;
+            this.addIntegralCount();
+            //把活动id和用户id存入数据库;
+            _this.addParticipateStatus();
+            //更新活动进度;
+            _this.updataActivityProgress();
         } else {
-            console.log(1111);
             wx.showModal({
                 title: '提示',
                 content: '您已助力过啦！',
@@ -142,8 +137,7 @@ Page({
         }
     },
     help() {
-        let _this = this;
-        throttle(_this.onHelp)();
+        return throttle(this.onHelp);
     },
     //获取参与状态;
     async getParticipateStatus() {
@@ -159,17 +153,15 @@ Page({
         })
 
     },
-    //添加参与状态
+    //添加参与状态;
     addParticipateStatus() {
-        console.log(this.data.activityId);
         wx.cloud.callFunction({
             name: 'activity',
             data: {
                 type: 'participateAactivities',
-                activityId: this.data.activityId
+                activityId: this.data.activityId,
+                lotteryStatus: 0,
             }
-        }).then(res => {
-            console.log(res.result);
         })
     },
     //兑换商店-跳转页面;
@@ -227,8 +219,6 @@ Page({
         this.getActivityHelpNumberList();
         //更新当前活动阶段和进度;
         this.updataActivityProgress();
-        //关闭加载动画;
-        //  this.closeLoading();
     },
 
     async getActivityDetail(_id) {
@@ -383,9 +373,16 @@ Page({
         })
     },
     //弹出积分提示框;
-    showIntegral() {
+      openIntegral() {
         this.setData({
             showIntegral: true
+        })
+    },
+
+    //弹出积分提示框;
+      closeIntegral() {
+        this.setData({
+            showIntegral: false
         })
     },
     //查看中奖名单;
@@ -404,10 +401,63 @@ Page({
         })
     },
     //开奖事件;
-    lottery(){
+    async lottery() {
+        let flag = await this.getLotteryStatus();
+        if (flag) { //中奖;
+            this.openWinPop();
+        } else { //未中奖;
+            this.openFailPop();
+            this.addIntegralCount();
+        }
         this.setData({
-            isLottery:true,
-            showWinInfo:true
+            isLottery: true,
+        })
+    },
+    //开启中奖弹窗;
+    openWinPop() {
+        this.setData({
+            showWinInfo: true
+        })
+    },
+    //开启未中奖弹窗;
+    openFailPop() {
+        this.setData({
+            showFailInfo: true
+        })
+    },
+
+    //关闭中奖弹窗;
+    closeWinPop() {
+        this.setData({
+            showWinInfo: false
+        })
+    },
+    //关闭未中奖弹窗;
+    closeFailPop() {
+        this.setData({
+            showFailInfo: false
+        })
+    },
+    //查看当前用户中奖状态; 返回Boolean值;
+    async getLotteryStatus() {
+        let activityId=this.data.activityId;
+        const res = await wx.cloud.callFunction({
+            name: activity,
+            data: {
+                type: getLotteryStatus,
+                activityId,
+            }
+        })
+        return res.result.data
+    },
+    //添加积分;
+    addIntegralCount(count) {
+        wx.cloud.callFunction({
+            name: activity,
+            data: {
+                type: addUserIntegral,
+                count,
+            }
         })
     },
     /**
