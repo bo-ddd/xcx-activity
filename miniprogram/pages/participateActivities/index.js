@@ -54,7 +54,6 @@ Page({
         console.log(res);
         let list = res.result.data.list
         let participateActivities = [];
-        console.log(list);
         this.setData({
             participateActivities:list
         })
@@ -74,8 +73,6 @@ Page({
     participateState() {
         let waitActivity = this.data.participateActivityList.filter(item => item.activityStatus == 1)
         let endActivity = this.data.participateActivityList.filter(item => item.activityStatus == 2)
-        console.log(waitActivity);
-        console.log(endActivity);
         this.setData({
             waitActivityList: waitActivity,
             endActivityList: endActivity,
