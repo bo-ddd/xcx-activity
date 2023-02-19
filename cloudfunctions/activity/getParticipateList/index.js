@@ -10,9 +10,9 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     const openid = wxContext.OPENID;
     try {
-        let {
-            pageSize = 6, pageNum = 1
-        } = event;
+        // let {
+        //     pageSize = 6, pageNum = 1
+        // } = event;
         console.log(openid);
         ///根据我参与的活动id ，对照所有活动id 查询到我参与的活动所有数据
        const res=await db.collection('activity').aggregate()
@@ -26,7 +26,7 @@ exports.main = async (event, context) => {
             activityStartTime:-1
         })
         ///分页
-        .skip(pageSize * (pageNum - 1)).limit(pageSize)
+        // .skip(pageSize * (pageNum - 1)).limit(pageSize)
         .end()
         console.log(res);
         return res

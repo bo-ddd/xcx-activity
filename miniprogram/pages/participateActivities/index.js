@@ -50,10 +50,11 @@ Page({
     async getParticipateActivities() {
         let _this = this;
         let res = await this.getParticipateListApi();
-        console.log('--------我是返回数据----------');
+        console.log('--------我是返回数据----------');  
         console.log(res);
         let list = res.result.data.list
         let participateActivities = [];
+        console.log(list);
         this.setData({
             participateActivities:list
         })
@@ -66,6 +67,7 @@ Page({
         _this.setData({
             participateActivityList: participateActivities
         })
+        console.log(this.data.participateActivityList);
         await _this.participateState()
     },
     //参与的活动状态
@@ -98,7 +100,6 @@ Page({
     async onLoad(options) {
         ///首屏优化
         await this.getParticipateActivities();
-
         await this.closeLoading();
       
     },
