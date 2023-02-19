@@ -46,7 +46,7 @@
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />
                 <view class="lable">结束日期：</view>
                 <view class="section date-section" hover-class="section-active">
-                    <picker mode="date" bind:change="dateChangeEnd" fields="day" name="activityEndTime">
+                    <picker mode="date" bind:change="dateChangeEnd" value="{{form.activityStartTime}}" fields="day" name="activityEndTime">
                         <view>
                             <text class="chooseItem">请选择：</text>{{form.activityEndTime}}
                         </view>
@@ -80,7 +80,13 @@
             <view class="page-lable-rule">
                 <image src="../../images/icon-red.png" mode="" class="icon-min" />
                 <view class="lable">活动规则：</view>
-                <textarea name="textareaValue" value="活动规则，点击助力按钮，即可以为商家助力" class="textarea"></textarea>
+                <textarea name="textareaValue" type="textarea" class="textarea" disabled >
+                    <view>1、点击"助力"按钮，即可以为商家助力;</view>
+                    <view>2、每个账号只能为商家助力一次;</view>
+                    <view>3、本次活动日期为：2023年1月20日至2023年2月5日，截止日期后助力无效;</view>
+                    <view>4、若发现某账号助力异常，或经他人举报并确认存在刷票行为，主办方有权取消参与资格;</view>
+                    <view>6、本活动最终解释权归小斑马网络有限公司所有</view>
+                </textarea>
             </view>
             <view class="page-prize wrap">
                 <view class="prize mb-20">

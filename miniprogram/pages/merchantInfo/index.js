@@ -28,7 +28,7 @@ Page({
         this.closeLoading()
     },
     // 获取商家详情信息
-    getMercnahtInfo(){
+    getMercnahtInfo() {
         let _this = this
         wx.cloud.callFunction({
             name: 'merchantInfo',
@@ -75,7 +75,11 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh() {
-
+        setTimeout(() => {
+            this.getMerchantList()
+            //停止下拉刷新
+            wx.stopPullDownRefresh();
+        }, 2000)
     },
 
     /**
@@ -103,6 +107,19 @@ Page({
             loadingStatus: true
         })
     },
+    // 审核不通过调用接口存储拒绝原因
+    addrefuse() {
+        wx.cloud.callFunction({
+            name: 'refuseList',
+            data: {
+                merchantId: this.data.merchantId,
+                reason: this.data.placeholderText
+            },
+            success(res) {
+                console.log(res);
+            }
+        })
+    },
     // 审核不通过
     refuse() {
         let _this = this
@@ -118,7 +135,12 @@ Page({
                     _this.setData({
                         placeholderText: res.content
                     })
+                    _this.addrefuse()
+                    _this.addExamineType(2)
+                    _this.toExamineList()
                 }
+
+
             }
         })
     },
@@ -150,7 +172,7 @@ Page({
     },
     //跳转审核列表页面
     toExamineList() {
-        wx.navigateTo({
+        wx.navigateBack({
             url: '/pages/examineList/index',
         })
     }

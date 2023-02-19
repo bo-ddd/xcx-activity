@@ -1,4 +1,5 @@
 /* pages/activitRecord/index.wxss */
+
 .activit-record{
     height: 100vh;
     background: url('https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/%E4%BE%AF%E5%A7%90%E7%9A%84%E8%83%8C%E6%99%AF%E5%9B%BE.png?sign=5161584f7d266ca7940a2c65c1f529d1&t=1675243713')no-repeat;
