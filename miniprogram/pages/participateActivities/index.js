@@ -50,7 +50,7 @@ Page({
     async getParticipateActivities() {
         let _this = this;
         let res = await this.getParticipateListApi();
-        console.log('--------我是返回数据----------');
+        console.log('--------我是返回数据----------');  
         console.log(res);
         let list = res.result.data.list
         let participateActivities = [];
@@ -66,14 +66,13 @@ Page({
         _this.setData({
             participateActivityList: participateActivities
         })
+        console.log(this.data.participateActivityList);
         await _this.participateState()
     },
     //参与的活动状态
     participateState() {
         let waitActivity = this.data.participateActivityList.filter(item => item.activityStatus == 1)
         let endActivity = this.data.participateActivityList.filter(item => item.activityStatus == 2)
-        console.log(waitActivity);
-        console.log(endActivity);
         this.setData({
             waitActivityList: waitActivity,
             endActivityList: endActivity,
@@ -98,7 +97,6 @@ Page({
     async onLoad(options) {
         ///首屏优化
         await this.getParticipateActivities();
-
         await this.closeLoading();
       
     },

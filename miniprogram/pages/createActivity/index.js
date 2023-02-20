@@ -15,7 +15,7 @@ Page({
             titleValue: '',
             activityStartTime: '',//开始时间
             activityEndTime: '',//结束时间
-            textareaValue: "",
+            textareaValue: "1、点击助力按钮，即可以为商家助力 2、每个账号只能为商家助力一次 3、本次活动日期为：2023年1月20日至2023年2月5日，截止日期后助力无效 4、若发现某账号助力异常，或经他人举报并确认存在刷票行为，主办方有权取消参与资格 6、本活动最终解释权归小斑马网络有限公司所有",
             prizeName: '', 
             prizeNum:1,
             peopleNum: '',
@@ -59,6 +59,9 @@ Page({
             peopleNum: ''
         }],
         prizeList: []
+    },
+    a(e){
+        console.log(e);
     },
     //点击上传活动图
     upload() {
@@ -196,7 +199,7 @@ Page({
             form: e.detail.value
         })
         this.getPrizeSettingList();
-        if (this.validateForm()) throttle(this.createActivity());
+        if (this.validateForm())  throttle(this.createActivity());
     },
    ///获取奖品列表     
     getPrizeSettingList() {
@@ -208,10 +211,19 @@ Page({
                 item.peopleNum = form[`peopleNum${index}`]
         })
     },
-
+    //活动规则替换
+    rep(){
+        var reg=/(^\s+)|(\s+$)|\s+/g;
+        let str = this.data.form.textareaValue
+        this.setData({
+            ['form.textareaValue'] : str.replace(reg,'\n')
+        })
+    },
 
     //创建活动
     createActivity() {
+        console.log('---------123--------');
+        console.log(this.data.form.textareaValue);
         let fileId = this.data.fileId;
         wx.cloud.callFunction({
             name: 'activity',
@@ -268,7 +280,7 @@ Page({
                     wx.switchTab({
                         url: '/pages/mine/index',
                       })
-               },1000)
+               },1500)
             }
             this.setData({
                 ['form.storeName']: res.result.data[0].merchantName
@@ -285,8 +297,7 @@ Page({
                 wx.switchTab({
                     url: '/pages/mine/index',
                   })
-           },1000)
-
+           },1500)
         })
     },
     //把图片转成https格式
@@ -307,6 +318,7 @@ Page({
             })
         })
     },
+    
   
     /**                                                    
      * 生命周期函数--监听页面加载
@@ -317,6 +329,8 @@ Page({
         let app=getApp()
         app.hideShareMenu()
         this.time(new Date())
+        //活动规则
+        this.rep()
     },
 
 

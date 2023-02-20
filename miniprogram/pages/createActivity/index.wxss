@@ -163,7 +163,8 @@
     border: 1px solid #ccc;
     padding: 15rpx;
     width: 500rpx;
-    height: 430rpx;
+    height: 380rpx;
+    line-height: 35rpx;
     box-sizing: border-box;
 }
 

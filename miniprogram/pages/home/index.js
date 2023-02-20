@@ -76,10 +76,20 @@ Page({
     },
 //商品跳转商品详情页面
     async navTab(e) {     
-        console.log(e);
+        if(!this.data.userInfo.openId){
+            wx.showToast({
+                title: '请先登录',
+                icon: 'error',
+            })
+            await wx.navigateTo({
+                  url: '/pages/login/index',
+        })
+    }else{
         await wx.navigateTo({
             url: '/pages/productDetails/index?_id=' + e.currentTarget.id,
         })
+    }
+        
     },
     
     async queryUserInfo(){
@@ -88,6 +98,7 @@ Page({
         this.setData({
             userInfo
         })
+        console.log(this.data.userInfo);
     },
 
     onLoad(e) {

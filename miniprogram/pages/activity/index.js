@@ -20,6 +20,7 @@ Page({
         this.setData({
             current
         });
+        this.resetPageNum();
         this.hiddenEndWarn();
         this.openLoading();
         await this.getActivityList();
@@ -31,6 +32,7 @@ Page({
         this.setData({
             current
         })
+        this.resetPageNum();
         this.hiddenEndWarn();
         this.openLoading();
         await this.getActivityList();
@@ -73,8 +75,8 @@ Page({
     //处理返回的数据结构;
     async handleData(data) {
         let PendingData = await this.addParticipateStatusField(data);
-        let afterSortList = this.handleListSort(PendingData);
-        let finalData = this.handleDateFormat(afterSortList);
+        // let afterSortList = this.handleListSort(PendingData);
+        let finalData = this.handleDateFormat(PendingData);
         return finalData
     },
 
@@ -107,13 +109,13 @@ Page({
 
     //对活动列表进行排序，根据活动状态(进行中、未参加、已参加、已结束);
     handleListSort(data) {
-        let arr = [];
-        let beforeStartArr = data.filter(item => item.activityStatus == 0).sort((a, b) => a.activityStartTime - b.activityStartTime) //未开始;
-        let beforeParticipateArr = data.filter(item => item.activityStatus == 1 && !item.participateStatus).sort((a, b) => a.activityEndTime - b.activityEndTime) //未参与;
-        let onparticipateArr = data.filter(item => item.activityStatus == 1 && item.participateStatus).sort((a, b) => a.activityEndTime - b.activityEndTime) //已参与;
-        let onendArr = data.filter(item => item.activityStatus == 2).sort((a, b) => b.activityEndTime - a.activityEndTime) //已结束;
-        arr.push(...onparticipateArr, ...beforeParticipateArr, ...beforeStartArr, ...onendArr);
-        return arr
+        // let arr = [];
+        // let beforeStartArr = data.filter(item => item.activityStatus == 0).sort((a, b) => a.activityStartTime - b.activityStartTime) //未开始;
+        data.filter(item => item.activityStatus == 1 && !item.participateStatus).sort((a, b) => a.activityEndTime - b.activityEndTime) //未参与;
+        data.filter(item => item.activityStatus == 1 && item.participateStatus).sort((a, b) => a.activityEndTime - b.activityEndTime) //已参与;
+        // let onendArr = data.filter(item => item.activityStatus == 2).sort((a, b) => b.activityEndTime - a.activityEndTime) //已结束;
+        // arr.push(...onparticipateArr, ...beforeParticipateArr, ...beforeStartArr, ...onendArr);
+        // return arr
     },
 
     //处理时间格式;
@@ -152,28 +154,25 @@ Page({
             showEndWarn: true
         })
     },
-
-    revertMillisecondFormat(data){
-         data.forEach(item=>{
-             item.activityStartTime=new Date(item.activityStartTime).getTime();
-             item.activityEndTime =new Date(item.activityEndTime).getTime();
-         })
-         return data
+    //重置pageNum;
+    resetPageNum(){
+        this.setData({
+            pageNum:1
+        })
     },
-
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady() {
-
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow() {
-
+    async onShow() {
+        //渲染活动列表;
+        await this.getActivityList();
     },
 
     /**
@@ -194,6 +193,8 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     async onPullDownRefresh() {
+        this.resetPageNum();
+        this.hiddenEndWarn();
         this.openLoading();
         await this.getActivityList();
         this.closeLoading();
@@ -202,7 +203,9 @@ Page({
     /**
      * 页面上拉触底事件的处理函数
      */
+    //
     async onReachBottom() {
+        let activityList = this.data.activityList;
         let loadingStatus = this.data.loadingStatus;
         let showEndWarn = this.data.showEndWarn;
         let pageNum = this.data.pageNum;
@@ -225,19 +228,16 @@ Page({
                 pageNum,
             }
         })
-        this.closeLoading();
-        const list = res.result.data;
-        let activityList = this.data.activityList;
-        if (list.length) {
-            let  preActivityList= revertMillisecondFormat(activityList);
-            preActivityList.push(list);
-            const fragment = await this.handleData(JSON.parse(JSON.stringify(preActivityList)));
-            this.setData({
-                activityList: fragment,
-            })
-        } else {
+        const data = res.result.data;
+        if (data.length < pageSize) {
             this.showEndWarn();
         }
+        let finalData = await this.handleData(data);
+        activityList.push(...finalData);
+        this.setData({
+            activityList,
+        })
+        this.closeLoading();
     },
 
     /**
