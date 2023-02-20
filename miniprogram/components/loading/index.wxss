@@ -55,7 +55,7 @@
     background-color: var(--color);
     top: -120rpx;
     border-radius: 20rpx;
-    animation: animate_show 4s steps(1, end) infinite;
+    animation: animate_show 4s steps(1, end) infinite; 
     animation-delay: calc((5 - var(--i)) * -1s);
 }
 

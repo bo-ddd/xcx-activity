@@ -80,7 +80,7 @@
         </view>
     </view>
     <!-- 遮罩层 -->
-    <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal||showIntegral||showPrizeInfo}}"></view>
+    <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal||showIntegral||showPrizeInfo||showWinInfo||showFailInfo}}"></view>
     <!-- 弹出层--活动规则 -->
     <view class="pop-rule" wx:if="{{showModal}}">
         <image class="title-rule" src="../../images/icon-rule_title.png" mode="" />
@@ -99,10 +99,6 @@
             </view>
         </view>
     </view>
-    <!-- 弹出层--助力得积分 -->
-    <view class="pop-integral" wx:if="{{showIntegral}}">
-        恭喜你获得10积分
-    </view>
     <!-- 弹出层--中奖名单 -->
     <view class="pop-info_prize" wx:if="{{showPrizeInfo}}">
         <image class="title-info" src="../../images/icon-info_title.png" mode="" />
@@ -116,16 +112,48 @@
                 <text>{{item.prizeName}}</text>
             </view>
             <view class="close-btn" bindtap="closePrizeInfoPop">
-            <image class="icon-close" src="../../images/icon-close.png" mode=""/>
+                <image class="icon-close" src="../../images/icon-close.png" mode="" />
             </view>
+        </view>
+    </view>
+    <!-- 弹出层--助力积分 -->
+    <view class="pop-integral" wx:if="{{showIntegral}}">
+        <view class="integral">
+            <view class="partake">谢谢参与</view>
+            <view class="num">+10 <text class="text">积分</text> </view>
+            <image class="gold" src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/activity/2023/2/Gold%20.png?sign=6534de66d2a7e8409c51384fb9208bfa&t=1676712965" mode="" />
+            <image src="../../images/icon-err.png" bindtap="closeIntegral" mode="" class="err" />
         </view>
     </view>
     <!-- 弹出层--恭喜中奖 -->
     <view class="pop-lottery_win" wx:if="{{showWinInfo}}">
-    <!-- <image src="" mode=""/> -->
+        <image class="icon-pop_win" src="../../images/icon-pop_win.png" mode="" />
+        <text class="prize-name">山地自行车打火机山地地址阿灿按时吃你打算</text>
+        <view class="close-btn" bindtap="closeWinPop">
+            <image class="icon-close" src="../../images/icon-close.png" mode="" />
+        </view>
+        <view class="bottom">
+            <view class="share-btn">立即分享</view>
+            <view class="award-btn" bindtap="to" data-name="confirmOrder">立即领取</view>
+        </view>
     </view>
     <!-- 弹出层--未中奖 -->
     <view class="pop-lottery_fail" wx:if="{{showFailInfo}}">
+        <view class="blessing-box">
+            <image class="blessing " src="https://7a6c-zliu-dev-4gclbljp64cb5cd3-1302106483.tcb.qcloud.la/activity/2023/2/blessing-bag.png?sign=cdd536a6a5c56aa841c11e6d89a56f0e&t=1676711571" mode="" />
+            <view class="raffle">
+                <vieW class="fs-30">很遗憾未中奖！</vieW>
+                <view class="fs-30">送您20积分，快去兑换大奖吧！</view>
+            </view>
+            <button type="warn" class="btn-raffle" bindtap="closeFailPop">确定</button>
+        </view>
     </view>
+    <!-- 1.根据活动状态判断，如果活动结束，等待开奖状态(加载动画，禁止屏幕操作)；
+         2.调接口拿到所有参加本活动的人员名单，随机选取与奖品个数相等的人(且不能相等)；
+         3.调接口，查活动参与记录表，检索出所有中奖人的记录，将中奖状态设置为1(已中奖)，其他未中奖设置为2(未中奖)，未开奖前默认为0(待开奖);
+         4.在点击开奖的之前，做判断，
+            1.如果openID等于中奖人的openID,那么点击开奖，显示的是中奖弹层;
+            2.如果不是，那么点击开奖，显示的是未中奖弹层;
+            -->
 
 </view>

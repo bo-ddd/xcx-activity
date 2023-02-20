@@ -15,7 +15,7 @@
         <view wx:if="{{!merchantList.length}}" class="tips">
             <view>暂时还没有商铺入驻哦~</view>
         </view>
-        <swiper class='swiperTtemBox' current='{{currentIndex}}' bindchange="bindchange" wx:else>
+        <swiper class='swiperTtemBox' current='{{currentIndex}}' bindchange="bindchange">
             <swiper-item class='swiperTtemBox-item' wx:for="{{merchantStatus}}" wx:key="index">
                 <view class="item mt-30 wrap" wx:for="{{ merchantList }}" wx:key="_id" data-_id="{{ item._id }}" bindtap="toActiveDetail">
                     <view class="item-left">

@@ -1,4 +1,5 @@
 // pages/participateActivities/index.js
+
 Page({
 
     /**
@@ -10,7 +11,7 @@ Page({
         waitActivityList: [],
         endActivityList: [],
         participateActivityList: [],
-         loadingStatus: true,
+        loadingStatus: true,
     },
 
     bindchange: function (e) {
@@ -25,7 +26,6 @@ Page({
         if (that.data.currentData === e.target.dataset.current) {
             return false;
         } else {
-
             that.setData({
                 currentData: e.target.dataset.current
             })
@@ -50,12 +50,12 @@ Page({
     async getParticipateActivities() {
         let _this = this;
         let res = await this.getParticipateListApi();
-        console.log('--------我是返回数据----------');
+        console.log('--------我是返回数据----------');  
         console.log(res);
         let list = res.result.data.list
         let participateActivities = [];
         this.setData({
-            participateActivityList:list
+            participateActivities:list
         })
         list.forEach(item => {
             if(item.userParticipatingList.length){
@@ -66,21 +66,19 @@ Page({
         _this.setData({
             participateActivityList: participateActivities
         })
+        console.log(this.data.participateActivityList);
         await _this.participateState()
     },
     //参与的活动状态
     participateState() {
         let waitActivity = this.data.participateActivityList.filter(item => item.activityStatus == 1)
         let endActivity = this.data.participateActivityList.filter(item => item.activityStatus == 2)
-        console.log(waitActivity);
         this.setData({
             waitActivityList: waitActivity,
             endActivityList: endActivity,
         })
     },
-    sort(){
-      
-    },
+   
     toDetail(e) {
         console.log(e);
         //传入活动id跳转到对应活动页
@@ -99,7 +97,6 @@ Page({
     async onLoad(options) {
         ///首屏优化
         await this.getParticipateActivities();
-
         await this.closeLoading();
       
     },
