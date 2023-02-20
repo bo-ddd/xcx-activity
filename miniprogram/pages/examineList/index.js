@@ -51,7 +51,7 @@ Page({
             }
         })
     },
-
+    
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -63,7 +63,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+        this.getMerchantList()
     },
 
     /**
@@ -84,7 +84,7 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh() {
-        setTimeout( () => {
+        setTimeout(() => {
             this.getMerchantList()
             //停止下拉刷新
             wx.stopPullDownRefresh();

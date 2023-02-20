@@ -18,10 +18,13 @@
 .navBox {
     display: flex;
     justify-content: space-around;
+    align-content: center;
+    position: sticky;
+    top: 0;
     background-color: white;
-    height: 80rpx;
-    width: 100%;
-    align-items: center;
+    z-index: 100;
+    border-bottom: 1px solid #ccc;
+    font-size: 30rpx;
 }
 
 .colorLeftBox,
@@ -39,8 +42,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 100%;
-    padding-top: 16rpx;
+    height: 60rpx;
+    padding-top: 10rpx;
     box-sizing: border-box;
     width: 50%;
 }

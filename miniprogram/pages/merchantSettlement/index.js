@@ -212,6 +212,8 @@ Page({
             commonFn.throttle(this.addMerchant)()
         }
     },
+   
+
     // 跳转审核提示页面
     toAuditStatus() {
         wx.redirectTo({
