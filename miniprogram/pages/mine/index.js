@@ -45,7 +45,7 @@ Page({
                 lable: '商家入驻',
                 arrowIcon: '../../images/icon-arrow_list.png',
                 name: 'entryProcess',
-                show: false
+                show: true
             },
             {
                 id: 2,
@@ -80,20 +80,20 @@ Page({
                 show: true
             },
         ],
-     
+
     },
-    toLogin(){
+    toLogin() {
         wx.navigateTo({
             url: '/pages/login/index'
         })
     },
     to(e) {
-        let app=getApp()
-        if(app.globalData.needLogin == true){
+        let app = getApp()
+        if (app.globalData.needLogin == true) {
             wx.navigateTo({
                 url: '/pages/login/index'
             })
-        }else{
+        } else {
             wx.navigateTo({
                 url: '/pages/' + e.currentTarget.dataset.name + '/index'
             })
@@ -101,12 +101,12 @@ Page({
 
     },
     activeTo(e) {
-        let app=getApp()
-        if(app.globalData.needLogin == true){
-             wx.navigateTo({
+        let app = getApp()
+        if (app.globalData.needLogin == true) {
+            wx.navigateTo({
                 url: '/pages/login/index'
             })
-        }else{
+        } else {
             wx.navigateTo({
                 url: '/pages/' + e.currentTarget.dataset.name + '/index'
             })
@@ -123,21 +123,13 @@ Page({
             url: '/pages/message/index'
         })
     },
-    //设置用户信息r
-    async setUserInfo() {
+    //展示活动
+    async showActivity() {
         let app = getApp();
         await app.judgeUserInfo();
         if (app.globalData.needLogin == true) {
-          
+
         } else {
-            // 想让一个数组中的某一项或者某某项在登陆的时候显示  未登录的时候隐藏
-            /**
-             * 实现思路：
-             * 1、先克隆一份这个数组
-             * 2、循环遍历这个数组
-             * 3、便利的时候 判断每一项的 show字段当前处于什么状态 如为 true 则更改为false 反之一样
-             * 4、重新把处理完的数据 重新设置到原数组中   效果实现
-             */
             let navData = JSON.parse(JSON.stringify(this.data.activityList))
             if (app.globalData.userInfo) {
                 navData.forEach((e) => {
@@ -147,17 +139,42 @@ Page({
                 })
                 this.setData({
                     userInfo: app.globalData.userInfo,
-                    activityList:navData
+                    activityList: navData
                 })
             }
         }
 
     },
+    //展示审核列表
+    showAudit() {
+        wx.cloud.callFunction({
+            name: 'user',
+            data: {
+                type: 'getUserInfo',
+            },
+        }).then(res => {
+            if (res.result.data[0].openId) {
+                let mineList = JSON.parse(JSON.stringify(this.data.mineList))
+                mineList.forEach(item => {
+                    if (res.result.data[0].openId =="oeRqM5dhd2MtTQFsDxY_XEKaeb54") {
+                        if (!item.show) {
+                            item.show = true
+                        }
+                    }
+                })
+                this.setData({
+                    mineList: mineList
+                })
+            }
+
+        })
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     async onLoad(options) {
-        // await this.setUserInfo()
+        //展示审核列表
+        this.showAudit()
     },
 
     /**
@@ -171,8 +188,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     //判断用户是否登录
-     onShow() {
-        this.setUserInfo()
+    onShow() {
+        this.showActivity()
     },
 
     /**
