@@ -96,7 +96,7 @@
 
 <swiper class="wrap minheight" indicator-dots="{{false}}"  current="{{currentTab}}" bindchange="bindchange">
 	<block>
-			<swiper-item wx:for="{{ goodsType }}" wx:key="index" >
+			<swiper-item wx:for="{{ goodsType }}" wx:key="index"  >
 				<scroll-view class="swiper-item"  enable-flex="true"  style="overflow: scroll; ">
                     <view class="commodity-item mt-30" wx:for="{{ hotGoods }}" wx:key="index" id="{{item._id}}" bind-id="{{item-id}}" bindtap="navTab">
                         <image class="commodity-logo" src="{{item.goodsUrl}}" mode=""/>
