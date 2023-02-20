@@ -49,7 +49,8 @@ Page({
         } else {
 
             that.setData({
-                currentData: e.target.dataset.current
+                currentData: e.target.dataset.current,
+                pageNum: 1
             })
             that.openLoading()
             that.getActivityList()
@@ -61,7 +62,8 @@ Page({
     bindchange(e) {
         const that = this;
         that.setData({
-            currentData: e.detail.current
+            currentData: e.detail.current,
+            pageNum: 1
         })
         this.openLoading()
         this.getActivityList()

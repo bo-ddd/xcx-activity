@@ -24,7 +24,9 @@
                 <view class="actvity wrap-60r" wx:for="{{activityList}}" wx:key="_id">
                     <image src="{{item.fileId}}" mode="" class="activity-bg" />
                     <image class="delete" bindtap="delete" data-_id="{{ item._id }}" src="../../images/icon-delete.png" mode="" />
-                    <view class="update-btn fs-35" bindtap="updataTo" data-_id="{{ item._id }}">编辑活动</view>
+                    <view class="update-btn fs-35" bindtap="updataTo" wx:if="{{ currentData == 0 }}" data-_id="{{ item._id }}">编辑活动</view>
+                    <view class="update-btn fs-35" bindtap="updataTo" wx:elif="{{ currentData == 1 }}" data-_id="{{ item._id }}">查看活动</view>
+                    <view class="update-btn fs-35" bindtap="updataTo" wx:else="{{ currentData == 2 }}" data-_id="{{ item._id }}">查看活动</view>
                 </view>
             </view>
         </swiper-item>
