@@ -88,8 +88,7 @@ Page({
         await wx.navigateTo({
             url: '/pages/productDetails/index?_id=' + e.currentTarget.id,
         })
-    }
-        
+     }
     },
     
     async queryUserInfo(){
@@ -209,11 +208,17 @@ Page({
         })
     },
 
+
+
+
+
+
     details(e){
         console.log(e.currentTarget.dataset.uid);
     },
     // 点击tab栏
      handleClick(e) {
+     console.log(e);
      this.setData({
          currentTab:e.currentTarget.dataset.index
         })
@@ -221,6 +226,7 @@ Page({
   },
 //   滑动改变index值
 bindchange(e){
+    console.log(e.detail.current)
     this.setData({
         currentTab:e.detail.current
     })
