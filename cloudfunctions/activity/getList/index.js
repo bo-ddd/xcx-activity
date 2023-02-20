@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
             pageSize = 5, pageNum = 1
         } = event;
         console.log(event)
-        const res = await db.collection('activity').where({
+        const res = await db.collection('activity').orderBy('activityStatus','asc').where({
             activityType: event.activityType,
             //examineStatus:1
         }).skip(pageSize * (pageNum - 1)).limit(pageSize).get();

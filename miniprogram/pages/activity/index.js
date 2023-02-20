@@ -55,7 +55,7 @@ Page({
         this.closeLoading();
     },
 
-    // 获取活动列表;  
+    // 获取活动列表;
     //type: 1-周期活动   2-日常活动
     async getActivityList() {
         const activityType = this.data.current === 0 ? 1 : 2;
@@ -64,7 +64,7 @@ Page({
             data: {
                 type: 'getList',
                 activityType,
-            }
+            },
         })
         let activityList = await this.handleData(JSON.parse(JSON.stringify(res.result.data)))
         this.setData({
