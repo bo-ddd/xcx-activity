@@ -11,10 +11,11 @@ exports.main = (event, context) => {
     //添加用户信息
     try {
         db.collection('userInfo').add({
-            data:{
+            data: {
                 openId: wxContext.OPENID,
                 avatarUrl: event.avatarUrl,
-                nickName: event.nickName
+                nickName: event.nickName,
+                integral: 0
             }
         })
     } catch (e) {

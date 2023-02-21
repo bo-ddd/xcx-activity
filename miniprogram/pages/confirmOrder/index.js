@@ -1,11 +1,14 @@
 // pages/confirmOrder/index.js
+const commonFn = require('../../common/uuid')
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        remarks:''
+        remarks: '',
+        // 自提码
+        uuid: ''
     },
     to(e) {
         wx.navigateTo({
@@ -15,7 +18,11 @@ Page({
 
 
     submit() {
-        console.log('提交')
+        let uuId = commonFn.uuid().substr(0,8)
+        this.setData({
+            uuid: uuId
+        })
+        console.log(this.data.uuid);
     },
 
     /**

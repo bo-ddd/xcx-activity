@@ -9,7 +9,9 @@ const db = cloud.database();
 exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     try {
-        await db.collection('userInfo').doc(event._id).update({
+        await db.collection('userInfo').where({
+            openId: wxContext.OPENID
+        }).update({
             data: {
                 integral: event.integral
             }

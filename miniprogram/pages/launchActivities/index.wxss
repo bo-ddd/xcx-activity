@@ -3,6 +3,16 @@
     height: 100vh;
 }
 
+.top-tab_swiper {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    border-bottom: 1px solid #ccc;
+    zoom: 1;
+    font-size: 30rpx;
+}
+
 .tips {
     display: flex;
     flex-direction: column;
@@ -122,12 +132,6 @@
     width: 33.3333%;
     text-align: center;
     padding: 10rpx 0;
-}
-
-.top-tab_swiper {
-    border-bottom: 1px solid #ccc;
-    zoom: 1;
-    font-size: 30rpx;
 }
 
 .gift-box {
