@@ -20,29 +20,8 @@ exports.main = async (event, context) => {
         console.log(event)
         const res = await db.collection('activity').orderBy('activityStatus','asc').where({
             activityType: event.activityType,
-            //examineStatus:1
         }).skip(pageSize * (pageNum - 1)).limit(pageSize).get();
         return res.data
-        // .sort({
-        //     activityStatus:1
-        //  })
-        //.where({
-        //     activityStatus:0||1,
-        // }).sort({
-        //     activityStatus:-1
-        // }).where({
-        //     activityStatus:0,
-        // }).sort({
-        //     activityStartTime:1
-        // }).where({
-        //     activityStatus:1,
-        // }).sort({
-        //     activityEndTime:1
-        // }).where({
-        //     activityStatus:2,
-        // }).sort({
-        //     activityEndTime:-1
-        // })
     } catch (err) {
         throw err
     }
