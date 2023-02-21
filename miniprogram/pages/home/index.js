@@ -123,11 +123,7 @@ Page({
             }
         })
     },
-    //   getUserInfo(){
-    //     wx.cloud.callFunction({
-
-    //     })
-    //   },
+ 
 
 
 
