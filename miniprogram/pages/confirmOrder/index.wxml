@@ -56,7 +56,10 @@
             <image class="icon-arrow" src="../../images/icon-arrow_right.png" />
         </view>
     </view>
-    <view class="submit mt-24r" bindtap="submit" data-name="">
+    <view class="uuid mt-24r" wx:if="{{ uuid }}">{{ uuid }}</view>
+    <view class="submit mt-24r" bindtap="submit" data-name="" wx:else>
         <view class="btn-submit">点击生成自提码</view>
     </view>
+    
+
 </view>

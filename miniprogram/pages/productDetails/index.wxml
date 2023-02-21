@@ -55,7 +55,7 @@
 
 <view class="footer">
 
-<view class="buy"  bindtap="to">
+<view class="buy"  bindtap="to" data-id="{{id}}">
         兑换商品
 </view> 
 </view>
