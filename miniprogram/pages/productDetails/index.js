@@ -16,12 +16,9 @@ Page({
      */
     onLoad(options) {
         var that = this;
-
          that.setData({ 
          id: options._id, 
          })
-        console.log(options._id);
-
       this.getGoodsDetail()
     },
     //点击收藏变颜色
@@ -35,14 +32,12 @@ Page({
                 flag:true
             })
         }
-
     },
     //兑换商品按钮跳转
     to(e){
         wx.navigateTo({
-          url: '/pages/confirmOrder/index',
+          url: '/pages/confirmOrder/index?id='+e.currentTarget.dataset.id,
         })
-
     },
     //获取数据
     getGoodsDetail(e){      
@@ -54,7 +49,6 @@ Page({
                type:'getProductDetails',
                goodsId : _that.data.id
            },success:function(res){
-               console.log(res);  
                _that.setData({
                 productDetails:res.result.list.data
                })
@@ -63,12 +57,11 @@ Page({
        })
     },
     colorclick(e){
-        console.log(e);
         this.setData({
             currentTab:e.currentTarget.dataset.idx
            })
-
     },
+   
 
     /**
      * 生命周期函数--监听页面初次渲染完成
