@@ -18,18 +18,17 @@ Page({
 
 
     submit() {
-        let uuId = commonFn.uuid().substr(0,8)
+        let uuId = commonFn.uuid().substr(0, 8).toUpperCase()
         this.setData({
             uuid: uuId
         })
-        console.log(this.data.uuid);
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        console.log(options);
     },
 
     /**
