@@ -91,7 +91,14 @@ Page({
         let app = getApp()
         if (app.globalData.needLogin == true) {
             wx.navigateTo({
-                url: '/pages/login/index'
+                url: '/pages/login/index',
+                success(res){
+                    wx.showToast({
+                        title: '请先登录',
+                        icon: 'error',
+                        duration: 2000
+                    })
+                }
             })
         } else {
             wx.navigateTo({
@@ -103,8 +110,16 @@ Page({
     activeTo(e) {
         let app = getApp()
         if (app.globalData.needLogin == true) {
+           
             wx.navigateTo({
-                url: '/pages/login/index'
+                url: '/pages/login/index',
+                success(res){
+                    wx.showToast({
+                        title: '请先登录',
+                        icon: 'error',
+                        duration: 2000
+                    })
+                }
             })
         } else {
             wx.navigateTo({
@@ -156,7 +171,7 @@ Page({
             if (res.result.data[0].openId) {
                 let mineList = JSON.parse(JSON.stringify(this.data.mineList))
                 mineList.forEach(item => {
-                    if (res.result.data[0].openId =="oeRqM5dhd2MtTQFsDxY_XEKaeb54") {
+                    if (res.result.data[0].openId =="oeRqM5dhd2MtTQFsDxY_XEKaeb54"||'oeRqM5TAO2_5AKrkhSsFzqr5B1ys') {
                         if (!item.show) {
                             item.show = true
                         }

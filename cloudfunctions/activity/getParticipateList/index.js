@@ -25,7 +25,6 @@ exports.main = async (event, context) => {
             //按开始时间降序
             activityStartTime:-1
         })
-        ///分页
         // .skip(pageSize * (pageNum - 1)).limit(pageSize)
         .end()
         console.log(res);
